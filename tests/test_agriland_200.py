@@ -349,3 +349,67 @@ class TestDedicatedVaranasiBufferDataset:
         assert os.path.exists(excel_path), "Master Excel export must exist"
 
 
+# =====================================================================
+# 6. TEST SUITE: FARMLAND TELEMETRY CARD ROBUSTNESS & POLYMORPHISM
+# =====================================================================
+class TestFarmlandHtmlTelemetryCardRobustness:
+    """Verifies that farmland HTML presentation cards handle list, dict, str, and None crop payloads without crashing."""
+
+    def test_list_supported_crops_does_not_raise(self):
+        from utils.farmland_view import render_agronomic_telemetry_html, render_seller_contact_card_html
+        farm = {
+            "name": "Kashi Vedic Agro Estate",
+            "supported_crops": ["Certified Sandalwood (Chandan)", "VNR Bihi Guava", "Hass Avocado"],
+            "soil_type": "Rich Gangetic Loam",
+            "soil_ph": 7.4,
+            "organic_carbon_pct": 0.85,
+            "water_source": "Perennial Deep Tubewell",
+            "water_tds_ppm": 210,
+            "drip_irrigation_installed": True,
+            "power_supply": "Dedicated 3-Phase Line",
+            "annual_agro_yield_estimate_lakhs": 9.5
+        }
+        html = render_agronomic_telemetry_html(farm)
+        assert "Certified Sandalwood (Chandan)" in html
+        assert "VNR Bihi Guava" in html
+        assert "Hass Avocado" in html
+
+    def test_dict_supported_crops_does_not_raise(self):
+        from utils.farmland_view import render_agronomic_telemetry_html
+        farm = {
+            "name": "Awadh High-Value Plantation",
+            "supported_crops": {
+                "high_value_crops": "Malihabad Dussehri Mango & Dragonfruit",
+                "soil_suitability_score": 98,
+                "irrigation_feasibility": "High"
+            }
+        }
+        html = render_agronomic_telemetry_html(farm)
+        assert "Malihabad Dussehri Mango & Dragonfruit" in html
+
+    def test_str_and_none_supported_crops(self):
+        from utils.farmland_view import render_agronomic_telemetry_html
+        for val in ["Avocado, Teakwood, Guava", None, {}]:
+            farm = {"name": "Test Farm", "supported_crops": val}
+            html = render_agronomic_telemetry_html(farm)
+            assert isinstance(html, str)
+            assert len(html) > 50
+
+    def test_all_existing_data_parcels_render_cleanly(self):
+        from utils.farmland_view import render_agronomic_telemetry_html, render_seller_contact_card_html, render_agriland_200_audit_html
+        base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        with open(os.path.join(base_dir, "data", "farmlands.json"), "r", encoding="utf-8") as f:
+            farms = json.load(f)
+        with open(os.path.join(base_dir, "data", "agriland_200_varanasi.json"), "r", encoding="utf-8") as f:
+            agri = json.load(f)
+
+        for farm in farms + agri:
+            h1 = render_agronomic_telemetry_html(farm)
+            h2 = render_seller_contact_card_html(farm)
+            h3 = render_agriland_200_audit_html(farm)
+            assert isinstance(h1, str)
+            assert isinstance(h2, str)
+            assert isinstance(h3, str)
+
+
+
