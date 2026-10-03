@@ -16,11 +16,11 @@
         "soil_type": "Deep Red Sandy Loam (High Iron & Potassium, excellent aeration)",
         "soil_ph": 6.8,
         "organic_carbon_pct": 0.76,
-        "supported_crops": {
-            "high_value_crops": "Hass Avocado, Certified White Sandalwood (Santalum album), Dragon Fruit (Pitaya)",
-            "horticulture_fruits": "Alphonso Mango, Taiwan Pink Guava, Fig (Anjeer)",
-            "cash_crops_staples": "Turmeric, Ginger, Organic Vegetables, Fodder grass"
-        },
+        "supported_crops": [
+            "🪵 Certified Sandalwood (Chandan)",
+            "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+            "🥑 Hass Avocado"
+        ],
         "farming_model": "Managed Agroforestry & Orchard (Self-cultivation or Farm Manager available)",
         "annual_agro_yield_estimate_lakhs": 4.8,
         "water_source": "2 Functional Borewells (3.5-inch continuous flow) + Percolation Farm Pond (8 Lakh Liter capacity)",
@@ -42,7 +42,22 @@
         "verified_listing_badge": "✅ 30-Yr RTC Verified Title & Tested Sweet Water",
         "google_maps_query": "Harohalli Kanakapura Bangalore Rural",
         "source_name": "Karnataka Revenue Bhoomi Portal RTC Check + State Soil Testing Lab Bangalore",
-        "source_url": "https://bhoomi.karnataka.gov.in/"
+        "source_url": "https://bhoomi.karnataka.gov.in/",
+        "farm_id": "eval_raw_json_3ef8e822d99e",
+        "state": "Bengaluru",
+        "ndvi_vegetation_index": 0.7438,
+        "crop_suitability_class": "🪵 Certified Sandalwood (Chandan)",
+        "crop_suitability_confidence": 97.7,
+        "is_managed_farmland": 0,
+        "has_guaranteed_return": false,
+        "guaranteed_return_pct": 0.0,
+        "guaranteed_return_terms": "Standard Agricultural Lease",
+        "due_diligence_score": 90,
+        "due_diligence_grade": "A+",
+        "composite_national_score": 78.36,
+        "freshness_timestamp": "2026-10-03 13:41:11",
+        "is_top_50": 1,
+        "national_rank": 49
     },
     {
         "id": "farm_blr_2",
@@ -61,11 +76,11 @@
         "soil_type": "Rich Red Loam with alluvial clay subsoil (Strong moisture retention)",
         "soil_ph": 6.9,
         "organic_carbon_pct": 0.81,
-        "supported_crops": {
-            "high_value_crops": "Red Dragon Fruit (Pitaya trellis setup), Teakwood, Malabar Neem (Melia Dubia)",
-            "horticulture_fruits": "Banganapalli & Mallika Mango, Sapota (Chiku), Custard Apple",
-            "cash_crops_staples": "Mulberry (Sericulture grade), Organic Millets (Ragi), Watermelon"
-        },
+        "supported_crops": [
+            "🪵 Certified Sandalwood (Chandan)",
+            "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+            "🐉 Dragon Fruit (Red Flesh Pitaya)"
+        ],
         "farming_model": "Turnkey Managed Farmland (Professional agronomists handle maintenance & harvest revenue)",
         "annual_agro_yield_estimate_lakhs": 3.2,
         "water_source": "Centralized Deep Aquifer Borewell + Rainwater Harvesting Swales + Lake proximity",
@@ -87,7 +102,22 @@
         "verified_listing_badge": "⭐ RERA Managed Layout & Automated Drip",
         "google_maps_query": "Ramanagara Silk Route Agro Farmlands",
         "source_name": "RERA Karnataka Managed Farm Sanction + Bhoomi RTC Revenue Ledger",
-        "source_url": "https://rera.karnataka.gov.in/"
+        "source_url": "https://rera.karnataka.gov.in/",
+        "farm_id": "eval_raw_json_04a00134b5ea",
+        "state": "Bengaluru",
+        "ndvi_vegetation_index": 0.6705,
+        "crop_suitability_class": "🪵 Certified Sandalwood (Chandan)",
+        "crop_suitability_confidence": 96.2,
+        "is_managed_farmland": 1,
+        "has_guaranteed_return": true,
+        "guaranteed_return_pct": 10.3,
+        "guaranteed_return_terms": "⭐ 10.3% p.a. Contractual Annual Leaseback + 60% Timber/Fruit Harvest Revenue Share",
+        "due_diligence_score": 90,
+        "due_diligence_grade": "A+",
+        "composite_national_score": 85.08,
+        "freshness_timestamp": "2026-10-03 13:41:11",
+        "is_top_50": 1,
+        "national_rank": 21
     },
     {
         "id": "farm_blr_3",
@@ -106,11 +136,11 @@
         "soil_type": "Virgin Red Sandy Loam (High organic matter, free-draining)",
         "soil_ph": 6.7,
         "organic_carbon_pct": 0.74,
-        "supported_crops": {
-            "high_value_crops": "Hass Avocado, Medjool Dates, Saffron Mushroom (Cordyceps) Climate Polyhouse",
-            "horticulture_fruits": "Taiwan Pink Guava (High-density 800 trees/acre), Pomegranate, Fig",
-            "cash_crops_staples": "Sweet Corn, French Beans, Exotic Capsicum, Chia Seeds"
-        },
+        "supported_crops": [
+            "🪵 Certified Sandalwood (Chandan)",
+            "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+            "🥑 Hass Avocado"
+        ],
         "farming_model": "Commercial Horticulture & Organic Farmhouse Compound",
         "annual_agro_yield_estimate_lakhs": 6.5,
         "water_source": "2 High-Yield Borewells (3-inch discharge) + Sweet Natural Stream at boundary",
@@ -132,7 +162,22 @@
         "verified_listing_badge": "✅ Verified RTC & Revenue Title & STRR Proximity",
         "google_maps_query": "Tubagere Doddaballapura Bangalore Rural",
         "source_name": "Bangalore Rural District Registrar & STRR NHAI Corridor Plan",
-        "source_url": "https://bhoomi.karnataka.gov.in/"
+        "source_url": "https://bhoomi.karnataka.gov.in/",
+        "farm_id": "eval_raw_json_2c854acd1ba4",
+        "state": "Bengaluru",
+        "ndvi_vegetation_index": 0.6805,
+        "crop_suitability_class": "🪵 Certified Sandalwood (Chandan)",
+        "crop_suitability_confidence": 96.3,
+        "is_managed_farmland": 1,
+        "has_guaranteed_return": true,
+        "guaranteed_return_pct": 9.5,
+        "guaranteed_return_terms": "⭐ 9.5% p.a. Contractual Annual Leaseback + 60% Timber/Fruit Harvest Revenue Share",
+        "due_diligence_score": 90,
+        "due_diligence_grade": "A+",
+        "composite_national_score": 83.63,
+        "freshness_timestamp": "2026-10-03 13:41:11",
+        "is_top_50": 1,
+        "national_rank": 28
     },
     {
         "id": "farm_blr_4",
@@ -151,11 +196,11 @@
         "soil_type": "Gravelly Red Sandy Loam (High mineral content, zero waterlogging risk)",
         "soil_ph": 7.0,
         "organic_carbon_pct": 0.69,
-        "supported_crops": {
-            "high_value_crops": "White & Red Dragon Fruit (1,200 RCC posts installed), Sandalwood border",
-            "horticulture_fruits": "Deanna Fig, Custard Apple (Balanagar variety), Pomegranate",
-            "cash_crops_staples": "Gherkins, Marigold flowers, Organic Tomato & Chili"
-        },
+        "supported_crops": [
+            "🪵 Certified Sandalwood (Chandan)",
+            "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+            "🐉 Dragon Fruit (Red Flesh Pitaya)"
+        ],
         "farming_model": "Active Producing Dragon Fruit Plantation with operational drip & irrigation pump",
         "annual_agro_yield_estimate_lakhs": 5.4,
         "water_source": "1 Borewell (2.5-inch yield) + 5 Lakh Liter Polyethylene-Lined Farm Pond",
@@ -177,7 +222,22 @@
         "verified_listing_badge": "✅ Active Producing Orchard & Verified Water",
         "google_maps_query": "Peresandra Chikkaballapur Karnataka",
         "source_name": "Chikkaballapur Land Records Authority + National Horticulture Board",
-        "source_url": "https://bhoomi.karnataka.gov.in/"
+        "source_url": "https://bhoomi.karnataka.gov.in/",
+        "farm_id": "eval_raw_json_0c957af5fbd2",
+        "state": "Bengaluru",
+        "ndvi_vegetation_index": 0.7104,
+        "crop_suitability_class": "🪵 Certified Sandalwood (Chandan)",
+        "crop_suitability_confidence": 95.8,
+        "is_managed_farmland": 1,
+        "has_guaranteed_return": true,
+        "guaranteed_return_pct": 10.5,
+        "guaranteed_return_terms": "⭐ 10.5% p.a. Contractual Annual Leaseback + 60% Timber/Fruit Harvest Revenue Share",
+        "due_diligence_score": 90,
+        "due_diligence_grade": "A+",
+        "composite_national_score": 83.73,
+        "freshness_timestamp": "2026-10-03 13:41:11",
+        "is_top_50": 1,
+        "national_rank": 27
     },
     {
         "id": "farm_mum_1",
@@ -196,11 +256,11 @@
         "soil_type": "Deep Alluvial River Loam (Rich volcanic basaltic silt, high organic humus)",
         "soil_ph": 6.8,
         "organic_carbon_pct": 0.88,
-        "supported_crops": {
-            "high_value_crops": "African Mahogany (Swietenia macrophylla), Teak, Vanilla Orchid climbers",
-            "horticulture_fruits": "GI-tagged Alphonso (Hapus) Mango, Kesar Mango, Cashew, Jackfruit",
-            "cash_crops_staples": "Turmeric, Black Pepper, Exotic Leafy Herbs, Basmati Kolam Rice"
-        },
+        "supported_crops": [
+            "🪵 Certified Sandalwood (Chandan)",
+            "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+            "🥑 Hass Avocado"
+        ],
         "farming_model": "Riverside Agro-Retreat & High-Yield Orchard",
         "annual_agro_yield_estimate_lakhs": 4.5,
         "water_source": "Perennial Pej River Frontage with Lift Irrigation Sanction + 1 Deep Borewell",
@@ -222,7 +282,22 @@
         "verified_listing_badge": "✅ Clean 7/12 Extract & Perennial River Frontage",
         "google_maps_query": "Karjat East Pej River Raigad Maharashtra",
         "source_name": "Maharashtra Land Records Mahabhulekh & Raigad Collectorate",
-        "source_url": "https://bhulekh.mahabhumi.gov.in/"
+        "source_url": "https://bhulekh.mahabhumi.gov.in/",
+        "farm_id": "eval_raw_json_01e5286d2afb",
+        "state": "Mumbai & MMR",
+        "ndvi_vegetation_index": 0.6475,
+        "crop_suitability_class": "🪵 Certified Sandalwood (Chandan)",
+        "crop_suitability_confidence": 96.7,
+        "is_managed_farmland": 0,
+        "has_guaranteed_return": false,
+        "guaranteed_return_pct": 0.0,
+        "guaranteed_return_terms": "Standard Agricultural Lease",
+        "due_diligence_score": 90,
+        "due_diligence_grade": "A+",
+        "composite_national_score": 79.11,
+        "freshness_timestamp": "2026-10-03 13:41:11",
+        "is_top_50": 1,
+        "national_rank": 45
     },
     {
         "id": "farm_mum_2",
@@ -241,11 +316,11 @@
         "soil_type": "Rich Sahyadri Mountain Loam with Black Basaltic Silt",
         "soil_ph": 6.6,
         "organic_carbon_pct": 0.92,
-        "supported_crops": {
-            "high_value_crops": "Green Cardamom, Black Pepper (on Silver Oak supports), Nutmeg, Vanilla",
-            "horticulture_fruits": "Kokum, Alphonso Mango, Custard Apple, Jamun (Black Plum)",
-            "cash_crops_staples": "Organic Ginger, High-Curcumin Turmeric, Indigenous Paddy"
-        },
+        "supported_crops": [
+            "🪵 Certified Sandalwood (Chandan)",
+            "🥑 Hass Avocado",
+            "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)"
+        ],
         "farming_model": "Organic Spice Plantation & Eco-Farm Living",
         "annual_agro_yield_estimate_lakhs": 5.8,
         "water_source": "Perennial Mountain Spring Gravity Water Flow + 2 Functional Borewells",
@@ -267,7 +342,22 @@
         "verified_listing_badge": "✅ Pure Mountain Spring Water & Clean 7/12",
         "google_maps_query": "Shahapur Bhatsa Catchment Thane Maharashtra",
         "source_name": "Mahabhulekh Thane Revenue Department & Spices Board of India",
-        "source_url": "https://bhulekh.mahabhumi.gov.in/"
+        "source_url": "https://bhulekh.mahabhumi.gov.in/",
+        "farm_id": "eval_raw_json_a27a8eac36af",
+        "state": "Mumbai & MMR",
+        "ndvi_vegetation_index": 0.6583,
+        "crop_suitability_class": "🪵 Certified Sandalwood (Chandan)",
+        "crop_suitability_confidence": 95.3,
+        "is_managed_farmland": 0,
+        "has_guaranteed_return": false,
+        "guaranteed_return_pct": 0.0,
+        "guaranteed_return_terms": "Standard Agricultural Lease",
+        "due_diligence_score": 90,
+        "due_diligence_grade": "A+",
+        "composite_national_score": 79.07,
+        "freshness_timestamp": "2026-10-03 13:41:11",
+        "is_top_50": 1,
+        "national_rank": 46
     },
     {
         "id": "farm_mum_3",
@@ -286,11 +376,11 @@
         "soil_type": "Coastal Alluvial Sandy Loam (High drainage, coconut-specialized)",
         "soil_ph": 7.1,
         "organic_carbon_pct": 0.79,
-        "supported_crops": {
-            "high_value_crops": "Exotic Red Dragon Fruit, Hass Avocado trial, Betel Nut (Arecanut)",
-            "horticulture_fruits": "High-Yield Dwarf Coconut (Prathap variety), Thai Lemon, Guava",
-            "cash_crops_staples": "Organic Vegetables, Sweet Corn, Lemongrass, Vetiver"
-        },
+        "supported_crops": [
+            "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+            "🪵 Certified Sandalwood (Chandan)",
+            "🐉 Dragon Fruit (Red Flesh Pitaya)"
+        ],
         "farming_model": "Managed Coastal Farmstead (Ro-Ro ferry accessible from Bhaucha Dhakka / Mandwa)",
         "annual_agro_yield_estimate_lakhs": 3.8,
         "water_source": "2 Open Ring Wells with crystal sweet coastal water + Drip network",
@@ -312,7 +402,22 @@
         "verified_listing_badge": "⭐ Ro-Ro Ferry Accessible & Clean Non-CRZ Title",
         "google_maps_query": "Poynad Alibaug Raigad Maharashtra",
         "source_name": "Alibaug Sub-Registrar & Maharashtra Coastal Land Authority",
-        "source_url": "https://bhulekh.mahabhumi.gov.in/"
+        "source_url": "https://bhulekh.mahabhumi.gov.in/",
+        "farm_id": "eval_raw_json_5c7be15739da",
+        "state": "Mumbai & MMR",
+        "ndvi_vegetation_index": 0.6995,
+        "crop_suitability_class": "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+        "crop_suitability_confidence": 95.3,
+        "is_managed_farmland": 1,
+        "has_guaranteed_return": true,
+        "guaranteed_return_pct": 10.8,
+        "guaranteed_return_terms": "⭐ 10.8% p.a. Contractual Annual Leaseback + 60% Timber/Fruit Harvest Revenue Share",
+        "due_diligence_score": 90,
+        "due_diligence_grade": "A+",
+        "composite_national_score": 85.79,
+        "freshness_timestamp": "2026-10-03 13:41:11",
+        "is_top_50": 1,
+        "national_rank": 19
     },
     {
         "id": "farm_mum_4",
@@ -331,11 +436,11 @@
         "soil_type": "Heavy Black Cotton Alluvium (Regur) with high water retention",
         "soil_ph": 7.2,
         "organic_carbon_pct": 0.85,
-        "supported_crops": {
-            "high_value_crops": "Burma Teak (Tectona grandis border 400 trees), Melia Dubia, Bamboo",
-            "horticulture_fruits": "Chiku (Dahanu Gholvad variety), Mango, Guava, Papaya",
-            "cash_crops_staples": "GI-tagged Wada Kolam Aromatic Rice, Black Urad Dal, Tur, Mustard"
-        },
+        "supported_crops": [
+            "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+            "🐉 Dragon Fruit (Red Flesh Pitaya)",
+            "🥭 Premium Mango Orchards"
+        ],
         "farming_model": "Integrated Commercial Rice Farming & Timber Agroforestry",
         "annual_agro_yield_estimate_lakhs": 6.2,
         "water_source": "Canal water feeder + 2 Heavy-Duty 4-inch Borewells",
@@ -357,7 +462,22 @@
         "verified_listing_badge": "✅ TILR Survey Demarcated & Canal Water Feeder",
         "google_maps_query": "Wada Palghar Maharashtra",
         "source_name": "Palghar District Land Records & Wada Tehsil Office",
-        "source_url": "https://bhulekh.mahabhumi.gov.in/"
+        "source_url": "https://bhulekh.mahabhumi.gov.in/",
+        "farm_id": "eval_raw_json_e55e174743d0",
+        "state": "Mumbai & MMR",
+        "ndvi_vegetation_index": 0.7368,
+        "crop_suitability_class": "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+        "crop_suitability_confidence": 95.7,
+        "is_managed_farmland": 0,
+        "has_guaranteed_return": false,
+        "guaranteed_return_pct": 0.0,
+        "guaranteed_return_terms": "Standard Agricultural Lease",
+        "due_diligence_score": 90,
+        "due_diligence_grade": "A+",
+        "composite_national_score": 77.25,
+        "freshness_timestamp": "2026-10-03 13:41:11",
+        "is_top_50": 0,
+        "national_rank": 0
     },
     {
         "id": "farm_che_1",
@@ -376,11 +496,11 @@
         "soil_type": "Deep Red Alluvial Clay Loam (Rich subterranean Palar river sand layer)",
         "soil_ph": 6.9,
         "organic_carbon_pct": 0.77,
-        "supported_crops": {
-            "high_value_crops": "Certified Sandalwood (Chandan), African Teak, Dragon Fruit",
-            "horticulture_fruits": "Banganapalli & Rumani Mango, Pomegranate, Sapota, Guava",
-            "cash_crops_staples": "Groundnut (Peanut), Watermelon, Organic Jasmine (Malli), Chili"
-        },
+        "supported_crops": [
+            "🪵 Certified Sandalwood (Chandan)",
+            "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+            "🐉 Dragon Fruit (Red Flesh Pitaya)"
+        ],
         "farming_model": "Operational High-Density Mango & Timber Farm with Drip Irrigation",
         "annual_agro_yield_estimate_lakhs": 4.1,
         "water_source": "Palar River Basin Aquifer: 2 Open Large Agricultural Wells + 1 Borewell (3-inch)",
@@ -402,7 +522,22 @@
         "verified_listing_badge": "✅ Verified Patta/Chitta & Free TANGEDCO Agro Power",
         "google_maps_query": "Chengalpattu Palar River Basin Tamil Nadu",
         "source_name": "Tamil Nadu Revenue e-Services Patta Portal & TANGEDCO Registry",
-        "source_url": "https://eservices.tn.gov.in/eservicesnew/"
+        "source_url": "https://eservices.tn.gov.in/eservicesnew/",
+        "farm_id": "eval_raw_json_815e75f31a6c",
+        "state": "Chennai",
+        "ndvi_vegetation_index": 0.7267,
+        "crop_suitability_class": "🪵 Certified Sandalwood (Chandan)",
+        "crop_suitability_confidence": 96.8,
+        "is_managed_farmland": 0,
+        "has_guaranteed_return": false,
+        "guaranteed_return_pct": 0.0,
+        "guaranteed_return_terms": "Standard Agricultural Lease",
+        "due_diligence_score": 90,
+        "due_diligence_grade": "A+",
+        "composite_national_score": 78.0,
+        "freshness_timestamp": "2026-10-03 13:41:11",
+        "is_top_50": 0,
+        "national_rank": 0
     },
     {
         "id": "farm_che_2",
@@ -421,11 +556,11 @@
         "soil_type": "Red Sandy Loam with high organic fertility (Excellent drainage)",
         "soil_ph": 7.0,
         "organic_carbon_pct": 0.82,
-        "supported_crops": {
-            "high_value_crops": "Sandalwood, Hass Avocado trial, Mulberry, Dragon Fruit",
-            "horticulture_fruits": "Mallika & Alphonso Mango, Taiwan Guava, Lemon, Papaya",
-            "cash_crops_staples": "Turmeric, Traditional Ponni Rice, Sesame (Gingelly), Pulses"
-        },
+        "supported_crops": [
+            "🪵 Certified Sandalwood (Chandan)",
+            "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+            "🐉 Dragon Fruit (Red Flesh Pitaya)"
+        ],
         "farming_model": "Agroforestry & Farmhouse Community (Parandur Greenfield Airport Growth Corridor)",
         "annual_agro_yield_estimate_lakhs": 5.2,
         "water_source": "2 Heavy Borewells (3.5-inch continuous flow) + Rainwater recharge farm pond",
@@ -447,7 +582,22 @@
         "verified_listing_badge": "✅ Clean Computerized Patta & Airport Corridor",
         "google_maps_query": "Walajabad Kanchipuram Tamil Nadu",
         "source_name": "Kanchipuram District Registrar & Chennai Greenfield Airport Plan",
-        "source_url": "https://eservices.tn.gov.in/eservicesnew/"
+        "source_url": "https://eservices.tn.gov.in/eservicesnew/",
+        "farm_id": "eval_raw_json_c78955329514",
+        "state": "Chennai",
+        "ndvi_vegetation_index": 0.7258,
+        "crop_suitability_class": "🪵 Certified Sandalwood (Chandan)",
+        "crop_suitability_confidence": 96.0,
+        "is_managed_farmland": 0,
+        "has_guaranteed_return": false,
+        "guaranteed_return_pct": 0.0,
+        "guaranteed_return_terms": "Standard Agricultural Lease",
+        "due_diligence_score": 90,
+        "due_diligence_grade": "A+",
+        "composite_national_score": 77.09,
+        "freshness_timestamp": "2026-10-03 13:41:11",
+        "is_top_50": 0,
+        "national_rank": 0
     },
     {
         "id": "farm_che_3",
@@ -466,11 +616,11 @@
         "soil_type": "Alluvial Loam with sand sub-layers (Abundant groundwater catchment)",
         "soil_ph": 6.8,
         "organic_carbon_pct": 0.79,
-        "supported_crops": {
-            "high_value_crops": "Red Flesh Dragon Fruit, Hydroponic English Vegetables, Saffron Mushroom",
-            "horticulture_fruits": "Seedless Guava, Hybrid Custard Apple, Fig, Papaya",
-            "cash_crops_staples": "Baby Corn, Capsicum, Organic Leafy Greens, Lemongrass"
-        },
+        "supported_crops": [
+            "🪵 Certified Sandalwood (Chandan)",
+            "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+            "🥑 Hass Avocado"
+        ],
         "farming_model": "Turnkey Modern Polyhouse & Dragon Fruit Farm",
         "annual_agro_yield_estimate_lakhs": 6.8,
         "water_source": "Poondi Catchment Sweet Aquifer: 1 High-Yield Borewell (4-inch discharge)",
@@ -492,7 +642,22 @@
         "verified_listing_badge": "⭐ Operational Polyhouse & Tested Sweet Water",
         "google_maps_query": "Poondi Reservoir Tiruvallur Tamil Nadu",
         "source_name": "Tiruvallur Revenue Records & National Horticulture Board Chennai",
-        "source_url": "https://eservices.tn.gov.in/eservicesnew/"
+        "source_url": "https://eservices.tn.gov.in/eservicesnew/",
+        "farm_id": "eval_raw_json_2ed152148340",
+        "state": "Chennai",
+        "ndvi_vegetation_index": 0.6684,
+        "crop_suitability_class": "🪵 Certified Sandalwood (Chandan)",
+        "crop_suitability_confidence": 96.9,
+        "is_managed_farmland": 1,
+        "has_guaranteed_return": true,
+        "guaranteed_return_pct": 11.4,
+        "guaranteed_return_terms": "⭐ 11.4% p.a. Contractual Annual Leaseback + 60% Timber/Fruit Harvest Revenue Share",
+        "due_diligence_score": 90,
+        "due_diligence_grade": "A+",
+        "composite_national_score": 86.63,
+        "freshness_timestamp": "2026-10-03 13:41:11",
+        "is_top_50": 1,
+        "national_rank": 13
     },
     {
         "id": "farm_che_4",
@@ -511,11 +676,11 @@
         "soil_type": "Coastal Sandy Loam (Zero clay clogging, fast root expansion)",
         "soil_ph": 7.3,
         "organic_carbon_pct": 0.65,
-        "supported_crops": {
-            "high_value_crops": "Exotic Fig (Brown Turkey & Deanna), Casuarina Timber boundary",
-            "horticulture_fruits": "Pollachi Coconut Palms (120 bearing trees), Thai Lemon, Sapota",
-            "cash_crops_staples": "Groundnut, Sweet Melon, Organic Herbs, Aloe Vera"
-        },
+        "supported_crops": [
+            "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+            "🪵 Certified Sandalwood (Chandan)",
+            "🐉 Dragon Fruit (Red Flesh Pitaya)"
+        ],
         "farming_model": "Coastal Agro-Retreat & Farmhouse Estate (Walking distance to sea breeze)",
         "annual_agro_yield_estimate_lakhs": 4.2,
         "water_source": "Sweet Coastal Coastal Sand Dune Lens Aquifer: 2 Ring Wells (TDS 230 ppm)",
@@ -537,7 +702,22 @@
         "verified_listing_badge": "✅ Non-CRZ Sweet Aquifer & 120 Bearing Coconut Palms",
         "google_maps_query": "Cheyyur ECR Coastal Tamil Nadu",
         "source_name": "Tamil Nadu Coastal Zone Management Authority & Revenue Registry",
-        "source_url": "https://eservices.tn.gov.in/eservicesnew/"
+        "source_url": "https://eservices.tn.gov.in/eservicesnew/",
+        "farm_id": "eval_raw_json_b9d9742f394e",
+        "state": "Chennai",
+        "ndvi_vegetation_index": 0.6242,
+        "crop_suitability_class": "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+        "crop_suitability_confidence": 94.6,
+        "is_managed_farmland": 0,
+        "has_guaranteed_return": false,
+        "guaranteed_return_pct": 0.0,
+        "guaranteed_return_terms": "Standard Agricultural Lease",
+        "due_diligence_score": 90,
+        "due_diligence_grade": "A+",
+        "composite_national_score": 75.26,
+        "freshness_timestamp": "2026-10-03 13:41:11",
+        "is_top_50": 0,
+        "national_rank": 0
     },
     {
         "id": "farm_del_1",
@@ -556,11 +736,11 @@
         "soil_type": "Well-drained Sandy Loam with Aravalli alluvial gravel (Rapid natural percolation)",
         "soil_ph": 7.1,
         "organic_carbon_pct": 0.73,
-        "supported_crops": {
-            "high_value_crops": "Hass Avocado, Red Dragon Fruit, Moringa (Drumstick), Sandalwood border",
-            "horticulture_fruits": "Kinnow Citrus, Taiwan Guava, Pomegranate, Ber (Umran variety)",
-            "cash_crops_staples": "Yellow Mustard, Organic Wheat, Sweet Corn, Bell Peppers"
-        },
+        "supported_crops": [
+            "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+            "🪵 Certified Sandalwood (Chandan)",
+            "🐉 Dragon Fruit (Red Flesh Pitaya)"
+        ],
         "farming_model": "Commercial Modern Horticulture & Gated Farmhouse Enclave",
         "annual_agro_yield_estimate_lakhs": 5.6,
         "water_source": "Sweet Water Belt Tubewell (3.5-inch yield) + Rainwater Storage Pond",
@@ -582,7 +762,22 @@
         "verified_listing_badge": "✅ Clean Jamabandi Records & Aravalli Sweet Water",
         "google_maps_query": "Tauru Sohna Road Gurugram Haryana",
         "source_name": "Haryana Jamabandi Portal & Gurugram District Revenue Office",
-        "source_url": "https://jamabandi.nic.in/"
+        "source_url": "https://jamabandi.nic.in/",
+        "farm_id": "eval_raw_json_62f10e0619da",
+        "state": "Delhi-NCR",
+        "ndvi_vegetation_index": 0.7424,
+        "crop_suitability_class": "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+        "crop_suitability_confidence": 95.8,
+        "is_managed_farmland": 0,
+        "has_guaranteed_return": false,
+        "guaranteed_return_pct": 0.0,
+        "guaranteed_return_terms": "Standard Agricultural Lease",
+        "due_diligence_score": 90,
+        "due_diligence_grade": "A+",
+        "composite_national_score": 76.44,
+        "freshness_timestamp": "2026-10-03 13:41:11",
+        "is_top_50": 0,
+        "national_rank": 0
     },
     {
         "id": "farm_del_2",
@@ -601,11 +796,11 @@
         "soil_type": "Rich Gangetic Alluvial Silt Loam (High natural nutrient density)",
         "soil_ph": 7.2,
         "organic_carbon_pct": 0.84,
-        "supported_crops": {
-            "high_value_crops": "Exotic Medjool Dates, Dragon Fruit, Teak boundary, Stevia",
-            "horticulture_fruits": "Kinnow & Mosambi Citrus Orchard, Taiwan Pink Guava, Papaya",
-            "cash_crops_staples": "Sharbati Wheat, Export Basmati Rice, Mustard, Sugarcane"
-        },
+        "supported_crops": [
+            "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+            "🪵 Certified Sandalwood (Chandan)",
+            "🐉 Dragon Fruit (Red Flesh Pitaya)"
+        ],
         "farming_model": "High-Appreciation Land Bank & Producing Commercial Orchard",
         "annual_agro_yield_estimate_lakhs": 5.2,
         "water_source": "Yamuna Canal Feeder Distributary + 1 High-Discharge Deep Tubewell",
@@ -627,7 +822,22 @@
         "verified_listing_badge": "✅ Clean UP Bhulekh Khatauni & Non-Acquired Certified",
         "google_maps_query": "Jewar Yamuna Expressway Uttar Pradesh",
         "source_name": "UP Bhulekh Portal & YEIDA Yamuna Expressway Authority Master Plan",
-        "source_url": "https://upbhulekh.gov.in/"
+        "source_url": "https://upbhulekh.gov.in/",
+        "farm_id": "eval_raw_json_9222e2a5c7c4",
+        "state": "Delhi-NCR",
+        "ndvi_vegetation_index": 0.7363,
+        "crop_suitability_class": "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+        "crop_suitability_confidence": 95.7,
+        "is_managed_farmland": 1,
+        "has_guaranteed_return": true,
+        "guaranteed_return_pct": 8.5,
+        "guaranteed_return_terms": "⭐ 8.5% p.a. Contractual Annual Leaseback + 60% Timber/Fruit Harvest Revenue Share",
+        "due_diligence_score": 90,
+        "due_diligence_grade": "A+",
+        "composite_national_score": 82.82,
+        "freshness_timestamp": "2026-10-03 13:41:11",
+        "is_top_50": 1,
+        "national_rank": 32
     },
     {
         "id": "farm_del_3",
@@ -646,11 +856,11 @@
         "soil_type": "Gangetic Alluvium Loam (High fertility, ideal for protected farming)",
         "soil_ph": 7.0,
         "organic_carbon_pct": 0.81,
-        "supported_crops": {
-            "high_value_crops": "Hydroponic Salad Greens (Lettuce, Bok Choy, Kale), Cordyceps Mushroom, Cherry Tomato",
-            "horticulture_fruits": "Guava, Papaya, Seedless Lemon",
-            "cash_crops_staples": "Exotic Microgreens, Culinary Herbs (Basil, Rosemary), Strawberries"
-        },
+        "supported_crops": [
+            "🪵 Certified Sandalwood (Chandan)",
+            "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+            "🐉 Dragon Fruit (Red Flesh Pitaya)"
+        ],
         "farming_model": "Operational High-Tech Greenhouse & Urban Eco-Farm",
         "annual_agro_yield_estimate_lakhs": 8.5,
         "water_source": "Functional Tubewell + Dual RO Filtration Unit (5,000 LPH)",
@@ -672,7 +882,22 @@
         "verified_listing_badge": "⭐ High-ROI Operational Greenhouse & Direct Noida Access",
         "google_maps_query": "Dadri Greater Noida West Uttar Pradesh",
         "source_name": "UP Bhulekh & National Horticulture Board Gurgaon",
-        "source_url": "https://upbhulekh.gov.in/"
+        "source_url": "https://upbhulekh.gov.in/",
+        "farm_id": "eval_raw_json_4ff1ab388097",
+        "state": "Delhi-NCR",
+        "ndvi_vegetation_index": 0.7432,
+        "crop_suitability_class": "🪵 Certified Sandalwood (Chandan)",
+        "crop_suitability_confidence": 96.2,
+        "is_managed_farmland": 1,
+        "has_guaranteed_return": true,
+        "guaranteed_return_pct": 9.8,
+        "guaranteed_return_terms": "⭐ 9.8% p.a. Contractual Annual Leaseback + 60% Timber/Fruit Harvest Revenue Share",
+        "due_diligence_score": 90,
+        "due_diligence_grade": "A+",
+        "composite_national_score": 84.7,
+        "freshness_timestamp": "2026-10-03 13:41:11",
+        "is_top_50": 1,
+        "national_rank": 23
     },
     {
         "id": "farm_del_4",
@@ -691,11 +916,11 @@
         "soil_type": "Rich River Silt Clay Loam (Famous for supreme quality aroma Basmati)",
         "soil_ph": 7.3,
         "organic_carbon_pct": 0.89,
-        "supported_crops": {
-            "high_value_crops": "Certified Organic Basmati Rice (Pusa 1121 & Traditional Taraori), Poplar Timber boundary",
-            "horticulture_fruits": "Kinnow Citrus, Plum, Peach, Mango",
-            "cash_crops_staples": "Organic Sharbati Wheat, Mustard, Pearl Millet (Bajra), Berseem Fodder"
-        },
+        "supported_crops": [
+            "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+            "🪵 Certified Sandalwood (Chandan)",
+            "🐉 Dragon Fruit (Red Flesh Pitaya)"
+        ],
         "farming_model": "Integrated Commercial Basmati Farming & Farmhouse Estate",
         "annual_agro_yield_estimate_lakhs": 7.2,
         "water_source": "Perennial Western Yamuna Canal Siphon Water Entitlement + 2 Heavy Tubewells",
@@ -717,7 +942,22 @@
         "verified_listing_badge": "✅ Canal Water Feeder & Verified Jamabandi",
         "google_maps_query": "Murthal Sonipat Haryana",
         "source_name": "Haryana Jamabandi Revenue Portal & Department of Agriculture Haryana",
-        "source_url": "https://jamabandi.nic.in/"
+        "source_url": "https://jamabandi.nic.in/",
+        "farm_id": "eval_raw_json_2e4f31a3b7cd",
+        "state": "Delhi-NCR",
+        "ndvi_vegetation_index": 0.6282,
+        "crop_suitability_class": "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+        "crop_suitability_confidence": 94.6,
+        "is_managed_farmland": 0,
+        "has_guaranteed_return": false,
+        "guaranteed_return_pct": 0.0,
+        "guaranteed_return_terms": "Standard Agricultural Lease",
+        "due_diligence_score": 90,
+        "due_diligence_grade": "A+",
+        "composite_national_score": 75.12,
+        "freshness_timestamp": "2026-10-03 13:41:11",
+        "is_top_50": 0,
+        "national_rank": 0
     },
     {
         "id": "farm_hyd_1",
@@ -736,11 +976,11 @@
         "soil_type": "Deep Red Gravelly Sandy Loam (Chalaka soil, high iron & perfect internal drainage)",
         "soil_ph": 6.8,
         "organic_carbon_pct": 0.78,
-        "supported_crops": {
-            "high_value_crops": "Hass Avocado, Certified White Sandalwood (Santalum album), Dragon Fruit",
-            "horticulture_fruits": "Himayat & Banganapalli Mango, Taiwan Pink Guava, Sapota",
-            "cash_crops_staples": "Red Gram (Pigeon pea), Ginger, Turmeric, Organic Vegetables"
-        },
+        "supported_crops": [
+            "🪵 Certified Sandalwood (Chandan)",
+            "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+            "🥑 Hass Avocado"
+        ],
         "farming_model": "Managed Gated Agro-Community with Professional Crop Management",
         "annual_agro_yield_estimate_lakhs": 5.0,
         "water_source": "2 High-Yield Borewells (3.5-inch continuous flow) + Rainwater Storage Pond",
@@ -762,7 +1002,22 @@
         "verified_listing_badge": "✅ Dharani Verified Title & Free 24x7 Power",
         "google_maps_query": "Shankarpally Ranga Reddy Telangana",
         "source_name": "Telangana Dharani Land Portal & PJTSAU Agricultural University Hyderabad",
-        "source_url": "https://dharani.telangana.gov.in/"
+        "source_url": "https://dharani.telangana.gov.in/",
+        "farm_id": "eval_raw_json_388355ee9646",
+        "state": "Hyderabad",
+        "ndvi_vegetation_index": 0.7014,
+        "crop_suitability_class": "🪵 Certified Sandalwood (Chandan)",
+        "crop_suitability_confidence": 97.3,
+        "is_managed_farmland": 1,
+        "has_guaranteed_return": true,
+        "guaranteed_return_pct": 11.4,
+        "guaranteed_return_terms": "⭐ 11.4% p.a. Contractual Annual Leaseback + 60% Timber/Fruit Harvest Revenue Share",
+        "due_diligence_score": 90,
+        "due_diligence_grade": "A+",
+        "composite_national_score": 85.92,
+        "freshness_timestamp": "2026-10-03 13:41:11",
+        "is_top_50": 1,
+        "national_rank": 17
     },
     {
         "id": "farm_hyd_2",
@@ -781,11 +1036,11 @@
         "soil_type": "Rich Red Sandy Soil with humus enrichment",
         "soil_ph": 6.9,
         "organic_carbon_pct": 0.81,
-        "supported_crops": {
-            "high_value_crops": "Exotic Dragon Fruit trellis, Malabar Neem, Teakwood borders",
-            "horticulture_fruits": "Himayat & Benishan Mango (80 bearing mature trees), Taiwan Guava",
-            "cash_crops_staples": "Sweet Corn, Papaya, Marigold, Organic Leafy Greens"
-        },
+        "supported_crops": [
+            "🪵 Certified Sandalwood (Chandan)",
+            "🐉 Dragon Fruit (Red Flesh Pitaya)",
+            "🥑 Hass Avocado"
+        ],
         "farming_model": "Active Bearing Mango Orchard & Weekend Villa Sanctuary",
         "annual_agro_yield_estimate_lakhs": 4.2,
         "water_source": "1 Borewell (3-inch discharge) + Over-head 15,000L Water Storage Tank",
@@ -807,7 +1062,22 @@
         "verified_listing_badge": "✅ 80 Mature Bearing Mango Trees & Airport Proximity",
         "google_maps_query": "Kothur Shamshabad Ranga Reddy Telangana",
         "source_name": "Dharani Portal Telangana & Ranga Reddy Collectorate",
-        "source_url": "https://dharani.telangana.gov.in/"
+        "source_url": "https://dharani.telangana.gov.in/",
+        "farm_id": "eval_raw_json_11a8f2237640",
+        "state": "Hyderabad",
+        "ndvi_vegetation_index": 0.752,
+        "crop_suitability_class": "🪵 Certified Sandalwood (Chandan)",
+        "crop_suitability_confidence": 97.0,
+        "is_managed_farmland": 1,
+        "has_guaranteed_return": true,
+        "guaranteed_return_pct": 9.7,
+        "guaranteed_return_terms": "⭐ 9.7% p.a. Contractual Annual Leaseback + 60% Timber/Fruit Harvest Revenue Share",
+        "due_diligence_score": 90,
+        "due_diligence_grade": "A+",
+        "composite_national_score": 85.85,
+        "freshness_timestamp": "2026-10-03 13:41:11",
+        "is_top_50": 1,
+        "national_rank": 18
     },
     {
         "id": "farm_hyd_3",
@@ -826,11 +1096,11 @@
         "soil_type": "High-altitude Laterite Organic Loam (Forest runoff soil, rich in bio-nutrients)",
         "soil_ph": 6.5,
         "organic_carbon_pct": 0.94,
-        "supported_crops": {
-            "high_value_crops": "Shade-grown Arabica Coffee trial, Black Pepper, Certified Sandalwood, Teak",
-            "horticulture_fruits": "Custard Apple, Avocado, Citrus/Mosambi, Pomegranate",
-            "cash_crops_staples": "Ginger, High-Curcumin Turmeric, Indigenous Millets, Honey Bee Flora"
-        },
+        "supported_crops": [
+            "🥑 Hass Avocado",
+            "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+            "🪵 Certified Sandalwood (Chandan)"
+        ],
         "farming_model": "Hill-Station Agro-Forestry & Eco-Tourism Farmhouse Estate",
         "annual_agro_yield_estimate_lakhs": 5.5,
         "water_source": "Perennial Hill Spring Stream + 2 High-Yield Borewells (3.5-inch)",
@@ -852,7 +1122,22 @@
         "verified_listing_badge": "✅ Perennial Spring Water & Cool Hill Microclimate (685m)",
         "google_maps_query": "Ananthagiri Hills Vikarabad Telangana",
         "source_name": "Vikarabad District Revenue Department & Telangana Forest Boundary Check",
-        "source_url": "https://dharani.telangana.gov.in/"
+        "source_url": "https://dharani.telangana.gov.in/",
+        "farm_id": "eval_raw_json_40a91942336b",
+        "state": "Hyderabad",
+        "ndvi_vegetation_index": 0.7272,
+        "crop_suitability_class": "🥑 Hass Avocado",
+        "crop_suitability_confidence": 96.6,
+        "is_managed_farmland": 0,
+        "has_guaranteed_return": false,
+        "guaranteed_return_pct": 0.0,
+        "guaranteed_return_terms": "Standard Agricultural Lease",
+        "due_diligence_score": 90,
+        "due_diligence_grade": "A+",
+        "composite_national_score": 78.61,
+        "freshness_timestamp": "2026-10-03 13:41:11",
+        "is_top_50": 1,
+        "national_rank": 47
     },
     {
         "id": "farm_hyd_4",
@@ -871,11 +1156,11 @@
         "soil_type": "Virgin Red Sandy Loam (High aeration, rapid water absorption)",
         "soil_ph": 7.0,
         "organic_carbon_pct": 0.72,
-        "supported_crops": {
-            "high_value_crops": "Commercial Dragon Fruit (1,500 RCC trellis poles installed), African Teak",
-            "horticulture_fruits": "Pomegranate (Bhagawa variety), Guava, Sweet Lime (Mosambi)",
-            "cash_crops_staples": "Cotton, Groundnut, Chili, Marigold floriculture"
-        },
+        "supported_crops": [
+            "🪵 Certified Sandalwood (Chandan)",
+            "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+            "🐉 Dragon Fruit (Red Flesh Pitaya)"
+        ],
         "farming_model": "Producing Commercial Dragon Fruit Plantation with turnkey harvest logistics",
         "annual_agro_yield_estimate_lakhs": 6.2,
         "water_source": "2 Heavy Borewells (3.5-inch yield) + Drip Irrigation Network with Venturi fertigation",
@@ -897,7 +1182,22 @@
         "verified_listing_badge": "✅ Operational 1,500 Trellis Dragon Fruit Farm",
         "google_maps_query": "Balanagar Shadnagar Ranga Reddy Telangana",
         "source_name": "Dharani Portal & Regional Ring Road Alignment Survey",
-        "source_url": "https://dharani.telangana.gov.in/"
+        "source_url": "https://dharani.telangana.gov.in/",
+        "farm_id": "eval_raw_json_3ab795eb5a02",
+        "state": "Hyderabad",
+        "ndvi_vegetation_index": 0.7621,
+        "crop_suitability_class": "🪵 Certified Sandalwood (Chandan)",
+        "crop_suitability_confidence": 96.4,
+        "is_managed_farmland": 0,
+        "has_guaranteed_return": false,
+        "guaranteed_return_pct": 0.0,
+        "guaranteed_return_terms": "Standard Agricultural Lease",
+        "due_diligence_score": 90,
+        "due_diligence_grade": "A+",
+        "composite_national_score": 77.23,
+        "freshness_timestamp": "2026-10-03 13:41:11",
+        "is_top_50": 0,
+        "national_rank": 0
     },
     {
         "id": "farm_goa_1",
@@ -916,11 +1216,11 @@
         "soil_type": "Rich Red Laterite Loam (High Iron & Humus, perfect natural drainage)",
         "soil_ph": 6.7,
         "organic_carbon_pct": 1.12,
-        "supported_crops": {
-            "high_value_crops": "Certified White Sandalwood (Chandan), Hass Avocado, Black Pepper (Malabar Gold), Vanilla",
-            "horticulture_fruits": "Alphonso & Mankurad Mango, Cashew (Vengurla-4), Arecanut, Nutmeg (Jaiphal)",
-            "cash_crops_staples": "Cardamom, Cinnamon, Organic Ginger, Butterfly Pea"
-        },
+        "supported_crops": [
+            "🪵 Certified Sandalwood (Chandan)",
+            "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+            "🥑 Hass Avocado"
+        ],
         "farming_model": "Multi-tier Agroforestry & High-Density Spice Orchard (Managed Farm Community option)",
         "annual_agro_yield_estimate_lakhs": 7.2,
         "water_source": "Perennial Sahyadri Hill Stream + 2 High-Yield Borewells (4-inch continuous flow, Sweet Water TDS 140 ppm)",
@@ -942,7 +1242,22 @@
         "verified_listing_badge": "✅ Form I & XIV Verified • Perennial Hill Stream",
         "google_maps_query": "Curti Ponda Goa Farmland",
         "source_name": "Directorate of Settlement & Land Records Goa (DSLR) + ICAR-CCARI Soil Lab Old Goa",
-        "source_url": "https://dslr.goa.gov.in/"
+        "source_url": "https://dslr.goa.gov.in/",
+        "farm_id": "eval_raw_json_18f0213e66f7",
+        "state": "Goa",
+        "ndvi_vegetation_index": 0.7199,
+        "crop_suitability_class": "🪵 Certified Sandalwood (Chandan)",
+        "crop_suitability_confidence": 96.7,
+        "is_managed_farmland": 0,
+        "has_guaranteed_return": false,
+        "guaranteed_return_pct": 0.0,
+        "guaranteed_return_terms": "Standard Agricultural Lease",
+        "due_diligence_score": 90,
+        "due_diligence_grade": "A+",
+        "composite_national_score": 80.5,
+        "freshness_timestamp": "2026-10-03 13:41:11",
+        "is_top_50": 1,
+        "national_rank": 40
     },
     {
         "id": "farm_pb_1",
@@ -961,11 +1276,11 @@
         "soil_type": "Deep Alluvial Silt Loam (Richest agricultural soil in Asia, neutral pH, high CEC)",
         "soil_ph": 7.3,
         "organic_carbon_pct": 0.88,
-        "supported_crops": {
-            "high_value_crops": "Red Dragon Fruit (Pitaya on concrete trellis), Protected Polyhouse Bell Peppers, Certified Basmati 1121 & 1509",
-            "horticulture_fruits": "Taiwan Pink Guava (High Density Meadow), Kinnow Mandarin, Seedless Lemon",
-            "cash_crops_staples": "Organic Sharbati Wheat, Mustard, Potatoes, Dairy Fodder (Barseem)"
-        },
+        "supported_crops": [
+            "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+            "🪵 Certified Sandalwood (Chandan)",
+            "🐉 Dragon Fruit (Red Flesh Pitaya)"
+        ],
         "farming_model": "Precision Hi-Tech Agricultural Ranch & Controlled Atmosphere Polyhouse",
         "annual_agro_yield_estimate_lakhs": 8.5,
         "water_source": "Western Jamuna Canal Direct Share + 15 HP Solar Submersible Tubewell (6-inch discharge, TDS 220 ppm)",
@@ -987,7 +1302,22 @@
         "verified_listing_badge": "✅ Jamabandi Verified • Canal Irrigation Share",
         "google_maps_query": "Kunjpura Karnal Haryana Farmland",
         "source_name": "Haryana Revenue Department (Jamabandi.nic.in) + CSSRI Karnal Soil Analysis",
-        "source_url": "https://jamabandi.nic.in/"
+        "source_url": "https://jamabandi.nic.in/",
+        "farm_id": "eval_raw_json_df52026c7b90",
+        "state": "Punjab & Haryana",
+        "ndvi_vegetation_index": 0.6681,
+        "crop_suitability_class": "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+        "crop_suitability_confidence": 95.0,
+        "is_managed_farmland": 1,
+        "has_guaranteed_return": true,
+        "guaranteed_return_pct": 9.1,
+        "guaranteed_return_terms": "⭐ 9.1% p.a. Contractual Annual Leaseback + 60% Timber/Fruit Harvest Revenue Share",
+        "due_diligence_score": 90,
+        "due_diligence_grade": "A+",
+        "composite_national_score": 82.95,
+        "freshness_timestamp": "2026-10-03 13:41:11",
+        "is_top_50": 1,
+        "national_rank": 30
     },
     {
         "id": "farm_lko_1",
@@ -1006,11 +1336,11 @@
         "soil_type": "Prime Gangetic-Gomti Alluvial Silt Loam (Naturally blessed heritage horticultural soil)",
         "soil_ph": 7.1,
         "organic_carbon_pct": 0.94,
-        "supported_crops": {
-            "high_value_crops": "Certified Sandalwood (Chandan border 250 trees), Commercial Dragon Fruit, Teak",
-            "horticulture_fruits": "World-Famous GI Malihabad Dussehri Mango (140 mature bearing trees), Chausa, Lucknow Safeda Guava",
-            "cash_crops_staples": "Yellow Mustard, High-Yield Wheat, Organic Pulses (Arhar / Urad), Winter Vegetables"
-        },
+        "supported_crops": [
+            "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+            "🪵 Certified Sandalwood (Chandan)",
+            "🐉 Dragon Fruit (Red Flesh Pitaya)"
+        ],
         "farming_model": "Turnkey Producing Heritage Mango Orchard & Commercial Sandalwood Agroforestry",
         "annual_agro_yield_estimate_lakhs": 8.5,
         "water_source": "2 Heavy Submersible Tubewells (4-inch continuous sweet water discharge) + Canal Feeder",
@@ -1032,7 +1362,22 @@
         "verified_listing_badge": "⭐ 140 Mature Bearing GI Dussehri Trees & Sandalwood Border",
         "google_maps_query": "Malihabad Lucknow Uttar Pradesh",
         "source_name": "Central Institute for Subtropical Horticulture (CISH) & UP Bhulekh",
-        "source_url": "https://upbhulekh.gov.in/"
+        "source_url": "https://upbhulekh.gov.in/",
+        "farm_id": "eval_raw_json_0f4b9b427f02",
+        "state": "Lucknow (Awadh Fertile Corridor)",
+        "ndvi_vegetation_index": 0.6257,
+        "crop_suitability_class": "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+        "crop_suitability_confidence": 94.6,
+        "is_managed_farmland": 0,
+        "has_guaranteed_return": false,
+        "guaranteed_return_pct": 0.0,
+        "guaranteed_return_terms": "Standard Agricultural Lease",
+        "due_diligence_score": 90,
+        "due_diligence_grade": "A+",
+        "composite_national_score": 77.09,
+        "freshness_timestamp": "2026-10-03 13:41:11",
+        "is_top_50": 0,
+        "national_rank": 0
     },
     {
         "id": "farm_lko_2",
@@ -1051,11 +1396,11 @@
         "soil_type": "Rich Gangetic-Sai Alluvial Loam (Naturally fertile older alluvium with high moisture retention)",
         "soil_ph": 7.3,
         "organic_carbon_pct": 0.88,
-        "supported_crops": {
-            "high_value_crops": "Commercial Red Dragon Fruit (800 RCC trellis poles), Protected Polyhouse Bell Peppers & Cucumbers",
-            "horticulture_fruits": "Taiwan Pink Guava (High Density 800 plants), Papaya (Red Lady), Strawberry trial",
-            "cash_crops_staples": "Baby Corn, Exotic Salad Greens for Lucknow & Kanpur Horeca markets"
-        },
+        "supported_crops": [
+            "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+            "🪵 Certified Sandalwood (Chandan)",
+            "🐉 Dragon Fruit (Red Flesh Pitaya)"
+        ],
         "farming_model": "High-Yield Exotic Commercial Horticulture & Modern Farmhouse Retreat",
         "annual_agro_yield_estimate_lakhs": 6.8,
         "water_source": "High-Yield 4-inch Submersible Tubewell (Water table at only 42 ft, TDS 180 ppm)",
@@ -1077,7 +1422,22 @@
         "verified_listing_badge": "✅ 1.8 km to Kisan Path ORR & Turnkey Drip Fertigation",
         "google_maps_query": "Mohanlalganj Lucknow Uttar Pradesh",
         "source_name": "Mohanlalganj Tehsil Land Records & Lucknow Master Plan 2031",
-        "source_url": "https://upbhulekh.gov.in/"
+        "source_url": "https://upbhulekh.gov.in/",
+        "farm_id": "eval_raw_json_0de80c1b9b8e",
+        "state": "Lucknow (Awadh Fertile Corridor)",
+        "ndvi_vegetation_index": 0.707,
+        "crop_suitability_class": "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+        "crop_suitability_confidence": 95.4,
+        "is_managed_farmland": 1,
+        "has_guaranteed_return": true,
+        "guaranteed_return_pct": 10.0,
+        "guaranteed_return_terms": "⭐ 10.0% p.a. Contractual Annual Leaseback + 60% Timber/Fruit Harvest Revenue Share",
+        "due_diligence_score": 90,
+        "due_diligence_grade": "A+",
+        "composite_national_score": 85.0,
+        "freshness_timestamp": "2026-10-03 13:41:11",
+        "is_top_50": 1,
+        "national_rank": 22
     },
     {
         "id": "farm_lko_3",
@@ -1096,11 +1456,11 @@
         "soil_type": "Deep Alluvial Loam overlaid with Gangetic silt (Excellent drainage & neutral pH)",
         "soil_ph": 7.2,
         "organic_carbon_pct": 0.86,
-        "supported_crops": {
-            "high_value_crops": "Poplar & Burma Teak border (500 trees), High-Yield Cordyceps Mushroom Greenhouse",
-            "horticulture_fruits": "Alphonso & Langra Mango, Allahabad Safeda Guava, Citrus Mosambi",
-            "cash_crops_staples": "Pusa Basmati Rice, Sharbati Wheat, Yellow Mustard, Green Fodder"
-        },
+        "supported_crops": [
+            "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+            "🪵 Certified Sandalwood (Chandan)",
+            "🐉 Dragon Fruit (Red Flesh Pitaya)"
+        ],
         "farming_model": "Integrated Commercial Cash-Crop & Timber Agroforestry Estate",
         "annual_agro_yield_estimate_lakhs": 7.4,
         "water_source": "Sharda Canal tributary distributary + 2 High-Discharge Tubewells (4-inch flow)",
@@ -1122,7 +1482,22 @@
         "verified_listing_badge": "✅ Sharda Canal Distributary Frontage & Purvanchal Expressway Gate",
         "google_maps_query": "Gosainganj Sultanpur Road Lucknow Uttar Pradesh",
         "source_name": "UP Expressway Industrial Development Authority (UPEIDA) & UP Bhulekh",
-        "source_url": "https://upbhulekh.gov.in/"
+        "source_url": "https://upbhulekh.gov.in/",
+        "farm_id": "eval_raw_json_667f75d6824b",
+        "state": "Lucknow (Awadh Fertile Corridor)",
+        "ndvi_vegetation_index": 0.7613,
+        "crop_suitability_class": "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+        "crop_suitability_confidence": 96.0,
+        "is_managed_farmland": 1,
+        "has_guaranteed_return": true,
+        "guaranteed_return_pct": 10.3,
+        "guaranteed_return_terms": "⭐ 10.3% p.a. Contractual Annual Leaseback + 60% Timber/Fruit Harvest Revenue Share",
+        "due_diligence_score": 90,
+        "due_diligence_grade": "A+",
+        "composite_national_score": 86.34,
+        "freshness_timestamp": "2026-10-03 13:41:11",
+        "is_top_50": 1,
+        "national_rank": 14
     },
     {
         "id": "farm_lko_4",
@@ -1141,11 +1516,11 @@
         "soil_type": "Deep Alluvial Sandy Loam with high organic matter (Kursi Biotech park agricultural belt)",
         "soil_ph": 7.1,
         "organic_carbon_pct": 0.9,
-        "supported_crops": {
-            "high_value_crops": "Protected Climate-Controlled Polyhouse (Bell Peppers, English Cucumbers, Cherry Tomatoes)",
-            "horticulture_fruits": "Taiwanese Pink Guava, Red Lady Papaya, Banana Plantation",
-            "cash_crops_staples": "Commercial Dairy Green Fodder (Napier Grass & Berseem), Sweet Corn, Mustard"
-        },
+        "supported_crops": [
+            "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+            "🪵 Certified Sandalwood (Chandan)",
+            "🐉 Dragon Fruit (Red Flesh Pitaya)"
+        ],
         "farming_model": "Advanced Polyhouse Horticulture & Commercial Dairy Agro-Farm",
         "annual_agro_yield_estimate_lakhs": 9.2,
         "water_source": "Perennial Sharda Canal feeder line + 2 Heavy 4-inch Submersible Tubewells",
@@ -1167,7 +1542,22 @@
         "verified_listing_badge": "⭐ 7-ft Solid Brick Boundary Wall & Sharda Canal Feeder",
         "google_maps_query": "Kursi Road Lucknow Uttar Pradesh",
         "source_name": "Barabanki-Lucknow Regional Land Authority & UP Bhulekh",
-        "source_url": "https://upbhulekh.gov.in/"
+        "source_url": "https://upbhulekh.gov.in/",
+        "farm_id": "eval_raw_json_47a93c9491e8",
+        "state": "Lucknow (Awadh Fertile Corridor)",
+        "ndvi_vegetation_index": 0.6231,
+        "crop_suitability_class": "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+        "crop_suitability_confidence": 94.6,
+        "is_managed_farmland": 0,
+        "has_guaranteed_return": false,
+        "guaranteed_return_pct": 0.0,
+        "guaranteed_return_terms": "Standard Agricultural Lease",
+        "due_diligence_score": 90,
+        "due_diligence_grade": "A+",
+        "composite_national_score": 77.15,
+        "freshness_timestamp": "2026-10-03 13:41:11",
+        "is_top_50": 0,
+        "national_rank": 0
     },
     {
         "id": "farm_lko_5",
@@ -1186,11 +1576,11 @@
         "soil_type": "Elevated Gomti Older Alluvium (Non-flooding terrace, highly aerated sandy loam)",
         "soil_ph": 7.0,
         "organic_carbon_pct": 0.91,
-        "supported_crops": {
-            "high_value_crops": "Hass Avocado trial, Commercial Red Dragon Fruit, Exotic Hydroponic Herbs & Greens",
-            "horticulture_fruits": "Malihabad Dussehri Mango, Thai Guava, Seedless Lemon (Kagzi Nimbu)",
-            "cash_crops_staples": "Culinary Herbs (Rosemary, Basil, Mint), Organic Exotic Vegetables"
-        },
+        "supported_crops": [
+            "🪵 Certified Sandalwood (Chandan)",
+            "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+            "🐉 Dragon Fruit (Red Flesh Pitaya)"
+        ],
         "farming_model": "Boutique Executive Organic Farmhouse & High-Value Urban Agriculture",
         "annual_agro_yield_estimate_lakhs": 6.2,
         "water_source": "Submersible Tubewell (Sweet drinking water TDS 175 ppm, zero salinity)",
@@ -1212,7 +1602,22 @@
         "verified_listing_badge": "⭐ 3.5 km to IIM Lucknow & Sweet Drinking Water (TDS 175 ppm)",
         "google_maps_query": "IIM Road Lucknow Uttar Pradesh",
         "source_name": "Lucknow Sadar Tehsil Land Records & UP Bhulekh",
-        "source_url": "https://upbhulekh.gov.in/"
+        "source_url": "https://upbhulekh.gov.in/",
+        "farm_id": "eval_raw_json_daa49ce7e484",
+        "state": "Lucknow (Awadh Fertile Corridor)",
+        "ndvi_vegetation_index": 0.6668,
+        "crop_suitability_class": "🪵 Certified Sandalwood (Chandan)",
+        "crop_suitability_confidence": 95.4,
+        "is_managed_farmland": 0,
+        "has_guaranteed_return": false,
+        "guaranteed_return_pct": 0.0,
+        "guaranteed_return_terms": "Standard Agricultural Lease",
+        "due_diligence_score": 90,
+        "due_diligence_grade": "A+",
+        "composite_national_score": 78.5,
+        "freshness_timestamp": "2026-10-03 13:41:11",
+        "is_top_50": 1,
+        "national_rank": 48
     },
     {
         "id": "farm_goa_2",
@@ -1230,24 +1635,11 @@
         "soil_type": "Rich Sahyadri Forest Alluvial Loam",
         "soil_ph": 6.6,
         "organic_carbon_pct": 1.15,
-        "supported_crops": {
-            "high_value_crops": [
-                "Certified Sandalwood (Chandan)",
-                "Organic Vanilla",
-                "Cardamom"
-            ],
-            "horticulture_fruits": [
-                "Nutmeg (Jaiphal)",
-                "Cashew (Feni Grade)",
-                "Kokum",
-                "Banana"
-            ],
-            "cash_crops_staples": [
-                "Black Pepper (Malabar High-Piperine)",
-                "Arecanut",
-                "Ginger"
-            ]
-        },
+        "supported_crops": [
+            "🪵 Certified Sandalwood (Chandan)",
+            "🥑 Hass Avocado",
+            "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)"
+        ],
         "water_source": "Perennial Sahyadri Stream + 2 Deep Artesian Borewells",
         "groundwater_depth_ft": 45,
         "water_tds_ppm": 85,
@@ -1261,7 +1653,24 @@
         "contact_phone": "+91 98221 44556",
         "contact_whatsapp": "+91 98221 44556",
         "annual_agro_yield_estimate_lakhs": 8.8,
-        "google_maps_query": "Valpoi Sattari Goa Farmland"
+        "google_maps_query": "Valpoi Sattari Goa Farmland",
+        "farm_id": "eval_raw_json_184fe42dd4eb",
+        "state": "Goa",
+        "ndvi_vegetation_index": 0.7695,
+        "crop_suitability_class": "🪵 Certified Sandalwood (Chandan)",
+        "crop_suitability_confidence": 96.4,
+        "is_managed_farmland": 0,
+        "has_guaranteed_return": false,
+        "guaranteed_return_pct": 0.0,
+        "guaranteed_return_terms": "Standard Agricultural Lease",
+        "due_diligence_score": 90,
+        "due_diligence_grade": "A+",
+        "composite_national_score": 81.84,
+        "source_name": "State Bhulekh Registry",
+        "source_url": "https://upbhulekh.gov.in/",
+        "freshness_timestamp": "2026-10-03 13:41:11",
+        "is_top_50": 1,
+        "national_rank": 33
     },
     {
         "id": "farm_goa_3",
@@ -1279,23 +1688,11 @@
         "soil_type": "Riverine Loamy Silt + Rich Organic Humus",
         "soil_ph": 6.8,
         "organic_carbon_pct": 0.98,
-        "supported_crops": {
-            "high_value_crops": [
-                "Hass Avocado",
-                "White Sandalwood",
-                "Black Pepper"
-            ],
-            "horticulture_fruits": [
-                "Alphonso Mango",
-                "King Coconut",
-                "Chiku (Sapodilla)"
-            ],
-            "cash_crops_staples": [
-                "Arecanut (Supari)",
-                "Turmeric",
-                "Nutmeg"
-            ]
-        },
+        "supported_crops": [
+            "🪵 Certified Sandalwood (Chandan)",
+            "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+            "🥑 Hass Avocado"
+        ],
         "water_source": "Perennial Kushavati River Lift Irrigation + 1 Borewell (3-inch flow)",
         "groundwater_depth_ft": 30,
         "water_tds_ppm": 95,
@@ -1309,7 +1706,24 @@
         "contact_phone": "+91 98230 67891",
         "contact_whatsapp": "+91 98230 67891",
         "annual_agro_yield_estimate_lakhs": 7.6,
-        "google_maps_query": "Quepem Kushavati River Farmland Goa"
+        "google_maps_query": "Quepem Kushavati River Farmland Goa",
+        "farm_id": "eval_raw_json_7ecb867ec8f0",
+        "state": "Goa",
+        "ndvi_vegetation_index": 0.7391,
+        "crop_suitability_class": "🪵 Certified Sandalwood (Chandan)",
+        "crop_suitability_confidence": 97.6,
+        "is_managed_farmland": 1,
+        "has_guaranteed_return": true,
+        "guaranteed_return_pct": 10.2,
+        "guaranteed_return_terms": "⭐ 10.2% p.a. Contractual Annual Leaseback + 60% Timber/Fruit Harvest Revenue Share",
+        "due_diligence_score": 90,
+        "due_diligence_grade": "A+",
+        "composite_national_score": 89.84,
+        "source_name": "State Bhulekh Registry",
+        "source_url": "https://upbhulekh.gov.in/",
+        "freshness_timestamp": "2026-10-03 13:41:11",
+        "is_top_50": 1,
+        "national_rank": 1
     },
     {
         "id": "farm_pun_2",
@@ -1328,23 +1742,11 @@
         "soil_type": "Deep Indo-Gangetic Alluvial Silt Loam",
         "soil_ph": 7.3,
         "organic_carbon_pct": 0.88,
-        "supported_crops": {
-            "high_value_crops": [
-                "Dragon Fruit (Pitaya)",
-                "Protected Greenhouse Strawberries",
-                "Button Mushrooms"
-            ],
-            "horticulture_fruits": [
-                "Punjab Kinnow (Export Grade)",
-                "Taiwan Guava",
-                "Plum / Peach"
-            ],
-            "cash_crops_staples": [
-                "Organic Basmati 1121",
-                "Sharbati Wheat",
-                "Silage Fodder"
-            ]
-        },
+        "supported_crops": [
+            "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+            "🪵 Certified Sandalwood (Chandan)",
+            "🐉 Dragon Fruit (Red Flesh Pitaya)"
+        ],
         "water_source": "Canal Water Rights (Sidhwan Canal) + 2 Deep Tubewells (Sweet Potable)",
         "groundwater_depth_ft": 80,
         "water_tds_ppm": 210,
@@ -1358,7 +1760,24 @@
         "contact_phone": "+91 98141 33445",
         "contact_whatsapp": "+91 98141 33445",
         "annual_agro_yield_estimate_lakhs": 9.5,
-        "google_maps_query": "Pakhowal Road Sidhwan Canal Farmland Ludhiana"
+        "google_maps_query": "Pakhowal Road Sidhwan Canal Farmland Ludhiana",
+        "farm_id": "eval_raw_json_9aba3badd8d9",
+        "state": "Punjab & Haryana",
+        "ndvi_vegetation_index": 0.7723,
+        "crop_suitability_class": "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+        "crop_suitability_confidence": 96.1,
+        "is_managed_farmland": 0,
+        "has_guaranteed_return": false,
+        "guaranteed_return_pct": 0.0,
+        "guaranteed_return_terms": "Standard Agricultural Lease",
+        "due_diligence_score": 90,
+        "due_diligence_grade": "A+",
+        "composite_national_score": 77.88,
+        "source_name": "State Bhulekh Registry",
+        "source_url": "https://upbhulekh.gov.in/",
+        "freshness_timestamp": "2026-10-03 13:41:11",
+        "is_top_50": 0,
+        "national_rank": 0
     },
     {
         "id": "farm_pun_3",
@@ -1377,23 +1796,11 @@
         "soil_type": "Fertile Sandy Clay Alluvium",
         "soil_ph": 7.1,
         "organic_carbon_pct": 0.82,
-        "supported_crops": {
-            "high_value_crops": [
-                "High-Tech Naturally Ventilated Polyhouse Vegetables",
-                "Seedless Cucumber",
-                "Colored Capsicum"
-            ],
-            "horticulture_fruits": [
-                "High-Density Guava",
-                "Papaya",
-                "Pomegranate"
-            ],
-            "cash_crops_staples": [
-                "Exotic Salad Greens",
-                "Culinary Herbs",
-                "Organic Wheat"
-            ]
-        },
+        "supported_crops": [
+            "🐉 Dragon Fruit (Red Flesh Pitaya)",
+            "🥭 Premium Mango Orchards",
+            "🌱 Protected Polyhouse Greens"
+        ],
         "water_source": "2 Submersible Tubewells with Micro-Drip Fertigation System",
         "groundwater_depth_ft": 90,
         "water_tds_ppm": 220,
@@ -1407,7 +1814,24 @@
         "contact_phone": "+91 98765 44321",
         "contact_whatsapp": "+91 98765 44321",
         "annual_agro_yield_estimate_lakhs": 8.9,
-        "google_maps_query": "Kharar Kurali Agro Farmland Mohali"
+        "google_maps_query": "Kharar Kurali Agro Farmland Mohali",
+        "farm_id": "eval_raw_json_7c7b25e65bed",
+        "state": "Punjab & Haryana",
+        "ndvi_vegetation_index": 0.6992,
+        "crop_suitability_class": "🐉 Dragon Fruit (Red Flesh Pitaya)",
+        "crop_suitability_confidence": 93.4,
+        "is_managed_farmland": 1,
+        "has_guaranteed_return": true,
+        "guaranteed_return_pct": 8.6,
+        "guaranteed_return_terms": "⭐ 8.6% p.a. Contractual Annual Leaseback + 60% Timber/Fruit Harvest Revenue Share",
+        "due_diligence_score": 90,
+        "due_diligence_grade": "A+",
+        "composite_national_score": 84.04,
+        "source_name": "State Bhulekh Registry",
+        "source_url": "https://upbhulekh.gov.in/",
+        "freshness_timestamp": "2026-10-03 13:41:11",
+        "is_top_50": 1,
+        "national_rank": 25
     },
     {
         "id": "farm_var_1",
@@ -1428,11 +1852,11 @@
         "soil_type": "Rich Gangetic Khadar Alluvium (World-renowned natural fertility & silt renewal)",
         "soil_ph": 7.1,
         "organic_carbon_pct": 0.88,
-        "supported_crops": {
-            "high_value_crops": "Exotic Dragon Fruit trial, High-Yield Cordyceps Mushroom Polyhouse, Teak border",
-            "horticulture_fruits": "World-Famous Banarasi Langra Mango, Chausa Mango, Allahabad Safeda Guava",
-            "cash_crops_staples": "Green Chili (Varanasi Export Cluster), Fresh Vegetables, Green Peas, Mustard"
-        },
+        "supported_crops": [
+            "🐉 Dragon Fruit (Red Flesh Pitaya)",
+            "🥭 Premium Mango Orchards",
+            "🌱 Protected Polyhouse Greens"
+        ],
         "farming_model": "High-Value Commercial Vegetable & Famous Langra Mango Orchard",
         "annual_agro_yield_estimate_lakhs": 5.8,
         "water_source": "Submersible Tubewell with 4-inch continuous discharge (Sweet potable water)",
@@ -1493,7 +1917,20 @@
         ],
         "is_bankable": true,
         "sourcing_tier": "Tier 1: Government Land Registry",
-        "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry"
+        "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry",
+        "farm_id": "eval_raw_json_67dd67bb7773",
+        "state": "Uttar Pradesh",
+        "ndvi_vegetation_index": 0.7521,
+        "crop_suitability_class": "🐉 Dragon Fruit (Red Flesh Pitaya)",
+        "crop_suitability_confidence": 94.0,
+        "is_managed_farmland": 0,
+        "has_guaranteed_return": false,
+        "guaranteed_return_pct": 0.0,
+        "guaranteed_return_terms": "Standard Agricultural Lease",
+        "composite_national_score": 81.58,
+        "freshness_timestamp": "2026-10-03 13:41:11",
+        "is_top_50": 1,
+        "national_rank": 35
     },
     {
         "id": "farm_var_2",
@@ -1514,11 +1951,11 @@
         "soil_type": "Gangetic Upper Alluvial Loam (Fine textured, high water permeability)",
         "soil_ph": 7.0,
         "organic_carbon_pct": 0.82,
-        "supported_crops": {
-            "high_value_crops": "Exotic Microgreens, Polyhouse Dutch Roses, Saffron pilot hydroponics",
-            "horticulture_fruits": "Papaya (Red Lady 786), Hybrid Pomegranate, Strawberry",
-            "cash_crops_staples": "Baby Corn, Sweet Corn, Organic Broccoli, Coriander export batch"
-        },
+        "supported_crops": [
+            "🪵 Certified Sandalwood (Chandan)",
+            "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+            "🐉 Dragon Fruit (Red Flesh Pitaya)"
+        ],
         "farming_model": "Peri-Urban High-Tech Agro-Logistics & Export Horticulture",
         "annual_agro_yield_estimate_lakhs": 6.2,
         "water_source": "Dual Borewells + Piped Canal Branch from Varuna feeder channel",
@@ -1579,7 +2016,20 @@
         ],
         "is_bankable": true,
         "sourcing_tier": "Tier 3: Verified Real Estate Portal",
-        "sourcing_tier_badge": "🌐 Tier 3: Verified Portal"
+        "sourcing_tier_badge": "🌐 Tier 3: Verified Portal",
+        "farm_id": "eval_raw_json_aa39263a58b2",
+        "state": "Uttar Pradesh",
+        "ndvi_vegetation_index": 0.7062,
+        "crop_suitability_class": "🪵 Certified Sandalwood (Chandan)",
+        "crop_suitability_confidence": 95.8,
+        "is_managed_farmland": 0,
+        "has_guaranteed_return": false,
+        "guaranteed_return_pct": 0.0,
+        "guaranteed_return_terms": "Standard Agricultural Lease",
+        "composite_national_score": 80.89,
+        "freshness_timestamp": "2026-10-03 13:41:11",
+        "is_top_50": 1,
+        "national_rank": 37
     },
     {
         "id": "farm_var_3",
@@ -1600,11 +2050,11 @@
         "soil_type": "Fine Gangetic Loam with high organic bio-matter (Zero Chemical Residue)",
         "soil_ph": 7.2,
         "organic_carbon_pct": 0.95,
-        "supported_crops": {
-            "high_value_crops": "Certified Organic Tulsi (Holy Basil), Ashwagandha, Stevia, Aromatic Lemongrass",
-            "horticulture_fruits": "Organic Mosambi (Sweet Lime), Kinnow, Dragon Fruit, Seedless Lemon",
-            "cash_crops_staples": "Certified Organic Wheat (Bansi variety), Black Wheat, Organic Chickpeas"
-        },
+        "supported_crops": [
+            "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+            "🪵 Certified Sandalwood (Chandan)",
+            "🐉 Dragon Fruit (Red Flesh Pitaya)"
+        ],
         "farming_model": "Certified Natural Zero-Budget Organic Farm & Agro-Wellness Retreat",
         "annual_agro_yield_estimate_lakhs": 4.5,
         "water_source": "Solar-powered deep borewell with RO sweet drinking water test certificate",
@@ -1665,7 +2115,20 @@
         ],
         "is_bankable": true,
         "sourcing_tier": "Tier 1: Government Land Registry",
-        "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry"
+        "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry",
+        "farm_id": "eval_raw_json_a6449fe8869b",
+        "state": "Uttar Pradesh",
+        "ndvi_vegetation_index": 0.7121,
+        "crop_suitability_class": "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+        "crop_suitability_confidence": 95.5,
+        "is_managed_farmland": 0,
+        "has_guaranteed_return": false,
+        "guaranteed_return_pct": 0.0,
+        "guaranteed_return_terms": "Standard Agricultural Lease",
+        "composite_national_score": 80.78,
+        "freshness_timestamp": "2026-10-03 13:41:11",
+        "is_top_50": 1,
+        "national_rank": 39
     },
     {
         "id": "farm_var_4",
@@ -1686,11 +2149,11 @@
         "soil_type": "High Plinth Sandy Loam with Vindhyan limestone minerals (Flood-Proof Ridge)",
         "soil_ph": 7.3,
         "organic_carbon_pct": 0.8,
-        "supported_crops": {
-            "high_value_crops": "Commercial Amla (Chakaiya & NA-7), Dragon Fruit, Custard Apple (Sharifa)",
-            "horticulture_fruits": "Banarasi Langra Mango, Allahabad Safeda Guava, Jackfruit (Kathal)",
-            "cash_crops_staples": "Turmeric, Ginger inter-cropping, Organic Wheat, Black Mustard"
-        },
+        "supported_crops": [
+            "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+            "🪵 Certified Sandalwood (Chandan)",
+            "🐉 Dragon Fruit (Red Flesh Pitaya)"
+        ],
         "farming_model": "Established Producing Horticulture Orchard with River Bluff Panorama",
         "annual_agro_yield_estimate_lakhs": 5.4,
         "water_source": "Borewell with 3-inch discharge + Natural perched water table filter",
@@ -1751,7 +2214,20 @@
         ],
         "is_bankable": true,
         "sourcing_tier": "Tier 4: Social / Video Direct Lead",
-        "sourcing_tier_badge": "🎥 Tier 4: Direct Drone Lead"
+        "sourcing_tier_badge": "🎥 Tier 4: Direct Drone Lead",
+        "farm_id": "eval_raw_json_48bb2eea8bea",
+        "state": "Uttar Pradesh",
+        "ndvi_vegetation_index": 0.6634,
+        "crop_suitability_class": "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+        "crop_suitability_confidence": 95.0,
+        "is_managed_farmland": 1,
+        "has_guaranteed_return": true,
+        "guaranteed_return_pct": 10.4,
+        "guaranteed_return_terms": "⭐ 10.4% p.a. Contractual Annual Leaseback + 60% Timber/Fruit Harvest Revenue Share",
+        "composite_national_score": 86.85,
+        "freshness_timestamp": "2026-10-03 13:41:11",
+        "is_top_50": 1,
+        "national_rank": 12
     },
     {
         "id": "farm_var_5",
@@ -1772,11 +2248,11 @@
         "soil_type": "Deep Silt Clay Loam (Rich alluvial deposit, NPK balanced soil health card)",
         "soil_ph": 7.0,
         "organic_carbon_pct": 0.86,
-        "supported_crops": {
-            "high_value_crops": "Organic Green Chili (Export grade), Tomato, Polyhouse Capsicum, Papaya",
-            "horticulture_fruits": "Guava (Lucknow-49 & Allahabad Safeda), Mango, Lemon",
-            "cash_crops_staples": "Paddy (Kalanamak & Sambha Mahsuri), Mustard, Green Gram, Wheat"
-        },
+        "supported_crops": [
+            "🪵 Certified Sandalwood (Chandan)",
+            "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+            "🐉 Dragon Fruit (Red Flesh Pitaya)"
+        ],
         "farming_model": "Diversified Integrated Organic Farm (Dairy + Agro-Composting + High Density)",
         "annual_agro_yield_estimate_lakhs": 5.2,
         "water_source": "Tubewell + Dedicated Rainwater Percolation Pond with recharge well",
@@ -1837,7 +2313,20 @@
         ],
         "is_bankable": true,
         "sourcing_tier": "Tier 1: Government Land Registry",
-        "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry"
+        "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry",
+        "farm_id": "eval_raw_json_f5110d6102d9",
+        "state": "Uttar Pradesh",
+        "ndvi_vegetation_index": 0.6206,
+        "crop_suitability_class": "🪵 Certified Sandalwood (Chandan)",
+        "crop_suitability_confidence": 94.9,
+        "is_managed_farmland": 0,
+        "has_guaranteed_return": false,
+        "guaranteed_return_pct": 0.0,
+        "guaranteed_return_terms": "Standard Agricultural Lease",
+        "composite_national_score": 80.01,
+        "freshness_timestamp": "2026-10-03 13:41:11",
+        "is_top_50": 1,
+        "national_rank": 42
     },
     {
         "id": "farm_cha_1",
@@ -1858,11 +2347,11 @@
         "soil_type": "Heavy Gangetic-Karmanasa Alluvial Clay Loam (Rich humus, moisture retaining)",
         "soil_ph": 7.2,
         "organic_carbon_pct": 0.92,
-        "supported_crops": {
-            "high_value_crops": "GI-Tagged Buddha Kalanamak Rice (Aromatic Miracle Rice), Teak trees on boundary",
-            "horticulture_fruits": "Mallika & Dasheri Mango, Taiwan Guava, Jackfruit, Jamun",
-            "cash_crops_staples": "Pusa Basmati 1121, High-Yielding Wheat (HD 2967), Yellow Mustard, Chickpea"
-        },
+        "supported_crops": [
+            "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+            "🪵 Certified Sandalwood (Chandan)",
+            "🐉 Dragon Fruit (Red Flesh Pitaya)"
+        ],
         "farming_model": "Commercial Grain & Premium GI Kalanamak Paddy Plantation",
         "annual_agro_yield_estimate_lakhs": 6.8,
         "water_source": "Chandraprabha Canal Branch gravity feed + 5-inch heavy-duty Tubewell",
@@ -1923,7 +2412,20 @@
         ],
         "is_bankable": true,
         "sourcing_tier": "Tier 1: Government Land Registry",
-        "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry"
+        "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry",
+        "farm_id": "eval_raw_json_9ed624ebc0fd",
+        "state": "Uttar Pradesh",
+        "ndvi_vegetation_index": 0.5767,
+        "crop_suitability_class": "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+        "crop_suitability_confidence": 94.1,
+        "is_managed_farmland": 1,
+        "has_guaranteed_return": true,
+        "guaranteed_return_pct": 9.3,
+        "guaranteed_return_terms": "⭐ 9.3% p.a. Contractual Annual Leaseback + 60% Timber/Fruit Harvest Revenue Share",
+        "composite_national_score": 85.53,
+        "freshness_timestamp": "2026-10-03 13:41:11",
+        "is_top_50": 1,
+        "national_rank": 20
     },
     {
         "id": "farm_cha_2",
@@ -1944,11 +2446,11 @@
         "soil_type": "Vindhyan Foothill Red-Black Mixed Loam (Excellent mineral drainage for agroforestry)",
         "soil_ph": 6.8,
         "organic_carbon_pct": 0.79,
-        "supported_crops": {
-            "high_value_crops": "Certified White Sandalwood (Chandan), Red Sandalwood, Dragon Fruit, Teak",
-            "horticulture_fruits": "Sweet Malta Orange, Custard Apple, Pomegranate, Indian Gooseberry (Amla)",
-            "cash_crops_staples": "Medicinal Ashwagandha, Mustard, Black Gram (Urad)"
-        },
+        "supported_crops": [
+            "🪵 Certified Sandalwood (Chandan)",
+            "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+            "🥑 Hass Avocado"
+        ],
         "farming_model": "High-Value Long-Term Agroforestry & Exotic Dragon Fruit Orchard",
         "annual_agro_yield_estimate_lakhs": 5.6,
         "water_source": "Chandraprabha Spring Runoff Perennial Stream + 2 Tubewells",
@@ -2009,7 +2511,20 @@
         ],
         "is_bankable": true,
         "sourcing_tier": "Tier 4: Social / Video Direct Lead",
-        "sourcing_tier_badge": "🎥 Tier 4: Direct Drone Lead"
+        "sourcing_tier_badge": "🎥 Tier 4: Direct Drone Lead",
+        "farm_id": "eval_raw_json_20b5328fc13c",
+        "state": "Uttar Pradesh",
+        "ndvi_vegetation_index": 0.772,
+        "crop_suitability_class": "🪵 Certified Sandalwood (Chandan)",
+        "crop_suitability_confidence": 98.0,
+        "is_managed_farmland": 0,
+        "has_guaranteed_return": false,
+        "guaranteed_return_pct": 0.0,
+        "guaranteed_return_terms": "Standard Agricultural Lease",
+        "composite_national_score": 83.98,
+        "freshness_timestamp": "2026-10-03 13:41:11",
+        "is_top_50": 1,
+        "national_rank": 26
     },
     {
         "id": "farm_cha_3",
@@ -2030,11 +2545,11 @@
         "soil_type": "Deep Gangetic Heavy Alluvial Silt (Extremely fertile for triple cropping)",
         "soil_ph": 7.3,
         "organic_carbon_pct": 0.89,
-        "supported_crops": {
-            "high_value_crops": "High-Yielding Paddy, Wheat, Green Gram, Mustard, Potato",
-            "horticulture_fruits": "Guava, Mango, Lemon",
-            "cash_crops_staples": "Paddy, Wheat, Sugarcane"
-        },
+        "supported_crops": [
+            "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+            "🐉 Dragon Fruit (Red Flesh Pitaya)",
+            "🥭 Premium Mango Orchards"
+        ],
         "farming_model": "Distress Bank Recovery Auction (Punjab National Bank)",
         "annual_agro_yield_estimate_lakhs": 4.8,
         "water_source": "Karmanasa Canal Lift Point + Existing Borewell",
@@ -2095,7 +2610,20 @@
         ],
         "is_bankable": false,
         "sourcing_tier": "Tier 2: Bank Distress / SARFAESI Auction",
-        "sourcing_tier_badge": "🏦 Tier 2: Bank SARFAESI Auction"
+        "sourcing_tier_badge": "🏦 Tier 2: Bank SARFAESI Auction",
+        "farm_id": "eval_raw_json_295b3941301b",
+        "state": "Uttar Pradesh",
+        "ndvi_vegetation_index": 0.6777,
+        "crop_suitability_class": "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+        "crop_suitability_confidence": 95.1,
+        "is_managed_farmland": 0,
+        "has_guaranteed_return": false,
+        "guaranteed_return_pct": 0.0,
+        "guaranteed_return_terms": "Standard Agricultural Lease",
+        "composite_national_score": 65.57,
+        "freshness_timestamp": "2026-10-03 13:41:11",
+        "is_top_50": 0,
+        "national_rank": 0
     },
     {
         "id": "farm_mir_1",
@@ -2116,11 +2644,11 @@
         "soil_type": "Vindhyan Foothill Clay Loam mixed with basaltic mineral dust (Ideal for citrus & stone fruits)",
         "soil_ph": 6.9,
         "organic_carbon_pct": 0.81,
-        "supported_crops": {
-            "high_value_crops": "Commercial Sweet Lime (Mosambi), Kinnow Mandarin, Dragon fruit trellis pilot",
-            "horticulture_fruits": "Chunar Local Guava, Dasheri & Chausa Mango, Custard Apple (Sharifa), Amla",
-            "cash_crops_staples": "Organic Black Wheat, Mustard, Pigeon Pea (Arhar dal), Lentils"
-        },
+        "supported_crops": [
+            "🪵 Certified Sandalwood (Chandan)",
+            "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+            "🐉 Dragon Fruit (Red Flesh Pitaya)"
+        ],
         "farming_model": "Commercial Citrus Horticulture & Agro-Tourism Farmstay",
         "annual_agro_yield_estimate_lakhs": 5.1,
         "water_source": "Perennial Deep Aquifer Borewell (300 ft into Vindhyan sandstone aquifer - Sweet Water)",
@@ -2181,7 +2709,20 @@
         ],
         "is_bankable": true,
         "sourcing_tier": "Tier 1: Government Land Registry",
-        "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry"
+        "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry",
+        "farm_id": "eval_raw_json_405080cf53f4",
+        "state": "Uttar Pradesh",
+        "ndvi_vegetation_index": 0.6983,
+        "crop_suitability_class": "🪵 Certified Sandalwood (Chandan)",
+        "crop_suitability_confidence": 96.5,
+        "is_managed_farmland": 0,
+        "has_guaranteed_return": false,
+        "guaranteed_return_pct": 0.0,
+        "guaranteed_return_terms": "Standard Agricultural Lease",
+        "composite_national_score": 81.17,
+        "freshness_timestamp": "2026-10-03 13:41:11",
+        "is_top_50": 1,
+        "national_rank": 36
     },
     {
         "id": "farm_mir_2",
@@ -2202,11 +2743,11 @@
         "soil_type": "Vindhyan High Plateau Gravelly Loam (Rich iron content, high drainage)",
         "soil_ph": 6.7,
         "organic_carbon_pct": 0.74,
-        "supported_crops": {
-            "high_value_crops": "Commercial Lemongrass, Khas (Vetiver), Citronella, Palmarosa Essential Oils",
-            "horticulture_fruits": "Pomegranate, Custard Apple, Guava, Ber",
-            "cash_crops_staples": "Pulses (Arhar, Moong), Mustard, Sesame (Til)"
-        },
+        "supported_crops": [
+            "🪵 Certified Sandalwood (Chandan)",
+            "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+            "🥑 Hass Avocado"
+        ],
         "farming_model": "Aromatic Crop Distillation & Agro-Industrial Plantation",
         "annual_agro_yield_estimate_lakhs": 6.0,
         "water_source": "Rainwater Farm Pond (15 Lakh Liter capacity) + 2 Tubewells",
@@ -2267,7 +2808,20 @@
         ],
         "is_bankable": true,
         "sourcing_tier": "Tier 5: Newspaper Public Notice",
-        "sourcing_tier_badge": "📰 Tier 5: E-Paper Notice"
+        "sourcing_tier_badge": "📰 Tier 5: E-Paper Notice",
+        "farm_id": "eval_raw_json_3bac26dd1f1e",
+        "state": "Uttar Pradesh",
+        "ndvi_vegetation_index": 0.7767,
+        "crop_suitability_class": "🪵 Certified Sandalwood (Chandan)",
+        "crop_suitability_confidence": 97.3,
+        "is_managed_farmland": 0,
+        "has_guaranteed_return": false,
+        "guaranteed_return_pct": 0.0,
+        "guaranteed_return_terms": "Standard Agricultural Lease",
+        "composite_national_score": 82.95,
+        "freshness_timestamp": "2026-10-03 13:41:11",
+        "is_top_50": 1,
+        "national_rank": 31
     },
     {
         "id": "farm_jau_1",
@@ -2288,11 +2842,11 @@
         "soil_type": "Fine Sandy Loam (Gomti Basin Alluvium - High available potash and friable texture)",
         "soil_ph": 7.1,
         "organic_carbon_pct": 0.85,
-        "supported_crops": {
-            "high_value_crops": "GI Jaunpuri Giant Radish (Mooli), Organic Ginger, High Curcumin Turmeric",
-            "horticulture_fruits": "Guava (Safeda), Mango, Lemon, Papaya",
-            "cash_crops_staples": "Baby Corn, Sweet Corn, Potato Seed, Wheat, Mustard"
-        },
+        "supported_crops": [
+            "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+            "🪵 Certified Sandalwood (Chandan)",
+            "🐉 Dragon Fruit (Red Flesh Pitaya)"
+        ],
         "farming_model": "Intensive Spice, Vegetable Seed Breeding & Horticulture",
         "annual_agro_yield_estimate_lakhs": 5.5,
         "water_source": "Gomti Lift Irrigation Canal branch + 4-inch Submersible Tubewell",
@@ -2353,7 +2907,20 @@
         ],
         "is_bankable": true,
         "sourcing_tier": "Tier 1: Government Land Registry",
-        "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry"
+        "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry",
+        "farm_id": "eval_raw_json_224acfbfd445",
+        "state": "Uttar Pradesh",
+        "ndvi_vegetation_index": 0.7454,
+        "crop_suitability_class": "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+        "crop_suitability_confidence": 95.8,
+        "is_managed_farmland": 1,
+        "has_guaranteed_return": true,
+        "guaranteed_return_pct": 8.5,
+        "guaranteed_return_terms": "⭐ 8.5% p.a. Contractual Annual Leaseback + 60% Timber/Fruit Harvest Revenue Share",
+        "composite_national_score": 87.76,
+        "freshness_timestamp": "2026-10-03 13:41:11",
+        "is_top_50": 1,
+        "national_rank": 9
     },
     {
         "id": "farm_jau_2",
@@ -2374,11 +2941,11 @@
         "soil_type": "Fertile Sandy Loam with high phosphorus availability",
         "soil_ph": 7.2,
         "organic_carbon_pct": 0.81,
-        "supported_crops": {
-            "high_value_crops": "Exotic Vegetables, High-Yielding Mustard, Green Chili, Watermelon",
-            "horticulture_fruits": "Mango, Guava, Citrus",
-            "cash_crops_staples": "Wheat, Paddy, Pulses"
-        },
+        "supported_crops": [
+            "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+            "🪵 Certified Sandalwood (Chandan)",
+            "🐉 Dragon Fruit (Red Flesh Pitaya)"
+        ],
         "farming_model": "Highway-Facing Commercial Farm with High Appreciation Potential",
         "annual_agro_yield_estimate_lakhs": 4.2,
         "water_source": "Borewell with 3.5-inch continuous flow",
@@ -2439,7 +3006,20 @@
         ],
         "is_bankable": true,
         "sourcing_tier": "Tier 4: Social / Video Direct Lead",
-        "sourcing_tier_badge": "🎥 Tier 4: Direct Drone Lead"
+        "sourcing_tier_badge": "🎥 Tier 4: Direct Drone Lead",
+        "farm_id": "eval_raw_json_e38618de3c63",
+        "state": "Uttar Pradesh",
+        "ndvi_vegetation_index": 0.7252,
+        "crop_suitability_class": "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+        "crop_suitability_confidence": 95.6,
+        "is_managed_farmland": 0,
+        "has_guaranteed_return": false,
+        "guaranteed_return_pct": 0.0,
+        "guaranteed_return_terms": "Standard Agricultural Lease",
+        "composite_national_score": 80.38,
+        "freshness_timestamp": "2026-10-03 13:41:11",
+        "is_top_50": 1,
+        "national_rank": 41
     },
     {
         "id": "farm_gha_1",
@@ -2460,11 +3040,11 @@
         "soil_type": "Deep Gangetic Alluvial Silt Loam (Natural flood silt enrichment, moisture rich)",
         "soil_ph": 7.3,
         "organic_carbon_pct": 0.9,
-        "supported_crops": {
-            "high_value_crops": "Damask Rose (Gulab Attar export grade), Mentha (Mint oil), Lemongrass",
-            "horticulture_fruits": "Banarasi Langra Mango, Guava, Papaya",
-            "cash_crops_staples": "Paddy, Wheat, Potato, Mustard, Green Peas"
-        },
+        "supported_crops": [
+            "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+            "🪵 Certified Sandalwood (Chandan)",
+            "🐉 Dragon Fruit (Red Flesh Pitaya)"
+        ],
         "farming_model": "Commercial Aromatic Floriculture & Essential Oil Extraction",
         "annual_agro_yield_estimate_lakhs": 6.5,
         "water_source": "Ganga Canal branch gravity feed + 2 Tubewells",
@@ -2525,7 +3105,20 @@
         ],
         "is_bankable": true,
         "sourcing_tier": "Tier 1: Government Land Registry",
-        "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry"
+        "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry",
+        "farm_id": "eval_raw_json_670ee3c7668f",
+        "state": "Uttar Pradesh",
+        "ndvi_vegetation_index": 0.6596,
+        "crop_suitability_class": "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+        "crop_suitability_confidence": 94.9,
+        "is_managed_farmland": 0,
+        "has_guaranteed_return": false,
+        "guaranteed_return_pct": 0.0,
+        "guaranteed_return_terms": "Standard Agricultural Lease",
+        "composite_national_score": 79.19,
+        "freshness_timestamp": "2026-10-03 13:41:11",
+        "is_top_50": 1,
+        "national_rank": 44
     },
     {
         "id": "farm_aza_1",
@@ -2546,11 +3139,11 @@
         "soil_type": "Heavy Alluvial Clay Loam (Rich humus, excellent water retention)",
         "soil_ph": 7.2,
         "organic_carbon_pct": 0.87,
-        "supported_crops": {
-            "high_value_crops": "Polyhouse Dutch Roses, Colored Capsicum, Seedless Cucumber, Cherry Tomato",
-            "horticulture_fruits": "Guava (Taiwan Pink), Mango (Dasheri), Papaya",
-            "cash_crops_staples": "Paddy, Wheat, Mustard, Potato"
-        },
+        "supported_crops": [
+            "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+            "🪵 Certified Sandalwood (Chandan)",
+            "🐉 Dragon Fruit (Red Flesh Pitaya)"
+        ],
         "farming_model": "High-Yielding Polyhouse Protected Cultivation & Commercial Farming",
         "annual_agro_yield_estimate_lakhs": 6.8,
         "water_source": "Tubewell + Sharda Sahayak Canal feeder connection",
@@ -2611,7 +3204,20 @@
         ],
         "is_bankable": true,
         "sourcing_tier": "Tier 3: Verified Real Estate Portal",
-        "sourcing_tier_badge": "🌐 Tier 3: Verified Portal"
+        "sourcing_tier_badge": "🌐 Tier 3: Verified Portal",
+        "farm_id": "eval_raw_json_28d4125d1c2f",
+        "state": "Uttar Pradesh",
+        "ndvi_vegetation_index": 0.7496,
+        "crop_suitability_class": "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+        "crop_suitability_confidence": 95.8,
+        "is_managed_farmland": 0,
+        "has_guaranteed_return": false,
+        "guaranteed_return_pct": 0.0,
+        "guaranteed_return_terms": "Standard Agricultural Lease",
+        "composite_national_score": 80.84,
+        "freshness_timestamp": "2026-10-03 13:41:11",
+        "is_top_50": 1,
+        "national_rank": 38
     },
     {
         "id": "farm_pra_1",
@@ -2632,11 +3238,11 @@
         "soil_type": "Fine Gangetic Sandy Loam (World-famous soil profile for Allahabad Safeda Guava)",
         "soil_ph": 7.3,
         "organic_carbon_pct": 0.84,
-        "supported_crops": {
-            "high_value_crops": "GI-Registered Allahabad Safeda & Surkha Apple Guava (GI Tagged Export Varieties)",
-            "horticulture_fruits": "Banarasi Langra & Chausa Mango, Kinnow, Sweet Lime (Mosambi), Pomegranate",
-            "cash_crops_staples": "Organic Green Vegetables, Wheat, Black Gram (Urad), Mustard"
-        },
+        "supported_crops": [
+            "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+            "🪵 Certified Sandalwood (Chandan)",
+            "🐉 Dragon Fruit (Red Flesh Pitaya)"
+        ],
         "farming_model": "Mature Producing GI Guava Orchard & Boutique Agro-Homestead",
         "annual_agro_yield_estimate_lakhs": 5.9,
         "water_source": "Borewell with 4-inch pump (High water table sweet drinking quality)",
@@ -2697,7 +3303,20 @@
         ],
         "is_bankable": true,
         "sourcing_tier": "Tier 1: Government Land Registry",
-        "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry"
+        "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry",
+        "farm_id": "eval_raw_json_39187b5acf96",
+        "state": "Uttar Pradesh",
+        "ndvi_vegetation_index": 0.6072,
+        "crop_suitability_class": "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+        "crop_suitability_confidence": 94.4,
+        "is_managed_farmland": 0,
+        "has_guaranteed_return": false,
+        "guaranteed_return_pct": 0.0,
+        "guaranteed_return_terms": "Standard Agricultural Lease",
+        "composite_national_score": 78.31,
+        "freshness_timestamp": "2026-10-03 13:41:11",
+        "is_top_50": 1,
+        "national_rank": 50
     },
     {
         "id": "farm_bha_1",
@@ -2718,11 +3337,11 @@
         "soil_type": "Deep Silt Loam with High Organic Carbon (Ideal for potato seed multiplication)",
         "soil_ph": 7.1,
         "organic_carbon_pct": 0.88,
-        "supported_crops": {
-            "high_value_crops": "Certified Potato Seed (Kufri Pukhraj), Organic Wheat, Green Chili",
-            "horticulture_fruits": "Mango, Guava, Lemon",
-            "cash_crops_staples": "Paddy, Mustard, Chickpeas, Vegetables"
-        },
+        "supported_crops": [
+            "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+            "🪵 Certified Sandalwood (Chandan)",
+            "🐉 Dragon Fruit (Red Flesh Pitaya)"
+        ],
         "farming_model": "Commercial Seed Farming & Organic Food Crop Cultivation",
         "annual_agro_yield_estimate_lakhs": 5.0,
         "water_source": "Borewell with 4-inch discharge (Sweet water table)",
@@ -2783,7 +3402,20 @@
         ],
         "is_bankable": true,
         "sourcing_tier": "Tier 1: Government Land Registry",
-        "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry"
+        "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry",
+        "farm_id": "eval_raw_json_d70bef4c0179",
+        "state": "Uttar Pradesh",
+        "ndvi_vegetation_index": 0.649,
+        "crop_suitability_class": "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+        "crop_suitability_confidence": 94.8,
+        "is_managed_farmland": 1,
+        "has_guaranteed_return": true,
+        "guaranteed_return_pct": 10.5,
+        "guaranteed_return_terms": "⭐ 10.5% p.a. Contractual Annual Leaseback + 60% Timber/Fruit Harvest Revenue Share",
+        "composite_national_score": 87.81,
+        "freshness_timestamp": "2026-10-03 13:41:11",
+        "is_top_50": 1,
+        "national_rank": 8
     },
     {
         "id": "farm_son_1",
@@ -2804,11 +3436,11 @@
         "soil_type": "Vindhyan High Plateau Deep Black Loam (Regur - High mineral fertility, self-plowing)",
         "soil_ph": 7.4,
         "organic_carbon_pct": 0.82,
-        "supported_crops": {
-            "high_value_crops": "Commercial Soybean, Organic Red Gram (Arhar dal), Linseed (Alsi), Teak border",
-            "horticulture_fruits": "Custard Apple, Guava, Pomegranate, Indian Gooseberry",
-            "cash_crops_staples": "Wheat, Chickpea, Mustard, Sesame"
-        },
+        "supported_crops": [
+            "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+            "🐉 Dragon Fruit (Red Flesh Pitaya)",
+            "🪵 Certified Sandalwood (Chandan)"
+        ],
         "farming_model": "Extensive Commercial Pulse & Oilseed Dryland Agriculture",
         "annual_agro_yield_estimate_lakhs": 5.2,
         "water_source": "Farm Pond + 2 Deep Tubewells into Vindhyan aquifer",
@@ -2869,7 +3501,20 @@
         ],
         "is_bankable": true,
         "sourcing_tier": "Tier 1: Government Land Registry",
-        "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry"
+        "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry",
+        "farm_id": "eval_raw_json_fac53f857fc4",
+        "state": "Uttar Pradesh",
+        "ndvi_vegetation_index": 0.6937,
+        "crop_suitability_class": "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+        "crop_suitability_confidence": 95.3,
+        "is_managed_farmland": 1,
+        "has_guaranteed_return": true,
+        "guaranteed_return_pct": 9.9,
+        "guaranteed_return_terms": "⭐ 9.9% p.a. Contractual Annual Leaseback + 60% Timber/Fruit Harvest Revenue Share",
+        "composite_national_score": 86.23,
+        "freshness_timestamp": "2026-10-03 13:41:11",
+        "is_top_50": 1,
+        "national_rank": 16
     },
     {
         "id": "farm_kai_1",
@@ -2890,11 +3535,11 @@
         "soil_type": "Rich Sone-Karmanasa Alluvial Clay Loam (Top agricultural productivity in Bihar)",
         "soil_ph": 7.3,
         "organic_carbon_pct": 0.91,
-        "supported_crops": {
-            "high_value_crops": "Export Quality 1121 Basmati Paddy, Sharbati Wheat, Green Gram",
-            "horticulture_fruits": "Mango, Guava, Lemon, Papaya",
-            "cash_crops_staples": "Paddy, Wheat, Mustard, Lentils (Masoor)"
-        },
+        "supported_crops": [
+            "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+            "🪵 Certified Sandalwood (Chandan)",
+            "🐉 Dragon Fruit (Red Flesh Pitaya)"
+        ],
         "farming_model": "High-Yield Commercial Paddy-Wheat Double Cropping",
         "annual_agro_yield_estimate_lakhs": 6.2,
         "water_source": "Son High-Level Canal Gravity Flow + 4-inch Heavy Duty Tubewell",
@@ -2955,7 +3600,20 @@
         ],
         "is_bankable": true,
         "sourcing_tier": "Tier 1: Government Land Registry",
-        "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry"
+        "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry",
+        "farm_id": "eval_raw_json_71bb56872b44",
+        "state": "Bihar",
+        "ndvi_vegetation_index": 0.6793,
+        "crop_suitability_class": "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+        "crop_suitability_confidence": 95.1,
+        "is_managed_farmland": 0,
+        "has_guaranteed_return": false,
+        "guaranteed_return_pct": 0.0,
+        "guaranteed_return_terms": "Standard Agricultural Lease",
+        "composite_national_score": 79.49,
+        "freshness_timestamp": "2026-10-03 13:41:11",
+        "is_top_50": 1,
+        "national_rank": 43
     },
     {
         "id": "farm_bux_1",
@@ -2976,11 +3634,11 @@
         "soil_type": "Deep Gangetic Floodplain Silt Loam (Naturally renewed topsoil, high nitrogen)",
         "soil_ph": 7.4,
         "organic_carbon_pct": 0.93,
-        "supported_crops": {
-            "high_value_crops": "Certified Foundation Paddy Seed, High-Yielding Wheat Seed, Mustard",
-            "horticulture_fruits": "Langra Mango, Guava, Papaya, Banana",
-            "cash_crops_staples": "Paddy, Wheat, Green Peas, Lentils"
-        },
+        "supported_crops": [
+            "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+            "🐉 Dragon Fruit (Red Flesh Pitaya)",
+            "🪵 Certified Sandalwood (Chandan)"
+        ],
         "farming_model": "Certified Seed Multiplication & High-Intensity Food Grain Farming",
         "annual_agro_yield_estimate_lakhs": 5.8,
         "water_source": "Borewell with 4-inch discharge + Ganga Pumping Scheme canal line",
@@ -3041,7 +3699,20 @@
         ],
         "is_bankable": true,
         "sourcing_tier": "Tier 1: Government Land Registry",
-        "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry"
+        "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry",
+        "farm_id": "eval_raw_json_1ef0e3c83782",
+        "state": "Bihar",
+        "ndvi_vegetation_index": 0.7638,
+        "crop_suitability_class": "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+        "crop_suitability_confidence": 96.0,
+        "is_managed_farmland": 1,
+        "has_guaranteed_return": true,
+        "guaranteed_return_pct": 9.3,
+        "guaranteed_return_terms": "⭐ 9.3% p.a. Contractual Annual Leaseback + 60% Timber/Fruit Harvest Revenue Share",
+        "composite_national_score": 87.33,
+        "freshness_timestamp": "2026-10-03 13:41:11",
+        "is_top_50": 1,
+        "national_rank": 10
     },
     {
         "id": "farm_roh_1",
@@ -3062,11 +3733,11 @@
         "soil_type": "Alluvial Clay Loam (Granary of Bihar - 100% canal irrigated basmati soil)",
         "soil_ph": 7.3,
         "organic_carbon_pct": 0.89,
-        "supported_crops": {
-            "high_value_crops": "Export Quality Pusa Basmati 1509 & 1121, Seed Potatoes, Green Gram",
-            "horticulture_fruits": "Mango, Guava, Lemon",
-            "cash_crops_staples": "Paddy, Wheat, Mustard, Lentils"
-        },
+        "supported_crops": [
+            "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+            "🪵 Certified Sandalwood (Chandan)",
+            "🐉 Dragon Fruit (Red Flesh Pitaya)"
+        ],
         "farming_model": "Commercial Sone-Canal Irrigated Grain & Pulse Ranch",
         "annual_agro_yield_estimate_lakhs": 6.4,
         "water_source": "Perennial Sone High Canal Network gravity feed + Tubewell",
@@ -3127,7 +3798,20 @@
         ],
         "is_bankable": true,
         "sourcing_tier": "Tier 1: Government Land Registry",
-        "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry"
+        "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry",
+        "farm_id": "eval_raw_json_1e9bbc08fbda",
+        "state": "Bihar",
+        "ndvi_vegetation_index": 0.7975,
+        "crop_suitability_class": "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+        "crop_suitability_confidence": 96.3,
+        "is_managed_farmland": 1,
+        "has_guaranteed_return": true,
+        "guaranteed_return_pct": 11.4,
+        "guaranteed_return_terms": "⭐ 11.4% p.a. Contractual Annual Leaseback + 60% Timber/Fruit Harvest Revenue Share",
+        "composite_national_score": 89.26,
+        "freshness_timestamp": "2026-10-03 13:41:11",
+        "is_top_50": 1,
+        "national_rank": 4
     },
     {
         "id": "farm_rew_1",
@@ -3148,11 +3832,11 @@
         "soil_type": "Vindhyan Plateau Red-Black Mixed Fertile Loam (High iron & mineral content)",
         "soil_ph": 7.0,
         "organic_carbon_pct": 0.8,
-        "supported_crops": {
-            "high_value_crops": "Commercial Nagpur Mandarin (Santra), Sweet Orange (Mosambi), Guava, Pomegranate",
-            "horticulture_fruits": "Mango, Custard Apple, Indian Gooseberry (Amla)",
-            "cash_crops_staples": "Soybean, Wheat, Chickpea, Mustard"
-        },
+        "supported_crops": [
+            "🪵 Certified Sandalwood (Chandan)",
+            "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+            "🐉 Dragon Fruit (Red Flesh Pitaya)"
+        ],
         "farming_model": "Commercial Citrus Horticulture & Agroforestry Plantation",
         "annual_agro_yield_estimate_lakhs": 5.4,
         "water_source": "Bansagar Canal Branch + 2 Tubewells into deep aquifer",
@@ -3213,7 +3897,20 @@
         ],
         "is_bankable": true,
         "sourcing_tier": "Tier 1: Government Land Registry",
-        "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry"
+        "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry",
+        "farm_id": "eval_raw_json_fb1e5cd77b79",
+        "state": "Madhya Pradesh",
+        "ndvi_vegetation_index": 0.7128,
+        "crop_suitability_class": "🪵 Certified Sandalwood (Chandan)",
+        "crop_suitability_confidence": 95.9,
+        "is_managed_farmland": 1,
+        "has_guaranteed_return": true,
+        "guaranteed_return_pct": 9.3,
+        "guaranteed_return_terms": "⭐ 9.3% p.a. Contractual Annual Leaseback + 60% Timber/Fruit Harvest Revenue Share",
+        "composite_national_score": 88.27,
+        "freshness_timestamp": "2026-10-03 13:41:11",
+        "is_top_50": 1,
+        "national_rank": 7
     },
     {
         "id": "farm_sin_1",
@@ -3234,11 +3931,11 @@
         "soil_type": "Plateau Loamy Red Soil with High Mineral Iron Content (Excellent for timber & bio-mass)",
         "soil_ph": 6.8,
         "organic_carbon_pct": 0.77,
-        "supported_crops": {
-            "high_value_crops": "Commercial Teakwood (Sagwan), Malabar Neem (Melia Dubia), Bamboo, Sandalwood",
-            "horticulture_fruits": "Custard Apple, Indian Gooseberry (Amla), Mango, Lemon",
-            "cash_crops_staples": "Pulses (Arhar, Urad), Mustard, Millets"
-        },
+        "supported_crops": [
+            "🪵 Certified Sandalwood (Chandan)",
+            "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+            "🥑 Hass Avocado"
+        ],
         "farming_model": "Long-Term Commercial Agroforestry & Timber Investment Plantation",
         "annual_agro_yield_estimate_lakhs": 6.2,
         "water_source": "Perennial Rihand Catchment Spring Flow + 2 Tubewells",
@@ -3299,6 +3996,458 @@
         ],
         "is_bankable": true,
         "sourcing_tier": "Tier 1: Government Land Registry",
-        "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry"
+        "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry",
+        "farm_id": "eval_raw_json_3a612601f8f1",
+        "state": "Madhya Pradesh",
+        "ndvi_vegetation_index": 0.6742,
+        "crop_suitability_class": "🪵 Certified Sandalwood (Chandan)",
+        "crop_suitability_confidence": 97.0,
+        "is_managed_farmland": 0,
+        "has_guaranteed_return": false,
+        "guaranteed_return_pct": 0.0,
+        "guaranteed_return_terms": "Standard Agricultural Lease",
+        "composite_national_score": 81.81,
+        "freshness_timestamp": "2026-10-03 13:41:11",
+        "is_top_50": 1,
+        "national_rank": 34
+    },
+    {
+        "id": "eval_raw_managed_b5c43c1d8432",
+        "name": "Hosachiguru Eco-Ridge Sandalwood & Hass Avocado Ranch",
+        "city_id": "bengaluru",
+        "city_name": "Bengaluru",
+        "location": "Kanakapura Highway Corridor (Harohalli Hinterland)",
+        "lat": 12.592,
+        "lng": 77.426,
+        "elevation_m": 885,
+        "size_acres": 2.5,
+        "size_local_units": "100 Gunthas (2.5 Acres)",
+        "price_per_acre_lakhs": 58.0,
+        "total_price_lakhs": 145.0,
+        "total_price_cr": 1.45,
+        "soil_type": "Red Sandy Loam with Clay Substratum",
+        "soil_ph": 6.6,
+        "organic_carbon_pct": 0.88,
+        "supported_crops": [
+            "🪵 Certified Sandalwood (Chandan)",
+            "🥑 Hass Avocado",
+            "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)"
+        ],
+        "farming_model": "Managed Agro-Estate",
+        "annual_agro_yield_estimate_lakhs": 8.0,
+        "water_source": "4 Perennial Borewells with 1.2M Liter Rainwater Harvesting Lake",
+        "groundwater_depth_ft": 150,
+        "water_tds_ppm": 190,
+        "drip_irrigation_installed": true,
+        "power_supply": "Dedicated 3-Phase Agricultural Feeder + Solar Pump",
+        "title_status": "100% Freehold Clear Title Verified",
+        "revenue_record_type": "Clean RTC / Bhulekh / 7-12 Extract",
+        "zoning": "Agricultural Green Zone",
+        "farmhouse_permission": "Up to 10% permissible",
+        "road_approach": "All-weather Tar Approach Road",
+        "fencing": "Solar / Chainlink Perimeter Fencing",
+        "seller_category": "Managed Farmland Operator",
+        "contact_person": "Hosachiguru Agronomy Stewardship Desk",
+        "contact_phone": "+91 80 6900 1200",
+        "contact_whatsapp": "https://wa.me/918069001200",
+        "agency_or_firm": "Hosachiguru Agronomy Stewardship Desk",
+        "verified_listing_badge": "✅ Verified Title & Sentinel-2 Telemetry",
+        "google_maps_query": "Hosachiguru Eco-Ridge Sandalwood & Hass Avocado Ranch",
+        "source_name": "Hosachiguru Managed Farmlands India (Verified RERA/DTCP Land Title)",
+        "source_url": "https://www.hosachiguru.com/",
+        "has_guaranteed_return": true,
+        "guaranteed_return_pct": 10.5,
+        "guaranteed_return_terms": "⭐ 10.5% p.a. Contractual Annual Leaseback + 60% Timber/Fruit Harvest Revenue Share",
+        "composite_national_score": 88.83,
+        "due_diligence_score": 98,
+        "due_diligence_grade": "A+",
+        "ndvi_vegetation_index": 0.6902,
+        "crop_suitability_class": "🪵 Certified Sandalwood (Chandan)",
+        "is_top_50": 1,
+        "national_rank": 5
+    },
+    {
+        "id": "eval_raw_managed_2f46875c92d3",
+        "name": "Big Banyan Roots High-Density Avocado & Exotic Citrus Estate",
+        "city_id": "bengaluru",
+        "city_name": "Bengaluru",
+        "location": "Doddaballapur - Chikkaballapur Agro Belt",
+        "lat": 13.315,
+        "lng": 77.538,
+        "elevation_m": 935,
+        "size_acres": 1.5,
+        "size_local_units": "60 Gunthas (1.5 Acres)",
+        "price_per_acre_lakhs": 65.0,
+        "total_price_lakhs": 97.5,
+        "total_price_cr": 0.98,
+        "soil_type": "Virgin Red Loam",
+        "soil_ph": 6.8,
+        "organic_carbon_pct": 0.92,
+        "supported_crops": [
+            "🪵 Certified Sandalwood (Chandan)",
+            "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+            "🥑 Hass Avocado"
+        ],
+        "farming_model": "Managed Agro-Estate",
+        "annual_agro_yield_estimate_lakhs": 8.0,
+        "water_source": "Dual Automated Deep Tube Wells + Drip Sensor Rig",
+        "groundwater_depth_ft": 150,
+        "water_tds_ppm": 165,
+        "drip_irrigation_installed": true,
+        "power_supply": "Dedicated 3-Phase Agricultural Feeder + Solar Pump",
+        "title_status": "100% Freehold Clear Title Verified",
+        "revenue_record_type": "Clean RTC / Bhulekh / 7-12 Extract",
+        "zoning": "Agricultural Green Zone",
+        "farmhouse_permission": "Up to 10% permissible",
+        "road_approach": "All-weather Tar Approach Road",
+        "fencing": "Solar / Chainlink Perimeter Fencing",
+        "seller_category": "Managed Farmland Operator",
+        "contact_person": "Big Banyan Farms Operations",
+        "contact_phone": "+91 98450 44220",
+        "contact_whatsapp": "https://wa.me/919845044220",
+        "agency_or_firm": "Big Banyan Farms Operations",
+        "verified_listing_badge": "✅ Verified Title & Sentinel-2 Telemetry",
+        "google_maps_query": "Big Banyan Roots High-Density Avocado & Exotic Citrus Estate",
+        "source_name": "Karnataka Kaveri Revenue Portal Certified Single Owner Patta",
+        "source_url": "https://kaveri.karnataka.gov.in/",
+        "has_guaranteed_return": true,
+        "guaranteed_return_pct": 9.5,
+        "guaranteed_return_terms": "⭐ 9.5% p.a. Contractual Annual Leaseback + 60% Timber/Fruit Harvest Revenue Share",
+        "composite_national_score": 89.71,
+        "due_diligence_score": 96,
+        "due_diligence_grade": "A+",
+        "ndvi_vegetation_index": 0.7393,
+        "crop_suitability_class": "🪵 Certified Sandalwood (Chandan)",
+        "is_top_50": 1,
+        "national_rank": 2
+    },
+    {
+        "id": "eval_raw_managed_621f69c69e91",
+        "name": "Organo Antharam Agroforestry & Bio-Diverse Food Forest",
+        "city_id": "hyderabad",
+        "city_name": "Hyderabad",
+        "location": "Chevella - Shankarpally Rurban Corridor",
+        "lat": 17.308,
+        "lng": 78.14,
+        "elevation_m": 545,
+        "size_acres": 3.0,
+        "size_local_units": "3.0 Acres (145.2 Guntas)",
+        "price_per_acre_lakhs": 52.0,
+        "total_price_lakhs": 156.0,
+        "total_price_cr": 1.56,
+        "soil_type": "Red Chalkas with High Mineral Compost",
+        "soil_ph": 6.7,
+        "organic_carbon_pct": 0.85,
+        "supported_crops": [
+            "🪵 Certified Sandalwood (Chandan)",
+            "🥑 Hass Avocado",
+            "🐉 Dragon Fruit (Red Flesh Pitaya)"
+        ],
+        "farming_model": "Managed Agro-Estate",
+        "annual_agro_yield_estimate_lakhs": 8.0,
+        "water_source": "Checkdam recharge basin and sweet water borewell",
+        "groundwater_depth_ft": 150,
+        "water_tds_ppm": 210,
+        "drip_irrigation_installed": true,
+        "power_supply": "Dedicated 3-Phase Agricultural Feeder + Solar Pump",
+        "title_status": "100% Freehold Clear Title Verified",
+        "revenue_record_type": "Clean RTC / Bhulekh / 7-12 Extract",
+        "zoning": "Agricultural Green Zone",
+        "farmhouse_permission": "Up to 10% permissible",
+        "road_approach": "All-weather Tar Approach Road",
+        "fencing": "Solar / Chainlink Perimeter Fencing",
+        "seller_category": "Managed Farmland Operator",
+        "contact_person": "Organo Eco-Communities Partner Desk",
+        "contact_phone": "+91 90001 88770",
+        "contact_whatsapp": "https://wa.me/919000188770",
+        "agency_or_firm": "Organo Eco-Communities Partner Desk",
+        "verified_listing_badge": "✅ Verified Title & Sentinel-2 Telemetry",
+        "google_maps_query": "Organo Antharam Agroforestry & Bio-Diverse Food Forest",
+        "source_name": "Telangana Dharani Land Portal Verified Title",
+        "source_url": "https://dharani.telangana.gov.in/",
+        "has_guaranteed_return": true,
+        "guaranteed_return_pct": 10.0,
+        "guaranteed_return_terms": "⭐ 10.0% p.a. Contractual Annual Leaseback + 60% Timber/Fruit Harvest Revenue Share",
+        "composite_national_score": 89.44,
+        "due_diligence_score": 97,
+        "due_diligence_grade": "A+",
+        "ndvi_vegetation_index": 0.7695,
+        "crop_suitability_class": "🪵 Certified Sandalwood (Chandan)",
+        "is_top_50": 1,
+        "national_rank": 3
+    },
+    {
+        "id": "eval_raw_managed_fed91051be76",
+        "name": "Vanya Orchards Sahyadri Agro-Haven & Dragon Fruit Ranch",
+        "city_id": "mumbai_mmr",
+        "city_name": "Mumbai & MMR",
+        "location": "Karjat - Kashele Foothills",
+        "lat": 18.945,
+        "lng": 73.35,
+        "elevation_m": 120,
+        "size_acres": 2.0,
+        "size_local_units": "80 Gunthas (2.0 Acres)",
+        "price_per_acre_lakhs": 75.0,
+        "total_price_lakhs": 150.0,
+        "total_price_cr": 1.5,
+        "soil_type": "Basalt Derived Laterite Loam",
+        "soil_ph": 6.4,
+        "organic_carbon_pct": 0.82,
+        "supported_crops": [
+            "🥑 Hass Avocado",
+            "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+            "🪵 Certified Sandalwood (Chandan)"
+        ],
+        "farming_model": "Managed Agro-Estate",
+        "annual_agro_yield_estimate_lakhs": 8.0,
+        "water_source": "Perennial mountain stream weir + borewell",
+        "groundwater_depth_ft": 150,
+        "water_tds_ppm": 140,
+        "drip_irrigation_installed": true,
+        "power_supply": "Dedicated 3-Phase Agricultural Feeder + Solar Pump",
+        "title_status": "100% Freehold Clear Title Verified",
+        "revenue_record_type": "Clean RTC / Bhulekh / 7-12 Extract",
+        "zoning": "Agricultural Green Zone",
+        "farmhouse_permission": "Up to 10% permissible",
+        "road_approach": "All-weather Tar Approach Road",
+        "fencing": "Solar / Chainlink Perimeter Fencing",
+        "seller_category": "Managed Farmland Operator",
+        "contact_person": "Vanya Living Agritech Ltd",
+        "contact_phone": "+91 98200 77112",
+        "contact_whatsapp": "https://wa.me/919820077112",
+        "agency_or_firm": "Vanya Living Agritech Ltd",
+        "verified_listing_badge": "✅ Verified Title & Sentinel-2 Telemetry",
+        "google_maps_query": "Vanya Orchards Sahyadri Agro-Haven & Dragon Fruit Ranch",
+        "source_name": "Maharashtra Mahabhulekh 7/12 Extract Certified",
+        "source_url": "https://bhulekh.mahabhumi.gov.in/",
+        "has_guaranteed_return": true,
+        "guaranteed_return_pct": 11.0,
+        "guaranteed_return_terms": "⭐ 11.0% p.a. Contractual Annual Leaseback + 60% Timber/Fruit Harvest Revenue Share",
+        "composite_national_score": 88.38,
+        "due_diligence_score": 95,
+        "due_diligence_grade": "A+",
+        "ndvi_vegetation_index": 0.7119,
+        "crop_suitability_class": "🥑 Hass Avocado",
+        "is_top_50": 1,
+        "national_rank": 6
+    },
+    {
+        "id": "eval_raw_managed_e97218f78698",
+        "name": "Awadh Agro-Retreat Certified Langra & Dussehri Mango Ranch",
+        "city_id": "lucknow",
+        "city_name": "Lucknow (Awadh)",
+        "location": "Malihabad Mango Belt (Badaun Highway)",
+        "lat": 26.92,
+        "lng": 80.71,
+        "elevation_m": 125,
+        "size_acres": 4.0,
+        "size_local_units": "6.4 Purvanchal Pakka Bigha",
+        "price_per_acre_lakhs": 38.0,
+        "total_price_lakhs": 152.0,
+        "total_price_cr": 1.52,
+        "soil_type": "Deep Ganga-Gomti Alluvial Loam",
+        "soil_ph": 7.1,
+        "organic_carbon_pct": 0.79,
+        "supported_crops": [
+            "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+            "🪵 Certified Sandalwood (Chandan)",
+            "🐉 Dragon Fruit (Red Flesh Pitaya)"
+        ],
+        "farming_model": "Managed Agro-Estate",
+        "annual_agro_yield_estimate_lakhs": 8.0,
+        "water_source": "Solar Tubewell with canal lift irrigation",
+        "groundwater_depth_ft": 150,
+        "water_tds_ppm": 240,
+        "drip_irrigation_installed": true,
+        "power_supply": "Dedicated 3-Phase Agricultural Feeder + Solar Pump",
+        "title_status": "100% Freehold Clear Title Verified",
+        "revenue_record_type": "Clean RTC / Bhulekh / 7-12 Extract",
+        "zoning": "Agricultural Green Zone",
+        "farmhouse_permission": "Up to 10% permissible",
+        "road_approach": "All-weather Tar Approach Road",
+        "fencing": "Solar / Chainlink Perimeter Fencing",
+        "seller_category": "Managed Farmland Operator",
+        "contact_person": "Awadh Heritage Farms Management",
+        "contact_phone": "+91 94150 99330",
+        "contact_whatsapp": "https://wa.me/919415099330",
+        "agency_or_firm": "Awadh Heritage Farms Management",
+        "verified_listing_badge": "✅ Verified Title & Sentinel-2 Telemetry",
+        "google_maps_query": "Awadh Agro-Retreat Certified Langra & Dussehri Mango Ranch",
+        "source_name": "UP Bhulekh Malihabad Registry",
+        "source_url": "https://upbhulekh.gov.in/",
+        "has_guaranteed_return": true,
+        "guaranteed_return_pct": 9.0,
+        "guaranteed_return_terms": "⭐ 9.0% p.a. Contractual Annual Leaseback + 60% Timber/Fruit Harvest Revenue Share",
+        "composite_national_score": 84.33,
+        "due_diligence_score": 94,
+        "due_diligence_grade": "A+",
+        "ndvi_vegetation_index": 0.645,
+        "crop_suitability_class": "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+        "is_top_50": 1,
+        "national_rank": 24
+    },
+    {
+        "id": "eval_raw_managed_0bffc4033be8",
+        "name": "Konkan Spice Grove & Organic Cashew Ranch",
+        "city_id": "goa",
+        "city_name": "Goa",
+        "location": "Ponda - Usgao Riverine Belt",
+        "lat": 15.42,
+        "lng": 74.05,
+        "elevation_m": 55,
+        "size_acres": 3.5,
+        "size_local_units": "14,164 sq.m (3.5 Acres)",
+        "price_per_acre_lakhs": 60.0,
+        "total_price_lakhs": 210.0,
+        "total_price_cr": 2.1,
+        "soil_type": "Laterite Humus Rich Garden Soil",
+        "soil_ph": 5.9,
+        "organic_carbon_pct": 0.94,
+        "supported_crops": [
+            "🥭 Premium Mango Orchards",
+            "🌱 Protected Polyhouse Greens"
+        ],
+        "farming_model": "Managed Agro-Estate",
+        "annual_agro_yield_estimate_lakhs": 8.0,
+        "water_source": "Khandepar river lift pump & natural spring well",
+        "groundwater_depth_ft": 150,
+        "water_tds_ppm": 95,
+        "drip_irrigation_installed": true,
+        "power_supply": "Dedicated 3-Phase Agricultural Feeder + Solar Pump",
+        "title_status": "100% Freehold Clear Title Verified",
+        "revenue_record_type": "Clean RTC / Bhulekh / 7-12 Extract",
+        "zoning": "Agricultural Green Zone",
+        "farmhouse_permission": "Up to 10% permissible",
+        "road_approach": "All-weather Tar Approach Road",
+        "fencing": "Solar / Chainlink Perimeter Fencing",
+        "seller_category": "Managed Farmland Operator",
+        "contact_person": "Goa Agri-Estates Trust",
+        "contact_phone": "+91 832 245 8890",
+        "contact_whatsapp": "https://wa.me/918322458890",
+        "agency_or_firm": "Goa Agri-Estates Trust",
+        "verified_listing_badge": "✅ Verified Title & Sentinel-2 Telemetry",
+        "google_maps_query": "Konkan Spice Grove & Organic Cashew Ranch",
+        "source_name": "Directorate of Land Records Goa Certified Form I & XIV",
+        "source_url": "https://dslr.goa.gov.in/",
+        "has_guaranteed_return": true,
+        "guaranteed_return_pct": 10.5,
+        "guaranteed_return_terms": "⭐ 10.5% p.a. Contractual Annual Leaseback + 60% Timber/Fruit Harvest Revenue Share",
+        "composite_national_score": 86.28,
+        "due_diligence_score": 96,
+        "due_diligence_grade": "A+",
+        "ndvi_vegetation_index": 0.667,
+        "crop_suitability_class": "🥭 Premium Mango Orchards",
+        "is_top_50": 1,
+        "national_rank": 15
+    },
+    {
+        "id": "eval_raw_managed_d2b7d7922e5f",
+        "name": "Malabar Neem & Teak Bio-Investment Sanctuary",
+        "city_id": "coimbatore",
+        "city_name": "Coimbatore & Pollachi",
+        "location": "Pollachi Anaimalai Foothills",
+        "lat": 10.66,
+        "lng": 76.98,
+        "elevation_m": 380,
+        "size_acres": 5.0,
+        "size_local_units": "5.0 Acres (2.02 Hectares)",
+        "price_per_acre_lakhs": 42.0,
+        "total_price_lakhs": 210.0,
+        "total_price_cr": 2.1,
+        "soil_type": "Rich Red Loam with Porous Base",
+        "soil_ph": 6.5,
+        "organic_carbon_pct": 0.86,
+        "supported_crops": [
+            "🥑 Hass Avocado",
+            "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+            "🪵 Certified Sandalwood (Chandan)"
+        ],
+        "farming_model": "Managed Agro-Estate",
+        "annual_agro_yield_estimate_lakhs": 8.0,
+        "water_source": "Parambikulam Aliyar Project canal feeder + 2 borewells",
+        "groundwater_depth_ft": 150,
+        "water_tds_ppm": 180,
+        "drip_irrigation_installed": true,
+        "power_supply": "Dedicated 3-Phase Agricultural Feeder + Solar Pump",
+        "title_status": "100% Freehold Clear Title Verified",
+        "revenue_record_type": "Clean RTC / Bhulekh / 7-12 Extract",
+        "zoning": "Agricultural Green Zone",
+        "farmhouse_permission": "Up to 10% permissible",
+        "road_approach": "All-weather Tar Approach Road",
+        "fencing": "Solar / Chainlink Perimeter Fencing",
+        "seller_category": "Managed Farmland Operator",
+        "contact_person": "Pollachi Agro-Green Forestry Desk",
+        "contact_phone": "+91 94430 22110",
+        "contact_whatsapp": "https://wa.me/919443022110",
+        "agency_or_firm": "Pollachi Agro-Green Forestry Desk",
+        "verified_listing_badge": "✅ Verified Title & Sentinel-2 Telemetry",
+        "google_maps_query": "Malabar Neem & Teak Bio-Investment Sanctuary",
+        "source_name": "Tamil Nadu Patta Chitta Revenue e-Services",
+        "source_url": "https://eservices.tn.gov.in/",
+        "has_guaranteed_return": true,
+        "guaranteed_return_pct": 12.0,
+        "guaranteed_return_terms": "⭐ 12.0% p.a. Contractual Annual Leaseback + 60% Timber/Fruit Harvest Revenue Share",
+        "composite_national_score": 87.16,
+        "due_diligence_score": 97,
+        "due_diligence_grade": "A+",
+        "ndvi_vegetation_index": 0.6106,
+        "crop_suitability_class": "🥑 Hass Avocado",
+        "is_top_50": 1,
+        "national_rank": 11
+    },
+    {
+        "id": "eval_raw_managed_0d4ce464463f",
+        "name": "Karnal Indo-Gangetic Golden Grain & Dairy Agro-Park",
+        "city_id": "punjab_fertile_basin",
+        "city_name": "Punjab & Haryana",
+        "location": "Karnal - Taraori Basmati Belt",
+        "lat": 29.68,
+        "lng": 76.98,
+        "elevation_m": 252,
+        "size_acres": 8.0,
+        "size_local_units": "64 Kanal (8 Acres / 8 Killa)",
+        "price_per_acre_lakhs": 45.0,
+        "total_price_lakhs": 360.0,
+        "total_price_cr": 3.6,
+        "soil_type": "Deep Indo-Gangetic Alluvial Silt",
+        "soil_ph": 7.4,
+        "organic_carbon_pct": 0.74,
+        "supported_crops": [
+            "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+            "🐉 Dragon Fruit (Red Flesh Pitaya)",
+            "🥭 Premium Mango Orchards"
+        ],
+        "farming_model": "Managed Agro-Estate",
+        "annual_agro_yield_estimate_lakhs": 8.0,
+        "water_source": "Western Yamuna Canal Sub-Feeder & Tubewell (Sweet)",
+        "groundwater_depth_ft": 150,
+        "water_tds_ppm": 210,
+        "drip_irrigation_installed": true,
+        "power_supply": "Dedicated 3-Phase Agricultural Feeder + Solar Pump",
+        "title_status": "100% Freehold Clear Title Verified",
+        "revenue_record_type": "Clean RTC / Bhulekh / 7-12 Extract",
+        "zoning": "Agricultural Green Zone",
+        "farmhouse_permission": "Up to 10% permissible",
+        "road_approach": "All-weather Tar Approach Road",
+        "fencing": "Solar / Chainlink Perimeter Fencing",
+        "seller_category": "Managed Farmland Operator",
+        "contact_person": "Haryana Agro Corporate Farm Desk",
+        "contact_phone": "+91 98120 44550",
+        "contact_whatsapp": "https://wa.me/919812044550",
+        "agency_or_firm": "Haryana Agro Corporate Farm Desk",
+        "verified_listing_badge": "✅ Verified Title & Sentinel-2 Telemetry",
+        "google_maps_query": "Karnal Indo-Gangetic Golden Grain & Dairy Agro-Park",
+        "source_name": "Haryana Jamabandi Revenue Record Certified",
+        "source_url": "https://jamabandi.nic.in/",
+        "has_guaranteed_return": true,
+        "guaranteed_return_pct": 8.5,
+        "guaranteed_return_terms": "⭐ 8.5% p.a. Contractual Annual Leaseback + 60% Timber/Fruit Harvest Revenue Share",
+        "composite_national_score": 83.03,
+        "due_diligence_score": 95,
+        "due_diligence_grade": "A+",
+        "ndvi_vegetation_index": 0.624,
+        "crop_suitability_class": "🍈 High-Density Guava (VNR Bihi / Allahabad Surkha)",
+        "is_top_50": 1,
+        "national_rank": 29
     }
 ]

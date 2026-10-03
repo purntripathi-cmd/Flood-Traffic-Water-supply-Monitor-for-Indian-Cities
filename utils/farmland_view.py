@@ -535,7 +535,16 @@ def render_top_50_crawler_dashboard_and_table(st) -> None:
     # Top 50 Data & Filters
     top_50_farms = crawler.db.get_top_50()
     if not top_50_farms:
-        top_50_farms = crawler.generate_top_50_farmlands()
+        try:
+            top_50_farms = crawler.generate_top_50_farmlands()
+        except Exception:
+            pass
+    if not top_50_farms and os.path.exists(TOP_50_CSV_PATH):
+        try:
+            df_csv = pd.read_csv(TOP_50_CSV_PATH)
+            top_50_farms = df_csv.to_dict(orient="records")
+        except Exception:
+            pass
 
     st.markdown("<br>", unsafe_allow_html=True)
     top_f1, top_f2, top_f3, top_f4 = st.columns([1.8, 1.3, 1.1, 1.0])
@@ -615,6 +624,18 @@ def render_top_50_crawler_dashboard_and_table(st) -> None:
         })
 
     df_top_50_display = pd.DataFrame(table_top_50_rows)
+    c_t50_a, c_t50_b = st.columns([3, 1])
+    with c_t50_a:
+        st.caption(f"Showing **{len(df_top_50_display)}** of **{len(top_50_farms)}** ranked farmland estates matching active filters.")
+    with c_t50_b:
+        from utils.common import df_to_csv_bytes
+        st.download_button(
+            "📥 Download Table (CSV)",
+            data=df_to_csv_bytes(df_top_50_display),
+            file_name="top_50_farmlands_filtered.csv",
+            mime="text/csv",
+            key="dl_top_50_filtered_csv_btn"
+        )
     render_sticky_frozen_table(df_top_50_display, frozen_cols=1, table_id="top_50_farmlands_table", max_height="620px")
 
     st.markdown("<br>", unsafe_allow_html=True)

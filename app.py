@@ -1718,6 +1718,7 @@ with tabs[0]:
                 top_farm_rows.append({
                     "Rank": f"#{idx+1} ({rank_tag})",
                     "Farmland Estate Name": fm["name"],
+                    "Guaranteed Return": fm.get('guaranteed_return_terms', 'Direct Cultivation') if fm.get('has_guaranteed_return') else 'Direct Cultivation',
                     "Sourcing Provenance": fm.get("sourcing_tier_badge", fm.get("sourcing_tier", "🏛️ Tier 1: Govt Registry")),
                     "Due Diligence Score": f"⚖️ {fm.get('due_diligence_score', 85)}/100 ({fm.get('due_diligence_grade', 'A')})",
                     "Seller Category": "🧑‍🌾 Direct Owner" if "Owner" in fm.get("seller_category", "") else ("🏢 Verified Broker" if "Broker" in fm.get("seller_category", "") else "🏡 Managed Farm"),
@@ -2297,13 +2298,10 @@ with tabs[3]:
 # TAB 5: VERIFIED FARMLANDS & AGRO-INVESTMENTS
 # =============================================================
 with tabs[4]:
-    st.markdown(f"### 🌾 Verified Farmland & Agro-Investment Screener")
-    st.caption("Curated agricultural land parcels, managed agroforestry estates, and private orchards with complete soil telemetry, sweet water security, crop suitability indices, and direct landowner / verified broker contacts.")
-
     # ---------------------------------------------------------
     # 1. FARMLAND FILTER SUITE
     # ---------------------------------------------------------
-    farm_mode_c1, farm_mode_c2 = st.columns([2.3, 1.7])
+    farm_mode_c1, farm_mode_c2 = st.columns([2.2, 1.8])
     with farm_mode_c1:
         st.markdown(f"### 🌾 Verified Farmland & Agro-Investment Screener")
         st.caption("Curated agricultural land parcels, managed agroforestry estates, and private orchards with complete soil telemetry, sweet water security, crop suitability indices, and direct landowner / verified broker contacts.")
@@ -2315,7 +2313,8 @@ with tabs[4]:
                 "🎯 AgriLand-200: Varanasi 200km Buffer (14 Districts)",
                 "🌐 All-India Regional Agro Portfolio"
             ],
-            index=0 if selected_city_id == "all_cities" else (1 if (selected_city_id in ["varanasi", "varanasi_100km"] or "varanasi" in selected_city_id) else 2),
+            index=0,
+            key="agri_mode_radio_selector",
             horizontal=True,
             help="Toggle between the National Top 50 Farmland Leaderboard (with contractual return guarantees), the Varanasi AgriLand-200 buffer engine, or the broad All-India regional portfolio."
         )
@@ -2493,16 +2492,11 @@ with tabs[4]:
             with farm_s2:
                 corridor_options = ["🌐 All Corridors Across India"] + [f"{c['name']} ({c['state']})" for c in cities]
                 default_farm_idx = 0
-                if selected_city_id != "all_cities":
-                    for idx, c in enumerate(cities):
-                        if c["id"] == selected_city_id:
-                            default_farm_idx = idx + 1
-                            break
                 selected_farm_corridor = st.selectbox(
                     "Select Farmland Growth Corridor:",
                     options=corridor_options,
                     index=default_farm_idx,
-                    help="Filter farmlands across India or focus on the active metropolitan periphery."
+                    help="Filter farmlands across India or focus on a specific metropolitan / state corridor."
                 )
 
             farm_f1, farm_f2, farm_f3 = st.columns([1.3, 1.3, 1.2])
