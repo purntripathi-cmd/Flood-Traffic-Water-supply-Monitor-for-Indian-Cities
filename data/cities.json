@@ -285,5 +285,100 @@
       "avg_free_flow_speed_kmh": 31.5,
       "monthly_hours_lost_avg": 37
     }
+  },
+  {
+    "id": "goa",
+    "name": "Goa (Coastal Tourism, Luxury Villas & Fertile Agro-Belt)",
+    "state": "Goa",
+    "region": "West Coastal India",
+    "center_lat": 15.4989,
+    "center_lng": 73.8278,
+    "default_zoom": 11,
+    "elevation_range_m": "0m - 120m (Average: 22m)",
+    "key_landmark": {
+      "name": "Panaji Church / Mandovi Waterfront",
+      "lat": 15.4989,
+      "lng": 73.8278
+    },
+    "default_school_benchmark": {
+      "name": "Sharada Mandir School (Miramar)",
+      "lat": 15.482,
+      "lng": 73.812
+    },
+    "municipal_water_authority": {
+      "name": "PWD Goa Water Resources Dept (Opa & Selaulim)",
+      "piped_coverage_pct": 82,
+      "daily_supply_mld": 520,
+      "daily_demand_mld": 660,
+      "deficit_pct": 21,
+      "primary_source": "Khandepar River (Opa) & Selaulim Dam Reservoir",
+      "summer_tanker_dependence_pct": 26
+    },
+    "drainage_and_flood_authority": {
+      "name": "Goa Water Resources Dept (WRD) & Disaster Cell",
+      "primary_valleys": [
+        "Mandovi River Estuary",
+        "Zuari River Estuary",
+        "Chapora River Basin",
+        "Sal River Catchment"
+      ],
+      "total_swd_network_km": 420,
+      "remodelled_swd_km": 280,
+      "primary_flood_vulnerability": "Tidal surge (>2.8m Spring Tide) combined with monsoon cloudbursts in river lowlands and coastal CRZ buffers"
+    },
+    "traffic_monitoring": {
+      "authority": "Goa Police Traffic Cell & Integrated Command Centre",
+      "peak_to_free_flow_delay_index": 1.85,
+      "avg_peak_commute_speed_kmh": 22.0,
+      "avg_free_flow_speed_kmh": 45.0,
+      "monthly_hours_lost_avg": 26
+    }
+  },
+  {
+    "id": "punjab_fertile_basin",
+    "name": "Punjab & Haryana (Indo-Gangetic Fertile Agro-Basin)",
+    "state": "Punjab & Haryana",
+    "region": "North India",
+    "center_lat": 30.901,
+    "center_lng": 75.8573,
+    "default_zoom": 10,
+    "elevation_range_m": "240m - 275m (Average: 255m)",
+    "key_landmark": {
+      "name": "Ludhiana Clock Tower / Karnal GT Road",
+      "lat": 30.901,
+      "lng": 75.8573
+    },
+    "default_school_benchmark": {
+      "name": "Delhi Public School (Ludhiana / Karnal)",
+      "lat": 30.865,
+      "lng": 75.812
+    },
+    "municipal_water_authority": {
+      "name": "Punjab & Haryana Water Supply and Sanitation Dept",
+      "piped_coverage_pct": 92,
+      "daily_supply_mld": 480,
+      "daily_demand_mld": 510,
+      "deficit_pct": 6,
+      "primary_source": "Perennial Canals (Sirhind & Bhakra) + Deep Alluvial Tubewells",
+      "summer_tanker_dependence_pct": 7
+    },
+    "drainage_and_flood_authority": {
+      "name": "Punjab Drainage & Irrigation Directorate",
+      "primary_valleys": [
+        "Sutlej River Basin",
+        "Ghaggar River Flood Basin",
+        "Buddha Nullah Drainage Corridor"
+      ],
+      "total_swd_network_km": 680,
+      "remodelled_swd_km": 440,
+      "primary_flood_vulnerability": "Seasonal Sutlej / Ghaggar high discharge during heavy Shivalik foothills cloudbursts"
+    },
+    "traffic_monitoring": {
+      "authority": "NHAI & State Highway Traffic Police",
+      "peak_to_free_flow_delay_index": 1.55,
+      "avg_peak_commute_speed_kmh": 28.0,
+      "avg_free_flow_speed_kmh": 52.0,
+      "monthly_hours_lost_avg": 20
+    }
   }
 ]

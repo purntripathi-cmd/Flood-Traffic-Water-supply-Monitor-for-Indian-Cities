@@ -1609,5 +1609,134 @@
       "Shahi Bridge causes daily traffic paralysis connecting north and south Jaunpur",
       "High real estate avoidance rating for properties within 500m of Gomti riverbed"
     ]
+  },
+  {
+    "id": "mm_goa_assagao",
+    "name": "Assagao & Anjuna Plateau",
+    "city_id": "goa",
+    "city_name": "Goa",
+    "elevation_m": 42,
+    "elevation_vs_basin": "Elevated Laterite Tableland (+35m above coastal datum)",
+    "flood_risk_category": "Zero Flood Risk (High Elevation Laterite Ridge)",
+    "swd_drainage_status": "Natural porous laterite drainage fissures, rapid absorption into ground",
+    "traffic_delay_index": 1.65,
+    "water_supply_score": 78,
+    "composite_avoidance_score": 88,
+    "top_builders_active": [
+      "Vianaar Homes",
+      "Isprava Luxury Villas",
+      "Acron"
+    ],
+    "civic_citation": "Goa WRD Elevation Survey 2024; High-end heritage boutique villa corridor"
+  },
+  {
+    "id": "mm_goa_panaji",
+    "name": "Panaji Central & Patto Waterfront",
+    "city_id": "goa",
+    "city_name": "Goa",
+    "elevation_m": 4,
+    "elevation_vs_basin": "Low-Lying Tidal Estuary (-1.5m vs Mandovi Spring Tide)",
+    "flood_risk_category": "Moderate Seasonal Inundation (High Tide Backflow)",
+    "swd_drainage_status": "Sluice gates installed; monsoon waterlogging at 18th June Road & Patto",
+    "traffic_delay_index": 2.1,
+    "water_supply_score": 85,
+    "composite_avoidance_score": 62,
+    "top_builders_active": [
+      "Adwalpalkar Constructions",
+      "Gera Developments"
+    ],
+    "civic_citation": "CCP Panaji Disaster Management Audit 2023; Mandovi flood embankment zone"
+  },
+  {
+    "id": "mm_goa_ponda_agro",
+    "name": "Ponda & Valpoi Fertile Spice Belt",
+    "city_id": "goa",
+    "city_name": "Goa",
+    "elevation_m": 88,
+    "elevation_vs_basin": "Western Ghats Foothill Basin (+75m above coastal plain)",
+    "flood_risk_category": "Zero Flood Risk (Rolling Horticultural Slopes)",
+    "swd_drainage_status": "Unimpeded gravity slope drainage to perennial hill streams",
+    "traffic_delay_index": 1.25,
+    "water_supply_score": 94,
+    "composite_avoidance_score": 92,
+    "top_builders_active": [
+      "Organic Agroforestry Estates",
+      "Tata Housing Goa"
+    ],
+    "civic_citation": "ICAR-CCARI Old Goa Soil & Agroforestry Registry 2024"
+  },
+  {
+    "id": "mm_goa_calangute_coast",
+    "name": "Calangute & Baga Coastal Basin",
+    "city_id": "goa",
+    "city_name": "Goa",
+    "elevation_m": 3,
+    "elevation_vs_basin": "Depression behind coastal dunes (0m to +2m MSL)",
+    "flood_risk_category": "High Vulnerability (Coastal Surges & Street Submergence)",
+    "swd_drainage_status": "Over-concretized storm nalas; tourist gridlock and beach road flooding",
+    "traffic_delay_index": 2.75,
+    "water_supply_score": 55,
+    "composite_avoidance_score": 48,
+    "top_builders_active": [
+      "Local Commercial Developers"
+    ],
+    "civic_citation": "Goa Coastal Zone Management Authority (GCZMA) Hazard Mapping"
+  },
+  {
+    "id": "mm_pb_ludhiana_south",
+    "name": "Ludhiana South & Pakhowal Agro-Belt",
+    "city_id": "punjab_fertile_basin",
+    "city_name": "Punjab & Haryana",
+    "elevation_m": 252,
+    "elevation_vs_basin": "Elevated Alluvial Plain (+18m vs Buddha Nullah)",
+    "flood_risk_category": "Low Inundation Risk (Graded Canal Network)",
+    "swd_drainage_status": "Underground storm water conduits along Southern Bypass",
+    "traffic_delay_index": 1.5,
+    "water_supply_score": 92,
+    "composite_avoidance_score": 86,
+    "top_builders_active": [
+      "Omaxe Limited",
+      "Hero Realty",
+      "AIPL"
+    ],
+    "civic_citation": "GLADA Town Planning & Punjab Water Resources Dept 2024"
+  },
+  {
+    "id": "mm_pb_karnal_agri",
+    "name": "Karnal Agri-Tech Belt (GT Road)",
+    "city_id": "punjab_fertile_basin",
+    "city_name": "Punjab & Haryana",
+    "elevation_m": 258,
+    "elevation_vs_basin": "Yamuna Upper Plain (Free Draining Alluvium)",
+    "flood_risk_category": "Zero Flood Risk (High Ground Tableland)",
+    "swd_drainage_status": "Excellent canal gradient; zero water stagnation",
+    "traffic_delay_index": 1.35,
+    "water_supply_score": 96,
+    "composite_avoidance_score": 91,
+    "top_builders_active": [
+      "Eldeco Group",
+      "AIPL",
+      "Karnal Smart City"
+    ],
+    "civic_citation": "ICAR-CSSRI Karnal Soil & Irrigation Master Survey 2024"
+  },
+  {
+    "id": "mm_pb_mohali_aerocity",
+    "name": "Mohali Aerocity & New Chandigarh (GMADA)",
+    "city_id": "punjab_fertile_basin",
+    "city_name": "Punjab & Haryana",
+    "elevation_m": 312,
+    "elevation_vs_basin": "Shivalik Piedmont Plain (+45m above Ghaggar basin)",
+    "flood_risk_category": "Zero Flood Risk (Modern Planned Grid)",
+    "swd_drainage_status": "Modern concrete dual stormwater drains with retention reservoirs",
+    "traffic_delay_index": 1.3,
+    "water_supply_score": 90,
+    "composite_avoidance_score": 93,
+    "top_builders_active": [
+      "DLF North",
+      "Hero Realty",
+      "Sushma Group"
+    ],
+    "civic_citation": "GMADA Master Plan 2031 & Punjab RERA Directory"
   }
 ]

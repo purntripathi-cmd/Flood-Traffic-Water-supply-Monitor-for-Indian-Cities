@@ -37,17 +37,17 @@
         "name": "New Horizon Gurukul",
         "distance_km": 1.4,
         "rating": 4.6,
-        "annual_fees_class_1_to_5": "\u20b91.45L - \u20b91.70L",
-        "annual_fees_class_6_to_10": "\u20b91.75L - \u20b92.05L",
-        "annual_fees_class_11_to_12": "\u20b91.90L - \u20b92.25L"
+        "annual_fees_class_1_to_5": "₹1.45L - ₹1.70L",
+        "annual_fees_class_6_to_10": "₹1.75L - ₹2.05L",
+        "annual_fees_class_11_to_12": "₹1.90L - ₹2.25L"
       },
       {
         "name": "Gear Innovative International School",
         "distance_km": 2.8,
         "rating": 4.4,
-        "annual_fees_class_1_to_5": "\u20b91.50L - \u20b91.80L",
-        "annual_fees_class_6_to_10": "\u20b91.80L - \u20b92.15L",
-        "annual_fees_class_11_to_12": "\u20b92.00L - \u20b92.35L"
+        "annual_fees_class_1_to_5": "₹1.50L - ₹1.80L",
+        "annual_fees_class_6_to_10": "₹1.80L - ₹2.15L",
+        "annual_fees_class_11_to_12": "₹2.00L - ₹2.35L"
       }
     ],
     "google_maps_query": "Sobha Neopolis Panathur Bangalore",
@@ -63,13 +63,13 @@
       "TomTom / Google Mobility Commute Index",
       "Public Works Department / Metro Phase Infrastructure Blueprint"
     ],
-    "critic_ai_status": "\u2705 Critic AI Validated",
+    "critic_ai_status": "✅ Critic AI Validated",
     "critic_ai_notes": [
       "All structural plinth elevations, price bands, water pipelines, and RERA claims verified consistent."
     ],
     "property_status": "Under Construction",
     "property_age": "Under Construction (Handover in ~14 months)",
-    "age_vs_completion": "\ud83c\udfd7\ufe0f Under Construction (Dec 2026 \u2022 14 mos)",
+    "age_vs_completion": "🏗️ Under Construction (Dec 2026 • 14 mos)",
     "possession_year": 2026
   },
   {
@@ -110,9 +110,9 @@
         "name": "The Valley School (KFI)",
         "distance_km": 4.2,
         "rating": 4.8,
-        "annual_fees_class_1_to_5": "\u20b91.80L - \u20b92.20L",
-        "annual_fees_class_6_to_10": "\u20b92.20L - \u20b92.60L",
-        "annual_fees_class_11_to_12": "\u20b92.50L - \u20b92.90L"
+        "annual_fees_class_1_to_5": "₹1.80L - ₹2.20L",
+        "annual_fees_class_6_to_10": "₹2.20L - ₹2.60L",
+        "annual_fees_class_11_to_12": "₹2.50L - ₹2.90L"
       }
     ],
     "google_maps_query": "Prestige Falcon City Kanakapura Road Bangalore",
@@ -128,13 +128,13 @@
       "TomTom / Google Mobility Commute Index",
       "Public Works Department / Metro Phase Infrastructure Blueprint"
     ],
-    "critic_ai_status": "\u2705 Critic AI Validated",
+    "critic_ai_status": "✅ Critic AI Validated",
     "critic_ai_notes": [
       "All structural plinth elevations, price bands, water pipelines, and RERA claims verified consistent."
     ],
     "property_status": "Ready to Move",
     "property_age": "4 years old (OC delivered in 2022)",
-    "age_vs_completion": "\ud83d\udfe2 Ready to Move (4 yrs old \u2022 Active Community)",
+    "age_vs_completion": "🟢 Ready to Move (4 yrs old • Active Community)",
     "possession_year": 2022
   },
   {
@@ -175,9 +175,9 @@
         "name": "Greenwood High International School",
         "distance_km": 4.1,
         "rating": 4.7,
-        "annual_fees_class_1_to_5": "\u20b92.20L - \u20b92.80L",
-        "annual_fees_class_6_to_10": "\u20b92.90L - \u20b93.60L",
-        "annual_fees_class_11_to_12": "\u20b93.40L - \u20b94.20L"
+        "annual_fees_class_1_to_5": "₹2.20L - ₹2.80L",
+        "annual_fees_class_6_to_10": "₹2.90L - ₹3.60L",
+        "annual_fees_class_11_to_12": "₹3.40L - ₹4.20L"
       }
     ],
     "google_maps_query": "Brigade Cornerstone Utopia Varthur Bangalore",
@@ -193,13 +193,13 @@
       "TomTom / Google Mobility Commute Index",
       "Public Works Department / Metro Phase Infrastructure Blueprint"
     ],
-    "critic_ai_status": "\u2705 Critic AI Validated",
+    "critic_ai_status": "✅ Critic AI Validated",
     "critic_ai_notes": [
       "All structural plinth elevations, price bands, water pipelines, and RERA claims verified consistent."
     ],
     "property_status": "Upcoming Pre-Launch",
     "property_age": "Upcoming Phase 2 (Foundation & Raft stage)",
-    "age_vs_completion": "\ud83d\ude80 Upcoming Pre-Launch (March 2027 \u2022 ~2 yrs)",
+    "age_vs_completion": "🚀 Upcoming Pre-Launch (March 2027 • ~2 yrs)",
     "possession_year": 2027
   },
   {
@@ -240,9 +240,9 @@
         "name": "Oberoi International School",
         "distance_km": 5.4,
         "rating": 4.9,
-        "annual_fees_class_1_to_5": "\u20b93.50L - \u20b94.50L",
-        "annual_fees_class_6_to_10": "\u20b94.50L - \u20b95.80L",
-        "annual_fees_class_11_to_12": "\u20b95.50L - \u20b97.00L"
+        "annual_fees_class_1_to_5": "₹3.50L - ₹4.50L",
+        "annual_fees_class_6_to_10": "₹4.50L - ₹5.80L",
+        "annual_fees_class_11_to_12": "₹5.50L - ₹7.00L"
       }
     ],
     "google_maps_query": "Oberoi Sky City Borivali East Mumbai",
@@ -258,13 +258,13 @@
       "TomTom / Google Mobility Commute Index",
       "Public Works Department / Metro Phase Infrastructure Blueprint"
     ],
-    "critic_ai_status": "\u2705 Critic AI Validated",
+    "critic_ai_status": "✅ Critic AI Validated",
     "critic_ai_notes": [
       "All structural plinth elevations, price bands, water pipelines, and RERA claims verified consistent."
     ],
     "property_status": "Under Construction",
     "property_age": "Under Construction (Finishing & Snagging stage)",
-    "age_vs_completion": "\ud83c\udfd7\ufe0f Under Construction (June 2026 \u2022 8 mos)",
+    "age_vs_completion": "🏗️ Under Construction (June 2026 • 8 mos)",
     "possession_year": 2026
   },
   {
@@ -305,9 +305,9 @@
         "name": "Delhi Public School (Nerul)",
         "distance_km": 1.8,
         "rating": 4.8,
-        "annual_fees_class_1_to_5": "\u20b91.40L - \u20b91.75L",
-        "annual_fees_class_6_to_10": "\u20b91.75L - \u20b92.10L",
-        "annual_fees_class_11_to_12": "\u20b91.95L - \u20b92.35L"
+        "annual_fees_class_1_to_5": "₹1.40L - ₹1.75L",
+        "annual_fees_class_6_to_10": "₹1.75L - ₹2.10L",
+        "annual_fees_class_11_to_12": "₹1.95L - ₹2.35L"
       }
     ],
     "google_maps_query": "L&T Seawoods Residences Navi Mumbai",
@@ -323,13 +323,13 @@
       "TomTom / Google Mobility Commute Index",
       "Public Works Department / Metro Phase Infrastructure Blueprint"
     ],
-    "critic_ai_status": "\u2705 Critic AI Validated",
+    "critic_ai_status": "✅ Critic AI Validated",
     "critic_ai_notes": [
       "All structural plinth elevations, price bands, water pipelines, and RERA claims verified consistent."
     ],
     "property_status": "Under Construction",
     "property_age": "Near Completion (OC inspection in progress)",
-    "age_vs_completion": "\ud83c\udfd7\ufe0f Near Completion (Dec 2025 \u2022 ~2 mos)",
+    "age_vs_completion": "🏗️ Near Completion (Dec 2025 • ~2 mos)",
     "possession_year": 2025
   },
   {
@@ -370,9 +370,9 @@
         "name": "Bombay Scottish School (Powai)",
         "distance_km": 4.5,
         "rating": 4.8,
-        "annual_fees_class_1_to_5": "\u20b91.90L - \u20b92.50L",
-        "annual_fees_class_6_to_10": "\u20b92.50L - \u20b93.20L",
-        "annual_fees_class_11_to_12": "\u20b92.90L - \u20b93.60L"
+        "annual_fees_class_1_to_5": "₹1.90L - ₹2.50L",
+        "annual_fees_class_6_to_10": "₹2.50L - ₹3.20L",
+        "annual_fees_class_11_to_12": "₹2.90L - ₹3.60L"
       }
     ],
     "google_maps_query": "Godrej The Trees Vikhroli Mumbai",
@@ -388,13 +388,13 @@
       "TomTom / Google Mobility Commute Index",
       "Public Works Department / Metro Phase Infrastructure Blueprint"
     ],
-    "critic_ai_status": "\u2705 Critic AI Validated",
+    "critic_ai_status": "✅ Critic AI Validated",
     "critic_ai_notes": [
       "All structural plinth elevations, price bands, water pipelines, and RERA claims verified consistent."
     ],
     "property_status": "Under Construction",
     "property_age": "Under Construction (18th floor slab cast)",
-    "age_vs_completion": "\ud83c\udfd7\ufe0f Under Construction (March 2027 \u2022 17 mos)",
+    "age_vs_completion": "🏗️ Under Construction (March 2027 • 17 mos)",
     "possession_year": 2027
   },
   {
@@ -435,9 +435,9 @@
         "name": "Sishya School (Adyar)",
         "distance_km": 4.5,
         "rating": 4.9,
-        "annual_fees_class_1_to_5": "\u20b91.60L - \u20b92.10L",
-        "annual_fees_class_6_to_10": "\u20b92.10L - \u20b92.60L",
-        "annual_fees_class_11_to_12": "\u20b92.40L - \u20b92.90L"
+        "annual_fees_class_1_to_5": "₹1.60L - ₹2.10L",
+        "annual_fees_class_6_to_10": "₹2.10L - ₹2.60L",
+        "annual_fees_class_11_to_12": "₹2.40L - ₹2.90L"
       }
     ],
     "google_maps_query": "Purva Somerset House Guindy Chennai",
@@ -453,13 +453,13 @@
       "TomTom / Google Mobility Commute Index",
       "Public Works Department / Metro Phase Infrastructure Blueprint"
     ],
-    "critic_ai_status": "\u2705 Critic AI Validated",
+    "critic_ai_status": "✅ Critic AI Validated",
     "critic_ai_notes": [
       "All structural plinth elevations, price bands, water pipelines, and RERA claims verified consistent."
     ],
     "property_status": "Ready to Move",
     "property_age": "2 years old (Delivered in 2024)",
-    "age_vs_completion": "\ud83d\udfe2 Ready to Move (2 yrs old \u2022 Instant Handover)",
+    "age_vs_completion": "🟢 Ready to Move (2 yrs old • Instant Handover)",
     "possession_year": 2024
   },
   {
@@ -500,9 +500,9 @@
         "name": "The School - KFI",
         "distance_km": 4.1,
         "rating": 4.8,
-        "annual_fees_class_1_to_5": "\u20b91.50L - \u20b91.90L",
-        "annual_fees_class_6_to_10": "\u20b91.90L - \u20b92.40L",
-        "annual_fees_class_11_to_12": "\u20b92.20L - \u20b92.70L"
+        "annual_fees_class_1_to_5": "₹1.50L - ₹1.90L",
+        "annual_fees_class_6_to_10": "₹1.90L - ₹2.40L",
+        "annual_fees_class_11_to_12": "₹2.20L - ₹2.70L"
       }
     ],
     "google_maps_query": "Brigade Residences World Trade Center Perungudi Chennai",
@@ -518,13 +518,13 @@
       "TomTom / Google Mobility Commute Index",
       "Public Works Department / Metro Phase Infrastructure Blueprint"
     ],
-    "critic_ai_status": "\u2705 Critic AI Validated",
+    "critic_ai_status": "✅ Critic AI Validated",
     "critic_ai_notes": [
       "All structural plinth elevations, price bands, water pipelines, and RERA claims verified consistent."
     ],
     "property_status": "Under Construction",
     "property_age": "Under Construction (Structure complete)",
-    "age_vs_completion": "\ud83c\udfd7\ufe0f Under Construction (Q3 2026 \u2022 11 mos)",
+    "age_vs_completion": "🏗️ Under Construction (Q3 2026 • 11 mos)",
     "possession_year": 2026
   },
   {
@@ -565,9 +565,9 @@
         "name": "DAV Boys Senior Secondary School",
         "distance_km": 4.8,
         "rating": 4.8,
-        "annual_fees_class_1_to_5": "\u20b990K - \u20b91.25L",
-        "annual_fees_class_6_to_10": "\u20b91.20L - \u20b91.55L",
-        "annual_fees_class_11_to_12": "\u20b91.45L - \u20b91.80L"
+        "annual_fees_class_1_to_5": "₹90K - ₹1.25L",
+        "annual_fees_class_6_to_10": "₹1.20L - ₹1.55L",
+        "annual_fees_class_11_to_12": "₹1.45L - ₹1.80L"
       }
     ],
     "google_maps_query": "Appaswamy Trellis Vadapalani Chennai",
@@ -583,13 +583,13 @@
       "TomTom / Google Mobility Commute Index",
       "Public Works Department / Metro Phase Infrastructure Blueprint"
     ],
-    "critic_ai_status": "\u2705 Critic AI Validated",
+    "critic_ai_status": "✅ Critic AI Validated",
     "critic_ai_notes": [
       "All structural plinth elevations, price bands, water pipelines, and RERA claims verified consistent."
     ],
     "property_status": "Under Construction",
     "property_age": "Under Construction (Tower A MEP works)",
-    "age_vs_completion": "\ud83c\udfd7\ufe0f Under Construction (Dec 2026 \u2022 14 mos)",
+    "age_vs_completion": "🏗️ Under Construction (Dec 2026 • 14 mos)",
     "possession_year": 2026
   },
   {
@@ -630,9 +630,9 @@
         "name": "The Shri Ram School (Aravali)",
         "distance_km": 1.8,
         "rating": 4.9,
-        "annual_fees_class_1_to_5": "\u20b92.80L - \u20b93.60L",
-        "annual_fees_class_6_to_10": "\u20b93.60L - \u20b94.50L",
-        "annual_fees_class_11_to_12": "\u20b94.20L - \u20b95.20L"
+        "annual_fees_class_1_to_5": "₹2.80L - ₹3.60L",
+        "annual_fees_class_6_to_10": "₹3.60L - ₹4.50L",
+        "annual_fees_class_11_to_12": "₹4.20L - ₹5.20L"
       }
     ],
     "google_maps_query": "DLF The Crest Golf Course Road Gurgaon",
@@ -648,13 +648,13 @@
       "TomTom / Google Mobility Commute Index",
       "Public Works Department / Metro Phase Infrastructure Blueprint"
     ],
-    "critic_ai_status": "\u2705 Critic AI Validated",
+    "critic_ai_status": "✅ Critic AI Validated",
     "critic_ai_notes": [
       "All structural plinth elevations, price bands, water pipelines, and RERA claims verified consistent."
     ],
     "property_status": "Near Completion",
     "property_age": "Near Completion (Internal fitouts ongoing)",
-    "age_vs_completion": "\ud83c\udfd7\ufe0f Near Completion (Q1 2026 \u2022 5 mos)",
+    "age_vs_completion": "🏗️ Near Completion (Q1 2026 • 5 mos)",
     "possession_year": 2026
   },
   {
@@ -695,9 +695,9 @@
         "name": "Step by Step School (Sector 132)",
         "distance_km": 6.2,
         "rating": 4.9,
-        "annual_fees_class_1_to_5": "\u20b92.50L - \u20b93.20L",
-        "annual_fees_class_6_to_10": "\u20b93.20L - \u20b93.90L",
-        "annual_fees_class_11_to_12": "\u20b94.20L - \u20b94.80L"
+        "annual_fees_class_1_to_5": "₹2.50L - ₹3.20L",
+        "annual_fees_class_6_to_10": "₹3.20L - ₹3.90L",
+        "annual_fees_class_11_to_12": "₹4.20L - ₹4.80L"
       }
     ],
     "google_maps_query": "Eldeco Live Neoma Sector 150 Noida",
@@ -713,13 +713,13 @@
       "TomTom / Google Mobility Commute Index",
       "Public Works Department / Metro Phase Infrastructure Blueprint"
     ],
-    "critic_ai_status": "\u2705 Critic AI Validated",
+    "critic_ai_status": "✅ Critic AI Validated",
     "critic_ai_notes": [
       "All structural plinth elevations, price bands, water pipelines, and RERA claims verified consistent."
     ],
     "property_status": "Under Construction",
     "property_age": "Under Construction (Structure 12th floor)",
-    "age_vs_completion": "\ud83c\udfd7\ufe0f Under Construction (Dec 2026 \u2022 14 mos)",
+    "age_vs_completion": "🏗️ Under Construction (Dec 2026 • 14 mos)",
     "possession_year": 2026
   },
   {
@@ -760,9 +760,9 @@
         "name": "Delhi Public School (Mathura Road)",
         "distance_km": 6.8,
         "rating": 4.8,
-        "annual_fees_class_1_to_5": "\u20b91.80L - \u20b92.20L",
-        "annual_fees_class_6_to_10": "\u20b92.20L - \u20b92.60L",
-        "annual_fees_class_11_to_12": "\u20b92.50L - \u20b93.00L"
+        "annual_fees_class_1_to_5": "₹1.80L - ₹2.20L",
+        "annual_fees_class_6_to_10": "₹2.20L - ₹2.60L",
+        "annual_fees_class_11_to_12": "₹2.50L - ₹3.00L"
       }
     ],
     "google_maps_query": "Godrej South Estate Okhla Delhi",
@@ -778,13 +778,13 @@
       "TomTom / Google Mobility Commute Index",
       "Public Works Department / Metro Phase Infrastructure Blueprint"
     ],
-    "critic_ai_status": "\u2705 Critic AI Validated",
+    "critic_ai_status": "✅ Critic AI Validated",
     "critic_ai_notes": [
       "All structural plinth elevations, price bands, water pipelines, and RERA claims verified consistent."
     ],
     "property_status": "Upcoming Pre-Launch",
     "property_age": "Upcoming Phase 2 (Earthwork & Piling)",
-    "age_vs_completion": "\ud83d\ude80 Upcoming Pre-Launch (March 2027 \u2022 ~2 yrs)",
+    "age_vs_completion": "🚀 Upcoming Pre-Launch (March 2027 • ~2 yrs)",
     "possession_year": 2027
   },
   {
@@ -825,9 +825,9 @@
         "name": "Oakridge International School",
         "distance_km": 3.8,
         "rating": 4.8,
-        "annual_fees_class_1_to_5": "\u20b92.60L - \u20b93.40L",
-        "annual_fees_class_6_to_10": "\u20b93.40L - \u20b94.30L",
-        "annual_fees_class_11_to_12": "\u20b94.00L - \u20b95.00L"
+        "annual_fees_class_1_to_5": "₹2.60L - ₹3.40L",
+        "annual_fees_class_6_to_10": "₹3.40L - ₹4.30L",
+        "annual_fees_class_11_to_12": "₹4.00L - ₹5.00L"
       }
     ],
     "google_maps_query": "My Home Bhooja Hitec City Hyderabad",
@@ -843,13 +843,13 @@
       "TomTom / Google Mobility Commute Index",
       "Public Works Department / Metro Phase Infrastructure Blueprint"
     ],
-    "critic_ai_status": "\u2705 Critic AI Validated",
+    "critic_ai_status": "✅ Critic AI Validated",
     "critic_ai_notes": [
       "All structural plinth elevations, price bands, water pipelines, and RERA claims verified consistent."
     ],
     "property_status": "Ready to Move",
     "property_age": "3 years old (Delivered in 2023)",
-    "age_vs_completion": "\ud83d\udfe2 Ready to Move (3 yrs old \u2022 Luxury OC)",
+    "age_vs_completion": "🟢 Ready to Move (3 yrs old • Luxury OC)",
     "possession_year": 2023
   },
   {
@@ -890,9 +890,9 @@
         "name": "CHIREC International School",
         "distance_km": 2.2,
         "rating": 4.9,
-        "annual_fees_class_1_to_5": "\u20b92.50L - \u20b93.20L",
-        "annual_fees_class_6_to_10": "\u20b93.20L - \u20b94.00L",
-        "annual_fees_class_11_to_12": "\u20b93.80L - \u20b94.80L"
+        "annual_fees_class_1_to_5": "₹2.50L - ₹3.20L",
+        "annual_fees_class_6_to_10": "₹3.20L - ₹4.00L",
+        "annual_fees_class_11_to_12": "₹3.80L - ₹4.80L"
       }
     ],
     "google_maps_query": "Aparna Sarovar Zenith Nallagandla Hyderabad",
@@ -908,13 +908,13 @@
       "TomTom / Google Mobility Commute Index",
       "Public Works Department / Metro Phase Infrastructure Blueprint"
     ],
-    "critic_ai_status": "\u2705 Critic AI Validated",
+    "critic_ai_status": "✅ Critic AI Validated",
     "critic_ai_notes": [
       "All structural plinth elevations, price bands, water pipelines, and RERA claims verified consistent."
     ],
     "property_status": "Ready to Move",
     "property_age": "5 years old (Established society 2021)",
-    "age_vs_completion": "\ud83d\udfe2 Ready to Move (5 yrs old \u2022 100% Occupied)",
+    "age_vs_completion": "🟢 Ready to Move (5 yrs old • 100% Occupied)",
     "possession_year": 2021
   },
   {
@@ -955,9 +955,9 @@
         "name": "Oakridge International School",
         "distance_km": 3.1,
         "rating": 4.8,
-        "annual_fees_class_1_to_5": "\u20b92.60L - \u20b93.40L",
-        "annual_fees_class_6_to_10": "\u20b93.40L - \u20b94.30L",
-        "annual_fees_class_11_to_12": "\u20b94.00L - \u20b95.00L"
+        "annual_fees_class_1_to_5": "₹2.60L - ₹3.40L",
+        "annual_fees_class_6_to_10": "₹3.40L - ₹4.30L",
+        "annual_fees_class_11_to_12": "₹4.00L - ₹5.00L"
       }
     ],
     "google_maps_query": "Prestige Clairemont Kokapet Hyderabad",
@@ -973,13 +973,13 @@
       "TomTom / Google Mobility Commute Index",
       "Public Works Department / Metro Phase Infrastructure Blueprint"
     ],
-    "critic_ai_status": "\u2705 Critic AI Validated",
+    "critic_ai_status": "✅ Critic AI Validated",
     "critic_ai_notes": [
       "All structural plinth elevations, price bands, water pipelines, and RERA claims verified consistent."
     ],
     "property_status": "Under Construction",
     "property_age": "Under Construction (10th floor slab)",
-    "age_vs_completion": "\ud83c\udfd7\ufe0f Under Construction (March 2027 \u2022 17 mos)",
+    "age_vs_completion": "🏗️ Under Construction (March 2027 • 17 mos)",
     "possession_year": 2027
   },
   {
@@ -1020,9 +1020,9 @@
         "name": "Sunbeam School (Varuna / Cantt)",
         "distance_km": 2.8,
         "rating": 4.8,
-        "annual_fees_class_1_to_5": "\u20b975K - \u20b995K",
-        "annual_fees_class_6_to_10": "\u20b995K - \u20b91.25L",
-        "annual_fees_class_11_to_12": "\u20b91.15L - \u20b91.45L"
+        "annual_fees_class_1_to_5": "₹75K - ₹95K",
+        "annual_fees_class_6_to_10": "₹95K - ₹1.25L",
+        "annual_fees_class_11_to_12": "₹1.15L - ₹1.45L"
       }
     ],
     "google_maps_query": "Eldeco Surya Greens Shivpur Varanasi",
@@ -1038,13 +1038,13 @@
       "TomTom / Google Mobility Commute Index",
       "Public Works Department / Metro Phase Infrastructure Blueprint"
     ],
-    "critic_ai_status": "\u2705 Critic AI Validated",
+    "critic_ai_status": "✅ Critic AI Validated",
     "critic_ai_notes": [
       "All structural plinth elevations, price bands, water pipelines, and RERA claims verified consistent."
     ],
     "property_status": "Under Construction",
     "property_age": "Under Construction (Brickwork & Glazing)",
-    "age_vs_completion": "\ud83c\udfd7\ufe0f Under Construction (Dec 2026 \u2022 14 mos)",
+    "age_vs_completion": "🏗️ Under Construction (Dec 2026 • 14 mos)",
     "possession_year": 2026
   },
   {
@@ -1085,9 +1085,9 @@
         "name": "Boys' High School and College",
         "distance_km": 1.8,
         "rating": 4.9,
-        "annual_fees_class_1_to_5": "\u20b965K - \u20b985K",
-        "annual_fees_class_6_to_10": "\u20b985K - \u20b91.10L",
-        "annual_fees_class_11_to_12": "\u20b91.05L - \u20b91.35L"
+        "annual_fees_class_1_to_5": "₹65K - ₹85K",
+        "annual_fees_class_6_to_10": "₹85K - ₹1.10L",
+        "annual_fees_class_11_to_12": "₹1.05L - ₹1.35L"
       }
     ],
     "google_maps_query": "Omaxe Heights Civil Lines Prayagraj",
@@ -1103,13 +1103,13 @@
       "TomTom / Google Mobility Commute Index",
       "Public Works Department / Metro Phase Infrastructure Blueprint"
     ],
-    "critic_ai_status": "\u2705 Critic AI Validated",
+    "critic_ai_status": "✅ Critic AI Validated",
     "critic_ai_notes": [
       "All structural plinth elevations, price bands, water pipelines, and RERA claims verified consistent."
     ],
     "property_status": "Ready to Move",
     "property_age": "2 years old (Delivered in 2024)",
-    "age_vs_completion": "\ud83d\udfe2 Ready to Move (2 yrs old \u2022 Registry Ready)",
+    "age_vs_completion": "🟢 Ready to Move (2 yrs old • Registry Ready)",
     "possession_year": 2024
   },
   {
@@ -1150,9 +1150,9 @@
         "name": "Delhi Public School (Varanasi NH-2)",
         "distance_km": 7.0,
         "rating": 4.7,
-        "annual_fees_class_1_to_5": "\u20b990K - \u20b91.15L",
-        "annual_fees_class_6_to_10": "\u20b91.15L - \u20b91.45L",
-        "annual_fees_class_11_to_12": "\u20b91.35L - \u20b91.70L"
+        "annual_fees_class_1_to_5": "₹90K - ₹1.15L",
+        "annual_fees_class_6_to_10": "₹1.15L - ₹1.45L",
+        "annual_fees_class_11_to_12": "₹1.35L - ₹1.70L"
       }
     ],
     "google_maps_query": "Babatpur Airport Varanasi",
@@ -1168,13 +1168,101 @@
       "TomTom / Google Mobility Commute Index",
       "Public Works Department / Metro Phase Infrastructure Blueprint"
     ],
-    "critic_ai_status": "\u2705 Critic AI Validated",
+    "critic_ai_status": "✅ Critic AI Validated",
     "critic_ai_notes": [
       "All structural plinth elevations, price bands, water pipelines, and RERA claims verified consistent."
     ],
     "property_status": "Upcoming Pre-Launch",
     "property_age": "Upcoming Launch (RERA Sanctioned layout)",
-    "age_vs_completion": "\ud83d\ude80 Upcoming Pre-Launch (Q2 2027 \u2022 ~20 mos)",
+    "age_vs_completion": "🚀 Upcoming Pre-Launch (Q2 2027 • ~20 mos)",
     "possession_year": 2027
+  },
+  {
+    "id": "prop_goa_1",
+    "name": "Vianaar La Mer Portuguese Estate",
+    "city_id": "goa",
+    "city_name": "Goa",
+    "micro_market": "Assagao & Anjuna Plateau",
+    "builder": "Vianaar Homes",
+    "builder_tier": "Tier 1 Luxury Boutique",
+    "bhk": "3 BHK Luxury Pool Villa",
+    "avg_sqft": 2450,
+    "price_per_sqft": 14200,
+    "total_price_cr": 3.48,
+    "upfront_cash_required_lakhs": 69.6,
+    "total_ownership_cost_cr": 3.92,
+    "investment_score": 91,
+    "growth_probability_pct": 89,
+    "projected_5yr_appreciation_pct": 62,
+    "govt_master_plan_catalyst": "Mopa International Airport (DXN) Corridor & North Goa Coastal Highway 4-Laning",
+    "expected_completion": "Dec 2026",
+    "upcoming_phase": "Phase 2 (Villa Enclave)",
+    "property_status": "Under Construction",
+    "age_vs_completion": "🏗️ Under Construction (Dec 2026 • 14 mos)",
+    "elevation_m": 42,
+    "flood_resilience_tag": "🟢 Zero Flood Risk (Elevated Tableland)",
+    "water_infrastructure": {
+      "has_stp": true,
+      "has_water_softener": true,
+      "has_water_meter": true,
+      "has_gas_pipeline": true,
+      "piped_connection": "PWD Goa 24x7 Treated Line",
+      "has_double_pipe": true,
+      "stp_type": "MBBR Eco-STP"
+    },
+    "lat": 15.5862,
+    "lng": 73.7745,
+    "google_maps_query": "Assagao North Goa Luxury Villa",
+    "rera_url": "https://rera.goa.gov.in/",
+    "source_name": "Goa RERA Reg PRGO10220194 + Town and Country Planning (TCP) Goa Sanction",
+    "critic_ai_status": "✅ Critic AI Validated",
+    "monthly_maintenance_inr": 12000,
+    "road_distance_to_school_benchmark_km": 4.2,
+    "school_benchmark_name": "Sharada Mandir School",
+    "road_distance_to_key_landmark_km": 18.5
+  },
+  {
+    "id": "prop_pb_1",
+    "name": "Hero Homes Pakhowal Boulevard",
+    "city_id": "punjab_fertile_basin",
+    "city_name": "Punjab & Haryana",
+    "micro_market": "Ludhiana South & Pakhowal Agro-Belt",
+    "builder": "Hero Realty",
+    "builder_tier": "Tier 1 Corporate National",
+    "bhk": "3 BHK + Lounge",
+    "avg_sqft": 1950,
+    "price_per_sqft": 6400,
+    "total_price_cr": 1.25,
+    "upfront_cash_required_lakhs": 25.0,
+    "total_ownership_cost_cr": 1.41,
+    "investment_score": 88,
+    "growth_probability_pct": 84,
+    "projected_5yr_appreciation_pct": 46,
+    "govt_master_plan_catalyst": "Delhi-Amritsar-Katra Expressway (NE-5) & Ludhiana Metro Ring Route",
+    "expected_completion": "Ready to Move",
+    "upcoming_phase": "Tower C & D Completed",
+    "property_status": "Ready to Move",
+    "age_vs_completion": "🟢 Ready to Move (2 yrs old • Active Community)",
+    "elevation_m": 252,
+    "flood_resilience_tag": "🟢 Safe Elevated Alluvial Plain",
+    "water_infrastructure": {
+      "has_stp": true,
+      "has_water_softener": true,
+      "has_water_meter": true,
+      "has_gas_pipeline": true,
+      "piped_connection": "Municipal Canal Water Supply",
+      "has_double_pipe": true,
+      "stp_type": "SBR Advanced STP"
+    },
+    "lat": 30.852,
+    "lng": 75.819,
+    "google_maps_query": "Hero Homes Pakhowal Road Ludhiana",
+    "rera_url": "https://rera.punjab.gov.in/",
+    "source_name": "Punjab RERA PBRERA-LDH45-PR0034 + GLADA Statutory Approval",
+    "critic_ai_status": "✅ Critic AI Validated",
+    "monthly_maintenance_inr": 6500,
+    "road_distance_to_school_benchmark_km": 2.8,
+    "school_benchmark_name": "DPS Ludhiana",
+    "road_distance_to_key_landmark_km": 8.2
   }
 ]

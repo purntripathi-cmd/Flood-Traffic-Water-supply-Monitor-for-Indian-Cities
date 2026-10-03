@@ -2344,5 +2344,125 @@
     "strengths": "Excellent four-lane NH-31 highway frontage, 45 minutes to Varanasi International Airport.",
     "cautions": "Sub-surface tube-well water requires domestic softener for high TDS.",
     "rera_portal_url": "https://up-rera.in/"
+  },
+  {
+    "id": "bld_vianaar_goa",
+    "name": "Vianaar Homes",
+    "city_id": "goa",
+    "tier": "Tier 1 Luxury Boutique",
+    "headquarters": "Goa & New Delhi",
+    "established_year": 2007,
+    "rera_compliance_score": 96,
+    "on_time_delivery_pct": 95,
+    "construction_quality_rating": 9.5,
+    "litigation_index": "Minimal",
+    "total_delivered_sqft_mn": 4.5,
+    "flagship_projects": {
+      "goa": "La Mer Assagao, El Tesoro Siolim, Casa Vianaar"
+    },
+    "active_states_and_cities": [
+      "Goa",
+      "North Goa",
+      "South Goa"
+    ],
+    "strengths": "Architectural Mediterranean-Portuguese fusion, post-handover rental asset management (8-10% yields).",
+    "cautions": "Premium luxury price bracket (₹2.5 Cr to ₹7.5 Cr).",
+    "rera_portal_url": "https://rera.goa.gov.in/"
+  },
+  {
+    "id": "bld_isprava_goa",
+    "name": "Isprava Luxury Villas",
+    "city_id": "goa",
+    "tier": "Tier 1 Ultra-Luxury",
+    "headquarters": "Mumbai, Maharashtra",
+    "established_year": 2016,
+    "rera_compliance_score": 97,
+    "on_time_delivery_pct": 93,
+    "construction_quality_rating": 9.8,
+    "litigation_index": "Negligible",
+    "total_delivered_sqft_mn": 3.8,
+    "flagship_projects": {
+      "goa": "Estate de Siolim, Villa Verde Assagao, Vaddo Morjim"
+    },
+    "active_states_and_cities": [
+      "Goa",
+      "Maharashtra",
+      "Alibaug",
+      "Nilgiris"
+    ],
+    "strengths": "Turnkey designer estates with private infinity pools, antique teak craftsmanship, high celebrity clientele.",
+    "cautions": "Ultra-high ticket pricing (₹6 Cr to ₹22 Cr).",
+    "rera_portal_url": "https://rera.goa.gov.in/"
+  },
+  {
+    "id": "bld_acron_goa",
+    "name": "Acron Developers",
+    "city_id": "goa",
+    "tier": "Regional Champion (Goa Pioneer)",
+    "headquarters": "Baga, Goa",
+    "established_year": 1988,
+    "rera_compliance_score": 95,
+    "on_time_delivery_pct": 94,
+    "construction_quality_rating": 9.1,
+    "litigation_index": "Low",
+    "total_delivered_sqft_mn": 6.2,
+    "flagship_projects": {
+      "goa": "Acron Seawinds Benaulim, Acron Edgewater Siolim"
+    },
+    "active_states_and_cities": [
+      "Goa"
+    ],
+    "strengths": "35-year track record in coastal Goan architecture, clear titles, seismic and moisture damp-proofing.",
+    "cautions": "Conservative exterior aesthetic compared to contemporary modern villas.",
+    "rera_portal_url": "https://rera.goa.gov.in/"
+  },
+  {
+    "id": "bld_omaxe_pb",
+    "name": "Omaxe Limited",
+    "city_id": "punjab_fertile_basin",
+    "tier": "Tier 1 National",
+    "headquarters": "New Delhi",
+    "established_year": 1989,
+    "rera_compliance_score": 94,
+    "on_time_delivery_pct": 91,
+    "construction_quality_rating": 9.0,
+    "litigation_index": "Low to Moderate",
+    "total_delivered_sqft_mn": 132.0,
+    "flagship_projects": {
+      "punjab": "Omaxe Royal Residency Ludhiana, Omaxe New Chandigarh"
+    },
+    "active_states_and_cities": [
+      "Punjab",
+      "Haryana",
+      "Delhi-NCR",
+      "Uttar Pradesh"
+    ],
+    "strengths": "Pioneers of integrated mega-townships with sports academies, wide boulevards, and commercial plazas.",
+    "cautions": "Large-scale delivery phases span multiple quarters.",
+    "rera_portal_url": "https://rera.punjab.gov.in/"
+  },
+  {
+    "id": "bld_hero_pb",
+    "name": "Hero Realty",
+    "city_id": "punjab_fertile_basin",
+    "tier": "Tier 1 Corporate National",
+    "headquarters": "New Delhi",
+    "established_year": 2006,
+    "rera_compliance_score": 96,
+    "on_time_delivery_pct": 95,
+    "construction_quality_rating": 9.3,
+    "litigation_index": "Negligible",
+    "total_delivered_sqft_mn": 15.0,
+    "flagship_projects": {
+      "punjab": "Hero Homes Mohali, Hero Homes Ludhiana Pakhowal"
+    },
+    "active_states_and_cities": [
+      "Punjab",
+      "Delhi-NCR",
+      "Haryana"
+    ],
+    "strengths": "Hero Group corporate pedigree, IGBC Gold-rated green buildings, 80% open landscaped parks.",
+    "cautions": "High society maintenance charges due to expansive clubhouses.",
+    "rera_portal_url": "https://rera.punjab.gov.in/"
   }
 ]

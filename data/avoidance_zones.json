@@ -178,5 +178,29 @@
     "mitigation_status": "New bypass bridge operational, but inner city market streets remain bottlenecked.",
     "real_estate_impact": "High flood hazard for riverbank properties within 400m; severe commercial gridlock.",
     "citation": "IIT Delhi HydroSense (hydrosenselab) Gomti basin flood event catalog."
+  },
+  {
+    "id": "az_goa_mandovi",
+    "name": "Mandovi River Estuary & Ribandar Causeway Lowlands",
+    "city": "Goa",
+    "city_id": "goa",
+    "severity": "Critical Avoidance",
+    "root_cause": "Tidal backflow during spring tides (>2.8m) submerges the causeway and adjacent ground floor basements; strict CRZ-I/II non-development restrictions.",
+    "elevation_delta_m": "-1.8m below high tide datum",
+    "historical_closures_annual": "12-18 days during Southwest Monsoon",
+    "mitigation_status": "WRD sluice gate upgrade ongoing; reclamation banned under Coastal Regulation Zone norms.",
+    "real_estate_impact": "High corrosion of coastal structures, non-regularized illegal constructions facing NGT notices."
+  },
+  {
+    "id": "az_pb_buddha_nullah",
+    "name": "Buddha Nullah Industrial Low-Lying Catchment",
+    "city": "Punjab & Haryana",
+    "city_id": "punjab_fertile_basin",
+    "severity": "Critical Avoidance",
+    "root_cause": "Toxic dye discharge and raw effluent overflow into seasonal stream depression; heavy metal soil contamination and basement seepage.",
+    "elevation_delta_m": "-4.5m vs city plateau",
+    "historical_closures_annual": "8-12 days of severe seasonal flood alert",
+    "mitigation_status": "Rejuvenation project under PPCB (₹650 Cr outlay); strict residential avoidance zone.",
+    "real_estate_impact": "Negative property capital appreciation, contaminated groundwater (TDS > 1200 ppm, heavy lead/cadmium trace)."
   }
 ]

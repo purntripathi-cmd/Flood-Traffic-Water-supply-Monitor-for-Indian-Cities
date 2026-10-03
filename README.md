@@ -8,7 +8,7 @@
 
 > **Live Streamlit App**: [https://flood-traffic-water-supply-monitor-for-indian-cities.streamlit.app/](https://flood-traffic-water-supply-monitor-for-indian-cities.streamlit.app/)
 
-A **High-Fidelity Civic Infrastructure & Real Estate Avoidance Screener** across 6 major Indian metropolitan corridors: **Bengaluru**, **Mumbai & MMR**, **Chennai**, **Delhi-NCR**, **Hyderabad**, and **Varanasi & Eastern UP 100km Corridor** (Varanasi, Prayagraj, Mirzapur, Jaunpur, Chandauli).
+A **High-Fidelity Civic Infrastructure & Real Estate Avoidance Screener** across 8 major Indian regions and corridors: **Bengaluru**, **Mumbai & MMR**, **Chennai**, **Delhi-NCR**, **Hyderabad**, **Varanasi & Eastern UP 100km Corridor**, **Goa (Coastal Tourism & Fertile Agro-Belt)**, and **Punjab & Haryana (Indo-Gangetic Agro-Basin)**.
 
 Synthesizes open-source civic flood-mapping models, traffic congestion predictors, water table telemetry, and municipal GIS datasets to identify **resilient havens** and steer home buyers, renters, and developers away from **chronic infrastructure avoidance zones**.
 
@@ -45,6 +45,14 @@ This platform brings together civic research datasets, remote sensing imagery, a
    - **Mirzapur**: Vindhyan Runoff & Ganga Ghats.
    - **Jaunpur**: Gomti River Meander & Shahi Bridge Hydraulic Bottleneck.
    - **Chandauli**: Mughalsarai / Pt. Deen Dayal Upadhyaya Nagar.
+7. **Goa (Coastal Tourism & Fertile Agro-Belt)**:
+   - **North Goa Tourist & Luxury Enclaves**: Assagao, Anjuna, Vagator, Candolim, and Porvorim corridor.
+   - **Central & Port Belt**: Panaji CBD (Mandovi tidal inundation zone) and Dabolim Aerotropolis.
+   - **Fertile Spice Agro-Basin**: Ponda & Valpoi Sahyadri spice plantations (organic vanilla, black pepper, nutmeg, arecanut).
+8. **Punjab & Haryana (Indo-Gangetic Fertile Agro-Basin)**:
+   - **Ludhiana South & Pakhowal Road**: Industrial capital and prime residential corridor.
+   - **Karnal Agri-Tech Belt (GT Road)**: Central Soil Salinity Institute (CSSRI) and premier Basmati export lands.
+   - **Mohali Aerocity & IT City**: Tri-City high-growth satellite hub connected to Chandigarh.
 
 ---
 

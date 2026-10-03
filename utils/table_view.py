@@ -117,17 +117,18 @@ def render_sticky_frozen_table(df: pd.DataFrame, frozen_cols: int = 1, table_id:
     frozen_col_count = min(frozen_cols, len(cols))
 
     # Calculate optimal pixel height
+    # Calculate optimal pixel height (accounting for multi-line wrapped cells)
     try:
         max_h_int = int(str(max_height).replace("px", "").strip())
     except Exception:
         max_h_int = 560
-    calc_height = min(max_h_int, max(280, (len(df) + 1) * 44 + 50))
+    calc_height = min(max_h_int, max(340, (len(df) + 1) * 62 + 60))
 
-    # Column widths for frozen columns
-    col_widths = [240, 170, 160, 150]
+    # Column widths for frozen columns - increased to 340px for generous fit without overflow
+    col_widths = [340, 220, 190, 170]
     offsets = [0]
     for i in range(1, frozen_col_count):
-        w = col_widths[i-1] if i-1 < len(col_widths) else 150
+        w = col_widths[i-1] if i-1 < len(col_widths) else 170
         offsets.append(offsets[i-1] + w)
 
     # Build pure CSS
@@ -157,7 +158,7 @@ def render_sticky_frozen_table(df: pd.DataFrame, frozen_cols: int = 1, table_id:
         border-collapse: separate;
         border-spacing: 0;
         width: 100%;
-        font-size: 0.83rem;
+        font-size: 0.84rem;
     }}
     th {{
         position: sticky;
@@ -165,7 +166,7 @@ def render_sticky_frozen_table(df: pd.DataFrame, frozen_cols: int = 1, table_id:
         background-color: #1E293B;
         color: #38BDF8;
         font-weight: 700;
-        padding: 10px 14px;
+        padding: 11px 14px;
         border-bottom: 2px solid #334155;
         border-right: 1px solid #334155;
         white-space: nowrap;
@@ -178,12 +179,16 @@ def render_sticky_frozen_table(df: pd.DataFrame, frozen_cols: int = 1, table_id:
         color: #7DD3FC;
     }}
     td {{
-        padding: 9px 14px;
+        padding: 10px 14px;
         border-bottom: 1px solid #1E293B;
         border-right: 1px solid #1E293B;
-        white-space: nowrap;
+        white-space: normal;
+        word-break: break-word;
+        overflow-wrap: break-word;
+        vertical-align: middle;
         background-color: #0B1120;
         color: #E2E8F0;
+        line-height: 1.42;
     }}
     tr:nth-child(even) td {{
         background-color: #0F172A;
@@ -197,7 +202,7 @@ def render_sticky_frozen_table(df: pd.DataFrame, frozen_cols: int = 1, table_id:
     for idx in range(frozen_col_count):
         nth = idx + 1
         left_px = offsets[idx]
-        width_px = col_widths[idx] if idx < len(col_widths) else 160
+        width_px = col_widths[idx] if idx < len(col_widths) else 170
         is_last_frozen = (idx == frozen_col_count - 1)
         
         if is_last_frozen:
@@ -221,26 +226,35 @@ def render_sticky_frozen_table(df: pd.DataFrame, frozen_cols: int = 1, table_id:
             left: {left_px}px;
             top: 0;
             z-index: 45 !important;
-            background-color: #1E293B;
+            background-color: #1E293B !important;
             min-width: {width_px}px;
-            max-width: {width_px + 40}px;
+            max-width: {width_px + 80}px;
             width: {width_px}px;
+            white-space: normal !important;
+            word-break: break-word !important;
+            overflow-wrap: break-word !important;
+            line-height: 1.35 !important;
             {border_r}
         }}
         td.fcol-{nth} {{
             position: sticky;
             left: {left_px}px;
             z-index: 20;
-            background-color: #0B1120;
+            background-color: #0B1120 !important;
             min-width: {width_px}px;
-            max-width: {width_px + 40}px;
+            max-width: {width_px + 80}px;
             width: {width_px}px;
             font-weight: {font_weight};
             color: {font_color};
+            white-space: normal !important;
+            word-break: break-word !important;
+            overflow-wrap: break-word !important;
+            line-height: 1.42 !important;
+            vertical-align: middle;
             {border_r}
         }}
         tr:nth-child(even) td.fcol-{nth} {{
-            background-color: #0F172A;
+            background-color: #0F172A !important;
         }}
         tr:hover td.fcol-{nth} {{
             background-color: #1E293B !important;

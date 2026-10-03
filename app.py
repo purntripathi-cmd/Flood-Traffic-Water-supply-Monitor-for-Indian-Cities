@@ -77,60 +77,111 @@ st.set_page_config(
 # Custom Styling
 st.markdown("""
 <style>
+    /* Minimize empty top whitespace and make layout crisp */
+    .block-container {
+        padding-top: 0.8rem !important;
+        padding-bottom: 2rem !important;
+        padding-left: 1.5rem !important;
+        padding-right: 1.5rem !important;
+        max-width: 98% !important;
+    }
+    header[data-testid="stHeader"] {
+        height: 2.0rem !important;
+        min-height: 2.0rem !important;
+        background: transparent !important;
+    }
+    /* Tab Bar: Ensure all tabs wrap and are permanently visible across all screens */
+    div[data-baseweb="tab-list"] {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 6px !important;
+        overflow-x: visible !important;
+        border-bottom: 2px solid #334155 !important;
+        padding-bottom: 6px !important;
+        margin-bottom: 10px !important;
+    }
+    button[data-baseweb="tab"] {
+        flex: 1 1 auto !important;
+        min-width: 125px !important;
+        padding: 8px 12px !important;
+        background: #1E293B !important;
+        border: 1px solid #334155 !important;
+        border-radius: 6px !important;
+        color: #94A3B8 !important;
+        font-size: 0.82rem !important;
+        font-weight: 600 !important;
+        white-space: normal !important;
+        text-align: center !important;
+        transition: all 0.2s ease !important;
+        margin: 2px !important;
+    }
+    button[data-baseweb="tab"]:hover {
+        background: #334155 !important;
+        color: #38BDF8 !important;
+        border-color: #38BDF8 !important;
+    }
+    button[data-baseweb="tab"][aria-selected="true"] {
+        background: linear-gradient(135deg, #0D9488 0%, #065F46 100%) !important;
+        color: #FFFFFF !important;
+        border-color: #14B8A6 !important;
+        font-weight: 700 !important;
+        box-shadow: 0 2px 8px rgba(13, 148, 136, 0.4) !important;
+    }
     .main-title {
-        font-size: 2.1rem;
+        font-size: 1.9rem;
         font-weight: 800;
         background: linear-gradient(90deg, #38BDF8 0%, #0D9488 50%, #34D399 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
+        margin-top: -0.6rem;
         margin-bottom: 0.1rem;
     }
     .sub-title {
         color: #94A3B8;
-        font-size: 0.92rem;
-        margin-bottom: 0.8rem;
+        font-size: 0.88rem;
+        margin-bottom: 0.6rem;
     }
     .kpi-card {
         background-color: #1E293B;
         border: 1px solid #334155;
         border-radius: 8px;
-        padding: 12px 16px;
+        padding: 10px 14px;
         box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
     }
     .kpi-title {
-        font-size: 0.74rem;
+        font-size: 0.72rem;
         text-transform: uppercase;
         color: #94A3B8;
         font-weight: 700;
         letter-spacing: 0.05em;
     }
     .kpi-value {
-        font-size: 1.35rem;
+        font-size: 1.25rem;
         font-weight: 800;
         color: #F8FAFC;
-        margin-top: 3px;
+        margin-top: 2px;
     }
     .kpi-sub {
-        font-size: 0.74rem;
+        font-size: 0.72rem;
         color: #38BDF8;
-        margin-top: 2px;
+        margin-top: 1px;
     }
     .filter-banner {
         background: rgba(14, 165, 233, 0.12);
         border: 1px solid rgba(14, 165, 233, 0.4);
         border-radius: 6px;
-        padding: 8px 14px;
-        margin-bottom: 12px;
+        padding: 6px 12px;
+        margin-bottom: 10px;
         color: #38BDF8;
-        font-size: 0.85rem;
+        font-size: 0.84rem;
         font-weight: 600;
     }
     .onboard-box {
         background: #111827;
         border: 1px solid #374151;
         border-radius: 8px;
-        padding: 16px;
-        margin: 12px 0;
+        padding: 14px;
+        margin: 10px 0;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -360,6 +411,18 @@ benchmark_preset_map = {
         "🏫 Sunbeam School Varuna": {"name": "Sunbeam School Varuna", "lat": 25.3420, "lng": 82.9780},
         "🏛️ Kashi Vishwanath Dham": {"name": "Kashi Vishwanath Dham", "lat": 25.3109, "lng": 83.0107},
         "🏛️ Allahabad High Court (Civil Lines)": {"name": "Allahabad High Court", "lat": 25.4520, "lng": 81.8340}
+    },
+    "goa": {
+        "🏛️ City Center: Panaji Church / Mandovi Waterfront (Default)": {"name": "Panaji Church / Mandovi (City Center)", "lat": 15.4989, "lng": 73.8278},
+        "🏫 Sharada Mandir School (Miramar)": {"name": "Sharada Mandir School", "lat": 15.4820, "lng": 73.8120},
+        "✈️ Manohar Intl Airport Mopa (DXN)": {"name": "Mopa Airport DXN", "lat": 15.7483, "lng": 73.8647},
+        "🏖️ Calangute & Baga Beach Hub": {"name": "Calangute Beach", "lat": 15.5440, "lng": 73.7550}
+    },
+    "punjab_fertile_basin": {
+        "🏛️ City Center: Ludhiana Clock Tower / Karnal GT Road (Default)": {"name": "Ludhiana Clock Tower (City Center)", "lat": 30.9010, "lng": 75.8573},
+        "🏫 Delhi Public School (Ludhiana)": {"name": "DPS Ludhiana", "lat": 30.8650, "lng": 75.8120},
+        "🌾 ICAR-CSSRI Agro-Research (Karnal)": {"name": "ICAR-CSSRI Karnal", "lat": 29.7040, "lng": 76.9920},
+        "✈️ Shaheed Bhagat Singh Intl Airport (IXC Mohali)": {"name": "Mohali Airport IXC", "lat": 30.6730, "lng": 76.7880}
     }
 }
 
@@ -506,19 +569,17 @@ with kpi4:
     </div>
     """, unsafe_allow_html=True)
 
-st.markdown("<br>", unsafe_allow_html=True)
-
 # -------------------------------------------------------------
-# 8 Core Interactive Tabs
+# 8 Core Interactive Tabs (Styled to wrap & remain 100% visible)
 # -------------------------------------------------------------
 tabs = st.tabs([
-    "🗺️ Panoramic Radar, Top Properties & Builder Directory",
-    "📊 Micro-Market Avoidance Radar",
-    "🏢 Resilient Property Screener",
-    "🏡 Gated Community Plots & Sites",
-    "🌾 Verified Farmlands & Agro-Investments",
-    "💧 Water Supply & Ground Reality",
-    "🚨 Chronic Avoidance Zones Deep Dive",
+    "🗺️ Radar & Builders",
+    "📊 Micro-Market Radar",
+    "🏢 Property Screener",
+    "🏡 Gated Plots & Sites",
+    "🌾 Verified Farmlands",
+    "💧 Water Supply",
+    "🚨 Avoidance Pincodes",
     "🤖 Explainable AI Copilot"
 ])
 
@@ -798,10 +859,10 @@ with tabs[0]:
             <p style='margin:0; font-size:12px;'><b>5-Yr Appreciation:</b> <span style='color:#0284C7; font-weight:bold;'>+{p.get('projected_5yr_appreciation_pct', 45)}%</span></p>
             <p style='margin:0; font-size:12px;'><b>Completion:</b> {p.get('expected_completion', 'Dec 2026')}</p>
             <p style='margin:0; font-size:12px;'><b>Water:</b> {ws.get('piped_connection', 'Piped')}</p>
-            <p style='margin:0; font-size:12px;'><b>Benchmark Dist:</b> {p['road_distance_to_school_benchmark_km']} km to {p['school_benchmark_name']}</p>
+            <p style='margin:0; font-size:12px;'><b>Benchmark Dist:</b> {p.get('road_distance_to_school_benchmark_km', 3.5)} km to {p.get('school_benchmark_name', 'City Benchmark')}</p>
             <hr style='margin:6px 0;'>
-            <a href='{get_google_maps_search_url(p['google_maps_query'])}' target='_blank' style='font-size:11px; color:#0284C7; font-weight:bold;'>Google Maps Navigation ↗</a> | 
-            <a href='{p['rera_url']}' target='_blank' style='font-size:11px; color:#059669; font-weight:bold;'>Official RERA ↗</a>
+            <a href='{get_google_maps_search_url(p.get("google_maps_query", p["name"]))}' target='_blank' style='font-size:11px; color:#0284C7; font-weight:bold;'>Google Maps Navigation ↗</a> | 
+            <a href='{p.get("rera_url", "https://rera.karnataka.gov.in/")}' target='_blank' style='font-size:11px; color:#059669; font-weight:bold;'>Official RERA ↗</a>
         </div>
         """
         icon_color = "darkred" if is_focused else "blue"
@@ -815,46 +876,57 @@ with tabs[0]:
     # Plot Gated Plots
     for pl in gated_plots:
         is_focused = (focused_prop_obj and focused_prop_obj.get("id") == pl["id"])
+        price_lakhs_str = pl.get("total_price_lakhs", f"₹{pl.get('starting_ticket_lakhs', 85)} L")
+        approval_auth_str = pl.get("approval_authority", pl.get("statutory_authority", "RERA Approved Layout"))
+        validation_url_str = pl.get("validation_url", pl.get("sanction_url", "https://rera.karnataka.gov.in/"))
+        gmaps_q_str = pl.get("google_maps_query", pl["name"])
         plot_popup = f"""
         <div style='font-family:sans-serif; width:260px;'>
             <h4 style='margin:0 0 2px 0; color:#0F172A;'>🏡 {pl['name']}</h4>
-            <p style='margin:0; color:#475569; font-size:11px;'>By {pl['developer']} • {pl['location']}</p>
-            <p style='margin:4px 0 0 0; font-size:12px;'><b>Ticket:</b> {pl['total_price_lakhs']} (₹{pl['price_per_sqft']:,}/sqft)</p>
+            <p style='margin:0; color:#475569; font-size:11px;'>By {pl.get('developer', 'Developer')} • {pl.get('location', '')}</p>
+            <p style='margin:4px 0 0 0; font-size:12px;'><b>Ticket:</b> {price_lakhs_str} (₹{pl['price_per_sqft']:,}/sqft)</p>
             <p style='margin:0; font-size:12px;'><b>5-Yr Appreciation:</b> <span style='color:#0284C7; font-weight:bold;'>+{pl.get('projected_5yr_appreciation_pct', 65)}%</span></p>
             <p style='margin:0; font-size:12px;'><b>Handover:</b> {pl.get('expected_completion', 'Ready for Construction')}</p>
-            <p style='margin:0; font-size:12px;'><b>Authority:</b> {pl['approval_authority']}</p>
+            <p style='margin:0; font-size:12px;'><b>Authority:</b> {approval_auth_str}</p>
             <hr style='margin:6px 0;'>
-            <a href='{get_google_maps_search_url(pl['google_maps_query'])}' target='_blank' style='font-size:11px; color:#0284C7; font-weight:bold;'>Google Maps ↗</a> | 
-            <a href='{pl['validation_url']}' target='_blank' style='font-size:11px; color:#059669; font-weight:bold;'>Sanction Registry ↗</a>
+            <a href='{get_google_maps_search_url(gmaps_q_str)}' target='_blank' style='font-size:11px; color:#0284C7; font-weight:bold;'>Google Maps ↗</a> | 
+            <a href='{validation_url_str}' target='_blank' style='font-size:11px; color:#059669; font-weight:bold;'>Sanction Registry ↗</a>
         </div>
         """
         icon_color = "purple"
         folium.Marker(
             location=[pl["lat"], pl["lng"]],
             popup=folium.Popup(plot_popup, max_width=300),
-            tooltip=f"🏡 {pl['name']} ({pl['developer']} | ₹{pl['price_per_sqft']}/sqft)",
+            tooltip=f"🏡 {pl['name']} ({pl.get('developer', 'Developer')} | ₹{pl['price_per_sqft']}/sqft)",
             icon=folium.Icon(color=icon_color, icon="tree", prefix="fa")
         ).add_to(fg_plots)
 
     # Plot Rental Properties
     for r in rental_properties:
         is_focused = (focused_prop_obj and focused_prop_obj.get("id") == r["id"])
+        r_rent = r.get("monthly_rent_inr", r.get("monthly_rent", 50000))
+        r_maint = r.get("monthly_maintenance_inr", r.get("maintenance_pm", 5000))
+        r_yield = r.get("rental_yield_pct", r.get("net_rental_yield_pct", 4.5))
+        r_hub_dist = r.get("commute_hub_distance_km", r.get("commute_hub_dist_km", 5.0))
+        r_hub_name = r.get("commute_hub_name", r.get("nearest_commute_hub", "City Hub"))
+        r_builder = r.get("builder", "Developer")
+        r_gmaps = r.get("google_maps_query", r["name"])
         rental_popup = f"""
         <div style='font-family:sans-serif; width:260px;'>
             <h4 style='margin:0 0 2px 0; color:#0F172A;'>🔑 {r['name']}</h4>
-            <p style='margin:0; color:#475569; font-size:11px;'>By {r['builder']} • {r['bhk']}</p>
-            <p style='margin:4px 0 0 0; font-size:12px;'><b>Rent:</b> ₹{r['monthly_rent_inr']:,}/mo (Maint: ₹{r['monthly_maintenance_inr']:,})</p>
-            <p style='margin:0; font-size:12px;'><b>Net Yield:</b> <span style='color:#059669; font-weight:bold;'>{r['rental_yield_pct']}%</span></p>
-            <p style='margin:0; font-size:12px;'><b>Commute Hub:</b> {r['commute_hub_distance_km']} km to {r['commute_hub_name']}</p>
+            <p style='margin:0; color:#475569; font-size:11px;'>By {r_builder} • {r['bhk']}</p>
+            <p style='margin:4px 0 0 0; font-size:12px;'><b>Rent:</b> ₹{r_rent:,}/mo (Maint: ₹{r_maint:,})</p>
+            <p style='margin:0; font-size:12px;'><b>Net Yield:</b> <span style='color:#059669; font-weight:bold;'>{r_yield}%</span></p>
+            <p style='margin:0; font-size:12px;'><b>Commute Hub:</b> {r_hub_dist} km to {r_hub_name}</p>
             <hr style='margin:6px 0;'>
-            <a href='{get_google_maps_search_url(r['google_maps_query'])}' target='_blank' style='font-size:11px; color:#0284C7; font-weight:bold;'>Google Maps ↗</a>
+            <a href='{get_google_maps_search_url(r_gmaps)}' target='_blank' style='font-size:11px; color:#0284C7; font-weight:bold;'>Google Maps ↗</a>
         </div>
         """
         icon_color = "green"
         folium.Marker(
             location=[r["lat"], r["lng"]],
             popup=folium.Popup(rental_popup, max_width=300),
-            tooltip=f"🔑 {r['name']} (Rent: ₹{r['monthly_rent_inr']:,}/mo)",
+            tooltip=f"🔑 {r['name']} (Rent: ₹{r_rent:,}/mo)",
             icon=folium.Icon(color=icon_color, icon="key", prefix="fa")
         ).add_to(fg_rentals)
 
@@ -1500,9 +1572,9 @@ with tabs[0]:
             chart_r_data.append({
                 "Property": r["name"],
                 "City": r["city_name"],
-                "Rental_Yield": r["rental_yield_pct"],
-                "Monthly_Rent": r["monthly_rent_inr"],
-                "Rental_Score": r["rental_score"]
+                "Rental_Yield": r.get("rental_yield_pct", r.get("net_rental_yield_pct", 4.5)),
+                "Monthly_Rent": r.get("monthly_rent_inr", r.get("monthly_rent", 50000)),
+                "Rental_Score": r.get("rental_score", r.get("rental_suitability_score", 85))
             })
         df_r_chart = pd.DataFrame(chart_r_data)
 
