@@ -632,5 +632,44 @@
     "commute_hub_distance_km": 4.2,
     "commute_hub_name": "Ferozepur Road Corporate Belt",
     "rental_score": 87
+  },
+  {
+    "id": "rent_lko_1",
+    "name": "Shalimar OneWorld Belvedere Suite",
+    "city_id": "lucknow",
+    "city_name": "Lucknow",
+    "micro_market": "Gomti Nagar Extension & Shaheed Path",
+    "lat": 26.835,
+    "lng": 81.005,
+    "bhk": "3 BHK Semi-Furnished",
+    "monthly_rent_inr": 42000,
+    "maintenance_monthly_inr": 4500,
+    "security_deposit_inr": 84000,
+    "rental_yield_pct": 3.6,
+    "tenant_preference": "Corporate Executives / Doctors / MNC Families",
+    "amenities": [
+      "Clubhouse",
+      "Swimming Pool",
+      "Tennis Court",
+      "24x7 Treated Water",
+      "EV Charging Station"
+    ],
+    "commute_hub_distance_km": 3.0,
+    "commute_hub_name": "Ekana Stadium & HCL IT City",
+    "google_maps_query": "Shalimar OneWorld Gomti Nagar Extension Lucknow",
+    "builder": "Shalimar Corp",
+    "avg_sqft": 1850,
+    "monthly_maintenance_inr": 4500,
+    "total_flat_value_cr": 1.4,
+    "rental_score": 87,
+    "growth_probability_pct": 82,
+    "govt_master_plan_catalyst": "Ekana IT City & Shaheed Path High-Speed Corridor",
+    "school_distance_km": 4.5,
+    "school_name": "City Montessori School Gomti Nagar",
+    "water_infrastructure": {
+      "piped_connection": "Lucknow Jal Sansthan + Softener",
+      "groundwater_depth_m": 35,
+      "tds_ppm": 210
+    }
   }
 ]

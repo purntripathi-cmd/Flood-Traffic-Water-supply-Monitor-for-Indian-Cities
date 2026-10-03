@@ -2464,5 +2464,66 @@
     "strengths": "Hero Group corporate pedigree, IGBC Gold-rated green buildings, 80% open landscaped parks.",
     "cautions": "High society maintenance charges due to expansive clubhouses.",
     "rera_portal_url": "https://rera.punjab.gov.in/"
+  },
+  {
+    "id": "bld_lko_1",
+    "name": "Shalimar Corp",
+    "city_id": "lucknow",
+    "city_name": "Lucknow",
+    "headquarters": "Lucknow, Uttar Pradesh",
+    "tier": "Tier 1 (Flagship Regional)",
+    "rera_registration": "UPRERAAGT10012",
+    "rating": 4.8,
+    "on_time_delivery_pct": 94,
+    "ongoing_projects_count": 14,
+    "completed_projects_count": 48,
+    "total_sqft_delivered_millions": 22.5,
+    "litigation_risk_index": "Low (Clean UP RERA Track Record)",
+    "specialty": "Luxury High-Rises, Waterfront Developments, Business Parks & Gated Plotted Enclaves",
+    "established_year": 1985,
+    "rera_compliance_score": 96,
+    "construction_quality_rating": 9.4,
+    "litigation_index": "Low (Zero Major Disputes)",
+    "total_delivered_sqft_mn": 22.5,
+    "flagship_projects": {
+      "lucknow": "Shalimar Grand Residences & OneWorld Township",
+      "varanasi_100km": "Shalimar Gateway"
+    },
+    "active_states_and_cities": [
+      "Uttar Pradesh (Lucknow, Varanasi, Ayodhya, Prayagraj)"
+    ],
+    "strengths": "Impeccable structural engineering, marquee mixed development, 94% on-time delivery record.",
+    "cautions": "Commands high pricing premium over peripheral unorganized projects.",
+    "rera_portal_url": "https://up-rera.in/"
+  },
+  {
+    "id": "bld_lko_2",
+    "name": "Rishita Developers",
+    "city_id": "lucknow",
+    "city_name": "Lucknow",
+    "headquarters": "Lucknow, Uttar Pradesh",
+    "tier": "Tier 1 (Premium Lifestyle)",
+    "rera_registration": "UPRERAAGT10045",
+    "rating": 4.6,
+    "on_time_delivery_pct": 91,
+    "ongoing_projects_count": 8,
+    "completed_projects_count": 18,
+    "total_sqft_delivered_millions": 9.2,
+    "litigation_risk_index": "Low",
+    "specialty": "Contemporary Luxury Apartments & Golf-Facing Condominiums",
+    "established_year": 2008,
+    "rera_compliance_score": 92,
+    "construction_quality_rating": 9.0,
+    "litigation_index": "Low (Clean UP RERA Track Record)",
+    "total_delivered_sqft_mn": 9.2,
+    "flagship_projects": {
+      "lucknow": "Rishita Mulberry Heights & Manhattan"
+    },
+    "active_states_and_cities": [
+      "Uttar Pradesh (Lucknow)"
+    ],
+    "strengths": "Modern lifestyle aesthetics, golf-view high-rises, robust construction speed.",
+    "cautions": "Focus primarily on upper-mid to luxury segment.",
+    "rera_portal_url": "https://up-rera.in/"
   }
 ]

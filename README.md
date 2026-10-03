@@ -8,7 +8,7 @@
 
 > **Live Streamlit App**: [https://flood-traffic-water-supply-monitor-for-indian-cities.streamlit.app/](https://flood-traffic-water-supply-monitor-for-indian-cities.streamlit.app/)
 
-A **High-Fidelity Civic Infrastructure & Real Estate Avoidance Screener** across 8 major Indian regions and corridors: **Bengaluru**, **Mumbai & MMR**, **Chennai**, **Delhi-NCR**, **Hyderabad**, **Varanasi & Eastern UP 100km Corridor**, **Goa (Coastal Tourism & Fertile Agro-Belt)**, and **Punjab & Haryana (Indo-Gangetic Agro-Basin)**.
+A **High-Fidelity Civic Infrastructure & Real Estate Avoidance Screener** across 9 major Indian regions and corridors: **Bengaluru**, **Mumbai & MMR**, **Chennai**, **Delhi-NCR**, **Hyderabad**, **Varanasi (Kashi / Banaras) & Eastern UP 100km Corridor**, **Lucknow (Awadh Fertile Corridor & State Capital)**, **Goa (Coastal Tourism & Fertile Agro-Belt)**, and **Punjab & Haryana (Indo-Gangetic Agro-Basin)**.
 
 Synthesizes open-source civic flood-mapping models, traffic congestion predictors, water table telemetry, and municipal GIS datasets to identify **resilient havens** and steer home buyers, renters, and developers away from **chronic infrastructure avoidance zones**.
 
@@ -39,17 +39,23 @@ This platform brings together civic research datasets, remote sensing imagery, a
 3. **Chennai (Tamil Nadu)**: Velachery & Madipakkam, Perungudi & OMR IT Corridor, Sholinganallur, Siruseri, Pallikaranai Marshland, Porur & Ramapuram, Guindy & Alandur, and East Coast Road (ECR).
 4. **Delhi-NCR (Delhi / Haryana / UP)**: Yamuna Floodplains & Mayur Vihar, Barapullah Phase-III / Sarai Kale Khan, South Delhi (Defence Colony & Greater Kailash), Gurugram (Cyber City, DLF Phase 2 & Golf Course Ext), Noida Expressway (Sector 150 & 137), and Dwarka Expressway.
 5. **Hyderabad (Telangana)**: Gachibowli & Financial District, HITECH City & Madhapur, Kondapur & Hafeezpet, Kukatpally & KPHB, Tellapur & Kollur, Musi River Basin (Moosarambagh), and Nallagandla.
-6. **Varanasi & Eastern UP 100km Corridor (Uttar Pradesh)**:
-   - **Varanasi**: Ancient Core (Godowlia - Chowk), Ganga-Varuna Confluence (Sarai Mohana), Cantt & Shivpur (Elevated Alluvial Ridge), Ramnagar Sandstone Bluff.
+6. **Varanasi (Kashi / Banaras) & Eastern UP 100km Corridor (Uttar Pradesh)**:
+   - **Varanasi (Kashi / Banaras)**: Ancient Core (Godowlia - Chowk), Ganga-Varuna Confluence (Sarai Mohana), Cantt & Shivpur (Elevated Alluvial Ridge), Ramnagar Sandstone Bluff, Sarnath Heritage Ring Road, and Babatpur Airport Agro-Corridor.
    - **Prayagraj (Allahabad)**: Sangam Lowlands (Baghada & Salori chronic evacuation basin) vs. Civil Lines & Ashok Nagar (Elevated British Grid Plateau).
-   - **Mirzapur**: Vindhyan Runoff & Ganga Ghats.
+   - **Mirzapur & Vindhyan Belt**: Chunar - Adalhat black soil orchards and Ganga bluffs.
    - **Jaunpur**: Gomti River Meander & Shahi Bridge Hydraulic Bottleneck.
-   - **Chandauli**: Mughalsarai / Pt. Deen Dayal Upadhyaya Nagar.
-7. **Goa (Coastal Tourism & Fertile Agro-Belt)**:
+   - **Chandauli**: Mughalsarai & Eastern UP Grain Bowl (Kalanamak & Basmati Rice Belt).
+7. **Lucknow (Awadh Fertile Corridor & State Capital)**:
+   - **Gomti Nagar Extension & Shaheed Path**: High-spec IT corridor, Ekana International Stadium, and high-plinth developments.
+   - **Sushant Golf City (Hi-Tech Township)**: Low flood risk, Medanta Super Specialty Hospital, and Lulu Mall aerotropolis hub.
+   - **Mohanlalganj & Kisan Path Outer Ring Belt**: 8-lane expressway connectivity and fertile alluvial farmland.
+   - **Malihabad GI Mango Heritage Belt**: Globally renowned GI Dussehri mango orchards and high-yield agroforestry.
+   - **Sultanpur Road & Purvanchal Gateway**: Zero-point node connecting the state capital to Eastern UP.
+8. **Goa (Coastal Tourism & Fertile Agro-Belt)**:
    - **North Goa Tourist & Luxury Enclaves**: Assagao, Anjuna, Vagator, Candolim, and Porvorim corridor.
    - **Central & Port Belt**: Panaji CBD (Mandovi tidal inundation zone) and Dabolim Aerotropolis.
    - **Fertile Spice Agro-Basin**: Ponda & Valpoi Sahyadri spice plantations (organic vanilla, black pepper, nutmeg, arecanut).
-8. **Punjab & Haryana (Indo-Gangetic Fertile Agro-Basin)**:
+9. **Punjab & Haryana (Indo-Gangetic Fertile Agro-Basin)**:
    - **Ludhiana South & Pakhowal Road**: Industrial capital and prime residential corridor.
    - **Karnal Agri-Tech Belt (GT Road)**: Central Soil Salinity Institute (CSSRI) and premier Basmati export lands.
    - **Mohali Aerocity & IT City**: Tri-City high-growth satellite hub connected to Chandigarh.
@@ -118,7 +124,8 @@ This platform brings together civic research datasets, remote sensing imagery, a
   - **Chennai**: Chennai Central (`13.0823° N, 80.2754° E`)
   - **Delhi-NCR**: Connaught Place (`28.6304° N, 77.2177° E`)
   - **Hyderabad**: Secretariat / Abids (`17.4062° N, 78.4691° E`)
-  - **Varanasi Corridor**: Varanasi Cantt / Godowlia (`25.3268° N, 82.9866° E`)
+  - **Varanasi (Kashi / Banaras)**: Varanasi Cantt / Godowlia (`25.3268° N, 82.9866° E`)
+  - **Lucknow (Awadh Belt)**: Hazratganj / Vidhan Sabha (`26.8467° N, 80.9462° E`)
 - Fully configurable in the sidebar to switch between City Center, premier schools, primary IT hubs, or custom GPS coordinates.
 
 ### 11. Property Age vs Upcoming Handover Timeline & Appreciation Matrix
@@ -135,7 +142,8 @@ This platform brings together civic research datasets, remote sensing imagery, a
 - Pure CSS sticky iframe renderer (`utils/table_view.py`) locking the first column on the left with `#0D9488` teal divider and shadow, guaranteeing responsive scrolling across desktop, tablet, and mobile browsers.
 
 ### 14. Verified Farmlands & High-Yield Agro-Investments Engine
-- Curated catalog of 24 verified agricultural land parcels and managed agroforestry estates across India (`data/farmlands.json`).
+- Curated catalog of **35 verified agricultural land parcels** and managed agroforestry estates across India (`data/farmlands.json`).
+- **Resilient Smart Search & Multi-Alias Recognition**: Searching or filtering for **Varanasi**, **Kashi**, **Banaras**, or **Benares** instantly reveals **8 verified high-yield agricultural parcels** across the Ganga alluvial plains, Sarnath heritage belt, Babatpur airport corridor, Ramnagar riverfront, and Sevapuri. Searching or selecting **Lucknow**, **Awadh**, or **Malihabad** displays **5 premium verified agricultural estates** including GI Dussehri mango orchards and Kisan Path express agro-ranches.
 - **Comprehensive Agronomic Telemetry**: Soil classification, pH, organic carbon %, groundwater table depth, sweet water TDS (ppm), and drip irrigation status.
 - **High-Value Exotic & Commercial Crop Modeling**: Benchmark economics, tree density, gestation timelines, and annual harvest yields for Hass Avocado, Certified Sandalwood (Chandan), Dragon Fruit (Pitaya), Taiwan Pink Guava, Alphonso Mango, and Protected Greenhouses.
 - **Verified Seller Contacts & Categorization**: Distinguishes between `Direct Landowner / Farmer`, `Verified Agricultural Broker`, and `Managed Farmland Operator` with instant Click-to-Call (`tel:`) and Direct WhatsApp Inquiry (`wa.me`) buttons.

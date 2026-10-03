@@ -202,5 +202,31 @@
     "historical_closures_annual": "8-12 days of severe seasonal flood alert",
     "mitigation_status": "Rejuvenation project under PPCB (₹650 Cr outlay); strict residential avoidance zone.",
     "real_estate_impact": "Negative property capital appreciation, contaminated groundwater (TDS > 1200 ppm, heavy lead/cadmium trace)."
+  },
+  {
+    "id": "avoid_lko_1",
+    "name": "Gomti River Low-Lying Floodplain & Pipraghat Depression",
+    "city": "Lucknow",
+    "city_id": "lucknow",
+    "risk_type": "Monsoon River Submergence & Silt Logging",
+    "pincode": "226010",
+    "severity": "High (Submergence during river discharge > 40,000 cusecs)",
+    "key_reason": "Low-lying riverbed depression outside the engineered Gomti Riverfront retaining bund; prone to seasonal flood inundation and zero drainage runoff.",
+    "avoidance_recommendation": "Avoid basements and ground-floor residential plots in this unembanked floodplain zone.",
+    "lat": 26.838,
+    "lng": 80.975
+  },
+  {
+    "id": "avoid_lko_2",
+    "name": "Kukrail Nala - Old City Culvert Bottleneck (Ghaus Mohammad / Chowk)",
+    "city": "Lucknow",
+    "city_id": "lucknow",
+    "risk_type": "Stormwater Culvert Backflow & Urban Waterlogging",
+    "pincode": "226003",
+    "severity": "Severe (Chronic waterlogging during >50mm/hr rains)",
+    "key_reason": "Inadequate cross-drainage culverts under old railway and arterial embankments causing rapid water buildup and sewer backflow into residential basements.",
+    "avoidance_recommendation": "Avoid low-contour plots within 250m of the Kukrail confluence culverts.",
+    "lat": 26.868,
+    "lng": 80.912
   }
 ]

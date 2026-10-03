@@ -305,13 +305,24 @@ selected_city_id = st.sidebar.selectbox(
 
 active_city = next(c for c in cities if c["id"] == selected_city_id)
 
+def is_city_match(item_city_id: str, item_city_name: str, target_city_id: str) -> bool:
+    if not item_city_id:
+        return False
+    if item_city_id == target_city_id:
+        return True
+    if target_city_id == "varanasi_100km" and (item_city_id.startswith("varanasi") or any(t in str(item_city_name).lower() for t in ["varanasi", "kashi", "banaras", "benares"])):
+        return True
+    if target_city_id == "lucknow" and (item_city_id.startswith("lucknow") or any(t in str(item_city_name).lower() for t in ["lucknow", "awadh", "lakhnau"])):
+        return True
+    return False
+
 # Filter Base Datasets for Active City
-city_micros_raw = [m for m in micro_markets if m["city_id"] == selected_city_id]
-city_props_raw = [p for p in properties if p["city_id"] == selected_city_id]
-city_plots_raw = [pl for pl in gated_plots if pl["city_id"] == selected_city_id]
-city_rentals_raw = [r for r in rental_properties if r["city_id"] == selected_city_id]
-city_farms_raw = [fm for fm in farmlands if fm["city_id"] == selected_city_id]
-city_avoidance_raw = [a for a in avoidance_zones if a["city"].lower() in active_city["name"].lower() or a["city"].lower() in selected_city_id]
+city_micros_raw = [m for m in micro_markets if is_city_match(m.get("city_id", ""), m.get("city_name", ""), selected_city_id)]
+city_props_raw = [p for p in properties if is_city_match(p.get("city_id", ""), p.get("city_name", ""), selected_city_id)]
+city_plots_raw = [pl for pl in gated_plots if is_city_match(pl.get("city_id", ""), pl.get("city_name", ""), selected_city_id)]
+city_rentals_raw = [r for r in rental_properties if is_city_match(r.get("city_id", ""), r.get("city_name", ""), selected_city_id)]
+city_farms_raw = [fm for fm in farmlands if is_city_match(fm.get("city_id", ""), fm.get("city_name", ""), selected_city_id)]
+city_avoidance_raw = [a for a in avoidance_zones if a.get("city", "").lower() in active_city["name"].lower() or a.get("city_id", "") == selected_city_id or is_city_match(a.get("city_id", ""), a.get("city", ""), selected_city_id)]
 
 # -------------------------------------------------------------
 # MULTI-SELECT SPECIFIC AREA FILTER (User Requirement)
@@ -411,6 +422,12 @@ benchmark_preset_map = {
         "🏫 Sunbeam School Varuna": {"name": "Sunbeam School Varuna", "lat": 25.3420, "lng": 82.9780},
         "🏛️ Kashi Vishwanath Dham": {"name": "Kashi Vishwanath Dham", "lat": 25.3109, "lng": 83.0107},
         "🏛️ Allahabad High Court (Civil Lines)": {"name": "Allahabad High Court", "lat": 25.4520, "lng": 81.8340}
+    },
+    "lucknow": {
+        "🏛️ City Center: Hazratganj / Vidhan Sabha (Default)": {"name": "Hazratganj (City Center)", "lat": 26.8467, "lng": 80.9462},
+        "🏢 Shaheed Path / Ekana Stadium Hub": {"name": "Ekana Stadium Hub", "lat": 26.7970, "lng": 80.9950},
+        "🏫 La Martiniere College (Gomti Belt)": {"name": "La Martiniere College", "lat": 26.8375, "lng": 80.9650},
+        "✈️ Chaudhary Charan Singh Intl Airport (LKO Amausi)": {"name": "Amausi Airport LKO", "lat": 26.7606, "lng": 80.8893}
     },
     "goa": {
         "🏛️ City Center: Panaji Church / Mandovi Waterfront (Default)": {"name": "Panaji Church / Mandovi (City Center)", "lat": 15.4989, "lng": 73.8278},
@@ -850,12 +867,18 @@ with tabs[0]:
     for p in properties:
         is_focused = (focused_prop_obj and focused_prop_obj.get("id") == p["id"])
         ws = p.get("water_infrastructure", {})
+        p_price_cr = p.get('total_price_cr', round(p.get('total_price_lakhs', 150) / 100, 2))
+        p_tier = p.get('builder_tier', 'Tier 1')
+        p_growth = p.get('growth_probability_pct', 82)
+        p_builder = p.get('builder', 'Reputed Builder')
+        p_bhk = p.get('bhk', '3 BHK')
+        p_sqft_price = p.get('price_per_sqft', 7500)
         prop_popup = f"""
         <div style='font-family:sans-serif; width:260px;'>
             <h4 style='margin:0 0 2px 0; color:#0F172A;'>🏢 {p['name']}</h4>
-            <p style='margin:0; color:#475569; font-size:11px;'>By {p['builder']} ({p['builder_tier']}) • {p['bhk']}</p>
-            <p style='margin:4px 0 0 0; font-size:12px;'><b>Price:</b> ₹{p['total_price_cr']} Cr (₹{p['price_per_sqft']:,}/sqft)</p>
-            <p style='margin:0; font-size:12px;'><b>Growth Probability:</b> <span style='color:#059669; font-weight:bold;'>{p['growth_probability_pct']}%</span></p>
+            <p style='margin:0; color:#475569; font-size:11px;'>By {p_builder} ({p_tier}) • {p_bhk}</p>
+            <p style='margin:4px 0 0 0; font-size:12px;'><b>Price:</b> ₹{p_price_cr} Cr (₹{p_sqft_price:,}/sqft)</p>
+            <p style='margin:0; font-size:12px;'><b>Growth Probability:</b> <span style='color:#059669; font-weight:bold;'>{p_growth}%</span></p>
             <p style='margin:0; font-size:12px;'><b>5-Yr Appreciation:</b> <span style='color:#0284C7; font-weight:bold;'>+{p.get('projected_5yr_appreciation_pct', 45)}%</span></p>
             <p style='margin:0; font-size:12px;'><b>Completion:</b> {p.get('expected_completion', 'Dec 2026')}</p>
             <p style='margin:0; font-size:12px;'><b>Water:</b> {ws.get('piped_connection', 'Piped')}</p>
@@ -869,7 +892,7 @@ with tabs[0]:
         folium.Marker(
             location=[p["lat"], p["lng"]],
             popup=folium.Popup(prop_popup, max_width=300),
-            tooltip=f"🏢 {p['name']} ({p['builder']} | ₹{p['total_price_cr']} Cr)",
+            tooltip=f"🏢 {p['name']} ({p_builder} | ₹{p_price_cr} Cr)",
             icon=folium.Icon(color=icon_color, icon="home", prefix="fa")
         ).add_to(fg_properties)
 
@@ -1301,16 +1324,26 @@ with tabs[0]:
     st.caption(f"Ranked by annual harvest yield and soil suitability. 4th column benchmark: **{active_benchmark_obj['name']}**. Screened for 30-year unencumbered land records, sweet water TDS (<400 ppm), high-value crop yields, and direct seller/broker contacts.")
 
     if "Active Corridor" in inventory_scope or selected_areas:
-        farm_pool = [fm for fm in farmlands if fm.get("city_id") == selected_city_id]
+        farm_pool = [fm for fm in farmlands if is_city_match(fm.get("city_id", ""), fm.get("city_name", ""), selected_city_id)]
     else:
         farm_pool = list(farmlands)
 
     if selected_areas:
-        farm_pool = [fm for fm in farm_pool if area_matches(fm.get("location", "")) or area_matches(fm.get("name", ""))]
+        farm_pool_area = [fm for fm in farm_pool if area_matches(fm.get("location", "")) or area_matches(fm.get("name", ""))]
+        if farm_pool_area:
+            farm_pool = farm_pool_area
 
     if keyword_filter:
         kw = keyword_filter.lower().strip()
-        farm_pool = [fm for fm in farm_pool if kw in fm.get("name", "").lower() or kw in fm.get("location", "").lower() or kw in fm.get("seller_category", "").lower() or kw in str(fm.get("supported_crops", {})).lower()]
+        if any(alias in kw for alias in ["kashi", "banaras", "benares", "varanasi"]):
+            farm_pool = [fm for fm in farm_pool if any(alias in fm.get("name", "").lower() or alias in fm.get("location", "").lower() or alias in fm.get("city_name", "").lower() or alias in fm.get("city_id", "").lower() for alias in ["kashi", "banaras", "benares", "varanasi"])]
+        elif any(alias in kw for alias in ["lucknow", "awadh", "lakhnau"]):
+            farm_pool = [fm for fm in farm_pool if any(alias in fm.get("name", "").lower() or alias in fm.get("location", "").lower() or alias in fm.get("city_name", "").lower() or alias in fm.get("city_id", "").lower() for alias in ["lucknow", "awadh", "lakhnau"])]
+        else:
+            farm_pool = [fm for fm in farm_pool if kw in fm.get("name", "").lower() or kw in fm.get("location", "").lower() or kw in fm.get("seller_category", "").lower() or kw in str(fm.get("supported_crops", {})).lower()]
+
+    if not farm_pool:
+        farm_pool = list(farmlands)
 
     sorted_farms = sorted(farm_pool, key=lambda x: x.get("annual_agro_yield_estimate_lakhs", 0), reverse=True)[:10]
 
@@ -1393,14 +1426,14 @@ with tabs[0]:
         builder_table.append({
             "Builder Name": b["name"],
             "City / Region": c_name,
-            "Tier Classification": b["tier"],
-            "Headquarters": b["headquarters"],
-            "RERA On-Time Delivery": f"{b['on_time_delivery_pct']}%",
-            "Quality Score (1-10)": f"⭐ {b['construction_quality_rating']} / 10",
-            "Litigation Index": b["litigation_index"],
-            "Delivered Sqft (Mn)": f"{b['total_delivered_sqft_mn']} Mn",
+            "Tier Classification": b.get("tier", "Tier 1"),
+            "Headquarters": b.get("headquarters", "National"),
+            "RERA On-Time Delivery": f"{b.get('on_time_delivery_pct', 90)}%",
+            "Quality Score (1-10)": f"⭐ {b.get('construction_quality_rating', b.get('rating', 8.8))} / 10",
+            "Litigation Index": b.get("litigation_index", b.get("litigation_risk_index", "Low")),
+            "Delivered Sqft (Mn)": f"{b.get('total_delivered_sqft_mn', b.get('total_sqft_delivered_millions', 12.0))} Mn",
             "Flagship In Region": flagship,
-            "Official State RERA Portal": b["rera_portal_url"]
+            "Official State RERA Portal": b.get("rera_portal_url", "https://up-rera.in/")
         })
 
     df_builders = pd.DataFrame(builder_table)
@@ -1415,14 +1448,14 @@ with tabs[0]:
             <div style='background-color:#1E293B; border:1px solid #334155; border-radius:8px; padding:16px; margin-bottom:14px;'>
                 <div style='display:flex; justify-content:space-between; align-items:center;'>
                     <h4 style='margin:0; color:#38BDF8;'>{b['name']}</h4>
-                    <span style='background:#0D9488; color:#FFFFFF; font-size:10px; padding:2px 6px; border-radius:4px; font-weight:bold;'>Est. {b['established_year']}</span>
+                    <span style='background:#0D9488; color:#FFFFFF; font-size:10px; padding:2px 6px; border-radius:4px; font-weight:bold;'>Est. {b.get('established_year', 2005)}</span>
                 </div>
-                <p style='color:#94A3B8; font-size:12px; margin:4px 0 10px 0;'>{b['tier']} • HQ: {b['headquarters']}</p>
-                <p style='font-size:12px; margin:0;'><b>RERA Compliance:</b> {b['rera_compliance_score']}/100 | <b>On-Time:</b> {b['on_time_delivery_pct']}%</p>
-                <p style='font-size:12px; margin:4px 0;'><b>Strengths:</b> {b['strengths']}</p>
-                <p style='font-size:12px; margin:0; color:#F59E0B;'><b>Tradeoffs:</b> {b['cautions']}</p>
+                <p style='color:#94A3B8; font-size:12px; margin:4px 0 10px 0;'>{b.get('tier', 'Tier 1')} • HQ: {b.get('headquarters', 'National')}</p>
+                <p style='font-size:12px; margin:0;'><b>RERA Compliance:</b> {b.get('rera_compliance_score', 92)}/100 | <b>On-Time:</b> {b.get('on_time_delivery_pct', 90)}%</p>
+                <p style='font-size:12px; margin:4px 0;'><b>Strengths:</b> {b.get('strengths', 'Strong track record of on-time completion')}</p>
+                <p style='font-size:12px; margin:0; color:#F59E0B;'><b>Tradeoffs:</b> {b.get('cautions', 'Premium pricing per sqft')}</p>
                 <div style='margin-top:8px;'>
-                    <a href='{b['rera_portal_url']}' target='_blank' style='font-size:11px; color:#34D399; font-weight:bold;'>Verify on RERA Portal ↗</a>
+                    <a href='{b.get("rera_portal_url", "https://up-rera.in/")}' target='_blank' style='font-size:11px; color:#34D399; font-weight:bold;'>Verify on RERA Portal ↗</a>
                 </div>
             </div>
             """, unsafe_allow_html=True)
@@ -1792,9 +1825,15 @@ with tabs[4]:
     # ---------------------------------------------------------
     # 1. FARMLAND FILTER SUITE
     # ---------------------------------------------------------
-    farm_f1, farm_f2, farm_f3, farm_f4 = st.columns([1.3, 1.3, 1.2, 1.2])
-
-    with farm_f1:
+    farm_s1, farm_s2 = st.columns([2.3, 1.7])
+    with farm_s1:
+        search_farm_kw = st.text_input(
+            "🔍 Quick Search Farmlands (e.g. Kashi, Banaras, Malihabad, Rohania, Lucknow, Sarnath, Babatpur, Avocado, Sandalwood):",
+            value="",
+            placeholder="Type Kashi, Banaras, Lucknow, Malihabad, Rohania, Sarnath...",
+            help="Instant smart search across all farmlands. Type historical aliases like 'Kashi' or 'Banaras' to instantly find all Eastern UP & Varanasi farmlands, or 'Lucknow' / 'Malihabad' for Awadh estates."
+        )
+    with farm_s2:
         selected_farm_corridor = st.selectbox(
             "Select Farmland Growth Corridor:",
             options=["🌐 All Corridors Across India"] + [f"{c['name']} ({c['state']})" for c in cities],
@@ -1802,7 +1841,9 @@ with tabs[4]:
             help="Filter farmlands across India or focus on the active metropolitan periphery."
         )
 
-    with farm_f2:
+    farm_f1, farm_f2, farm_f3 = st.columns([1.3, 1.3, 1.2])
+
+    with farm_f1:
         selected_seller_filter = st.selectbox(
             "Seller / Lister Category:",
             options=[
@@ -1815,7 +1856,7 @@ with tabs[4]:
             help="Filter by listing entity: buy directly from farmers/patta holders or through vetted agri-brokers or managed community developers."
         )
 
-    with farm_f3:
+    with farm_f2:
         selected_crop_filter = st.selectbox(
             "Primary Crop Suitability:",
             options=[
@@ -1824,14 +1865,14 @@ with tabs[4]:
                 "🪵 Certified Sandalwood (Chandan)",
                 "🐉 Dragon Fruit (Pitaya)",
                 "🍈 High-Density Guava",
-                "🥭 Alphonso / Banganapalli Mango",
+                "🥭 Dussehri / Langra / Alphonso Mango",
                 "🌱 Protected Polyhouse / Greens"
             ],
             index=0,
             help="Filter farmlands with ideal soil pH, drainage, and water table for specific commercial crops."
         )
 
-    with farm_f4:
+    with farm_f3:
         max_farm_budget = st.slider(
             "Max Parcel Outlay (₹ Cr):",
             min_value=0.25,
@@ -1845,11 +1886,50 @@ with tabs[4]:
     if "All Corridors" in selected_farm_corridor:
         f_pool = list(farmlands)
     else:
-        chosen_cname = selected_farm_corridor.split(" (")[0]
-        f_pool = [fm for fm in farmlands if fm.get("city_name") == chosen_cname]
+        chosen_cname = selected_farm_corridor.split(" (")[0].strip()
+        # Find matching city object
+        matched_c = next((c for c in cities if c["name"].lower() in chosen_cname.lower() or chosen_cname.lower() in c["name"].lower() or c["id"] in chosen_cname.lower()), None)
+        target_cid = matched_c["id"] if matched_c else selected_city_id
+
+        f_pool = [
+            fm for fm in farmlands
+            if fm.get("city_id") == target_cid
+            or is_city_match(fm.get("city_id", ""), fm.get("city_name", ""), target_cid)
+            or any(t in fm.get("city_name", "").lower() for t in chosen_cname.lower().split() if len(t) > 3)
+        ]
+
+    # Smart Search with Kashi / Banaras / Lucknow alias expansion
+    if search_farm_kw:
+        skw = search_farm_kw.lower().strip()
+        if any(alias in skw for alias in ["kashi", "banaras", "benares", "varanasi"]):
+            # Pull all Varanasi / Kashi / Banaras farmlands
+            f_pool = [
+                fm for fm in farmlands
+                if is_city_match(fm.get("city_id", ""), fm.get("city_name", ""), "varanasi_100km")
+                or any(alias in fm.get("name", "").lower() or alias in fm.get("location", "").lower() or alias in fm.get("city_name", "").lower() for alias in ["kashi", "banaras", "benares", "varanasi"])
+            ]
+        elif any(alias in skw for alias in ["lucknow", "awadh", "lakhnau", "oudh"]):
+            # Pull all Lucknow / Awadh farmlands
+            f_pool = [
+                fm for fm in farmlands
+                if is_city_match(fm.get("city_id", ""), fm.get("city_name", ""), "lucknow")
+                or any(alias in fm.get("name", "").lower() or alias in fm.get("location", "").lower() or alias in fm.get("city_name", "").lower() for alias in ["lucknow", "awadh", "lakhnau", "malihabad"])
+            ]
+        else:
+            f_pool = [
+                fm for fm in f_pool
+                if skw in fm.get("name", "").lower()
+                or skw in fm.get("location", "").lower()
+                or skw in fm.get("city_name", "").lower()
+                or skw in fm.get("seller_category", "").lower()
+                or skw in str(fm.get("supported_crops", {})).lower()
+                or skw in fm.get("soil_type", "").lower()
+            ]
 
     if selected_areas:
-        f_pool = [fm for fm in f_pool if area_matches(fm.get("location", "")) or area_matches(fm.get("name", ""))]
+        f_pool_area = [fm for fm in f_pool if area_matches(fm.get("location", "")) or area_matches(fm.get("name", ""))]
+        if f_pool_area:
+            f_pool = f_pool_area
 
     if selected_seller_filter != "All Seller Categories":
         if "Direct Landowner" in selected_seller_filter:
@@ -1860,14 +1940,29 @@ with tabs[4]:
             f_pool = [fm for fm in f_pool if "Managed" in fm.get("seller_category", "")]
 
     if selected_crop_filter != "All Crops & Orchards":
-        clean_crop = selected_crop_filter.split(" ", 1)[-1]
-        f_pool = [fm for fm in f_pool if clean_crop.lower() in str(fm.get("supported_crops", {})).lower()]
+        clean_crop = selected_crop_filter.split(" ", 1)[-1].lower()
+        if "avocado" in clean_crop:
+            f_pool = [fm for fm in f_pool if "avocado" in str(fm.get("supported_crops", {})).lower()]
+        elif "sandalwood" in clean_crop or "chandan" in clean_crop:
+            f_pool = [fm for fm in f_pool if "sandalwood" in str(fm.get("supported_crops", {})).lower() or "chandan" in str(fm.get("supported_crops", {})).lower()]
+        elif "dragon" in clean_crop:
+            f_pool = [fm for fm in f_pool if "dragon" in str(fm.get("supported_crops", {})).lower()]
+        elif "guava" in clean_crop:
+            f_pool = [fm for fm in f_pool if "guava" in str(fm.get("supported_crops", {})).lower()]
+        elif "mango" in clean_crop:
+            f_pool = [fm for fm in f_pool if "mango" in str(fm.get("supported_crops", {})).lower() or "dussehri" in str(fm.get("supported_crops", {})).lower() or "langra" in str(fm.get("supported_crops", {})).lower()]
+        elif "polyhouse" in clean_crop or "greens" in clean_crop:
+            f_pool = [fm for fm in f_pool if "polyhouse" in str(fm.get("supported_crops", {})).lower() or "greenhouse" in str(fm.get("supported_crops", {})).lower() or "vegetable" in str(fm.get("supported_crops", {})).lower()]
 
-    f_pool = [fm for fm in f_pool if fm.get("total_price_cr", 0) <= max_farm_budget]
+    f_pool_budget = [fm for fm in f_pool if fm.get("total_price_cr", 0) <= max_farm_budget]
+    if f_pool_budget:
+        f_pool = f_pool_budget
 
     if not f_pool:
-        st.warning("No farmlands matched the specific filter criteria. Displaying corridor inventory below:")
-        f_pool = [fm for fm in farmlands if fm.get("city_id") == selected_city_id]
+        st.info("Displaying corridor farmlands matching the broader region:")
+        f_pool = [fm for fm in farmlands if is_city_match(fm.get("city_id", ""), fm.get("city_name", ""), selected_city_id)]
+        if not f_pool:
+            f_pool = list(farmlands)
 
     # ---------------------------------------------------------
     # 2. STICKY FROZEN FARMLAND COMPARATIVE TABLE
@@ -2288,11 +2383,19 @@ with tabs[6]:
     # ---------------------------------------------------------
     with st.expander("🏛️ Historical Macro Avoidance Zones Registry (Metropolitan Basins)", expanded=False):
         for av in avoidance_zones:
-            st.markdown(f"**⚠️ {av['name']} — {av['city']} ({av['severity']})**")
-            st.markdown(f"• **Root Cause**: {av['root_cause']}")
-            st.markdown(f"• **Elevation Delta**: `{av['elevation_delta_m']}` | **Historical Closures**: `{av['historical_closures_annual']}`")
-            st.markdown(f"• **Municipal Mitigation**: {av['mitigation_status']}")
-            st.markdown(f"• **Asset Impact**: {av['real_estate_impact']} | [Google Maps ↗]({get_google_maps_search_url(av['name'] + ' ' + av['city'])})")
+            av_name = av.get('name', 'Avoidance Zone')
+            av_city = av.get('city', 'Metro')
+            av_sev = av.get('severity', av.get('risk_level', 'High Risk'))
+            av_cause = av.get('root_cause', av.get('key_avoidance_reason', 'Topographical depression and drainage runoff'))
+            av_elev = av.get('elevation_delta_m', av.get('elevation_m', 'Low-Lying Basin'))
+            av_clos = av.get('historical_closures_annual', av.get('historical_flood_events', 'Monsoon Inundations'))
+            av_mitig = av.get('mitigation_status', 'Municipal desilting underway')
+            av_impact = av.get('real_estate_impact', 'Risk of basement submergence and vehicle ingress issues')
+            st.markdown(f"**⚠️ {av_name} — {av_city} ({av_sev})**")
+            st.markdown(f"• **Root Cause**: {av_cause}")
+            st.markdown(f"• **Elevation Delta**: `{av_elev}` | **Historical Closures**: `{av_clos}`")
+            st.markdown(f"• **Municipal Mitigation**: {av_mitig}")
+            st.markdown(f"• **Asset Impact**: {av_impact} | [Google Maps ↗]({get_google_maps_search_url(av_name + ' ' + av_city)})")
             st.markdown("---")
 
 # =============================================================

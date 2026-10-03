@@ -1738,5 +1738,128 @@
       "Sushma Group"
     ],
     "civic_citation": "GMADA Master Plan 2031 & Punjab RERA Directory"
+  },
+  {
+    "id": "mm_lko_1",
+    "city_id": "lucknow",
+    "city_name": "Lucknow",
+    "name": "Gomti Nagar Extension & Shaheed Path",
+    "lat": 26.828,
+    "lng": 80.998,
+    "flood_risk_score": 18,
+    "elevation_m": 124,
+    "drainage_quality": "Good (Remodelled Storm Drain Network)",
+    "traffic_congestion_score": 38,
+    "peak_hour_delay_ratio": 1.45,
+    "avg_peak_speed_kmh": 28.0,
+    "water_supply_score": 85,
+    "water_source": "Lucknow Jal Sansthan + Sharda Canal Feeder",
+    "water_tds_ppm": 210,
+    "composite_avoidance_score": 25,
+    "avoidance_verdict": "Low Risk (Prime Resilient Commercial & Residential Hub)",
+    "key_avoidance_reason": "Low Risk. Modern planned sectors with wide 6-lane Shaheed Path connectivity and clean underground drainage.",
+    "top_builders": [
+      "Shalimar Corp",
+      "Eldeco Group",
+      "Omaxe Limited",
+      "Rishita Developers"
+    ]
+  },
+  {
+    "id": "mm_lko_2",
+    "city_id": "lucknow",
+    "city_name": "Lucknow",
+    "name": "Sushant Golf City & Amar Shaheed Path",
+    "lat": 26.778,
+    "lng": 80.985,
+    "flood_risk_score": 15,
+    "elevation_m": 126,
+    "drainage_quality": "Excellent (Engineered Hi-Tech Township Drainage)",
+    "traffic_congestion_score": 32,
+    "peak_hour_delay_ratio": 1.35,
+    "avg_peak_speed_kmh": 34.0,
+    "water_supply_score": 88,
+    "water_source": "Dedicated Ansal Township Deep Tubewells + Water Treatment Plant",
+    "water_tds_ppm": 195,
+    "composite_avoidance_score": 22,
+    "avoidance_verdict": "Low Risk (Tier 1 Hi-Tech Integrated Township Haven)",
+    "key_avoidance_reason": "Low Risk. Direct access to Medanta Hospital, Lulu Mall, and 18-hole championship golf course.",
+    "top_builders": [
+      "Ansal API",
+      "Rishita Developers",
+      "Shalimar Corp"
+    ]
+  },
+  {
+    "id": "mm_lko_3",
+    "city_id": "lucknow",
+    "city_name": "Lucknow",
+    "name": "Mohanlalganj & Kisan Path Outer Ring Belt",
+    "lat": 26.685,
+    "lng": 80.982,
+    "flood_risk_score": 20,
+    "elevation_m": 122,
+    "drainage_quality": "Moderate (Natural canal slope into Sai River)",
+    "traffic_congestion_score": 25,
+    "peak_hour_delay_ratio": 1.25,
+    "avg_peak_speed_kmh": 38.0,
+    "water_supply_score": 92,
+    "water_source": "Perennial Gangetic-Gomti Alluvial Aquifer (<45 ft water table)",
+    "water_tds_ppm": 180,
+    "composite_avoidance_score": 22,
+    "avoidance_verdict": "Low Risk (Booming Agro-Ranch & Plotted Satellite Corridor)",
+    "key_avoidance_reason": "Low Risk. Rapid infrastructure expansion along 104-km Kisan Path Outer Ring Road.",
+    "top_builders": [
+      "Awadh Agri Ventures",
+      "Eldeco Group"
+    ]
+  },
+  {
+    "id": "mm_lko_4",
+    "city_id": "lucknow",
+    "city_name": "Lucknow",
+    "name": "Malihabad Heritage GI Mango Corridor",
+    "lat": 26.92,
+    "lng": 80.71,
+    "flood_risk_score": 16,
+    "elevation_m": 128,
+    "drainage_quality": "Excellent (Naturally undulating older alluvial plateau)",
+    "traffic_congestion_score": 22,
+    "peak_hour_delay_ratio": 1.2,
+    "avg_peak_speed_kmh": 40.0,
+    "water_supply_score": 95,
+    "water_source": "Unfailing sweet aquifer + Sharda Canal feeder",
+    "water_tds_ppm": 175,
+    "composite_avoidance_score": 18,
+    "avoidance_verdict": "Low Risk (Global GI Heritage Horticultural Haven)",
+    "key_avoidance_reason": "Low Risk. World-renowned organic Dussehri mango belt with highly prized agricultural loamy soils.",
+    "top_builders": [
+      "Malihabad Royal Farms",
+      "Awadh Heritage Agro"
+    ]
+  },
+  {
+    "id": "mm_lko_5",
+    "city_id": "lucknow",
+    "city_name": "Lucknow",
+    "name": "Sultanpur Road & Purvanchal Expressway Gateway",
+    "lat": 26.745,
+    "lng": 81.042,
+    "flood_risk_score": 22,
+    "elevation_m": 121,
+    "drainage_quality": "Good (NHAI engineered expressway culverts)",
+    "traffic_congestion_score": 35,
+    "peak_hour_delay_ratio": 1.38,
+    "avg_peak_speed_kmh": 32.0,
+    "water_supply_score": 86,
+    "water_source": "Submersible Tubewell Network + Sharda Canal",
+    "water_tds_ppm": 190,
+    "composite_avoidance_score": 26,
+    "avoidance_verdict": "Low Risk (High-Growth Plotted & Agro-Investment Gateway)",
+    "key_avoidance_reason": "Low Risk. Zero-point junction of Purvanchal Expressway and Kisan Path Outer Ring Road.",
+    "top_builders": [
+      "Omaxe Limited",
+      "Shalimar Corp"
+    ]
   }
 ]

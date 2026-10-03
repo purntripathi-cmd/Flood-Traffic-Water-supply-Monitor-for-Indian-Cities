@@ -240,7 +240,7 @@
   },
   {
     "id": "varanasi_100km",
-    "name": "Varanasi & Eastern UP 100km Corridor",
+    "name": "Varanasi (Kashi / Banaras) & Eastern UP",
     "state": "Uttar Pradesh",
     "region": "North-Central India",
     "center_lat": 25.3176,
@@ -259,12 +259,12 @@
     },
     "municipal_water_authority": {
       "name": "UP Jal Sansthan & Smart City Kashi Water Utility",
-      "piped_coverage_pct": 65,
-      "daily_supply_mld": 320,
+      "piped_coverage_pct": 68,
+      "daily_supply_mld": 340,
       "daily_demand_mld": 440,
-      "deficit_pct": 27,
+      "deficit_pct": 23,
       "primary_source": "Ganga River Intake (Bhadaini Plant) + Deep Alluvial Tubewells",
-      "summer_tanker_dependence_pct": 35
+      "summer_tanker_dependence_pct": 32
     },
     "drainage_and_flood_authority": {
       "name": "UP Irrigation & Water Resources Dept & Namami Gange Mission",
@@ -284,7 +284,14 @@
       "avg_peak_commute_speed_kmh": 14.0,
       "avg_free_flow_speed_kmh": 31.5,
       "monthly_hours_lost_avg": 37
-    }
+    },
+    "aliases": [
+      "Varanasi",
+      "Kashi",
+      "Banaras",
+      "Benares",
+      "Purvanchal"
+    ]
   },
   {
     "id": "goa",
@@ -379,6 +386,60 @@
       "avg_peak_commute_speed_kmh": 28.0,
       "avg_free_flow_speed_kmh": 52.0,
       "monthly_hours_lost_avg": 20
+    }
+  },
+  {
+    "id": "lucknow",
+    "name": "Lucknow (Awadh Fertile Corridor & State Capital)",
+    "aliases": [
+      "Lucknow",
+      "Awadh",
+      "Lakhnau",
+      "Oudh"
+    ],
+    "state": "Uttar Pradesh",
+    "region": "North-Central India",
+    "center_lat": 26.8467,
+    "center_lng": 80.9462,
+    "default_zoom": 11,
+    "elevation_range_m": "115m - 132m (Average: 123m)",
+    "key_landmark": {
+      "name": "Hazratganj / Vidhan Sabha (State Assembly)",
+      "lat": 26.8467,
+      "lng": 80.9462
+    },
+    "default_school_benchmark": {
+      "name": "La Martiniere College / CMS Gomti Nagar",
+      "lat": 26.8375,
+      "lng": 80.965
+    },
+    "municipal_water_authority": {
+      "name": "Lucknow Jal Sansthan & Sharda Canal Division",
+      "piped_coverage_pct": 82,
+      "daily_supply_mld": 740,
+      "daily_demand_mld": 850,
+      "deficit_pct": 13,
+      "primary_source": "Gomti River Water Works (Gaughat & Aishbagh) + Deep Alluvial Tubewells",
+      "summer_tanker_dependence_pct": 16
+    },
+    "drainage_and_flood_authority": {
+      "name": "Lucknow Municipal Corporation (LMC) & Gomti Riverfront Cell",
+      "primary_valleys": [
+        "Gomti River Mainstem",
+        "Kukrail Nala / River Basin",
+        "Haider Canal / Drain",
+        "Sai River Basin (Mohanlalganj)"
+      ],
+      "total_swd_network_km": 690,
+      "remodelled_swd_km": 430,
+      "primary_flood_vulnerability": "Kukrail drain overflow & Gomti backwater during intense monsoon discharge"
+    },
+    "traffic_monitoring": {
+      "authority": "Lucknow Traffic Police & Smart City ICCC",
+      "peak_to_free_flow_delay_index": 2.1,
+      "avg_peak_commute_speed_kmh": 17.5,
+      "avg_free_flow_speed_kmh": 36.0,
+      "monthly_hours_lost_avg": 32
     }
   }
 ]
