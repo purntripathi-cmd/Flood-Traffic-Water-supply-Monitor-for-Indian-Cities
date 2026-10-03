@@ -71,7 +71,24 @@ PARAMETER_DEFINITIONS = {
     "Title & Legal Verification": "Revenue ownership clarity: verified 30-year RTC / Pahani, Saat Bara (7/12), Patta Chitta, or Jamabandi without encumbrances.",
     "Farmhouse Allowance": "Permissible built-up area (typically up to 10% or 10,000 sqft) for agricultural cottage, workers quarters, and storage.",
     "Seller Category (Owner / Broker)": "Identifies direct farmer/landowner versus verified RERA-accredited agro broker or managed farmland community operator.",
-    "Contact Person & Phone": "Direct mobile phone contact and instant WhatsApp communication link for land viewing and title document inspection."
+    "Contact Person & Phone": "Direct mobile phone contact and instant WhatsApp communication link for land viewing and title document inspection.",
+    "Pincode": "6-digit postal index code identifying the specific urban ward and micro-market.",
+    "Ward / Locality": "Municipal administrative ward or prominent residential/commercial neighborhood cluster.",
+    "Avoidance Severity": "Risk classification: Critical Avoidance (severe life/asset danger), High Stress Avoidance (chronic seasonal breakdown), or Moderate Caution.",
+    "Elevation Delta": "Topographical difference in meters between the lowest contour of this locality and surrounding natural drainage ridges.",
+    "Waterlogging Days / Season": "Historical average number of days per monsoon season with submerged streets, basements, or disabled vehicular traffic.",
+    "Negative Feedbacks Count": "Aggregated resident grievances filed across municipal portals, RWAs, social media, and consumer litigation.",
+    "Common Civic Complaints (-ve Feedback)": "Unfiltered resident complaints regarding drainage overflow, dry borewells, tanker mafia extortion, road craters, transformer trips, and foul odors.",
+    "Water Tanker Reliance Index": "Scale of 1 to 10 measuring dependency on private water tankers due to absent or inadequate municipal piped supply.",
+    "Peak Traffic Delay Index": "Ratio of peak-hour commute travel time to free-flow travel time, including average vehicle speed (km/h).",
+    "10-20 Yr Development Authority Master Plan": "Long-term planned public infrastructure schemes (2026-2045) sanctioned by statutory urban planning authorities.",
+    "Upcoming Metro Line & Station": "Specific mass rapid transit rail corridor, upcoming station name, and scheduled year of commercial operation.",
+    "Upcoming Airport Connectivity": "Driving distance, dedicated elevated expressway, or high-speed rail access to the international airport or upcoming greenfield airport.",
+    "Major Malls, Sports & Tourist Hubs": "Proximity to regional grade-A shopping malls, Olympic stadiums, public sports complexes, lake promenades, and cultural tourist circuits.",
+    "Critique Negative Penalty": "Points deducted from the area's viability score based on the severity and frequency of civic complaints and infrastructure breakdowns.",
+    "Critique Master Plan Boost": "Points awarded to the area based on transformative upcoming 10-20 year public transit, highway, and civic projects.",
+    "Critique AI Viability Score": "Composite 0-100 score balancing negative civic distress against long-term development authority master plan catalysts.",
+    "Real Estate Advisory": "Unbiased actionable recommendation for prospective property buyers, tenants, and commercial investors."
 }
 
 

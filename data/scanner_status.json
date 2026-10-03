@@ -1,0 +1,9 @@
+{
+  "last_run_timestamp": "2026-10-03 12:03:03",
+  "status": "Weekly Scan Completed Successfully",
+  "is_fresh": true,
+  "days_since_last_scan": 0,
+  "next_scheduled_run": "2026-10-10 12:03:03",
+  "total_pincodes_monitored": 24,
+  "last_batch_records_updated": 24
+}

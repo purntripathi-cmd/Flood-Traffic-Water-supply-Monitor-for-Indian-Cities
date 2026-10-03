@@ -217,6 +217,15 @@ def sync_daily_scan_to_excel(
         })
     df_farms = pd.DataFrame(farm_rows)
 
+    # 6. Pincode Avoidance Radar DataFrame
+    pincode_csv = os.path.join(os.path.dirname(output_filepath), "chronic_avoidance_pincodes.csv")
+    df_pincodes = pd.DataFrame()
+    if os.path.exists(pincode_csv):
+        try:
+            df_pincodes = pd.read_csv(pincode_csv)
+        except Exception:
+            pass
+
     # Write multi-sheet Excel file
     with pd.ExcelWriter(output_filepath, engine="openpyxl") as writer:
         df_props.to_excel(writer, sheet_name="Top 10 Purchase Properties", index=False)
@@ -224,10 +233,12 @@ def sync_daily_scan_to_excel(
         df_rentals.to_excel(writer, sheet_name="Top 10 Rental Properties", index=False)
         if not df_farms.empty:
             df_farms.to_excel(writer, sheet_name="Verified Farmlands", index=False)
+        if not df_pincodes.empty:
+            df_pincodes.to_excel(writer, sheet_name="Pincode Avoidance Radar", index=False)
         df_plans.to_excel(writer, sheet_name="Mega Master Plans", index=False)
         df_audit.to_excel(writer, sheet_name="Critic AI & Onboarded Log", index=False)
 
-    total_records = len(df_props) + len(df_plots) + len(df_rentals) + len(df_farms)
+    total_records = len(df_props) + len(df_plots) + len(df_rentals) + len(df_farms) + len(df_pincodes)
     return output_filepath, total_records
 
 
@@ -301,6 +312,13 @@ def generate_excel_download_bytes(
         pd.DataFrame(top_rentals).to_excel(writer, sheet_name="Rental Benchmarks", index=False)
         if not df_f.empty:
             df_f.to_excel(writer, sheet_name="Verified Farmlands", index=False)
+        pincode_csv = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "chronic_avoidance_pincodes.csv")
+        if os.path.exists(pincode_csv):
+            try:
+                df_pins = pd.read_csv(pincode_csv)
+                df_pins.to_excel(writer, sheet_name="Pincode Avoidance Radar", index=False)
+            except Exception:
+                pass
         pd.DataFrame(master_plans).to_excel(writer, sheet_name="Govt Master Plans", index=False)
 
     buffer.seek(0)

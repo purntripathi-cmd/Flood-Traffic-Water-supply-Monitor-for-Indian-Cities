@@ -27,6 +27,7 @@ Integrates:
 import json
 import os
 import gc
+import datetime
 import psutil
 import pandas as pd
 import plotly.express as px
@@ -40,13 +41,27 @@ from utils.geo import calculate_road_distance_km, estimate_urban_road_distance_k
 from utils.scoring import compute_composite_avoidance_score, calculate_monthly_wasted_commute_hours
 from utils.ai_copilot import run_avoidance_copilot_query
 from utils.schools import render_schools_collapsible_html, get_nearby_cbse_schools, load_cbse_schools
-from utils.critic_ai import validate_and_correct_property_data
+from utils.critic_ai import (
+    validate_and_correct_property_data,
+    evaluate_comprehensive_critique_score,
+    load_civic_complaints,
+    load_master_plan_catalysts
+)
 from utils.ai_onboarder import search_and_onboard_project, load_onboarded_projects
 from utils.excel_exporter import sync_daily_scan_to_excel, generate_excel_download_bytes
 from utils.farmland_view import (
     HIGH_VALUE_CROP_BENCHMARKS,
     render_seller_contact_card_html,
     render_agronomic_telemetry_html
+)
+from utils.scanner_daemon import (
+    get_scanner_status,
+    run_batch_scan,
+    trigger_async_background_scan,
+    is_scan_currently_running,
+    PINCODE_CSV,
+    COMPLAINTS_CSV,
+    CATALYSTS_CSV
 )
 
 # -------------------------------------------------------------
@@ -201,9 +216,20 @@ def load_all_datasets():
         user_preferences = json.load(f)
     return cities, micro_markets, builders, properties, rental_properties, gated_plots, farmlands, govt_master_plans, avoidance_zones, user_preferences
 
+@st.cache_data
+def load_pincode_avoidance_df():
+    if not os.path.exists(PINCODE_CSV):
+        from scripts.build_civic_data import generate_all_csvs
+        generate_all_csvs()
+    try:
+        return pd.read_csv(PINCODE_CSV)
+    except Exception:
+        return pd.DataFrame()
+
 cities, micro_markets, builders, properties, rental_properties, gated_plots, farmlands, govt_master_plans, avoidance_zones, user_preferences = load_all_datasets()
 cbse_schools = load_cbse_schools()
 onboarded_projects = load_onboarded_projects()
+pincodes_df = load_pincode_avoidance_df()
 
 # Automatically ensure daily Excel file is generated/synced on disk
 excel_path = os.path.join(DATA_DIR, "daily_property_screener_dump.xlsx")
@@ -1053,14 +1079,18 @@ with tabs[0]:
     render_sticky_frozen_table(df_top_props, frozen_cols=1, table_id="top_props_table", max_height="500px")
 
     # Collapsible Deep-Dive Cards with CBSE Schools, Fees & Data Citations
-    with st.expander("🎓 View Nearby CBSE Schools, Tuition Fees & Verified Data Sources for Top Properties", expanded=False):
+    with st.expander("🎓 View Nearby CBSE Schools, Tuition Fees, Critic AI Civic Audit & Verified Sources", expanded=False):
         for p in sorted_properties[:6]:
+            eval_data = evaluate_comprehensive_critique_score(p)
             st.markdown(f"#### 🏢 {p['name']} — {p['city_name']} ({p['micro_market']})")
             st.markdown(f"""
             - **Developer:** {p['builder']} ({p['builder_tier']}) | **Price:** ₹{p['total_price_cr']} Cr (₹{p['price_per_sqft']:,}/sqft)
             - **5-Yr Capital Appreciation:** `+{p.get('projected_5yr_appreciation_pct', 48)}%` | **Handover Timeline:** `{p.get('expected_completion', 'Dec 2026')}` ({p.get('upcoming_phase')})
             - **Property Age / Status:** `{p.get('age_vs_completion', p.get('property_age'))}`
             - **Master Plan Catalyst:** {p['govt_master_plan_catalyst']} (Growth Probability: `{p['growth_probability_pct']}%`)
+            - **Critic AI Forensic Audit:** ⚖️ Net Viability Score: **{eval_data['net_critique_score']} / 100** ({eval_data['verdict_badge']})
+              - *Civic Grievance Penalty:* `{eval_data['negative_score_penalty']} pts` ({len(eval_data['negative_feedbacks'])} resident complaints audited)
+              - *10-20 Yr Master Plan Boost:* `+{eval_data['master_plan_growth_boost']} pts` (Metro, Airport & Peripheral Ring Road catalysts)
             - **Critic AI Status:** {p.get('critic_ai_status', '✅ Critic AI Validated')}
             - **Primary Data Sources:** {p.get('source_name', 'State RERA Registry & Municipal Storm Drain Master Plan')}
             """)
@@ -1955,20 +1985,243 @@ with tabs[5]:
         )
 
 # =============================================================
-# TAB 7: CHRONIC AVOIDANCE ZONES DEEP DIVE
+# TAB 7: CHRONIC AVOIDANCE ZONES & PINCODE CIVIC SCANNER
 # =============================================================
 with tabs[6]:
-    st.markdown(f"### 🚨 Chronic Real Estate Avoidance Zones")
-    st.caption("Forensic analysis of chronic monsoon waterlogging, tidal backflows, and hydraulic bottlenecks.")
+    st.markdown("### 🚨 Hyperlocal PIN CODE Level Chronic Real Estate Avoidance Radar")
+    st.caption("Pinpoint 6-digit PIN code avoidance zones across 6 metropolitan corridors. Audits unfiltered civic complaints, water scarcity, rajakaluve backflow, and traffic delay ratios against 10-to-20 Year Development Authority Master Plans (2026–2045). Continuously audited by autonomous background batch scanner and cached locally in CSV for instant responsiveness.")
 
-    for av in avoidance_zones:
-        with st.expander(f"⚠️ {av['name']} — {av['city']} ({av['severity']})", expanded=False):
-            st.markdown(f"**Root Cause**: {av['root_cause']}")
-            st.markdown(f"**Elevation Delta**: `{av['elevation_delta_m']}` | **Historical Closures**: `{av['historical_closures_annual']}`")
-            st.markdown(f"**Municipal Mitigation Progress**: {av['mitigation_status']}")
-            st.markdown(f"**Real Estate Asset Impact**: {av['real_estate_impact']}")
-            st.markdown(f"**Verified Citation**: `{av['citation']}`")
-            st.markdown(f"[View Hotspot in Google Maps ↗]({get_google_maps_search_url(av['name'] + ' ' + av['city'])})")
+    # ---------------------------------------------------------
+    # 1. AUTONOMOUS SCANNER TELEMETRY & BACKGROUND REFRESH BANNER
+    # ---------------------------------------------------------
+    scan_meta = get_scanner_status()
+    is_fresh = scan_meta.get("is_fresh", True)
+    
+    st.markdown(f"""
+    <div style='background:#0F172A; border:1px solid #1E293B; border-radius:10px; padding:14px 18px; margin-bottom:14px;'>
+        <div style='display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap;'>
+            <div>
+                <span style='font-size:0.75rem; text-transform:uppercase; color:#94A3B8; font-weight:700;'>Autonomous Weekly Civic Scanner Status</span>
+                <h4 style='margin:2px 0 0 0; color:#F8FAFC;'>
+                    {'⚡ Data Synchronized & Fresh' if is_fresh else '⚠️ Weekly Background Scan Due'} 
+                    <span style='font-size:0.8rem; background:{'#065F46' if is_fresh else '#7F1D1D'}; color:{'#A7F3D0' if is_fresh else '#FECACA'}; padding:2px 8px; border-radius:4px; font-weight:bold; margin-left:8px;'>
+                        {scan_meta.get('status', 'Active')}
+                    </span>
+                </h4>
+            </div>
+            <div style='font-size:0.82rem; color:#94A3B8; margin-top:4px;'>
+                <b>Last Scanned:</b> <code>{scan_meta.get('last_run_timestamp', 'Just now')}</code> | 
+                <b>Next Audit:</b> <code>{scan_meta.get('next_scheduled_run', 'In 7 days')}</code> | 
+                <b>Coverage:</b> <span style='color:#38BDF8; font-weight:bold;'>{scan_meta.get('total_pincodes_monitored', 24)} Pin Codes Monitored</span>
+            </div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+    sc_b1, sc_b2 = st.columns([1.5, 2.5])
+    with sc_b1:
+        if st.button("⚡ Run Background Batch Refresh Now", type="primary", help="Triggers throttled batch scan across all PIN codes, recalibrates Critic AI viability scores, and updates local CSV."):
+            with st.spinner("Auditing civic complaint records, water tanker indices & master plan amendments across all PIN codes..."):
+                scan_res = run_batch_scan(batch_size=4, delay_seconds=0.1)
+                st.cache_data.clear()
+                st.success(f"✅ Background audit completed! {scan_res['last_batch_records_updated']} PIN codes updated & synced locally to CSV.")
+                st.rerun()
+
+    with sc_b2:
+        with st.expander("⚙️ Autonomous Background Daemon Architecture (Runs Unattended for Hours)", expanded=False):
+            st.markdown("""
+            * **Weekly Autonomous Schedule**: Runs in the background even if this Streamlit app is closed via standalone script:
+              ```bash
+              python scripts/weekly_civic_scanner.py --batch-size 4 --delay-seconds 1.0 --continuous
+              ```
+            * **Throttled Batch Processing**: Scans pin codes in configurable parts (4 PIN codes per batch with 1s pause) to prevent high CPU / disk I/O load.
+            * **Local CSV Storage**: Stored locally in `data/chronic_avoidance_pincodes.csv` ensuring zero external API latency, instant page loads, and offline caching.
+            """)
+
+    st.markdown("<br>", unsafe_allow_html=True)
+
+    # ---------------------------------------------------------
+    # 2. INTERACTIVE PINCODE AVOIDANCE SEARCH & MULTI-FILTERS
+    # ---------------------------------------------------------
+    st.markdown("#### 🔎 Pin-Code Avoidance Screener & Filters")
+    pf_c1, pf_c2, pf_c3, pf_c4 = st.columns([1.3, 1.2, 1.5, 1.2])
+
+    with pf_c1:
+        pincode_city_filter = st.selectbox(
+            "Corridor / City Filter:",
+            options=["🌐 All Cities Across India"] + [c["name"] for c in cities],
+            index=0
+        )
+
+    with pf_c2:
+        severity_filter = st.selectbox(
+            "Avoidance Severity Level:",
+            options=["All Severity Levels", "Critical Avoidance", "High Stress Avoidance", "Moderate Caution"],
+            index=0
+        )
+
+    with pf_c3:
+        search_query_pincode = st.text_input(
+            "Search Pincode, Ward or Locality:",
+            placeholder="e.g. 560103, Bellandur, Velachery, Kurla, 122002..."
+        )
+
+    with pf_c4:
+        complaint_cat_filter = st.selectbox(
+            "Civic Distress Focus:",
+            options=["All Civic Grievances", "Drainage & Floods", "Water Tanker Mafia", "Commute Bottlenecks"],
+            index=0
+        )
+
+    # Filter Pincodes DataFrame
+    filtered_pins = pincodes_df.copy() if not pincodes_df.empty else pd.DataFrame()
+
+    if not filtered_pins.empty:
+        if pincode_city_filter != "🌐 All Cities Across India":
+            filtered_pins = filtered_pins[filtered_pins["city"].str.contains(pincode_city_filter.split(" ")[0], case=False, na=False)]
+
+        if severity_filter != "All Severity Levels":
+            filtered_pins = filtered_pins[filtered_pins["avoidance_severity"].str.contains(severity_filter, case=False, na=False)]
+
+        if search_query_pincode.strip():
+            sq = search_query_pincode.strip().lower()
+            filtered_pins = filtered_pins[
+                filtered_pins["pincode"].astype(str).str.contains(sq, case=False, na=False) |
+                filtered_pins["locality"].str.contains(sq, case=False, na=False) |
+                filtered_pins["city"].str.contains(sq, case=False, na=False) |
+                filtered_pins["common_civic_complaints"].str.contains(sq, case=False, na=False)
+            ]
+
+        if complaint_cat_filter == "Drainage & Floods":
+            filtered_pins = filtered_pins[filtered_pins["common_civic_complaints"].str.contains("drain|flood|waterlog|subway|nala", case=False, na=False)]
+        elif complaint_cat_filter == "Water Tanker Mafia":
+            filtered_pins = filtered_pins[filtered_pins["common_civic_complaints"].str.contains("tanker|borewell|water|tds|salin", case=False, na=False)]
+        elif complaint_cat_filter == "Commute Bottlenecks":
+            filtered_pins = filtered_pins[filtered_pins["common_civic_complaints"].str.contains("traffic|jam|delay|bottleneck|choke", case=False, na=False)]
+
+    st.markdown(f"**Found {len(filtered_pins)} Monitored Pin-Code Avoidance Zones**")
+
+    # ---------------------------------------------------------
+    # 3. STICKY FROZEN 1ST-COLUMN PIN-CODE TABLE
+    # ---------------------------------------------------------
+    if not filtered_pins.empty:
+        table_rows_pin = []
+        for _, r in filtered_pins.iterrows():
+            table_rows_pin.append({
+                "Pincode": f"📍 {r['pincode']}",
+                "Ward / Locality": r["locality"],
+                "City & State": f"{r['city']} ({r['state']})",
+                "Avoidance Severity": r["avoidance_severity"],
+                "Critique AI Viability Score": f"{r['critique_ai_viability_score']} / 100",
+                "Critique Negative Penalty": f"{r.get('critique_negative_score_penalty', '-25')} pts",
+                "Critique Master Plan Boost": f"+{r.get('critique_master_plan_boost', '20')} pts",
+                "Waterlogging Days / Season": r["annual_waterlogging_days"],
+                "Elevation Delta": r["elevation_delta_m"],
+                "Common Civic Complaints (-ve Feedback)": r["common_civic_complaints"],
+                "Water Tanker Reliance Index": f"{r['water_tanker_reliance_index']} / 10",
+                "Peak Traffic Delay Index": r["peak_traffic_delay_index"],
+                "Upcoming Metro Line & Station": r["upcoming_metro_line_and_station"],
+                "Upcoming Airport Connectivity": r["upcoming_airport_connectivity"],
+                "Major Malls, Sports & Tourist Hubs": r["major_commercial_mall_sports_hubs"],
+                "10-20 Yr Development Authority Master Plan": r["development_authority_10_20yr_plan"],
+                "Real Estate Advisory": r["real_estate_advisory"],
+                "Last Scanned Timestamp": r["last_scanned_timestamp"],
+                "Data Source": r["data_source"],
+                "Google Maps Pin": f"<a href='{get_google_maps_search_url(str(r['locality']) + ' ' + str(r['pincode']))}' target='_blank' style='color:#38BDF8; font-weight:bold;'>Maps Pin ↗</a>"
+            })
+
+        df_pin_display = pd.DataFrame(table_rows_pin)
+        render_sticky_frozen_table(df_pin_display, frozen_cols=1, table_id="pincode_avoidance_frozen_table", max_height="520px")
+
+        # CSV Download Button
+        csv_pin_bytes = filtered_pins.to_csv(index=False).encode("utf-8")
+        st.download_button(
+            label="📥 Download Filtered Pin-Code Avoidance CSV (Locally Cached)",
+            data=csv_pin_bytes,
+            file_name=f"chronic_avoidance_pincodes_{datetime.datetime.now().strftime('%Y%m%d')}.csv",
+            mime="text/csv"
+        )
+    else:
+        st.warning("No pin-code avoidance records match the active search and filter criteria.")
+
+    st.markdown("<br>", unsafe_allow_html=True)
+
+    # ---------------------------------------------------------
+    # 4. SIDE-BY-SIDE COMPARATIVE CARDS: CIVIC COMPLAINTS VS 10-20 YR MASTER PLANS
+    # ---------------------------------------------------------
+    st.markdown("### ⚖️ Forensic Breakdown: Negative Civic Feedback vs 10-20 Year Master Plan Growth")
+    st.caption("How Critic AI weighs localized resident distress against transformative state-funded infrastructure to establish viability:")
+
+    for _, r in filtered_pins.head(8).iterrows():
+        sev_color = "#EF4444" if "Critical" in str(r["avoidance_severity"]) else "#F59E0B"
+        with st.expander(f"📍 PIN {r['pincode']} — {r['locality']} ({r['city']}) | Viability: {r['critique_ai_viability_score']}/100", expanded=False):
+            c_neg, c_pos = st.columns([1.2, 1.2])
+
+            with c_neg:
+                st.markdown(f"""
+                <div style='background:#1E1B2E; border:1px solid #7F1D1D; border-radius:8px; padding:12px; margin-bottom:8px;'>
+                    <div style='display:flex; justify-content:space-between;'>
+                        <h4 style='color:#FCA5A5; margin:0;'>🚨 Unfiltered Civic Complaints & Negative Feedback</h4>
+                        <span style='background:#7F1D1D; color:#FECACA; padding:2px 8px; border-radius:4px; font-weight:bold; font-size:11px;'>
+                            {r.get('critique_negative_score_penalty', '-30')} Penalty
+                        </span>
+                    </div>
+                    <ul style='color:#E2E8F0; font-size:12px; margin:8px 0; padding-left:18px; line-height:1.5;'>
+                        <li><b>Elevation & Contour:</b> <code>{r['elevation_delta_m']}</code></li>
+                        <li><b>Annual Inundation:</b> <b>{r['annual_waterlogging_days']}</b> flooded streets/basements</li>
+                        <li><b>Water Security:</b> Tanker Dependency Index <b>{r['water_tanker_reliance_index']}/10</b></li>
+                        <li><b>Commute Snarls:</b> Peak Delay <b>{r['peak_traffic_delay_index']}</b></li>
+                        <li><b>Complaints Count:</b> <b>{r['negative_feedbacks_count']}+</b> verified resident filings</li>
+                    </ul>
+                    <div style='background:#0F0E17; border-radius:6px; padding:8px; font-size:12px; color:#F87171;'>
+                        <b>Documented Resident Grievances:</b><br>
+                        {r['common_civic_complaints']}
+                    </div>
+                </div>
+                """, unsafe_allow_html=True)
+
+            with c_pos:
+                st.markdown(f"""
+                <div style='background:#06231F; border:1px solid #065F46; border-radius:8px; padding:12px; margin-bottom:8px;'>
+                    <div style='display:flex; justify-content:space-between;'>
+                        <h4 style='color:#6EE7B7; margin:0;'>🚀 10 to 20-Year Development Authority Master Plan</h4>
+                        <span style='background:#065F46; color:#A7F3D0; padding:2px 8px; border-radius:4px; font-weight:bold; font-size:11px;'>
+                            +{r.get('critique_master_plan_boost', '20')} Boost
+                        </span>
+                    </div>
+                    <ul style='color:#E2E8F0; font-size:12px; margin:8px 0; padding-left:18px; line-height:1.5;'>
+                        <li><b>🚇 Upcoming Metro Line & Station:</b> {r['upcoming_metro_line_and_station']}</li>
+                        <li><b>✈️ Upcoming Airport Connectivity:</b> {r['upcoming_airport_connectivity']}</li>
+                        <li><b>🏟️ Major Malls, Sports & Tourist Hubs:</b> {r['major_commercial_mall_sports_hubs']}</li>
+                        <li><b>🏛️ Development Authority Scheme (2026-2045):</b> {r['development_authority_10_20yr_plan']}</li>
+                    </ul>
+                    <div style='background:#021512; border-radius:6px; padding:8px; font-size:12px; color:#34D399;'>
+                        <b>Critic AI Net Evaluation Formula:</b><br>
+                        <code>Base (50) + Negative Penalty ({r.get('critique_negative_score_penalty', '-30')}) + Master Plan Boost (+{r.get('critique_master_plan_boost', '20')}) = {r['critique_ai_viability_score']}/100</code>
+                    </div>
+                </div>
+                """, unsafe_allow_html=True)
+
+            st.markdown(f"""
+            <div style='background:#0F172A; border-left:4px solid {sev_color}; padding:8px 12px; border-radius:4px; font-size:12px; color:#E2E8F0; margin-top:4px;'>
+                <b>🎯 Critic AI Actionable Advisory:</b> {r['real_estate_advisory']} | 
+                <a href='{get_google_maps_search_url(str(r['locality']) + ' ' + str(r['pincode']))}' target='_blank' style='color:#38BDF8; font-weight:bold;'>Inspect Satellite Terrain on Google Maps ↗</a>
+            </div>
+            """, unsafe_allow_html=True)
+
+    st.markdown("<br>", unsafe_allow_html=True)
+
+    # ---------------------------------------------------------
+    # 5. MACRO AVOIDANCE ZONES HISTORICAL REGISTRY
+    # ---------------------------------------------------------
+    with st.expander("🏛️ Historical Macro Avoidance Zones Registry (Metropolitan Basins)", expanded=False):
+        for av in avoidance_zones:
+            st.markdown(f"**⚠️ {av['name']} — {av['city']} ({av['severity']})**")
+            st.markdown(f"• **Root Cause**: {av['root_cause']}")
+            st.markdown(f"• **Elevation Delta**: `{av['elevation_delta_m']}` | **Historical Closures**: `{av['historical_closures_annual']}`")
+            st.markdown(f"• **Municipal Mitigation**: {av['mitigation_status']}")
+            st.markdown(f"• **Asset Impact**: {av['real_estate_impact']} | [Google Maps ↗]({get_google_maps_search_url(av['name'] + ' ' + av['city'])})")
+            st.markdown("---")
 
 # =============================================================
 # TAB 8: EXPLAINABLE AI COPILOT
@@ -1983,13 +2236,17 @@ with tabs[7]:
         help="Example: Compare top builders in Bengaluru, or show flood-free properties under 2.5 Cr."
     )
 
-    q_btn1, q_btn2, q_btn3 = st.columns(3)
-    if q_btn1.button("🔴 Show Avoidance Zones"):
+    q_btn1, q_btn2, q_btn3, q_btn4, q_btn5 = st.columns(5)
+    if q_btn1.button("🔴 Avoidance Zones"):
         copilot_query = f"Which areas should I avoid due to flooding in {active_city['name']}?"
-    if q_btn2.button("🏗️ Compare Best Builders"):
+    if q_btn2.button("🏗️ Top Builders"):
         copilot_query = f"Who are the top tier 1 builders with best RERA delivery in {active_city['name']}?"
-    if q_btn3.button("💧 Check Water Supply & Softener"):
+    if q_btn3.button("💧 Water Supply & STP"):
         copilot_query = f"Which properties have Cauvery or municipal piped water and STPs in {active_city['name']}?"
+    if q_btn4.button("⚖️ Civic Complaints"):
+        copilot_query = f"What are the severe civic complaints and negative feedback in {active_city['name']}?"
+    if q_btn5.button("🚇 10-20 Yr Master Plan"):
+        copilot_query = f"What are the upcoming Metro lines, airports, and 10-20 year master plan catalysts in {active_city['name']}?"
 
     if copilot_query:
         ai_response = run_avoidance_copilot_query(

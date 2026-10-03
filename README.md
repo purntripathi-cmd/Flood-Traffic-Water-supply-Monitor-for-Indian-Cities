@@ -134,6 +134,27 @@ This platform brings together civic research datasets, remote sensing imagery, a
 - **State-Wise Land Purchase Legal Guide**: Comprehensive due diligence frameworks for Karnataka (Sections 79A/B repealed), Maharashtra (Section 63 MTAL), Tamil Nadu (unrestricted Patta/Chitta transfers), Telangana (Dharani instant registry), and Uttar Pradesh (Section 80 conversion).
 - **Multi-Sheet Daily Excel Export**: Farmland inventory with all 28 agronomic, financial, and legal attributes automatically exported to the `"Verified Farmlands"` worksheet in `daily_property_screener_dump.xlsx`.
 
+### 15. Hyperlocal PIN-Code Level Chronic Avoidance Radar
+- Forensic 6-digit PIN code precision across all 6 metropolitan corridors (`data/chronic_avoidance_pincodes.csv`).
+- Evaluates ward-level distress metrics: annual waterlogging days, elevation delta vs stormwater basin, water tanker dependency index, peak traffic delay ratios, and common citizen complaints.
+- Sticky 1st column frozen table with instant search by PIN code or locality, severity filter, and civic distress keyword filtering.
+- One-click CSV export: `📥 Download Filtered Pin-Code Avoidance CSV`.
+
+### 16. Critic AI Deep Negative Grievance Penalty & 10–20 Year Master Plan Engine
+- **Negative Feedback & Common Civic Complaints**: Continuously monitors and audits citizen grievances from municipal grievance portals (BBMP Sahaya, BMC 1916, GCC 1913, GMDA, GHMC), Central Water Commission flood records, and traffic police delay logs (`data/civic_complaints_radar.csv`). Applies penalties ranging from `-10` to `-35` points based on stormwater backflows, transformer burnouts, and water tanker exploitation.
+- **10 to 20-Year Development Authority Master Plan Catalysts (2026–2045)**: Audits statutory town planning master plans (`data/master_plan_catalysts_2040.csv`) across BDA/BMRDA 2031, MMRDA CTS 2036, CMDA SMP, DDA MPD-2041, HMDA 2031, and VDA 2031. Tracks upcoming Metro lines and stations, greenfield international airports, peripheral ring roads, regional sports complexes/playgrounds, premier malls, and tourist corridors for capital appreciation boosts (`+10` to `+30` points).
+- **Transparent Mathematical Balancing**: Displays net Critic AI viability scores calculated via:
+  $$\text{Net Viability Score} = \text{Base Score} + \text{Negative Civic Penalty} + \text{Master Plan Growth Boost}$$
+
+### 17. Autonomous Background Scanner Daemon (Runs for Hours Unattended)
+- **Zero UI Lag / Instant Responsiveness**: Stores all fresh scan results locally in `data/chronic_avoidance_pincodes.csv` and multi-sheet Excel files.
+- **Autonomous Weekly Scheduler**: Can run continuously in the background even if the Streamlit web application is closed:
+  ```bash
+  python scripts/weekly_civic_scanner.py --batch-size 4 --delay-seconds 1.0 --continuous --interval-hours 168
+  ```
+- **Throttled Batch Processing**: Scans pin codes in configurable chunks (4 PIN codes per batch with 1-second pauses) to avoid CPU or disk I/O bottlenecks.
+- **In-App Telemetry & Manual Refresh**: Displays live 7-day data freshness badges, last scan timestamps, and a non-blocking `⚡ Run Background Batch Refresh Now` trigger button.
+
 ---
 
 ## 🚀 Quickstart & Local Installation
