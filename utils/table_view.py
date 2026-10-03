@@ -3,6 +3,8 @@ Custom Sticky / Frozen Column Table Renderer for Streamlit
 Freezes 1st column (configurable) and sticky header with horizontal and vertical scroll.
 Renders via Streamlit Components HTML iframe for 100% guaranteed visibility across all browsers.
 Includes intuitive parameter definitions that appear as tooltips on mouse hover.
+Features universal wrap text across all cells and headers with responsive row height.
+Features native client-side interactive sorting on every column header (click to sort asc/desc).
 """
 
 import html as html_lib
@@ -12,6 +14,7 @@ import streamlit.components.v1 as components
 
 # Dictionary of parameter definitions explaining every metric in simple words on mouse hover
 PARAMETER_DEFINITIONS = {
+    "Rank": "Current ranking position within the selected scope (All India or focused Corridor).",
     "Property Name": "Registered legal project name under RERA and local municipal corporation.",
     "Layout / Scheme Name": "Name of the approved plotted community layout.",
     "City & Micro-Market": "Metropolitan jurisdiction and specific urban ward / neighbourhood cluster.",
@@ -25,7 +28,7 @@ PARAMETER_DEFINITIONS = {
     "Upcoming Phase Details": "Specific tower, wing, or pre-launch phase currently under development.",
     "Property Age vs Completion Timeline": "Distinguishes ready-to-move projects by actual society age (years since occupancy certificate) versus under-construction or upcoming pre-launch phases by targeted completion quarters and remaining months.",
     "Age / Handover Status": "Current execution phase indicating ready possession with active occupancy vs upcoming handover milestones.",
-    "Road Dist to City Center": "Direct driving road distance in km to the administrative / historical City Center (e.g. Vidhana Soudha, CSMT, Chennai Central, Connaught Place, Secretariat, Cantt/Godowlia).",
+    "Road Dist to City Center": "Direct driving road distance in km to the administrative / historical City Center (e.g. Vidhana Soudha, CSMT, Chennai Central, Connaught Place, Secretariat, Cantt/Godowlia, Hazratganj).",
     "Critic AI Status": "Automated validation status by Critic AI testing price realism, hydrological risk, and municipal sanction validity.",
     "Road Dist": "Realistic driving road network distance in km, accounting for street curvature, flyovers, and arterial detours.",
     "Config & Area": "Unit configuration (e.g. 2, 3, or 4 BHK) and average super built-up / carpet area in square feet.",
@@ -39,7 +42,7 @@ PARAMETER_DEFINITIONS = {
     "Land Elevation": "Natural topographical ground elevation in meters above Mean Sea Level (MSL).",
     "Flood Risk Category": "Topographical vulnerability to monsoon inundation based on lake overflow, river backflow, or low-lying basin depressions.",
     "Flood Exposure": "Vulnerability tag based on contour depressions, storm nala proximity, and historical monsoon logs.",
-    "Statutory Authority": "Town planning and developmental authority (e.g., BMRDA, CIDCO, CMDA, DTCP, HMDA, VDA, PDA) that sanctioned the layout plan.",
+    "Statutory Authority": "Town planning and developmental authority (e.g., BMRDA, CIDCO, CMDA, DTCP, HMDA, VDA, LDA, PDA) that sanctioned the layout plan.",
     "Soil Percolation": "Natural soil absorption rate and rainwater runoff infiltration efficiency.",
     "STP & Water Infra": "On-site Sewage Treatment Plant (MBBR/SBR), Water Softener, Individual IoT Meter, Dual Plumbing, and Gas Pipeline status.",
     "Civic Utilities": "Availability of Sewage Treatment Plant (STP), Water Softener, IoT Meter, and Dual Plumbing.",
@@ -103,35 +106,35 @@ def get_column_definition(col_name: str) -> str:
     return f"Parameter metric: {col_clean}. Hover to inspect values."
 
 
-def render_sticky_frozen_table(df: pd.DataFrame, frozen_cols: int = 1, table_id: str = "custom_table", max_height: str = "560px"):
+def render_sticky_frozen_table(df: pd.DataFrame, frozen_cols: int = 1, table_id: str = "custom_table", max_height: str = "580px"):
     """
     Renders an HTML/CSS table where the first `frozen_cols` columns are permanently frozen / sticky on the left,
     and the table header is sticky on top, while the remaining columns scroll horizontally.
     Includes mouse hover tooltip definitions on every column header.
+    Fully implements text wrapping in all cells and interactive client-side column header sorting.
     """
     if df.empty:
-        st.info("No records to display.")
+        st.info("No records to display matching active filters.")
         return
 
     cols = list(df.columns)
     frozen_col_count = min(frozen_cols, len(cols))
 
-    # Calculate optimal pixel height
     # Calculate optimal pixel height (accounting for multi-line wrapped cells)
     try:
         max_h_int = int(str(max_height).replace("px", "").strip())
     except Exception:
-        max_h_int = 560
-    calc_height = min(max_h_int, max(340, (len(df) + 1) * 62 + 60))
+        max_h_int = 580
+    calc_height = min(max_h_int, max(380, (len(df) + 1) * 75 + 70))
 
-    # Column widths for frozen columns - increased to 340px for generous fit without overflow
-    col_widths = [340, 220, 190, 170]
+    # Column widths for frozen columns - 280px for generous fit with clean multi-line wrapping
+    col_widths = [280, 210, 190, 170]
     offsets = [0]
     for i in range(1, frozen_col_count):
         w = col_widths[i-1] if i-1 < len(col_widths) else 170
         offsets.append(offsets[i-1] + w)
 
-    # Build pure CSS
+    # Build pure CSS with strict text-wrapping across all headers and cells
     css_rules = [f"""
     * {{
         box-sizing: border-box;
@@ -159,6 +162,7 @@ def render_sticky_frozen_table(df: pd.DataFrame, frozen_cols: int = 1, table_id:
         border-spacing: 0;
         width: 100%;
         font-size: 0.84rem;
+        table-layout: auto;
     }}
     th {{
         position: sticky;
@@ -166,35 +170,52 @@ def render_sticky_frozen_table(df: pd.DataFrame, frozen_cols: int = 1, table_id:
         background-color: #1E293B;
         color: #38BDF8;
         font-weight: 700;
-        padding: 11px 14px;
+        padding: 12px 14px;
         border-bottom: 2px solid #334155;
         border-right: 1px solid #334155;
-        white-space: nowrap;
+        white-space: normal !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+        line-height: 1.35 !important;
+        min-width: 140px;
         z-index: 25;
         text-align: left;
-        cursor: help;
+        cursor: pointer;
+        user-select: none;
     }}
     th:hover {{
         background-color: #334155;
         color: #7DD3FC;
     }}
     td {{
-        padding: 10px 14px;
+        padding: 11px 14px;
         border-bottom: 1px solid #1E293B;
         border-right: 1px solid #1E293B;
-        white-space: normal;
-        word-break: break-word;
-        overflow-wrap: break-word;
+        white-space: normal !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+        word-break: break-word !important;
         vertical-align: middle;
         background-color: #0B1120;
         color: #E2E8F0;
-        line-height: 1.42;
+        line-height: 1.45 !important;
+        min-width: 130px;
     }}
     tr:nth-child(even) td {{
         background-color: #0F172A;
     }}
     tr:hover td {{
         background-color: #1E293B !important;
+    }}
+    .sort-icon {{
+        display: inline-block;
+        margin-left: 5px;
+        font-size: 0.72rem;
+        color: #94A3B8;
+        vertical-align: middle;
+    }}
+    th:hover .sort-icon {{
+        color: #38BDF8;
     }}
     """]
 
@@ -227,12 +248,13 @@ def render_sticky_frozen_table(df: pd.DataFrame, frozen_cols: int = 1, table_id:
             top: 0;
             z-index: 45 !important;
             background-color: #1E293B !important;
-            min-width: {width_px}px;
-            max-width: {width_px + 80}px;
-            width: {width_px}px;
+            min-width: {width_px}px !important;
+            max-width: {width_px + 80}px !important;
+            width: {width_px}px !important;
             white-space: normal !important;
-            word-break: break-word !important;
+            word-wrap: break-word !important;
             overflow-wrap: break-word !important;
+            word-break: break-word !important;
             line-height: 1.35 !important;
             {border_r}
         }}
@@ -241,15 +263,16 @@ def render_sticky_frozen_table(df: pd.DataFrame, frozen_cols: int = 1, table_id:
             left: {left_px}px;
             z-index: 20;
             background-color: #0B1120 !important;
-            min-width: {width_px}px;
-            max-width: {width_px + 80}px;
-            width: {width_px}px;
+            min-width: {width_px}px !important;
+            max-width: {width_px + 80}px !important;
+            width: {width_px}px !important;
             font-weight: {font_weight};
             color: {font_color};
             white-space: normal !important;
-            word-break: break-word !important;
+            word-wrap: break-word !important;
             overflow-wrap: break-word !important;
-            line-height: 1.42 !important;
+            word-break: break-word !important;
+            line-height: 1.45 !important;
             vertical-align: middle;
             {border_r}
         }}
@@ -273,7 +296,7 @@ def render_sticky_frozen_table(df: pd.DataFrame, frozen_cols: int = 1, table_id:
         "</head>",
         "<body>",
         f"<div class='table-container' id='{table_id}_container'>",
-        "<table>",
+        f"<table id='{table_id}'>",
         "<thead>",
         "<tr>"
     ]
@@ -281,8 +304,14 @@ def render_sticky_frozen_table(df: pd.DataFrame, frozen_cols: int = 1, table_id:
     for idx, c in enumerate(cols):
         col_class = f" class='fcol-{idx+1}'" if idx < frozen_col_count else ""
         col_def = get_column_definition(str(c))
-        # Add title attribute and info symbol for intuitive hover explanation
-        html_parts.append(f"<th{col_class} title='{html_lib.escape(col_def)}'>{html_lib.escape(str(c))} <span style='font-size:0.7rem; color:#94A3B8;'>ℹ️</span></th>")
+        # Add title attribute, info symbol, and interactive sort indicator
+        html_parts.append(
+            f"<th{col_class} title='{html_lib.escape(col_def)}' data-col='{idx}'>"
+            f"{html_lib.escape(str(c))} "
+            f"<span style='font-size:0.68rem; color:#94A3B8;'>ℹ️</span>"
+            f"<span class='sort-icon'>⇅</span>"
+            f"</th>"
+        )
     html_parts.append("</tr></thead><tbody>")
 
     for _, row in df.iterrows():
@@ -293,17 +322,17 @@ def render_sticky_frozen_table(df: pd.DataFrame, frozen_cols: int = 1, table_id:
             
             # Format cell content with badges
             if "🟢" in raw_val:
-                cell_content = f"<span style='background:rgba(16,185,129,0.15); color:#34D399; padding:3px 8px; border-radius:4px; font-weight:700; border:1px solid rgba(16,185,129,0.3);'>{html_lib.escape(raw_val)}</span>"
+                cell_content = f"<span style='background:rgba(16,185,129,0.15); color:#34D399; padding:3px 8px; border-radius:4px; font-weight:700; border:1px solid rgba(16,185,129,0.3); display:inline-block;'>{html_lib.escape(raw_val)}</span>"
             elif "🟡" in raw_val:
-                cell_content = f"<span style='background:rgba(245,158,11,0.15); color:#FBBF24; padding:3px 8px; border-radius:4px; font-weight:700; border:1px solid rgba(245,158,11,0.3);'>{html_lib.escape(raw_val)}</span>"
+                cell_content = f"<span style='background:rgba(245,158,11,0.15); color:#FBBF24; padding:3px 8px; border-radius:4px; font-weight:700; border:1px solid rgba(245,158,11,0.3); display:inline-block;'>{html_lib.escape(raw_val)}</span>"
             elif "🔴" in raw_val or "CRITICAL" in raw_val:
-                cell_content = f"<span style='background:rgba(239,68,68,0.15); color:#F87171; padding:3px 8px; border-radius:4px; font-weight:700; border:1px solid rgba(239,68,68,0.3);'>{html_lib.escape(raw_val)}</span>"
+                cell_content = f"<span style='background:rgba(239,68,68,0.15); color:#F87171; padding:3px 8px; border-radius:4px; font-weight:700; border:1px solid rgba(239,68,68,0.3); display:inline-block;'>{html_lib.escape(raw_val)}</span>"
             elif "⭐" in raw_val:
                 cell_content = f"<span style='color:#FBBF24; font-weight:600;'>{html_lib.escape(raw_val)}</span>"
             elif "✅" in raw_val and "STP" not in raw_val:
-                cell_content = f"<span style='background:rgba(16,185,129,0.12); color:#10B981; padding:2px 6px; border-radius:4px; font-weight:600;'>{html_lib.escape(raw_val)}</span>"
+                cell_content = f"<span style='background:rgba(16,185,129,0.12); color:#10B981; padding:2px 6px; border-radius:4px; font-weight:600; display:inline-block;'>{html_lib.escape(raw_val)}</span>"
             elif "⚠️" in raw_val and "STP" not in raw_val:
-                cell_content = f"<span style='background:rgba(245,158,11,0.12); color:#F59E0B; padding:2px 6px; border-radius:4px; font-weight:600;'>{html_lib.escape(raw_val)}</span>"
+                cell_content = f"<span style='background:rgba(245,158,11,0.12); color:#F59E0B; padding:2px 6px; border-radius:4px; font-weight:600; display:inline-block;'>{html_lib.escape(raw_val)}</span>"
             elif raw_val.startswith("₹"):
                 cell_content = f"<span style='color:#38BDF8; font-weight:600;'>{html_lib.escape(raw_val)}</span>"
             elif raw_val.startswith("http://") or raw_val.startswith("https://"):
@@ -326,9 +355,12 @@ def render_sticky_frozen_table(df: pd.DataFrame, frozen_cols: int = 1, table_id:
                 elif "rera.telangana.gov.in" in url_lower:
                     link_label = "TS-RERA ↗"
                     btn_bg = "#C2410C"
-                elif "haryanarera.gov.in" in url_lower:
-                    link_label = "HRERA Portal ↗"
+                elif "haryanarera.gov.in" in url_lower or "punjab.gov.in" in url_lower:
+                    link_label = "RERA Portal ↗"
                     btn_bg = "#0284C7"
+                elif "rera.goa.gov.in" in url_lower:
+                    link_label = "Goa-RERA ↗"
+                    btn_bg = "#0D9488"
                 elif "github.com" in url_lower:
                     link_label = "GitHub Reference ↗"
                     btn_bg = "#24292F"
@@ -336,17 +368,81 @@ def render_sticky_frozen_table(df: pd.DataFrame, frozen_cols: int = 1, table_id:
                     link_label = "Official Link ↗"
                     btn_bg = "#334155"
 
-                cell_content = f"<a href='{html_lib.escape(raw_val)}' target='_blank' rel='noreferrer noopener' style='background:{btn_bg}; color:#FFFFFF; padding:3px 9px; border-radius:4px; text-decoration:none; font-weight:700; font-size:0.76rem; display:inline-block; border:1px solid rgba(255,255,255,0.2);'>{link_label}</a>"
+                cell_content = f"<a href='{html_lib.escape(raw_val)}' target='_blank' rel='noreferrer noopener' style='background:{btn_bg}; color:#FFFFFF; padding:4px 10px; border-radius:4px; text-decoration:none; font-weight:700; font-size:0.76rem; display:inline-block; border:1px solid rgba(255,255,255,0.2);'>{link_label}</a>"
             else:
                 cell_content = html_lib.escape(raw_val)
 
             html_parts.append(f"<td{col_class}>{cell_content}</td>")
         html_parts.append("</tr>")
 
+    # Native Client-side JS Sorter for table headers
+    js_sorter = f"""
+    <script>
+    (function() {{
+        const tbl = document.getElementById('{table_id}');
+        if (!tbl) return;
+        const ths = tbl.querySelectorAll('thead th');
+        let currentSortIdx = -1;
+        let isAsc = true;
+
+        ths.forEach((th, idx) => {{
+            th.addEventListener('click', function() {{
+                const tbody = tbl.querySelector('tbody');
+                const rows = Array.from(tbody.querySelectorAll('tr'));
+                if (rows.length === 0) return;
+
+                if (currentSortIdx === idx) {{
+                    isAsc = !isAsc;
+                }} else {{
+                    currentSortIdx = idx;
+                    isAsc = true;
+                }}
+
+                // Reset all icon spans
+                ths.forEach((otherTh, oIdx) => {{
+                    const icon = otherTh.querySelector('.sort-icon');
+                    if (icon) {{
+                        if (oIdx === idx) {{
+                            icon.innerHTML = isAsc ? '▲' : '▼';
+                            icon.style.color = '#38BDF8';
+                        }} else {{
+                            icon.innerHTML = '⇅';
+                            icon.style.color = '#94A3B8';
+                        }}
+                    }}
+                }});
+
+                rows.sort((rowA, rowB) => {{
+                    const tdA = rowA.children[idx];
+                    const tdB = rowB.children[idx];
+                    const valA = tdA ? tdA.innerText.trim() : '';
+                    const valB = tdB ? tdB.innerText.trim() : '';
+
+                    // Clean numerical strings
+                    const cleanA = valA.replace(/[₹,$,L,Cr,%,⭐,/,km,Mn,L\\/Acre,Acres,yrs,yr,old,mos,mo]/gi, '').trim();
+                    const cleanB = valB.replace(/[₹,$,L,Cr,%,⭐,/,km,Mn,L\\/Acre,Acres,yrs,yr,old,mos,mo]/gi, '').trim();
+
+                    const numA = parseFloat(cleanA);
+                    const numB = parseFloat(cleanB);
+
+                    if (!isNaN(numA) && !isNaN(numB) && cleanA !== '' && cleanB !== '') {{
+                        return isAsc ? (numA - numB) : (numB - numA);
+                    }}
+                    return isAsc ? valA.localeCompare(valB, undefined, {{numeric: true}}) : valB.localeCompare(valA, undefined, {{numeric: true}});
+                }});
+
+                rows.forEach(r => tbody.appendChild(r));
+            }});
+        }});
+    }})();
+    </script>
+    """
+
     html_parts.extend([
         "</tbody>",
         "</table>",
         "</div>",
+        js_sorter,
         "</body>",
         "</html>"
     ])
