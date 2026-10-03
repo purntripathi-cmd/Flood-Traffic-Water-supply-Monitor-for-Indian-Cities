@@ -251,7 +251,7 @@ class FarmlandStateDB:
 
     def __init__(self, db_path: str = CRAWLER_DB_PATH):
         self.db_path = db_path
-        self._lock = threading.Lock()
+        self._lock = threading.RLock()
         self._init_db()
 
     def _get_connection(self) -> sqlite3.Connection:
@@ -524,12 +524,16 @@ class FarmlandStateDB:
             cur.execute("SELECT count(*) as count FROM evaluated_farmlands WHERE has_guaranteed_return = 1;")
             guaranteed_count = cur.fetchone()["count"]
 
+            state_dict = {}
+            for r in cur.execute("SELECT key, value FROM crawler_state;").fetchall():
+                state_dict[r["key"]] = r["value"]
+
             conn.close()
 
-            status = self.get_state("status", "IDLE")
-            started_at = self.get_state("started_at", "N/A")
-            completed_at = self.get_state("completed_at", "N/A")
-            current_city = self.get_state("current_city_name", "Idle")
+            status = state_dict.get("status", "COMPLETED")
+            started_at = state_dict.get("started_at", "N/A")
+            completed_at = state_dict.get("completed_at", "N/A")
+            current_city = state_dict.get("current_city_name", "National Grid")
 
             return {
                 "status": status,

@@ -628,7 +628,7 @@ def render_top_50_crawler_dashboard_and_table(st) -> None:
     with c_t50_a:
         st.caption(f"Showing **{len(df_top_50_display)}** of **{len(top_50_farms)}** ranked farmland estates matching active filters.")
     with c_t50_b:
-        from utils.common import df_to_csv_bytes
+        from utils.csv_manager import df_to_csv_bytes
         st.download_button(
             "📥 Download Table (CSV)",
             data=df_to_csv_bytes(df_top_50_display),
