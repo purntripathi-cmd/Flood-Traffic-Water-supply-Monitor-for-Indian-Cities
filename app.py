@@ -290,6 +290,21 @@ def load_all_datasets():
         user_preferences = json.load(f)
     return cities, micro_markets, builders, properties, rental_properties, gated_plots, farmlands, govt_master_plans, avoidance_zones, user_preferences
 
+def load_agriland_200_dataset():
+    target_path = os.path.join(DATA_DIR, "agriland_200_varanasi.json")
+    if os.path.exists(target_path):
+        try:
+            with open(target_path, "r", encoding="utf-8") as f:
+                return json.load(f)
+        except Exception:
+            pass
+    return [
+        fm for fm in farmlands
+        if fm.get("city_id") == "varanasi_100km"
+        or fm.get("radial_distance_from_varanasi_km") is not None
+        or "varanasi" in str(fm.get("city_id", "")).lower()
+    ]
+
 @st.cache_data
 def load_pincode_avoidance_df():
     if not os.path.exists(PINCODE_CSV):
@@ -427,7 +442,7 @@ city_micros_raw = [m for m in micro_markets if is_city_match(m.get("city_id", ""
 city_props_raw = [p for p in properties if is_city_match(p.get("city_id", ""), p.get("city_name", ""), selected_city_id)]
 city_plots_raw = [pl for pl in gated_plots if is_city_match(pl.get("city_id", ""), pl.get("city_name", ""), selected_city_id)]
 city_rentals_raw = [r for r in rental_properties if is_city_match(r.get("city_id", ""), r.get("city_name", ""), selected_city_id)]
-city_farms_raw = [fm for fm in farmlands if is_city_match(fm.get("city_id", ""), fm.get("city_name", ""), selected_city_id)]
+city_farms_raw = load_agriland_200_dataset() if selected_city_id == "varanasi_100km" else [fm for fm in farmlands if is_city_match(fm.get("city_id", ""), fm.get("city_name", ""), selected_city_id)]
 city_avoidance_raw = [a for a in avoidance_zones if is_city_match(a.get("city_id", ""), a.get("city", a.get("city_name", "")), selected_city_id)]
 
 # -------------------------------------------------------------
@@ -1705,7 +1720,7 @@ with tabs[0]:
     # ---------------------------------------------------------
     # CATEGORY 4: TOP VERIFIED FARMLANDS & HIGH-YIELD AGRO-RANCHES
     # ---------------------------------------------------------
-    farm_pool = [fm for fm in farmlands if is_city_match(fm.get("city_id", ""), fm.get("city_name", ""), selected_city_id)]
+    farm_pool = load_agriland_200_dataset() if selected_city_id == "varanasi_100km" else [fm for fm in farmlands if is_city_match(fm.get("city_id", ""), fm.get("city_name", ""), selected_city_id)]
     if selected_areas:
         farm_pool_area = [fm for fm in farm_pool if area_matches(fm.get("location", "")) or area_matches(fm.get("name", ""))]
         if farm_pool_area:
@@ -2432,15 +2447,8 @@ with tabs[4]:
                     help="Filter farmlands within your targeted total capital investment outlay."
                 )
 
-            # Build AgriLand-200 pool
-            f_pool = [fm for fm in farmlands if fm.get("city_id") == "varanasi_100km" or fm.get("radial_distance_from_varanasi_km") is not None or "varanasi" in fm.get("city_id", "").lower() or "kashi" in str(fm.get("city_name", "")).lower() or "banaras" in str(fm.get("city_name", "")).lower()]
-            if len(f_pool) < 15:
-                try:
-                    with open(os.path.join(DATA_DIR, "farmlands.json"), "r", encoding="utf-8") as _f_json:
-                        _direct_farms = json.load(_f_json)
-                        f_pool = [fm for fm in _direct_farms if fm.get("city_id") == "varanasi_100km" or fm.get("radial_distance_from_varanasi_km") is not None or "varanasi" in fm.get("city_id", "").lower() or "kashi" in str(fm.get("city_name", "")).lower() or "banaras" in str(fm.get("city_name", "")).lower()]
-                except Exception:
-                    pass
+            # Build AgriLand-200 pool strictly from dedicated Varanasi 200km regional database
+            f_pool = load_agriland_200_dataset()
 
             # Apply Zone Filter
             if "UP Purvanchal" in selected_agri_zone:
@@ -2450,19 +2458,19 @@ with tabs[4]:
             elif "MP Border" in selected_agri_zone:
                 f_pool = [fm for fm in f_pool if fm.get("regional_state") == "Madhya Pradesh"]
             elif selected_agri_zone != "All 14 Regional Districts (UP, Bihar & MP Border)":
-                dist_clean = selected_agri_zone.split(" (")[0].strip()
-                if "Varanasi" in dist_clean:
+                dist_clean = selected_agri_zone.split(" (")[0].strip().lower()
+                if "varanasi" in dist_clean:
                     f_pool = [
                         fm for fm in f_pool
-                        if "varanasi" in fm.get("regional_district", "").lower()
-                        or any(alias in fm.get("location", "").lower() or alias in fm.get("name", "").lower() for alias in ["varanasi", "kashi", "banaras", "rohania", "babatpur", "sarnath", "ramnagar", "sevapuri", "cholapur", "pindra", "araziline", "baragaon"])
+                        if fm.get("regional_district", "").lower() == "varanasi"
+                        or any(alias in fm.get("location", "").lower() or alias in fm.get("name", "").lower() for alias in ["varanasi", "kashi", "banaras", "rohania", "babatpur", "sarnath", "ramnagar", "sevapuri", "cholapur", "pindra", "araziline", "baragaon", "chitaipur", "rajatalab", "lohta", "harhua", "chaubepur", "shivpur"])
                     ]
                 else:
                     f_pool = [
                         fm for fm in f_pool
-                        if dist_clean.lower() in fm.get("regional_district", "").lower()
-                        or dist_clean.lower() in fm.get("location", "").lower()
-                        or dist_clean.lower() in fm.get("name", "").lower()
+                        if dist_clean in fm.get("regional_district", "").lower()
+                        or dist_clean in fm.get("location", "").lower()
+                        or dist_clean in fm.get("name", "").lower()
                     ]
 
             # Apply Sourcing Tier Filter
@@ -2638,7 +2646,7 @@ with tabs[4]:
 
         if not f_pool:
             st.info("No farmlands directly matched this filter combination. Expanding to nearest available listings:")
-            f_pool = [fm for fm in farmlands if fm.get("city_id") == "varanasi_100km" or fm.get("radial_distance_from_varanasi_km") is not None] if is_agriland_200 else list(farmlands)
+            f_pool = load_agriland_200_dataset() if is_agriland_200 else list(farmlands)
 
         # ---------------------------------------------------------
         # 2. STICKY FROZEN FARMLAND COMPARATIVE TABLE
@@ -2684,18 +2692,42 @@ with tabs[4]:
             })
 
         df_farms_tab = pd.DataFrame(farm_table_rows)
-        c_ft1, c_ft2 = st.columns([3, 1])
+        c_ft1, c_ft2 = st.columns([2.5, 1.5])
         with c_ft1:
-            st.caption(f"Showing {len(df_farms_tab)} agricultural & agroforestry parcels screened with statutory due diligence.")
+            if is_agriland_200:
+                st.caption(f"Showing **{len(df_farms_tab)}** verified farmland parcels in the dedicated Varanasi 200 km radial buffer across UP, Bihar, and MP border belts.")
+            else:
+                st.caption(f"Showing **{len(df_farms_tab)}** agricultural & agroforestry parcels screened with statutory due diligence.")
         with c_ft2:
-            export_filename = "agriland_200_varanasi_buffer_master.csv" if is_agriland_200 else "farmlands_screener_master.csv"
-            st.download_button(
-                "📥 Download Table (CSV)",
-                data=df_to_csv_bytes(df_farms_tab),
-                file_name=export_filename,
-                mime="text/csv",
-                key="dl_tab5_farms_csv"
-            )
+            if is_agriland_200:
+                col_dl1, col_dl2 = st.columns(2)
+                with col_dl1:
+                    st.download_button(
+                        "📥 CSV",
+                        data=df_to_csv_bytes(df_farms_tab),
+                        file_name="agriland_200_varanasi_buffer_master.csv",
+                        mime="text/csv",
+                        key="dl_tab5_farms_csv"
+                    )
+                with col_dl2:
+                    excel_path = os.path.join(DATA_DIR, "agriland_200_varanasi_buffer_master.xlsx")
+                    if os.path.exists(excel_path):
+                        with open(excel_path, "rb") as ef:
+                            st.download_button(
+                                "📊 Excel",
+                                data=ef.read(),
+                                file_name="agriland_200_varanasi_buffer_master.xlsx",
+                                mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                                key="dl_tab5_farms_xlsx"
+                            )
+            else:
+                st.download_button(
+                    "📥 Download Table (CSV)",
+                    data=df_to_csv_bytes(df_farms_tab),
+                    file_name="farmlands_screener_master.csv",
+                    mime="text/csv",
+                    key="dl_tab5_farms_csv"
+                )
         render_sticky_frozen_table(df_farms_tab, frozen_cols=2, table_id="farmlands_screener_table", max_height="620px")
 
         st.markdown("<br>", unsafe_allow_html=True)

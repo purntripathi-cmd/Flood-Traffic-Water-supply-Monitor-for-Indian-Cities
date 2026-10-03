@@ -309,3 +309,43 @@ class TestAgriLand200InventoryIntegrity:
         assert any("Tier 4" in t for t in tiers), "Tier 4 Video/Drone leads must be present"
         assert any("Tier 5" in t for t in tiers), "Tier 5 e-Paper notices must be present"
 
+
+# =====================================================================
+# 6. TEST SUITE: DEDICATED VARANASI 200 KM BUFFER DATASET & ARTIFACTS
+# =====================================================================
+class TestDedicatedVaranasiBufferDataset:
+    """Verifies that the standalone data/agriland_200_varanasi.json and CSV/Excel exports exist and are valid."""
+
+    @pytest.fixture
+    def varanasi_dataset(self):
+        json_path = os.path.join(os.path.dirname(__file__), "..", "data", "agriland_200_varanasi.json")
+        assert os.path.exists(json_path), "Dedicated agriland_200_varanasi.json must exist"
+        with open(json_path, "r", encoding="utf-8") as f:
+            return json.load(f)
+
+    def test_varanasi_json_minimum_volume(self, varanasi_dataset):
+        # Must contain at least 50 verified parcels (currently 76)
+        assert len(varanasi_dataset) >= 50, f"Expected >= 50 parcels, found {len(varanasi_dataset)}"
+
+    def test_varanasi_proper_density(self, varanasi_dataset):
+        # Core Varanasi district must have at least 10 detailed parcels
+        v_parcels = [f for f in varanasi_dataset if f.get("regional_district") == "Varanasi"]
+        assert len(v_parcels) >= 10, f"Expected >= 10 parcels in Varanasi district, found {len(v_parcels)}"
+
+    def test_all_14_districts_represented(self, varanasi_dataset):
+        present_districts = {f.get("regional_district") for f in varanasi_dataset}
+        for dist in DISTRICTS_IN_SCOPE:
+            assert dist in present_districts, f"District {dist} missing from dedicated Varanasi dataset"
+
+    def test_strict_radial_distance_enforcement(self, varanasi_dataset):
+        for f in varanasi_dataset:
+            dist = f.get("radial_distance_from_varanasi_km", 999)
+            assert dist <= 200.0, f"Parcel {f['id']} exceeds 200 km limit: {dist} km"
+
+    def test_master_csv_and_excel_exports_exist(self):
+        csv_path = os.path.join(os.path.dirname(__file__), "..", "data", "csv_exports", "agriland_200_varanasi_buffer_master.csv")
+        assert os.path.exists(csv_path), "Master CSV export must exist"
+        excel_path = os.path.join(os.path.dirname(__file__), "..", "data", "agriland_200_varanasi_buffer_master.xlsx")
+        assert os.path.exists(excel_path), "Master Excel export must exist"
+
+
