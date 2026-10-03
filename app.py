@@ -49,6 +49,14 @@ from utils.critic_ai import (
 )
 from utils.ai_onboarder import search_and_onboard_project, load_onboarded_projects
 from utils.excel_exporter import sync_daily_scan_to_excel, generate_excel_download_bytes
+from utils.csv_manager import (
+    sync_all_master_csvs,
+    generate_national_export_zip_bytes,
+    df_to_csv_bytes,
+    get_ai_verification_prompt,
+    build_unified_national_master_csv,
+    CSV_EXPORTS_DIR
+)
 from utils.farmland_view import (
     HIGH_VALUE_CROP_BENCHMARKS,
     render_seller_contact_card_html,
@@ -289,6 +297,12 @@ if not os.path.exists(excel_path):
         sync_daily_scan_to_excel(properties[:10], gated_plots[:10], rental_properties[:10], govt_master_plans, onboarded_projects, farmlands[:10], excel_path)
     except Exception:
         pass
+
+# Automatically ensure comprehensive local master CSV exports are maintained on disk
+try:
+    sync_all_master_csvs(properties, gated_plots, rental_properties, farmlands, builders, avoidance_zones, micro_markets)
+except Exception:
+    pass
 
 # -------------------------------------------------------------
 # Sidebar Controls & Configurable Filters
@@ -1175,6 +1189,60 @@ with tabs[0]:
             help=f"Apply maximum purchase budget of ₹{budget_purchase_max:.2f} Cr / rental budget of ₹{budget_rental_max:,}/mo set in sidebar."
         )
 
+    # ---------------------------------------------------------
+    # 📥 AI VERIFICATION & CSV MASTER DATA EXPORT HUB (User Requirement)
+    # ---------------------------------------------------------
+    with st.expander("📥 AI Verification & CSV Master Data Export Hub (Download Datasets & Pass to External AI)", expanded=False):
+        st.markdown("""
+        **Download verified civic, hydrological & financial telemetry datasets** maintained locally in CSV format. 
+        You can download the complete national master package (ZIP of all 8 CSVs + AI Prompt Guide) or a consolidated multi-asset CSV, and feed them into ChatGPT, Claude, Gemini, or DeepSeek for independent risk auditing, plinth elevation stress-testing, and appreciation verification.
+        """)
+        
+        hub_col1, hub_col2 = st.columns([1, 1])
+        with hub_col1:
+            try:
+                zip_bytes = generate_national_export_zip_bytes(
+                    properties, gated_plots, rental_properties, farmlands, builders, avoidance_zones, micro_markets
+                )
+                st.download_button(
+                    label="📦 Download Complete National Master Dataset (All 8 CSVs + AI Prompt Guide ZIP)",
+                    data=zip_bytes,
+                    file_name="India_RealEstate_Flood_Traffic_Water_Master_Analytics.zip",
+                    mime="application/zip",
+                    help="Contains all 8 master analytical CSV files including properties, plots, farmlands, rentals, builders, micro-markets, avoidance zones, and LLM prompt guide.",
+                    use_container_width=True,
+                    key="btn_dl_all_zip"
+                )
+            except Exception as e:
+                st.error(f"Error preparing ZIP export: {e}")
+
+        with hub_col2:
+            try:
+                unified_df = build_unified_national_master_csv(
+                    properties, gated_plots, rental_properties, farmlands, avoidance_zones, save_to_disk=False
+                )
+                st.download_button(
+                    label="📄 Download Unified Multi-Asset Master CSV (Single Consolidated Sheet)",
+                    data=df_to_csv_bytes(unified_df),
+                    file_name="unified_all_assets_master_analytics.csv",
+                    mime="text/csv",
+                    help="Consolidated CSV dataset of all assets with plinth elevations, water security, commute delays, and 5-yr growth projections.",
+                    use_container_width=True,
+                    key="btn_dl_unified_csv"
+                )
+            except Exception as e:
+                st.error(f"Error preparing CSV export: {e}")
+
+        st.markdown("#### 🤖 Copyable AI Prompt for External LLM Audit (ChatGPT / Claude / Gemini / DeepSeek)")
+        st.caption("Copy this structured audit prompt and paste it alongside any downloaded CSV into your preferred AI:")
+        
+        prompt_text = get_ai_verification_prompt(
+            dataset_title="Indian Real Estate Flood, Water & Transit Telemetry",
+            scope=scope_name,
+            count=len(properties) + len(gated_plots) + len(farmlands)
+        )
+        st.code(prompt_text, language="markdown")
+
     # Reusable Granular Telemetry Card Helper
     def render_detailed_telemetry_card(item: dict, cat_type: str, bm_obj: dict):
         if not item:
@@ -1335,7 +1403,18 @@ with tabs[0]:
                     "Data Sources & Links": p.get("rera_url")
                 })
             df_top_props = pd.DataFrame(top_prop_rows)
-            render_sticky_frozen_table(df_top_props, frozen_cols=2, table_id="top_props_table", max_height="480px")
+            c_p_hdr1, c_p_hdr2 = st.columns([3, 1])
+            with c_p_hdr1:
+                st.caption(f"Showing Top {len(df_top_props)} purchase assets with plinth elevations, growth probabilities, and Critic AI validations.")
+            with c_p_hdr2:
+                st.download_button(
+                    "📥 Download Category CSV",
+                    data=df_to_csv_bytes(df_top_props),
+                    file_name=f"purchase_properties_{selected_city_id}.csv",
+                    mime="text/csv",
+                    key="dl_tab1_top_props_csv"
+                )
+            render_sticky_frozen_table(df_top_props, frozen_cols=2, table_id="top_props_table", max_height="620px")
 
             st.markdown("##### 🔍 Inspect Granular Property Telemetry Card:")
             sel_prop_name = st.selectbox(
@@ -1410,7 +1489,18 @@ with tabs[0]:
                     "Sanction Verification": pl["validation_url"]
                 })
             df_top_plots = pd.DataFrame(top_plot_rows)
-            render_sticky_frozen_table(df_top_plots, frozen_cols=2, table_id="top_plots_table", max_height="480px")
+            c_pl_hdr1, c_pl_hdr2 = st.columns([3, 1])
+            with c_pl_hdr1:
+                st.caption(f"Showing Top {len(df_top_plots)} gated community plots with ground elevations, soil percolation, and statutory sanctions.")
+            with c_pl_hdr2:
+                st.download_button(
+                    "📥 Download Category CSV",
+                    data=df_to_csv_bytes(df_top_plots),
+                    file_name=f"gated_plots_{selected_city_id}.csv",
+                    mime="text/csv",
+                    key="dl_tab1_top_plots_csv"
+                )
+            render_sticky_frozen_table(df_top_plots, frozen_cols=2, table_id="top_plots_table", max_height="620px")
 
             st.markdown("##### 🔍 Inspect Granular Plotted Layout Telemetry Card:")
             sel_plot_name = st.selectbox(
@@ -1471,7 +1561,18 @@ with tabs[0]:
                     "Google Maps Navigation": get_google_maps_search_url(r["google_maps_query"])
                 })
             df_top_rentals = pd.DataFrame(top_rental_rows)
-            render_sticky_frozen_table(df_top_rentals, frozen_cols=2, table_id="top_rentals_table", max_height="480px")
+            c_r_hdr1, c_r_hdr2 = st.columns([3, 1])
+            with c_r_hdr1:
+                st.caption(f"Showing Top {len(df_top_rentals)} high-yield rental units with tech-hub commute and tenant yields.")
+            with c_r_hdr2:
+                st.download_button(
+                    "📥 Download Category CSV",
+                    data=df_to_csv_bytes(df_top_rentals),
+                    file_name=f"rental_properties_{selected_city_id}.csv",
+                    mime="text/csv",
+                    key="dl_tab1_top_rentals_csv"
+                )
+            render_sticky_frozen_table(df_top_rentals, frozen_cols=2, table_id="top_rentals_table", max_height="620px")
 
             st.markdown("##### 🔍 Inspect Granular Rental Telemetry Card:")
             sel_rent_name = st.selectbox(
@@ -1529,7 +1630,18 @@ with tabs[0]:
                     "Google Maps Place": get_google_maps_search_url(fm.get("google_maps_query", fm["name"]))
                 })
             df_top_farms = pd.DataFrame(top_farm_rows)
-            render_sticky_frozen_table(df_top_farms, frozen_cols=2, table_id="top_farmlands_table", max_height="480px")
+            c_fm_hdr1, c_fm_hdr2 = st.columns([3, 1])
+            with c_fm_hdr1:
+                st.caption(f"Showing Top {len(df_top_farms)} verified farmlands with soil pH, water TDS, and annual crop yield estimates.")
+            with c_fm_hdr2:
+                st.download_button(
+                    "📥 Download Category CSV",
+                    data=df_to_csv_bytes(df_top_farms),
+                    file_name=f"farmlands_{selected_city_id}.csv",
+                    mime="text/csv",
+                    key="dl_tab1_top_farms_csv"
+                )
+            render_sticky_frozen_table(df_top_farms, frozen_cols=2, table_id="top_farmlands_table", max_height="620px")
 
             st.markdown("##### 🔍 Inspect Granular Farmland Telemetry & Direct Contact Card:")
             sel_farm_name = st.selectbox(
@@ -1590,7 +1702,18 @@ with tabs[0]:
                     "Official State RERA Portal": b.get("rera_portal_url", "https://up-rera.in/")
                 })
             df_builders = pd.DataFrame(builder_table)
-            render_sticky_frozen_table(df_builders, frozen_cols=2, table_id="clubbed_builders_table", max_height="460px")
+            c_b_hdr1, c_b_hdr2 = st.columns([3, 1])
+            with c_b_hdr1:
+                st.caption(f"Showing {len(df_builders)} Tier-1 builders with on-time delivery percentages, delivered sqft, and litigation scores.")
+            with c_b_hdr2:
+                st.download_button(
+                    "📥 Download Category CSV",
+                    data=df_to_csv_bytes(df_builders),
+                    file_name=f"tier1_builders_{selected_city_id}.csv",
+                    mime="text/csv",
+                    key="dl_tab1_builders_csv"
+                )
+            render_sticky_frozen_table(df_builders, frozen_cols=2, table_id="clubbed_builders_table", max_height="620px")
 
             st.markdown(f"##### 🏢 Developer Pedigree Spotlights ({scope_name})")
             b_cols = st.columns(3)
@@ -1648,7 +1771,18 @@ with tabs[0]:
                     "Google Maps Pin": get_google_maps_search_url(a.get("name", "") + " " + a.get("city", ""))
                 })
             df_avoid = pd.DataFrame(avoid_table)
-            render_sticky_frozen_table(df_avoid, frozen_cols=2, table_id="tab1_avoidance_table", max_height="440px")
+            c_av_hdr1, c_av_hdr2 = st.columns([3, 1])
+            with c_av_hdr1:
+                st.caption(f"Showing {len(df_avoid)} chronic avoidance zones with inundation basins and municipal mitigation statuses.")
+            with c_av_hdr2:
+                st.download_button(
+                    "📥 Download Category CSV",
+                    data=df_to_csv_bytes(df_avoid),
+                    file_name=f"avoidance_zones_{selected_city_id}.csv",
+                    mime="text/csv",
+                    key="dl_tab1_avoid_csv"
+                )
+            render_sticky_frozen_table(df_avoid, frozen_cols=2, table_id="tab1_avoidance_table", max_height="620px")
         else:
             st.info("No chronic avoidance hotspots recorded for this corridor.")
 
@@ -1753,7 +1887,18 @@ with tabs[0]:
         })
 
     df_plans = pd.DataFrame(plan_rows)
-    render_sticky_frozen_table(df_plans, frozen_cols=1, table_id="master_plans_table", max_height="400px")
+    c_mp1, c_mp2 = st.columns([3, 1])
+    with c_mp1:
+        st.caption(f"Showing {len(df_plans)} strategic mega infrastructure projects across India.")
+    with c_mp2:
+        st.download_button(
+            "📥 Download Master Plans (CSV)",
+            data=df_to_csv_bytes(df_plans),
+            file_name="mega_infrastructure_master_plans.csv",
+            mime="text/csv",
+            key="dl_tab1_master_plans_csv"
+        )
+    render_sticky_frozen_table(df_plans, frozen_cols=1, table_id="master_plans_table", max_height="520px")
 
     st.markdown("<br>", unsafe_allow_html=True)
 
@@ -1843,7 +1988,18 @@ with tabs[1]:
         })
 
     df_micros = pd.DataFrame(table_data)
-    render_sticky_frozen_table(df_micros, frozen_cols=1, table_id="micros_radar_table", max_height="520px")
+    c_mm1, c_mm2 = st.columns([3, 1])
+    with c_mm1:
+        st.caption(f"Showing {len(df_micros)} micro-markets in {active_city['name']} with elevation, peak delay ratios, and water supply setups.")
+    with c_mm2:
+        st.download_button(
+            "📥 Download Table (CSV)",
+            data=df_to_csv_bytes(df_micros),
+            file_name=f"micro_markets_{active_city['id']}.csv",
+            mime="text/csv",
+            key="dl_tab2_micros_csv"
+        )
+    render_sticky_frozen_table(df_micros, frozen_cols=1, table_id="micros_radar_table", max_height="620px")
 
     st.markdown("<br>", unsafe_allow_html=True)
     col_chart1, col_chart2 = st.columns(2)
@@ -1939,7 +2095,18 @@ with tabs[2]:
         })
 
     df_props = pd.DataFrame(prop_rows)
-    render_sticky_frozen_table(df_props, frozen_cols=1, table_id="props_screener_table", max_height="520px")
+    c_ps1, c_ps2 = st.columns([3, 1])
+    with c_ps1:
+        st.caption(f"Showing {len(df_props)} purchase properties matching criteria in {active_city['name']}.")
+    with c_ps2:
+        st.download_button(
+            "📥 Download Table (CSV)",
+            data=df_to_csv_bytes(df_props),
+            file_name=f"property_screener_{active_city['id']}.csv",
+            mime="text/csv",
+            key="dl_tab3_props_csv"
+        )
+    render_sticky_frozen_table(df_props, frozen_cols=1, table_id="props_screener_table", max_height="620px")
 
     st.markdown("<br>", unsafe_allow_html=True)
     st.markdown("#### 🔍 Property Deep-Dive Cards & School Fee Ecosystems")
@@ -1997,7 +2164,18 @@ with tabs[3]:
         })
 
     df_plots = pd.DataFrame(plot_rows)
-    render_sticky_frozen_table(df_plots, frozen_cols=1, table_id="plots_table", max_height="480px")
+    c_plt1, c_plt2 = st.columns([3, 1])
+    with c_plt1:
+        st.caption(f"Showing {len(df_plots)} vetted plotted layouts and gated townships.")
+    with c_plt2:
+        st.download_button(
+            "📥 Download Table (CSV)",
+            data=df_to_csv_bytes(df_plots),
+            file_name=f"gated_plots_{active_city['id']}.csv",
+            mime="text/csv",
+            key="dl_tab4_plots_csv"
+        )
+    render_sticky_frozen_table(df_plots, frozen_cols=1, table_id="plots_table", max_height="620px")
 
     st.markdown("""
     > [!IMPORTANT]
@@ -2191,7 +2369,18 @@ with tabs[4]:
         })
 
     df_farms_tab = pd.DataFrame(farm_table_rows)
-    render_sticky_frozen_table(df_farms_tab, frozen_cols=1, table_id="farmlands_screener_table", max_height="520px")
+    c_ft1, c_ft2 = st.columns([3, 1])
+    with c_ft1:
+        st.caption(f"Showing {len(df_farms_tab)} agricultural & agroforestry parcels screened across India.")
+    with c_ft2:
+        st.download_button(
+            "📥 Download Table (CSV)",
+            data=df_to_csv_bytes(df_farms_tab),
+            file_name=f"farmlands_screener_{selected_farm_corridor.replace(' ', '_').lower()}.csv",
+            mime="text/csv",
+            key="dl_tab5_farms_csv"
+        )
+    render_sticky_frozen_table(df_farms_tab, frozen_cols=1, table_id="farmlands_screener_table", max_height="620px")
 
     st.markdown("<br>", unsafe_allow_html=True)
 
@@ -2492,7 +2681,7 @@ with tabs[6]:
             })
 
         df_pin_display = pd.DataFrame(table_rows_pin)
-        render_sticky_frozen_table(df_pin_display, frozen_cols=1, table_id="pincode_avoidance_frozen_table", max_height="520px")
+        render_sticky_frozen_table(df_pin_display, frozen_cols=1, table_id="pincode_avoidance_frozen_table", max_height="620px")
 
         # CSV Download Button
         csv_pin_bytes = filtered_pins.to_csv(index=False).encode("utf-8")

@@ -124,15 +124,25 @@ def render_sticky_frozen_table(df: pd.DataFrame, frozen_cols: int = 1, table_id:
     try:
         max_h_int = int(str(max_height).replace("px", "").strip())
     except Exception:
-        max_h_int = 580
-    calc_height = min(max_h_int, max(380, (len(df) + 1) * 75 + 70))
+        max_h_int = 600
+    calc_height = min(max_h_int, max(420, (len(df) + 1) * 85 + 75))
 
-    # Column widths for frozen columns - 280px for generous fit with clean multi-line wrapping
-    col_widths = [280, 210, 190, 170]
+    # Dynamic Column widths for frozen columns - ensures generous fit without clipping or overlapping
+    col_widths = []
+    for idx in range(frozen_col_count):
+        c_lower = str(cols[idx]).lower().strip()
+        if c_lower in ["rank", "#", "sl.no", "sl no", "s.no", "id"]:
+            col_widths.append(115)
+        elif any(k in c_lower for k in ["name", "property", "project", "hotspot", "layout", "scheme", "estate", "builder"]):
+            col_widths.append(330)
+        elif any(k in c_lower for k in ["city", "corridor", "location", "micro-market", "tehsil"]):
+            col_widths.append(210)
+        else:
+            col_widths.append(180)
+
     offsets = [0]
     for i in range(1, frozen_col_count):
-        w = col_widths[i-1] if i-1 < len(col_widths) else 170
-        offsets.append(offsets[i-1] + w)
+        offsets.append(offsets[i-1] + col_widths[i-1])
 
     # Build pure CSS with strict text-wrapping across all headers and cells
     css_rules = [f"""
@@ -161,7 +171,7 @@ def render_sticky_frozen_table(df: pd.DataFrame, frozen_cols: int = 1, table_id:
         border-collapse: separate;
         border-spacing: 0;
         width: 100%;
-        font-size: 0.84rem;
+        font-size: 0.85rem;
         table-layout: auto;
     }}
     th {{
@@ -170,14 +180,15 @@ def render_sticky_frozen_table(df: pd.DataFrame, frozen_cols: int = 1, table_id:
         background-color: #1E293B;
         color: #38BDF8;
         font-weight: 700;
-        padding: 12px 14px;
+        padding: 13px 15px;
         border-bottom: 2px solid #334155;
         border-right: 1px solid #334155;
         white-space: normal !important;
         word-wrap: break-word !important;
         overflow-wrap: break-word !important;
+        word-break: break-word !important;
         line-height: 1.35 !important;
-        min-width: 140px;
+        min-width: 155px;
         z-index: 25;
         text-align: left;
         cursor: pointer;
@@ -188,18 +199,18 @@ def render_sticky_frozen_table(df: pd.DataFrame, frozen_cols: int = 1, table_id:
         color: #7DD3FC;
     }}
     td {{
-        padding: 11px 14px;
+        padding: 13px 15px;
         border-bottom: 1px solid #1E293B;
         border-right: 1px solid #1E293B;
         white-space: normal !important;
         word-wrap: break-word !important;
         overflow-wrap: break-word !important;
         word-break: break-word !important;
-        vertical-align: middle;
+        vertical-align: top !important;
         background-color: #0B1120;
         color: #E2E8F0;
-        line-height: 1.45 !important;
-        min-width: 130px;
+        line-height: 1.5 !important;
+        min-width: 155px;
     }}
     tr:nth-child(even) td {{
         background-color: #0F172A;
@@ -223,7 +234,7 @@ def render_sticky_frozen_table(df: pd.DataFrame, frozen_cols: int = 1, table_id:
     for idx in range(frozen_col_count):
         nth = idx + 1
         left_px = offsets[idx]
-        width_px = col_widths[idx] if idx < len(col_widths) else 170
+        width_px = col_widths[idx] if idx < len(col_widths) else 180
         is_last_frozen = (idx == frozen_col_count - 1)
         
         if is_last_frozen:
@@ -249,7 +260,7 @@ def render_sticky_frozen_table(df: pd.DataFrame, frozen_cols: int = 1, table_id:
             z-index: 45 !important;
             background-color: #1E293B !important;
             min-width: {width_px}px !important;
-            max-width: {width_px + 80}px !important;
+            max-width: {width_px + 90}px !important;
             width: {width_px}px !important;
             white-space: normal !important;
             word-wrap: break-word !important;
@@ -264,7 +275,7 @@ def render_sticky_frozen_table(df: pd.DataFrame, frozen_cols: int = 1, table_id:
             z-index: 20;
             background-color: #0B1120 !important;
             min-width: {width_px}px !important;
-            max-width: {width_px + 80}px !important;
+            max-width: {width_px + 90}px !important;
             width: {width_px}px !important;
             font-weight: {font_weight};
             color: {font_color};
@@ -272,8 +283,8 @@ def render_sticky_frozen_table(df: pd.DataFrame, frozen_cols: int = 1, table_id:
             word-wrap: break-word !important;
             overflow-wrap: break-word !important;
             word-break: break-word !important;
-            line-height: 1.45 !important;
-            vertical-align: middle;
+            line-height: 1.5 !important;
+            vertical-align: top !important;
             {border_r}
         }}
         tr:nth-child(even) td.fcol-{nth} {{
@@ -301,12 +312,21 @@ def render_sticky_frozen_table(df: pd.DataFrame, frozen_cols: int = 1, table_id:
         "<tr>"
     ]
 
+    def get_col_custom_style(c_name: str) -> str:
+        cn = str(c_name).lower()
+        if any(k in cn for k in ["catalyst", "complaint", "feedback", "master plan", "citation", "impact", "mitigation", "high-value crops", "supported crops", "soil type", "data source", "flagship", "upcoming phase", "statutory authority"]):
+            return "min-width: 290px; max-width: 480px;"
+        elif any(k in cn for k in ["price", "cost", "ticket", "elevation", "rate", "yield", "bhk", "dist", "rent", "pincode", "acres", "deposit", "score"]):
+            return "min-width: 140px;"
+        return "min-width: 165px;"
+
     for idx, c in enumerate(cols):
         col_class = f" class='fcol-{idx+1}'" if idx < frozen_col_count else ""
+        col_style = f" style='{get_col_custom_style(str(c))}'" if idx >= frozen_col_count else ""
         col_def = get_column_definition(str(c))
         # Add title attribute, info symbol, and interactive sort indicator
         html_parts.append(
-            f"<th{col_class} title='{html_lib.escape(col_def)}' data-col='{idx}'>"
+            f"<th{col_class}{col_style} title='{html_lib.escape(col_def)}' data-col='{idx}'>"
             f"{html_lib.escape(str(c))} "
             f"<span style='font-size:0.68rem; color:#94A3B8;'>ℹ️</span>"
             f"<span class='sort-icon'>⇅</span>"
@@ -318,6 +338,7 @@ def render_sticky_frozen_table(df: pd.DataFrame, frozen_cols: int = 1, table_id:
         html_parts.append("<tr>")
         for idx, c in enumerate(cols):
             col_class = f" class='fcol-{idx+1}'" if idx < frozen_col_count else ""
+            col_style = f" style='{get_col_custom_style(str(c))}'" if idx >= frozen_col_count else ""
             raw_val = str(row[c]) if row[c] is not None else ""
             
             # Format cell content with badges
@@ -372,7 +393,7 @@ def render_sticky_frozen_table(df: pd.DataFrame, frozen_cols: int = 1, table_id:
             else:
                 cell_content = html_lib.escape(raw_val)
 
-            html_parts.append(f"<td{col_class}>{cell_content}</td>")
+            html_parts.append(f"<td{col_class}{col_style}>{cell_content}</td>")
         html_parts.append("</tr>")
 
     # Native Client-side JS Sorter for table headers
