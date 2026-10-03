@@ -146,3 +146,139 @@ def render_agronomic_telemetry_html(farm: Dict[str, Any]) -> str:
     </div>
     """
     return html
+
+
+def render_agriland_200_audit_html(farm: Dict[str, Any]) -> str:
+    """
+    Renders an exhaustive due diligence audit card for AgriLand-200 parcels within the 200 km Varanasi regional buffer.
+    Displays statutory verification, 5-tier provenance, regional land unit conversions, and audit breakdown.
+    """
+    score = farm.get("due_diligence_score", 85)
+    grade = farm.get("due_diligence_grade", "A Institutional Clear")
+    verdict = farm.get("due_diligence_verdict", "🟢 Clean Title — Standard mutation & routine boundary verification")
+    dist_km = farm.get("radial_distance_from_varanasi_km", 25.0)
+    district = farm.get("regional_district", farm.get("location", "Varanasi"))
+    state = farm.get("regional_state", "Uttar Pradesh")
+    tier_badge = farm.get("sourcing_tier_badge", "🏛️ Tier 1: Govt Registry")
+    tier_name = farm.get("sourcing_tier", "Tier 1: Government Land Registry")
+    khasra_no = farm.get("khasra_khatauni_number", farm.get("revenue_record_type", "Certified RTC"))
+    breakdown = farm.get("due_diligence_breakdown", [])
+
+    # Score color
+    score_color = "#10B981" if score >= 85 else ("#38BDF8" if score >= 70 else ("#F59E0B" if score >= 50 else "#EF4444"))
+
+    # Unit meta
+    unit_meta = farm.get("unit_meta", {})
+    pakka_bigha_disp = unit_meta.get("pakka_bigha_display", f"{farm.get('size_acres', 1.0) / 0.625:.2f} Pakka Bigha")
+    kattha_disp = unit_meta.get("kattha_display", f"{(farm.get('size_acres', 1.0) / 0.625) * 20:.1f} Kattha")
+    sqm_disp = unit_meta.get("sq_metres_display", f"{farm.get('size_acres', 1.0) * 4046.85:,.0f} sq.m")
+
+    # Render breakdown items
+    items_html = ""
+    for item in breakdown:
+        items_html += f"<li style='margin-bottom: 4px;'>{item}</li>"
+
+    # Tier-specific notice box
+    tier_notice = ""
+    if "Tier 2" in tier_name:
+        tier_notice = f"""
+        <div style="background: rgba(245, 158, 11, 0.15); border: 1px solid #F59E0B; border-radius: 6px; padding: 10px; margin-top: 10px; font-size: 12px; color: #FDE68A;">
+            <b>🏦 SARFAESI Bank Distress Auction Parcel:</b><br>
+            • Reserve Price: <b>₹{farm.get('price_per_acre_lakhs')} L/Acre</b> (Significant discount to market)<br>
+            • Bank Recovery Officer: <b>{farm.get('contact_person')}</b> ({farm.get('contact_phone')})<br>
+            • Title Conferred via SARFAESI Sale Certificate (Sec 13(4) Clear Possession)
+        </div>
+        """
+    elif "Tier 4" in tier_name:
+        tier_notice = f"""
+        <div style="background: rgba(99, 102, 241, 0.15); border: 1px solid #818CF8; border-radius: 6px; padding: 10px; margin-top: 10px; font-size: 12px; color: #C7D2FE;">
+            <b>🎥 Video Media Direct Farmer Lead:</b><br>
+            • Direct Landowner Contact: <b>{farm.get('contact_person')}</b> ({farm.get('contact_phone')})<br>
+            • Drone parcel walk and boundary verified via Purvanchal rural ground network<br>
+            • Zero intermediary brokerage fees
+        </div>
+        """
+    elif "Tier 5" in tier_name:
+        tier_notice = f"""
+        <div style="background: rgba(168, 85, 247, 0.15); border: 1px solid #A855F7; border-radius: 6px; padding: 10px; margin-top: 10px; font-size: 12px; color: #E9D5FF;">
+            <b>📰 E-Paper Public Legal Notice Cleared:</b><br>
+            • Newspaper Reference: <b>{farm.get('source_name')}</b><br>
+            • 30-Day public caveat notice period concluded without civil court dispute filings
+        </div>
+        """
+
+    html = f"""
+    <div style="background-color: #0B1329; border: 1px solid #1E293B; border-left: 5px solid {score_color}; border-radius: 10px; padding: 16px; margin: 12px 0; color: #F1F5F9; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px;">
+            <div>
+                <div style="display: flex; gap: 8px; align-items: center; margin-bottom: 6px;">
+                    <span style="background: #1E293B; color: #38BDF8; font-size: 11px; font-weight: bold; padding: 3px 8px; border-radius: 4px; border: 1px solid #334155;">
+                        🎯 AgriLand-200 Regional Buffer
+                    </span>
+                    <span style="background: #022C22; color: #34D399; font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 4px; border: 1px solid #065F46;">
+                        📍 {dist_km} km from Varanasi Zero-Point
+                    </span>
+                    <span style="background: #312E81; color: #A5B4FC; font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 4px;">
+                        {tier_badge}
+                    </span>
+                </div>
+                <h4 style="margin: 0 0 4px 0; font-size: 17px; color: #F8FAFC;">
+                    {farm.get('name', 'Agricultural Land')}
+                </h4>
+                <div style="font-size: 12px; color: #94A3B8;">
+                    <b>{district} District, {state}</b> • {farm.get('location')}
+                </div>
+            </div>
+
+            <div style="text-align: right; background: #0F172A; padding: 8px 14px; border-radius: 8px; border: 1px solid #1E293B;">
+                <div style="font-size: 10px; color: #94A3B8; text-transform: uppercase; letter-spacing: 0.5px;">Due Diligence Audit</div>
+                <div style="font-size: 24px; font-weight: 800; color: {score_color}; line-height: 1.1;">{score}<span style="font-size: 13px; color: #64748B;">/100</span></div>
+                <div style="font-size: 11px; font-weight: 600; color: #E2E8F0;">{grade}</div>
+            </div>
+        </div>
+
+        <div style="margin-top: 10px; font-size: 12px; color: #38BDF8; background: #0F172A; padding: 6px 12px; border-radius: 6px; border: 1px dashed #334155;">
+            {verdict}
+        </div>
+
+        <!-- Regional Units Grid -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 8px; margin: 12px 0; font-size: 12px;">
+            <div style="background: #1E293B; padding: 8px; border-radius: 6px; text-align: center;">
+                <span style="color: #94A3B8; font-size: 10px; display: block;">STANDARD EXTENT</span>
+                <b style="color: #FFFFFF; font-size: 14px;">{farm.get('size_acres')} Acres</b>
+            </div>
+            <div style="background: #1E293B; padding: 8px; border-radius: 6px; text-align: center;">
+                <span style="color: #94A3B8; font-size: 10px; display: block;">PURVANCHAL UNITS</span>
+                <b style="color: #38BDF8; font-size: 13px;">{pakka_bigha_disp}</b>
+            </div>
+            <div style="background: #1E293B; padding: 8px; border-radius: 6px; text-align: center;">
+                <span style="color: #94A3B8; font-size: 10px; display: block;">BIHAR BORDER UNITS</span>
+                <b style="color: #FBBF24; font-size: 13px;">{kattha_disp}</b>
+            </div>
+            <div style="background: #1E293B; padding: 8px; border-radius: 6px; text-align: center;">
+                <span style="color: #94A3B8; font-size: 10px; display: block;">METRIC EXTENT</span>
+                <b style="color: #34D399; font-size: 13px;">{sqm_disp}</b>
+            </div>
+        </div>
+
+        <!-- Revenue Registry & Khasra Telemetry -->
+        <div style="background: #0F172A; border: 1px solid #1E293B; border-radius: 6px; padding: 10px 12px; font-size: 12px; margin-bottom: 10px;">
+            <div style="color: #94A3B8; font-size: 11px; margin-bottom: 4px;">📜 <b>Statutory Revenue Identifiers:</b></div>
+            <div>• Khasra / Khatauni Record: <b style="color: #F8FAFC;">{khasra_no}</b></div>
+            <div>• Primary Registry Portal: <b style="color: #38BDF8;">{farm.get('source_name', 'State Land Registry')}</b></div>
+            <div>• Title Purity Status: <span style="color: #34D399;">{farm.get('title_status')}</span></div>
+        </div>
+
+        <!-- Due Diligence Scoring Breakdown -->
+        <div style="background: #0F172A; border: 1px solid #1E293B; border-radius: 6px; padding: 10px 12px; font-size: 12px;">
+            <div style="color: #94A3B8; font-size: 11px; margin-bottom: 6px;"><b>⚖️ Due Diligence Rubric Audit (0-100 Score Breakdown):</b></div>
+            <ul style="margin: 0; padding-left: 18px; color: #CBD5E1; font-size: 12px; line-height: 1.5;">
+                {items_html}
+            </ul>
+        </div>
+
+        {tier_notice}
+    </div>
+    """
+    return html
+

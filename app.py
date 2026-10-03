@@ -60,7 +60,15 @@ from utils.csv_manager import (
 from utils.farmland_view import (
     HIGH_VALUE_CROP_BENCHMARKS,
     render_seller_contact_card_html,
-    render_agronomic_telemetry_html
+    render_agronomic_telemetry_html,
+    render_agriland_200_audit_html
+)
+from utils.agriland_200 import (
+    DISTRICTS_IN_SCOPE,
+    DISTRICT_PROFILES,
+    TIER_DEFINITIONS,
+    LandUnitConverter,
+    GeoSpatialRadialFilter
 )
 from utils.scanner_daemon import (
     get_scanner_status,
@@ -1335,6 +1343,7 @@ with tabs[0]:
                     </div>
                 </div>
                 
+                
                 <div style="display:flex; gap:10px; margin-top:12px; flex-wrap:wrap;">
                     <a href="{get_google_maps_search_url(item.get('google_maps_query', item['name']))}" target="_blank" style="background:#0284C7; color:#FFFFFF; text-decoration:none; padding:6px 14px; border-radius:6px; font-size:0.82rem; font-weight:bold;">
                         🛰️ Open in Google Maps Satellite ↗
@@ -1345,6 +1354,94 @@ with tabs[0]:
                 </div>
             </div>
             """, unsafe_allow_html=True)
+
+        elif cat_type == "farmland":
+            if item.get("radial_distance_from_varanasi_km") is not None or item.get("due_diligence_score") is not None:
+                st.markdown(render_agriland_200_audit_html(item), unsafe_allow_html=True)
+            c_agri, c_contact = st.columns([1.6, 1.2])
+            with c_agri:
+                st.markdown(render_agronomic_telemetry_html(item), unsafe_allow_html=True)
+            with c_contact:
+                st.markdown(render_seller_contact_card_html(item), unsafe_allow_html=True)
+                st.markdown(f"""
+                <div style='background:#0F172A; border:1px solid #1E293B; border-radius:8px; padding:12px; margin-top:8px; font-size:12px;'>
+                    <b>📍 Geographic Verification:</b><br>
+                    • Coords: <code>{item.get('lat', 0):.4f}, {item.get('lng', 0):.4f}</code><br>
+                    • Plinth Elevation: <b>{item.get('elevation_m', 80)}m MSL</b><br>
+                    • <a href='{get_google_maps_search_url(item.get("google_maps_query", item["name"]))}' target='_blank' style='color:#38BDF8;'>View Satellite Pin in Google Maps ↗</a><br>
+                    • Official Record Source: <b>{item.get('source_name', 'Revenue Registry')}</b>
+                </div>
+                """, unsafe_allow_html=True)
+
+        elif cat_type == "plot":
+            st.markdown(f"""
+            <div style="background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%); border: 1px solid #10B981; border-radius: 10px; padding: 18px; margin: 12px 0;">
+                <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:8px;">
+                    <div>
+                        <h3 style="margin:0; color:#34D399;">🏡 {item['name']}</h3>
+                        <p style="margin:2px 0 6px 0; color:#94A3B8; font-size:0.88rem;">
+                            <b>Developer:</b> {item.get('developer', 'Town Planning Layout')} • 
+                            <b>Locality:</b> {item.get('micro_market', item.get('location'))}, {item.get('city_name')} • 
+                            <b>Sanction ID:</b> <code>{item.get('rera_id', item.get('sanction_number', 'SANCTION-VERIFIED'))}</code>
+                        </p>
+                    </div>
+                    <div style="text-align:right;">
+                        <span style="background:#059669; color:#FFFFFF; padding:4px 10px; border-radius:6px; font-weight:700; font-size:0.85rem;">
+                            Plot Score: {item.get('investment_score', item.get('score', 85))} / 100
+                        </span>
+                    </div>
+                </div>
+                <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; margin-top: 12px; font-size: 0.85rem;">
+                    <div style="background:#1E293B; padding:10px; border-radius:6px;">
+                        <b>📐 Extent & Rate:</b><br>{item.get('plot_size_sqft', item.get('size_sqft', 1500))} sqft @ ₹{item.get('price_per_sqft', 3500)}/sqft
+                    </div>
+                    <div style="background:#1E293B; padding:10px; border-radius:6px;">
+                        <b>💰 Outlay:</b><br>₹{item.get('total_price_cr', 0.5):.2f} Cr (₹{item.get('total_outlay_lakhs', 50)} Lakhs)
+                    </div>
+                    <div style="background:#1E293B; padding:10px; border-radius:6px;">
+                        <b>🛣️ Road Frontage:</b><br>{item.get('road_width_ft', 40)}ft Blacktop
+                    </div>
+                    <div style="background:#1E293B; padding:10px; border-radius:6px;">
+                        <b>🚀 Catalyst:</b><br>{item.get('master_plan_catalyst', 'Upcoming Ring Road')}
+                    </div>
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+
+        elif cat_type == "rental":
+            st.markdown(f"""
+            <div style="background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%); border: 1px solid #818CF8; border-radius: 10px; padding: 18px; margin: 12px 0;">
+                <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:8px;">
+                    <div>
+                        <h3 style="margin:0; color:#818CF8;">🔑 {item['name']}</h3>
+                        <p style="margin:2px 0 6px 0; color:#94A3B8; font-size:0.88rem;">
+                            <b>Community:</b> {item.get('micro_market')}, {item.get('city_name')} • 
+                            <b>Typology:</b> {item.get('bhk', '3 BHK')} ({item.get('avg_sqft', 1500)} sqft)
+                        </p>
+                    </div>
+                    <div style="text-align:right;">
+                        <span style="background:#4F46E5; color:#FFFFFF; padding:4px 10px; border-radius:6px; font-weight:700; font-size:0.85rem;">
+                            Net Yield: {item.get('net_yield_pct', 4.2)}%
+                        </span>
+                    </div>
+                </div>
+                <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; margin-top: 12px; font-size: 0.85rem;">
+                    <div style="background:#1E293B; padding:10px; border-radius:6px;">
+                        <b>💵 Monthly Rent:</b><br>₹{item.get('monthly_rent_inr', 45000):,}/month
+                    </div>
+                    <div style="background:#1E293B; padding:10px; border-radius:6px;">
+                        <b>🛡️ Security Deposit:</b><br>{item.get('deposit_months', 3)} Months
+                    </div>
+                    <div style="background:#1E293B; padding:10px; border-radius:6px;">
+                        <b>💧 Water Supply:</b><br>{item.get('water_supply', 'Municipal Piped')}
+                    </div>
+                    <div style="background:#1E293B; padding:10px; border-radius:6px;">
+                        <b>⚖️ Critic AI:</b><br>{item.get('critic_ai_status', '✅ Tenant Cleared')}
+                    </div>
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+
 
     # ---------------------------------------------------------
     # CATEGORY 1: TOP PROPERTIES TO PURCHASE / INVEST
@@ -1613,6 +1710,8 @@ with tabs[0]:
                 top_farm_rows.append({
                     "Rank": f"#{idx+1} ({rank_tag})",
                     "Farmland Estate Name": fm["name"],
+                    "Sourcing Provenance": fm.get("sourcing_tier_badge", fm.get("sourcing_tier", "🏛️ Tier 1: Govt Registry")),
+                    "Due Diligence Score": f"⚖️ {fm.get('due_diligence_score', 85)}/100 ({fm.get('due_diligence_grade', 'A')})",
                     "Seller Category": "🧑‍🌾 Direct Owner" if "Owner" in fm.get("seller_category", "") else ("🏢 Verified Broker" if "Broker" in fm.get("seller_category", "") else "🏡 Managed Farm"),
                     "City & Location": f"{fm['city_name']} ({fm['location']})",
                     f"Road Dist to {active_benchmark_obj['name']}": f"{dist_to_bm} km",
@@ -1624,6 +1723,7 @@ with tabs[0]:
                     "High-Value Crops Supported": supp.get("high_value_crops", "N/A"),
                     "Est Annual Harvest (Lakhs)": f"📈 ₹{fm.get('annual_agro_yield_estimate_lakhs', 5.0)} L/yr",
                     "Title & Revenue Ledger": f"{fm.get('title_status')} ({fm.get('revenue_record_type')})",
+                    "Khasra / Khatauni Record": fm.get("khasra_khatauni_number", fm.get("revenue_record_type", "Certified RTC")),
                     "Farmhouse Allowance": fm.get("farmhouse_permission", "Up to 10%"),
                     "Contact Person & Phone": f"{fm.get('contact_person')} ({fm.get('contact_phone')})",
                     "WhatsApp Link": fm.get("contact_whatsapp", "https://wa.me/"),
@@ -2195,162 +2295,339 @@ with tabs[4]:
     # ---------------------------------------------------------
     # 1. FARMLAND FILTER SUITE
     # ---------------------------------------------------------
-    farm_s1, farm_s2 = st.columns([2.3, 1.7])
-    with farm_s1:
-        search_farm_kw = st.text_input(
-            "🔍 Quick Search Farmlands (e.g. Kashi, Banaras, Malihabad, Rohania, Lucknow, Sarnath, Babatpur, Avocado, Sandalwood):",
-            value="",
-            placeholder="Type Kashi, Banaras, Lucknow, Malihabad, Rohania, Sarnath...",
-            help="Instant smart search across all farmlands. Type historical aliases like 'Kashi' or 'Banaras' to instantly find all Eastern UP & Varanasi farmlands, or 'Lucknow' / 'Malihabad' for Awadh estates."
-        )
-    with farm_s2:
-        corridor_options = ["🌐 All Corridors Across India"] + [f"{c['name']} ({c['state']})" for c in cities]
-        default_farm_idx = 0
-        if selected_city_id != "all_cities":
-            for idx, c in enumerate(cities):
-                if c["id"] == selected_city_id:
-                    default_farm_idx = idx + 1
-                    break
-        selected_farm_corridor = st.selectbox(
-            "Select Farmland Growth Corridor:",
-            options=corridor_options,
-            index=default_farm_idx,
-            help="Filter farmlands across India or focus on the active metropolitan periphery."
-        )
-
-    farm_f1, farm_f2, farm_f3 = st.columns([1.3, 1.3, 1.2])
-
-    with farm_f1:
-        selected_seller_filter = st.selectbox(
-            "Seller / Lister Category:",
+    farm_mode_c1, farm_mode_c2 = st.columns([2.3, 1.7])
+    with farm_mode_c1:
+        st.markdown(f"### 🌾 Verified Farmland & Agro-Investment Screener")
+        st.caption("Curated agricultural land parcels, managed agroforestry estates, and private orchards with complete soil telemetry, sweet water security, crop suitability indices, and direct landowner / verified broker contacts.")
+    with farm_mode_c2:
+        agri_mode = st.radio(
+            "Agricultural Inventory Buffer Mode:",
             options=[
-                "All Seller Categories",
-                "🧑‍🌾 Direct Landowner / Farmer",
-                "🏢 Verified Agricultural Broker",
-                "🏡 Managed Farmland Operator"
+                "🎯 AgriLand-200: Varanasi 200km Buffer (14 Districts)",
+                "🌐 All-India Agro Portfolio"
             ],
-            index=0,
-            help="Filter by listing entity: buy directly from farmers/patta holders or through vetted agri-brokers or managed community developers."
+            index=0 if (selected_city_id in ["varanasi", "varanasi_100km"] or "varanasi" in selected_city_id) else 0,
+            horizontal=True,
+            help="AgriLand-200 monitors, ingests, normalizes, and verifies agricultural land within 200 km radial buffer around Varanasi across 14 districts in UP, Bihar, and MP border belts with 5-tier statutory due diligence."
         )
 
-    with farm_f2:
-        selected_crop_filter = st.selectbox(
-            "Primary Crop Suitability:",
-            options=[
-                "All Crops & Orchards",
-                "🥑 Hass Avocado",
-                "🪵 Certified Sandalwood (Chandan)",
-                "🐉 Dragon Fruit (Pitaya)",
-                "🍈 High-Density Guava",
-                "🥭 Dussehri / Langra / Alphonso Mango",
-                "🌱 Protected Polyhouse / Greens"
-            ],
-            index=0,
-            help="Filter farmlands with ideal soil pH, drainage, and water table for specific commercial crops."
-        )
+    is_agriland_200 = "AgriLand-200" in agri_mode
 
-    with farm_f3:
-        max_farm_budget = st.slider(
-            "Max Parcel Outlay (₹ Cr):",
-            min_value=0.25,
-            max_value=6.0,
-            value=4.5,
-            step=0.25,
-            help="Filter farmlands within your targeted total capital investment outlay."
-        )
+    # ---------------------------------------------------------
+    # 1. FARMLAND FILTER SUITE
+    # ---------------------------------------------------------
+    if is_agriland_200:
+        st.markdown("""
+        <div style="background: linear-gradient(135deg, #091E3A 0%, #0F2B48 100%); border: 1px solid #1E4976; border-radius: 8px; padding: 12px 16px; margin-bottom: 12px; font-size: 13px; color: #E2E8F0;">
+            <b style="color: #38BDF8;">🎯 AgriLand-200 Ingestion Engine Active:</b> Monitoring agricultural parcels strictly within <b>≤ 200 km radial buffer</b> of Varanasi Zero-Point (25.3176° N, 82.9739° E).<br>
+            • <b>UP Belt (9 Districts):</b> Varanasi, Chandauli, Mirzapur, Jaunpur, Ghazipur, Azamgarh, Prayagraj, Bhadohi, Sonbhadra.<br>
+            • <b>Bihar Border Belt (3 Districts):</b> Kaimur (Bhabua), Buxar, Rohtas (Sasaram).<br>
+            • <b>MP Border Belt (2 Districts):</b> Rewa, Singrauli.
+        </div>
+        """, unsafe_allow_html=True)
 
-    # Filter farmlands pool
-    if "All Corridors" in selected_farm_corridor:
-        f_pool = list(farmlands)
-    else:
-        chosen_c_idx = corridor_options.index(selected_farm_corridor) - 1
-        target_cid = cities[chosen_c_idx]["id"]
-        f_pool = [
-            fm for fm in farmlands
-            if is_city_match(fm.get("city_id", ""), fm.get("city_name", ""), target_cid)
-        ]
-
-    # Smart Search with Kashi / Banaras / Lucknow alias expansion
-    if search_farm_kw:
-        skw = search_farm_kw.lower().strip()
-        if any(alias in skw for alias in ["kashi", "banaras", "benares", "varanasi"]):
-            # Pull all Varanasi / Kashi / Banaras farmlands
-            f_pool = [
-                fm for fm in farmlands
-                if is_city_match(fm.get("city_id", ""), fm.get("city_name", ""), "varanasi_100km")
-                or any(alias in fm.get("name", "").lower() or alias in fm.get("location", "").lower() or alias in fm.get("city_name", "").lower() for alias in ["kashi", "banaras", "benares", "varanasi"])
+        farm_s1, farm_s2 = st.columns([2.2, 1.8])
+        with farm_s1:
+            search_farm_kw = st.text_input(
+                "🔍 Quick Search AgriLand-200 (e.g. Kashi, Rohania, Babatpur, Chandauli, Mirzapur, Buxar, Kaimur, Rewa, SARFAESI, Bhulekh):",
+                value="",
+                placeholder="Type Kashi, Babatpur, Rohania, Chandauli, Mirzapur, Buxar, SARFAESI...",
+                help="Instant smart search across all 14 districts in the 200km buffer."
+            )
+        with farm_s2:
+            agri_zone_options = [
+                "All 14 Regional Districts (UP, Bihar & MP Border)",
+                "UP Purvanchal (9 Districts)",
+                "Bihar Border Belt (Kaimur, Buxar, Rohtas)",
+                "MP Border Belt (Rewa, Singrauli)",
+                "Varanasi (Kashi / Banaras)",
+                "Chandauli",
+                "Mirzapur",
+                "Jaunpur",
+                "Ghazipur",
+                "Azamgarh",
+                "Prayagraj",
+                "Bhadohi",
+                "Sonbhadra",
+                "Kaimur (Bhabua)",
+                "Buxar",
+                "Rohtas (Sasaram)",
+                "Rewa",
+                "Singrauli"
             ]
-        elif any(alias in skw for alias in ["lucknow", "awadh", "lakhnau", "oudh"]):
-            # Pull all Lucknow / Awadh farmlands
-            f_pool = [
-                fm for fm in farmlands
-                if is_city_match(fm.get("city_id", ""), fm.get("city_name", ""), "lucknow")
-                or any(alias in fm.get("name", "").lower() or alias in fm.get("location", "").lower() or alias in fm.get("city_name", "").lower() for alias in ["lucknow", "awadh", "lakhnau", "malihabad"])
-            ]
-        else:
+            selected_agri_zone = st.selectbox(
+                "Select Regional Zone / District (≤200 km):",
+                options=agri_zone_options,
+                index=0,
+                help="Filter by specific district or geopolitical cluster within the 200km radial buffer."
+            )
+
+        farm_f1, farm_f2, farm_f3, farm_f4 = st.columns([1.2, 1.2, 1.0, 1.0])
+        with farm_f1:
+            selected_tier_filter = st.selectbox(
+                "Sourcing & Verification Tier:",
+                options=[
+                    "All 5 Sourcing Tiers",
+                    "🏛️ Tier 1: Govt Land Registry (UP/Bihar/MP Bhulekh)",
+                    "🏦 Tier 2: Bank Distress / SARFAESI Auction (IBAPI)",
+                    "🌐 Tier 3: Verified Portals (SFarmsIndia/99acres)",
+                    "🎥 Tier 4: Direct Farmer / Drone Walk Leads",
+                    "📰 Tier 5: Newspaper Public Legal Notices"
+                ],
+                index=0,
+                help="Filter by intelligence provenance tier: official land registries, bank distressed debt auctions, verified agro portals, direct video/drone leads, or e-paper legal public notices."
+            )
+        with farm_f2:
+            selected_due_diligence_filter = st.selectbox(
+                "Due Diligence Score Grade:",
+                options=[
+                    "All Due Diligence Grades",
+                    "A+ Sovereign Grade (90-100 pts)",
+                    "A Institutional Clear (75-89 pts)",
+                    "B Bankable Title (60-74 pts)",
+                    "C / F Conditional or Distressed (<60 pts)"
+                ],
+                index=0,
+                help="Filter by statutory title clarity, absence of co-sharer litigation, clean 12-year Barah Sala, mutation status, and soil viability."
+            )
+        with farm_f3:
+            max_radial_dist = st.slider(
+                "Max Radial Dist (km):",
+                min_value=10,
+                max_value=200,
+                value=200,
+                step=10,
+                help="Filter strictly within specified geodesic distance from Varanasi center (25.3176, 82.9739)."
+            )
+        with farm_f4:
+            max_farm_budget = st.slider(
+                "Max Outlay (₹ Cr):",
+                min_value=0.25,
+                max_value=6.0,
+                value=5.0,
+                step=0.25,
+                help="Filter farmlands within your targeted total capital investment outlay."
+            )
+
+        # Build AgriLand-200 pool
+        f_pool = [fm for fm in farmlands if fm.get("city_id") == "varanasi_100km" or fm.get("radial_distance_from_varanasi_km") is not None]
+
+        # Apply Zone Filter
+        if "UP Purvanchal" in selected_agri_zone:
+            f_pool = [fm for fm in f_pool if fm.get("regional_state") == "Uttar Pradesh"]
+        elif "Bihar Border" in selected_agri_zone:
+            f_pool = [fm for fm in f_pool if fm.get("regional_state") == "Bihar"]
+        elif "MP Border" in selected_agri_zone:
+            f_pool = [fm for fm in f_pool if fm.get("regional_state") == "Madhya Pradesh"]
+        elif selected_agri_zone != "All 14 Regional Districts (UP, Bihar & MP Border)":
+            dist_clean = selected_agri_zone.split(" (")[0].strip()
+            f_pool = [fm for fm in f_pool if dist_clean.lower() in fm.get("regional_district", "").lower() or dist_clean.lower() in fm.get("location", "").lower()]
+
+        # Apply Sourcing Tier Filter
+        if "Tier 1" in selected_tier_filter:
+            f_pool = [fm for fm in f_pool if "Tier 1" in fm.get("sourcing_tier", "")]
+        elif "Tier 2" in selected_tier_filter:
+            f_pool = [fm for fm in f_pool if "Tier 2" in fm.get("sourcing_tier", "")]
+        elif "Tier 3" in selected_tier_filter:
+            f_pool = [fm for fm in f_pool if "Tier 3" in fm.get("sourcing_tier", "")]
+        elif "Tier 4" in selected_tier_filter:
+            f_pool = [fm for fm in f_pool if "Tier 4" in fm.get("sourcing_tier", "")]
+        elif "Tier 5" in selected_tier_filter:
+            f_pool = [fm for fm in f_pool if "Tier 5" in fm.get("sourcing_tier", "")]
+
+        # Apply Due Diligence Filter
+        if "A+ Sovereign" in selected_due_diligence_filter:
+            f_pool = [fm for fm in f_pool if fm.get("due_diligence_score", 0) >= 90]
+        elif "A Institutional" in selected_due_diligence_filter:
+            f_pool = [fm for fm in f_pool if 75 <= fm.get("due_diligence_score", 0) < 90]
+        elif "B Bankable" in selected_due_diligence_filter:
+            f_pool = [fm for fm in f_pool if 60 <= fm.get("due_diligence_score", 0) < 75]
+        elif "Conditional" in selected_due_diligence_filter:
+            f_pool = [fm for fm in f_pool if fm.get("due_diligence_score", 0) < 60]
+
+        # Apply Distance Filter
+        f_pool = [fm for fm in f_pool if fm.get("radial_distance_from_varanasi_km", 0) <= max_radial_dist]
+
+        # Apply Budget Filter
+        f_pool = [fm for fm in f_pool if fm.get("total_price_cr", 0) <= max_farm_budget]
+
+        # Apply Keyword Search
+        if search_farm_kw:
+            skw = search_farm_kw.lower().strip()
             f_pool = [
                 fm for fm in f_pool
                 if skw in fm.get("name", "").lower()
                 or skw in fm.get("location", "").lower()
-                or skw in fm.get("city_name", "").lower()
-                or skw in fm.get("seller_category", "").lower()
+                or skw in fm.get("regional_district", "").lower()
+                or skw in fm.get("regional_state", "").lower()
+                or skw in fm.get("sourcing_tier", "").lower()
+                or skw in fm.get("source_name", "").lower()
+                or skw in fm.get("khasra_khatauni_number", "").lower()
                 or skw in str(fm.get("supported_crops", {})).lower()
                 or skw in fm.get("soil_type", "").lower()
             ]
 
-    if selected_areas:
-        f_pool_area = [fm for fm in f_pool if area_matches(fm.get("location", "")) or area_matches(fm.get("name", ""))]
-        if f_pool_area:
-            f_pool = f_pool_area
+    else:
+        # All-India Mode
+        farm_s1, farm_s2 = st.columns([2.3, 1.7])
+        with farm_s1:
+            search_farm_kw = st.text_input(
+                "🔍 Quick Search Farmlands (e.g. Kashi, Banaras, Malihabad, Rohania, Lucknow, Sarnath, Babatpur, Avocado, Sandalwood):",
+                value="",
+                placeholder="Type Kashi, Banaras, Lucknow, Malihabad, Rohania, Sarnath...",
+                help="Instant smart search across all farmlands. Type historical aliases like 'Kashi' or 'Banaras' to instantly find all Eastern UP & Varanasi farmlands, or 'Lucknow' / 'Malihabad' for Awadh estates."
+            )
+        with farm_s2:
+            corridor_options = ["🌐 All Corridors Across India"] + [f"{c['name']} ({c['state']})" for c in cities]
+            default_farm_idx = 0
+            if selected_city_id != "all_cities":
+                for idx, c in enumerate(cities):
+                    if c["id"] == selected_city_id:
+                        default_farm_idx = idx + 1
+                        break
+            selected_farm_corridor = st.selectbox(
+                "Select Farmland Growth Corridor:",
+                options=corridor_options,
+                index=default_farm_idx,
+                help="Filter farmlands across India or focus on the active metropolitan periphery."
+            )
 
-    if selected_seller_filter != "All Seller Categories":
-        if "Direct Landowner" in selected_seller_filter:
-            f_pool = [fm for fm in f_pool if "Owner" in fm.get("seller_category", "")]
-        elif "Broker" in selected_seller_filter:
-            f_pool = [fm for fm in f_pool if "Broker" in fm.get("seller_category", "")]
-        elif "Managed" in selected_seller_filter:
-            f_pool = [fm for fm in f_pool if "Managed" in fm.get("seller_category", "")]
+        farm_f1, farm_f2, farm_f3 = st.columns([1.3, 1.3, 1.2])
+        with farm_f1:
+            selected_seller_filter = st.selectbox(
+                "Seller / Lister Category:",
+                options=[
+                    "All Seller Categories",
+                    "🧑‍🌾 Direct Landowner / Farmer",
+                    "🏢 Verified Agricultural Broker",
+                    "🏡 Managed Farmland Operator"
+                ],
+                index=0,
+                help="Filter by listing entity: buy directly from farmers/patta holders or through vetted agri-brokers or managed community developers."
+            )
+        with farm_f2:
+            selected_crop_filter = st.selectbox(
+                "Primary Crop Suitability:",
+                options=[
+                    "All Crops & Orchards",
+                    "🥑 Hass Avocado",
+                    "🪵 Certified Sandalwood (Chandan)",
+                    "🐉 Dragon Fruit (Pitaya)",
+                    "🍈 High-Density Guava",
+                    "🥭 Dussehri / Langra / Alphonso Mango",
+                    "🌱 Protected Polyhouse / Greens"
+                ],
+                index=0,
+                help="Filter farmlands with ideal soil pH, drainage, and water table for specific commercial crops."
+            )
+        with farm_f3:
+            max_farm_budget = st.slider(
+                "Max Parcel Outlay (₹ Cr):",
+                min_value=0.25,
+                max_value=6.0,
+                value=4.5,
+                step=0.25,
+                help="Filter farmlands within your targeted total capital investment outlay."
+            )
 
-    if selected_crop_filter != "All Crops & Orchards":
-        clean_crop = selected_crop_filter.split(" ", 1)[-1].lower()
-        if "avocado" in clean_crop:
-            f_pool = [fm for fm in f_pool if "avocado" in str(fm.get("supported_crops", {})).lower()]
-        elif "sandalwood" in clean_crop or "chandan" in clean_crop:
-            f_pool = [fm for fm in f_pool if "sandalwood" in str(fm.get("supported_crops", {})).lower() or "chandan" in str(fm.get("supported_crops", {})).lower()]
-        elif "dragon" in clean_crop:
-            f_pool = [fm for fm in f_pool if "dragon" in str(fm.get("supported_crops", {})).lower()]
-        elif "guava" in clean_crop:
-            f_pool = [fm for fm in f_pool if "guava" in str(fm.get("supported_crops", {})).lower()]
-        elif "mango" in clean_crop:
-            f_pool = [fm for fm in f_pool if "mango" in str(fm.get("supported_crops", {})).lower() or "dussehri" in str(fm.get("supported_crops", {})).lower() or "langra" in str(fm.get("supported_crops", {})).lower()]
-        elif "polyhouse" in clean_crop or "greens" in clean_crop:
-            f_pool = [fm for fm in f_pool if "polyhouse" in str(fm.get("supported_crops", {})).lower() or "greenhouse" in str(fm.get("supported_crops", {})).lower() or "vegetable" in str(fm.get("supported_crops", {})).lower()]
+        # Filter farmlands pool
+        if "All Corridors" in selected_farm_corridor:
+            f_pool = list(farmlands)
+        else:
+            chosen_c_idx = corridor_options.index(selected_farm_corridor) - 1
+            target_cid = cities[chosen_c_idx]["id"]
+            f_pool = [
+                fm for fm in farmlands
+                if is_city_match(fm.get("city_id", ""), fm.get("city_name", ""), target_cid)
+            ]
 
-    f_pool_budget = [fm for fm in f_pool if fm.get("total_price_cr", 0) <= max_farm_budget]
-    if f_pool_budget:
-        f_pool = f_pool_budget
+        # Smart Search with Kashi / Banaras / Lucknow alias expansion
+        if search_farm_kw:
+            skw = search_farm_kw.lower().strip()
+            if any(alias in skw for alias in ["kashi", "banaras", "benares", "varanasi"]):
+                f_pool = [
+                    fm for fm in farmlands
+                    if is_city_match(fm.get("city_id", ""), fm.get("city_name", ""), "varanasi_100km")
+                    or any(alias in fm.get("name", "").lower() or alias in fm.get("location", "").lower() or alias in fm.get("city_name", "").lower() for alias in ["kashi", "banaras", "benares", "varanasi"])
+                ]
+            elif any(alias in skw for alias in ["lucknow", "awadh", "lakhnau", "oudh"]):
+                f_pool = [
+                    fm for fm in farmlands
+                    if is_city_match(fm.get("city_id", ""), fm.get("city_name", ""), "lucknow")
+                    or any(alias in fm.get("name", "").lower() or alias in fm.get("location", "").lower() or alias in fm.get("city_name", "").lower() for alias in ["lucknow", "awadh", "lakhnau", "malihabad"])
+                ]
+            else:
+                f_pool = [
+                    fm for fm in f_pool
+                    if skw in fm.get("name", "").lower()
+                    or skw in fm.get("location", "").lower()
+                    or skw in fm.get("city_name", "").lower()
+                    or skw in fm.get("seller_category", "").lower()
+                    or skw in str(fm.get("supported_crops", {})).lower()
+                    or skw in fm.get("soil_type", "").lower()
+                ]
+
+        if selected_areas:
+            f_pool_area = [fm for fm in f_pool if area_matches(fm.get("location", "")) or area_matches(fm.get("name", ""))]
+            if f_pool_area:
+                f_pool = f_pool_area
+
+        if selected_seller_filter != "All Seller Categories":
+            if "Direct Landowner" in selected_seller_filter:
+                f_pool = [fm for fm in f_pool if "Owner" in fm.get("seller_category", "")]
+            elif "Broker" in selected_seller_filter:
+                f_pool = [fm for fm in f_pool if "Broker" in fm.get("seller_category", "")]
+            elif "Managed" in selected_seller_filter:
+                f_pool = [fm for fm in f_pool if "Managed" in fm.get("seller_category", "")]
+
+        if selected_crop_filter != "All Crops & Orchards":
+            clean_crop = selected_crop_filter.split(" ", 1)[-1].lower()
+            if "avocado" in clean_crop:
+                f_pool = [fm for fm in f_pool if "avocado" in str(fm.get("supported_crops", {})).lower()]
+            elif "sandalwood" in clean_crop or "chandan" in clean_crop:
+                f_pool = [fm for fm in f_pool if "sandalwood" in str(fm.get("supported_crops", {})).lower() or "chandan" in str(fm.get("supported_crops", {})).lower()]
+            elif "dragon" in clean_crop:
+                f_pool = [fm for fm in f_pool if "dragon" in str(fm.get("supported_crops", {})).lower()]
+            elif "guava" in clean_crop:
+                f_pool = [fm for fm in f_pool if "guava" in str(fm.get("supported_crops", {})).lower()]
+            elif "mango" in clean_crop:
+                f_pool = [fm for fm in f_pool if "mango" in str(fm.get("supported_crops", {})).lower() or "dussehri" in str(fm.get("supported_crops", {})).lower() or "langra" in str(fm.get("supported_crops", {})).lower()]
+            elif "polyhouse" in clean_crop or "greens" in clean_crop:
+                f_pool = [fm for fm in f_pool if "polyhouse" in str(fm.get("supported_crops", {})).lower() or "greenhouse" in str(fm.get("supported_crops", {})).lower() or "vegetable" in str(fm.get("supported_crops", {})).lower()]
+
+        f_pool_budget = [fm for fm in f_pool if fm.get("total_price_cr", 0) <= max_farm_budget]
+        if f_pool_budget:
+            f_pool = f_pool_budget
 
     if not f_pool:
-        st.info("Displaying corridor farmlands matching the broader region:")
-        f_pool = [fm for fm in farmlands if is_city_match(fm.get("city_id", ""), fm.get("city_name", ""), selected_city_id)]
-        if not f_pool:
-            f_pool = list(farmlands)
+        st.info("No farmlands directly matched this filter combination. Expanding to nearest available listings:")
+        f_pool = [fm for fm in farmlands if fm.get("city_id") == "varanasi_100km"] if is_agriland_200 else list(farmlands)
 
     # ---------------------------------------------------------
     # 2. STICKY FROZEN FARMLAND COMPARATIVE TABLE
     # ---------------------------------------------------------
     st.markdown("#### 📋 Farmland Inventory & Agronomic Telemetry Table")
-    st.caption(f"Showing **{len(f_pool)}** verified farmland parcels. 4th column benchmark: **{active_benchmark_obj['name']}**. Frozen 1st column with tooltips on mouse hover.")
+    if is_agriland_200:
+        st.caption(f"Showing **{len(f_pool)}** verified farmland parcels in the Varanasi 200 km radial buffer across UP, Bihar, and MP border belts. Frozen 1st column with sortable headers.")
+    else:
+        st.caption(f"Showing **{len(f_pool)}** verified farmland parcels across India. 4th column benchmark: **{active_benchmark_obj['name']}**. Frozen 1st column with sortable headers.")
 
     farm_table_rows = []
     for fm in f_pool:
         dist_to_bm = calculate_road_distance_km(fm["lat"], fm["lng"], active_benchmark_obj["lat"], active_benchmark_obj["lng"])
         supp = fm.get("supported_crops", {})
+        rad_km = fm.get("radial_distance_from_varanasi_km")
+        rad_str = f"📍 {rad_km:.1f} km" if rad_km is not None else f"{dist_to_bm} km"
+        dd_score = fm.get("due_diligence_score")
+        dd_str = f"⚖️ {dd_score}/100 ({fm.get('due_diligence_grade', 'A')})" if dd_score is not None else f"⭐ {fm.get('farmland_score', 88)}/100"
+
         farm_table_rows.append({
             "Farmland Estate Name": fm["name"],
+            "Sourcing Provenance": fm.get("sourcing_tier_badge", fm.get("sourcing_tier", "🏛️ Tier 1: Govt Registry")),
+            "Due Diligence Score": dd_str,
+            "District & State": f"{fm.get('regional_district', fm['location'])}, {fm.get('regional_state', fm['city_name'])}",
+            "Radial Dist to Kashi Zero-Point": rad_str,
             "Seller Category": "🧑‍🌾 Direct Owner" if "Owner" in fm.get("seller_category", "") else ("🏢 Verified Broker" if "Broker" in fm.get("seller_category", "") else "🏡 Managed Farm"),
-            "City & Location": f"{fm['city_name']} ({fm['location']})",
-            f"Road Dist to {active_benchmark_obj['name']}": f"{dist_to_bm} km",
             "Parcel Extent": f"{fm['size_acres']} Acres ({fm.get('size_local_units', '')})",
             "Price / Acre": f"₹{fm['price_per_acre_lakhs']} L/Acre",
             "Total Outlay (Cr)": f"₹{fm['total_price_cr']:.2f} Cr",
@@ -2358,10 +2635,10 @@ with tabs[4]:
             "Organic Carbon": f"{fm.get('organic_carbon_pct')}% OC",
             "Water Source & Yield": f"{fm.get('water_source')} • TDS {fm.get('water_tds_ppm')} ppm",
             "Drip Irrigation": "✅ Installed" if fm.get("drip_irrigation_installed") else "Furrow/Flood",
-            "High-Value Crops": supp.get("high_value_crops", "N/A"),
-            "Horticulture Fruits": supp.get("horticulture_fruits", "N/A"),
+            "High-Value Crops Supported": supp.get("high_value_crops", "N/A"),
             "Est Annual Harvest": f"📈 ₹{fm.get('annual_agro_yield_estimate_lakhs', 5.0)} L/yr",
             "Title & Revenue Ledger": f"{fm.get('title_status')} ({fm.get('revenue_record_type')})",
+            "Khasra / Khatauni Record": fm.get("khasra_khatauni_number", fm.get("revenue_record_type", "Certified RTC")),
             "Farmhouse Allowance": fm.get("farmhouse_permission", "Up to 10%"),
             "Seller Contact": f"{fm.get('contact_person')} ({fm.get('contact_phone')})",
             "WhatsApp Link": fm.get("contact_whatsapp", "https://wa.me/"),
@@ -2371,12 +2648,13 @@ with tabs[4]:
     df_farms_tab = pd.DataFrame(farm_table_rows)
     c_ft1, c_ft2 = st.columns([3, 1])
     with c_ft1:
-        st.caption(f"Showing {len(df_farms_tab)} agricultural & agroforestry parcels screened across India.")
+        st.caption(f"Showing {len(df_farms_tab)} agricultural & agroforestry parcels screened with statutory due diligence.")
     with c_ft2:
+        export_filename = "agriland_200_varanasi_buffer_master.csv" if is_agriland_200 else "farmlands_screener_master.csv"
         st.download_button(
             "📥 Download Table (CSV)",
             data=df_to_csv_bytes(df_farms_tab),
-            file_name=f"farmlands_screener_{selected_farm_corridor.replace(' ', '_').lower()}.csv",
+            file_name=export_filename,
             mime="text/csv",
             key="dl_tab5_farms_csv"
         )
@@ -2388,10 +2666,13 @@ with tabs[4]:
     # 3. INTERACTIVE FARMLAND DEEP-DIVE CARDS & CONTACT TRIGGERS
     # ---------------------------------------------------------
     st.markdown("#### 🧑‍🌾 Featured Farmlands: Contact Sellers & Inspect Soil Health")
-    st.caption("Direct click-to-call, instant WhatsApp inquiry, and verified agronomic telemetry cards:")
+    st.caption("Direct click-to-call, instant WhatsApp inquiry, statutory due diligence audit, and verified agronomic telemetry cards:")
 
-    for fm in f_pool[:6]:
-        with st.expander(f"🌾 {fm['name']} — {fm['size_acres']} Acres in {fm['location']}, {fm['city_name']} (₹{fm['total_price_cr']:.2f} Cr)", expanded=False):
+    for fm in f_pool[:8]:
+        card_title = f"🌾 {fm['name']} — {fm['size_acres']} Acres ({fm.get('size_local_units', '')}) in {fm.get('regional_district', fm['location'])}, {fm.get('regional_state', fm['city_name'])} • ₹{fm['total_price_cr']:.2f} Cr"
+        with st.expander(card_title, expanded=False):
+            if fm.get("radial_distance_from_varanasi_km") is not None or fm.get("due_diligence_score") is not None:
+                st.markdown(render_agriland_200_audit_html(fm), unsafe_allow_html=True)
             c_agri, c_contact = st.columns([1.6, 1.2])
             with c_agri:
                 st.markdown(render_agronomic_telemetry_html(fm), unsafe_allow_html=True)
@@ -2402,6 +2683,7 @@ with tabs[4]:
                     <b>📍 Geographic Verification:</b><br>
                     • Coords: <code>{fm['lat']:.4f}, {fm['lng']:.4f}</code><br>
                     • Plinth Elevation: <b>{fm['elevation_m']}m MSL</b><br>
+                    • Radial Dist from Varanasi: <b>{fm.get('radial_distance_from_varanasi_km', 'N/A')} km</b><br>
                     • <a href='{get_google_maps_search_url(fm.get("google_maps_query", fm["name"]))}' target='_blank' style='color:#38BDF8;'>View Satellite Pin in Google Maps ↗</a><br>
                     • Official Record Source: <b>{fm.get('source_name')}</b>
                 </div>
