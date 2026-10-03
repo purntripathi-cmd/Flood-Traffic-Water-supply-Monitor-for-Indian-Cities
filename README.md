@@ -1,4 +1,4 @@
-# 🌊 Flood, Traffic & Water Supply Monitor for Indian Cities
+# 🏢 Property Screener with Flood, Traffic & Water Supply Details
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://flood-traffic-water-supply-monitor-for-indian-cities.streamlit.app/)
 [![Live App URL](https://img.shields.io/badge/Live%20App-flood--traffic--water--supply--monitor--for--indian--cities.streamlit.app-38BDF8.svg)](https://flood-traffic-water-supply-monitor-for-indian-cities.streamlit.app/)
@@ -48,43 +48,62 @@ This platform brings together civic research datasets, remote sensing imagery, a
 
 ---
 
-## ⚡ Key Capabilities & Features
+## ⚡ Key Capabilities & New Features
 
-### 1. Live System Resource Telemetry (CPU & RAM Load)
+### 1. Multi-Select Area / Locality Restriction Filter
+- Configurable multi-select filter allowing users to restrict all screener tables, maps, and comparative analyses to specific micro-markets (e.g. `['Bellandur', 'Kadubeesanahalli']` or `['Andheri West']`).
+- When activated, all maps, purchase tables, gated plots, and rental benchmarks dynamically isolate inventories within the chosen areas.
+
+### 2. AI/ML Project Search & Onboarding Engine
+- Empowers users to search and onboard any new project across India using an autonomous extraction engine.
+- Pulls multi-source civic telemetry (RERA registries, municipal GIS flood contours, TomTom traffic indices, and developer filings).
+- **Deduplication Engine**: Enforces strict deduplication using cryptographic content hashing; existing entries are skipped unless key pricing, phase, or completion specifications have changed.
+- Automatically calculates:
+  - Ranked composite Investment Score
+  - Date of publish and verifiable source citation links
+  - Projected 5-Year Capital Appreciation (%) and planned development catalysts
+  - Expected completion timelines & upcoming phase details
+
+### 3. Critic AI Validation & Autonomous Self-Correction
+- Dedicated Critic AI testing engine audits every property against hydrological and civic heuristics:
+  - **Basin Elevation Check**: Evaluates claimed plinth elevations against Digital Elevation Models (DEM); penalizes projects in known depression basins claiming zero flood risk.
+  - **Water Pipeline Ground Reality**: Verifies whether municipal bulk supply (e.g., BWSSB Cauvery Stage V, BMC, CMWSSB) has officially been commissioned in the specific sector.
+  - **Price Sanity Bounds**: Audits rates against municipal guideline values and registration data.
+- Enforces corrections and displays transparent status badges (`✅ Critic AI Validated` or `⚠️ Auto-Corrected by Critic AI`).
+
+### 4. Daily AI/ML Scan & Local Multi-Sheet Excel Storage (`.xlsx`)
+- Automatically generates and synchronizes Tab 1 screener data locally to `data/daily_property_screener_dump.xlsx`.
+- Multi-sheet workbook covering:
+  - `Top 10 Purchase Properties`
+  - `Top 10 Gated Plots`
+  - `Top 10 Rental Properties`
+  - `Mega Master Plans`
+  - `Critic AI & Onboarded Log`
+- Includes in-app **Download Daily Excel (.xlsx)** button.
+
+### 5. Parameter Definitions on Mouse Hover (Interactive Tooltips)
+- Every column header in table views contains a native tooltip (`title="..."`) explaining the parameter in simple, non-technical terms when hovering with a mouse.
+- Supported by a dedicated **Parameter Dictionary** expander in the UI.
+
+### 6. Distance Calculation Logic (Tiered Detour Routing)
+- Matches the South East Bengaluru app routing logic (`utils/geo.py`):
+  - Local road grid ($h \le 1.0\text{ km}$): $1.25\times$
+  - Arterial / tech corridors ($1.0 < h \le 8.0\text{ km}$): $1.32\times$
+  - Highway / expressway bypass ($h > 8.0\text{ km}$): $1.22\times$
+
+### 7. Live System Resource Telemetry (CPU & RAM Load)
 - Real-time diagnostic telemetry bar visible at the top header and in the sidebar.
 - Monitors **Streamlit Process Memory (MB)**, **System RAM Used / Total (GB, %)**, and **CPU Utilization (%)** with active health badges (`Optimal 🟢`, `Moderate 🟡`, `High Load 🔴`).
 
-### 2. Multi-Layer Google Maps & Property Focus Zoom
+### 8. Multi-Layer Google Maps & Property Focus Zoom
 - Seamless tile layer switching between **Google Maps (Roadmap)**, **Google Maps (Satellite Hybrid)**, **Google Maps (Terrain)**, **CartoDB Dark Matter**, and **OpenStreetMap**.
 - **Interactive Focus Selector**: Choose any property to immediately zoom in, render a prominent glowing focus halo, and draw a dynamic driving route polyline to the configured benchmark landmark.
 
-### 3. Cross-City Top 10 Comparison Tables (National Radar)
-Permanent Tab 1 feature comparing inventories across all 6 metropolitan regions, sorted High to Low by score:
-- **Top 10 Properties to Purchase / Invest**: Sorted by composite Investment Score, featuring Government Master Plan growth probabilities (%), plinth elevations, flood resilience tags, and utility infrastructure breakdowns.
-- **Top 10 Best Gated Community Plots & Land**: Sorted by Plotted Appreciation Score, featuring statutory approvals (BMRDA, CIDCO, CMDA, DTCP, HMDA, VDA), soil percolation, and elevation.
-- **Top 10 Best Rental Properties**: Sorted by Rental Viability Score, featuring net rental yields (%), commute distances, and maintenance costs.
-
-### 4. Configurable 4th Column Benchmark Distance
-- Interactive benchmark selector in the sidebar configurable to key landmarks or schools.
-- Defaults to **🏫 New Horizon Gurukul** for Bengaluru, and regional benchmark institutions (DAIS for Mumbai, Sishya for Chennai, TSRS for Delhi-NCR, CHIREC for Hyderabad, Sunbeam for Varanasi).
-
-### 5. CBSE / ICSE School Proximity & Fee Structures (Classes 1st to 12th)
-- Collapsible interactive cards embedded in property profiles detailing nearby CBSE/ICSE schools, driving distances, verified ratings, review counts, and complete tuition fee brackets from Class 1 to Class 12.
-
-### 6. Full Civic Utility Tracking
-- Granular infrastructure breakdown for every property:
-  - **STP**: Advanced MBBR / SBR sewage treatment plants.
-  - **Water Softeners**: Centralized ion-exchange plants for high-TDS groundwater.
-  - **Individual IoT Water Meters**: Sub-metered consumption preventing billing disputes.
-  - **Dual Plumbing / Double Piping**: Recycled greywater for flush & landscaping.
-  - **Piped Gas**: IGL / GAIL / Adani piped gas connections.
-  - **Municipal Supply**: Authorized bulk piped municipal water (BWSSB / BMC / CMWSSB / DJB / HMWSSB / UP Jal Sansthan).
-
-### 7. Top Builders by City & State (At Least 15+ per City, 96 Total)
+### 9. Top Builders by City & State (At Least 15+ per City, 96 Total)
 - Benchmarks 16 Tier-1 National Leaders and Regional Champions per city (96 builders across India).
 - Tracks verified RERA on-time delivery percentages, construction quality ratings (1-10), litigation risk indices, delivered square footage, and direct state RERA registry links.
 
-### 8. Sticky 1st-Column Frozen Table Engine
+### 10. Sticky 1st-Column Frozen Table Engine
 - Pure CSS sticky iframe renderer (`utils/table_view.py`) locking the first column on the left with `#0D9488` teal divider and shadow, guaranteeing responsive scrolling across desktop, tablet, and mobile browsers.
 
 ---
@@ -141,19 +160,25 @@ Flood-Traffic-Water-supply-Monitor-for-Indian-Cities/
 │   ├── govt_master_plans.json       # Government infrastructure master plans (Metro, Aerotropolis, Expressways)
 │   ├── cbse_schools.json            # 15 premier CBSE/ICSE schools with Class 1-12 fee structures
 │   ├── avoidance_zones.json         # 12 notorious chronic avoidance hotspots
+│   ├── onboarded_projects.json      # Dynamic AI/ML onboarded custom projects
+│   ├── daily_property_screener_dump.xlsx # Deduplicated multi-sheet Excel scan
 │   └── user_preferences.json        # Configurable budget and risk defaults
 ├── utils/
 │   ├── __init__.py
-│   ├── table_view.py                # Pure CSS sticky 1st-column frozen table renderer
-│   ├── geo.py                       # Haversine distance, urban detour factors, maps URLs
+│   ├── table_view.py                # Pure CSS sticky 1st-column frozen table renderer with mouse hover tooltips
+│   ├── geo.py                       # Tiered urban detour distance calculation, maps URLs
 │   ├── scoring.py                   # 0-100 composite avoidance viability index algorithm
 │   ├── schools.py                   # Multi-city CBSE/ICSE school proximity & fee structure renderer
+│   ├── critic_ai.py                 # Autonomous data validation, anomaly detection & self-correction
+│   ├── ai_onboarder.py              # Multi-source AI/ML search, extraction, and deduplication
+│   ├── excel_exporter.py            # Multi-sheet Excel workbook export & daily synchronization
 │   └── ai_copilot.py                # Explainable AI recommendation engine with citations
 ├── scripts/
 │   ├── generate_cities_and_builders.py # Generator for 6 cities and 96 builders
-│   └── generate_all_property_inventories.py # Generator for purchase, plots, rentals, and master plans
-├── app.py                           # Master multi-city Streamlit application with live telemetry & Google Maps
-├── requirements.txt                 # Python dependencies
+│   ├── generate_all_property_inventories.py # Generator for purchase, plots, rentals, and master plans
+│   └── enrich_inventories_with_critic_and_sources.py # Enriches data with Critic AI status and 5-yr growth
+├── app.py                           # Master Property Screener application with live telemetry & Google Maps
+├── requirements.txt                 # Python dependencies (including openpyxl)
 ├── .gitignore                       # Git ignore rules (protects .github/ and .venv/)
 └── README.md                        # Documentation and architecture guide
 ```

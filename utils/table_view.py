@@ -2,6 +2,7 @@
 Custom Sticky / Frozen Column Table Renderer for Streamlit
 Freezes 1st column (configurable) and sticky header with horizontal and vertical scroll.
 Renders via Streamlit Components HTML iframe for 100% guaranteed visibility across all browsers.
+Includes intuitive parameter definitions that appear as tooltips on mouse hover.
 """
 
 import html as html_lib
@@ -9,12 +10,69 @@ import pandas as pd
 import streamlit as st
 import streamlit.components.v1 as components
 
+# Dictionary of parameter definitions explaining every metric in simple words on mouse hover
+PARAMETER_DEFINITIONS = {
+    "Property Name": "Registered legal project name under RERA and local municipal corporation.",
+    "Layout / Scheme Name": "Name of the approved plotted community layout.",
+    "City & Micro-Market": "Metropolitan jurisdiction and specific urban ward / neighbourhood cluster.",
+    "City & Location": "City and locality where the plotted layout is situated.",
+    "Builder & Tier": "Developer brand pedigree classified as Tier 1 National Leader or Regional Champion based on track record.",
+    "Developer": "Promoter or real estate firm executing the project / layout.",
+    "Growth Prob (% Plan)": "Statistical likelihood (0-100%) of superior capital appreciation directly driven by state-funded mega infrastructure projects.",
+    "Govt Master Plan Catalyst": "Key government public infrastructure project (e.g. Metro Line, Coastal Road, Aerotropolis) boosting connectivity.",
+    "Projected 5-Yr Appreciation": "Forecasted capital appreciation percentage over a 5-year investment horizon based on historical CAGR and planned infrastructure.",
+    "Expected Completion": "Quarter and year of project handover, occupancy certificate issuance, or construction completion.",
+    "Upcoming Phase Details": "Specific tower, wing, or pre-launch phase currently under development.",
+    "Critic AI Status": "Automated validation status by Critic AI testing price realism, hydrological risk, and municipal sanction validity.",
+    "Road Dist": "Realistic driving road network distance in km, accounting for street curvature, flyovers, and arterial detours.",
+    "Config & Area": "Unit configuration (e.g. 2, 3, or 4 BHK) and average super built-up / carpet area in square feet.",
+    "Plot Sizes (sqft)": "Available standard plot dimensions in square feet (e.g. 1200, 1500, 2400 sqft).",
+    "Price / Sqft": "Unit purchase rate per square foot in Indian Rupees (₹).",
+    "Total Price (Cr)": "All-inclusive base purchase cost of the residential apartment in ₹ Crores.",
+    "Starting Ticket": "Entry-level purchase cost for land/plot in ₹ Lakhs.",
+    "Upfront Cash (L)": "Estimated initial down payment and statutory stamp duty / registration cash required in ₹ Lakhs.",
+    "Total Ownership (Cr)": "Comprehensive 5-year total cost of ownership including base price, stamp duty, GST, and maintenance.",
+    "Plinth Elevation": "Elevation of the building ground slab in meters above Mean Sea Level (MSL). Higher elevation prevents flood runoff from entering basements.",
+    "Land Elevation": "Natural topographical ground elevation in meters above Mean Sea Level (MSL).",
+    "Flood Risk Category": "Topographical vulnerability to monsoon inundation based on lake overflow, river backflow, or low-lying basin depressions.",
+    "Flood Exposure": "Vulnerability tag based on contour depressions, storm nala proximity, and historical monsoon logs.",
+    "Statutory Authority": "Town planning and developmental authority (e.g., BMRDA, CIDCO, CMDA, DTCP, HMDA, VDA, PDA) that sanctioned the layout plan.",
+    "Soil Percolation": "Natural soil absorption rate and rainwater runoff infiltration efficiency.",
+    "STP & Water Infra": "On-site Sewage Treatment Plant (MBBR/SBR), Water Softener, Individual IoT Meter, Dual Plumbing, and Gas Pipeline status.",
+    "Civic Utilities": "Availability of Sewage Treatment Plant (STP), Water Softener, IoT Meter, and Dual Plumbing.",
+    "Investment Score": "Composite 0-100 viability ranking blending structural elevation, builder pedigree, flood safety, and transit growth catalysts.",
+    "Appreciation Score": "0-100 score measuring long-term plotted land capital growth potential.",
+    "Rental Score": "0-100 rental suitability score balancing yield, walking transit access, and municipal water reliability.",
+    "Monthly Rent": "Base monthly rental outflow in Indian Rupees (₹).",
+    "Maintenance / Mo": "Monthly society maintenance charges paid towards common facilities, security, and amenities.",
+    "Security Deposit": "Upfront refundable deposit paid to landlord (typically 2 to 6 months of rent).",
+    "Net Rental Yield": "Annual rental income expressed as a percentage of total property capital value, factoring in maintenance.",
+    "Commute Hub Dist": "Road driving distance to the nearest major tech corridor or employment business district.",
+    "School Dist": "Driving distance to the nearest premier CBSE / ICSE academic campus.",
+    "Google Maps Navigation": "Direct navigation deep-link to the exact verified geographic pin on Google Maps.",
+    "Google Maps Place": "Direct place link to view terrain, photos, and access roads on Google Maps.",
+    "State RERA Registry": "Direct URL to official State Real Estate Regulatory Authority registry verifying developer approvals.",
+    "Sanction Verification": "Direct URL to official town planning approval and RERA sanction registry.",
+    "Data Sources & Links": "Verifiable primary references including State RERA Registries, Municipal Master Plans, and TomTom Congestion feeds."
+}
+
+
+def get_column_definition(col_name: str) -> str:
+    """Finds the most matching explanation for a column name."""
+    col_clean = str(col_name).strip()
+    if col_clean in PARAMETER_DEFINITIONS:
+        return PARAMETER_DEFINITIONS[col_clean]
+    for key, val in PARAMETER_DEFINITIONS.items():
+        if key.lower() in col_clean.lower() or col_clean.lower() in key.lower():
+            return val
+    return f"Parameter metric: {col_clean}. Hover to inspect values."
+
 
 def render_sticky_frozen_table(df: pd.DataFrame, frozen_cols: int = 1, table_id: str = "custom_table", max_height: str = "560px"):
     """
     Renders an HTML/CSS table where the first `frozen_cols` columns are permanently frozen / sticky on the left,
     and the table header is sticky on top, while the remaining columns scroll horizontally.
-    Uses components.html for rock-solid iframe rendering without markdown stripping.
+    Includes mouse hover tooltip definitions on every column header.
     """
     if df.empty:
         st.info("No records to display.")
@@ -78,6 +136,11 @@ def render_sticky_frozen_table(df: pd.DataFrame, frozen_cols: int = 1, table_id:
         white-space: nowrap;
         z-index: 25;
         text-align: left;
+        cursor: help;
+    }}
+    th:hover {{
+        background-color: #334155;
+        color: #7DD3FC;
     }}
     td {{
         padding: 9px 14px;
@@ -168,7 +231,9 @@ def render_sticky_frozen_table(df: pd.DataFrame, frozen_cols: int = 1, table_id:
 
     for idx, c in enumerate(cols):
         col_class = f" class='fcol-{idx+1}'" if idx < frozen_col_count else ""
-        html_parts.append(f"<th{col_class}>{html_lib.escape(str(c))}</th>")
+        col_def = get_column_definition(str(c))
+        # Add title attribute and info symbol for intuitive hover explanation
+        html_parts.append(f"<th{col_class} title='{html_lib.escape(col_def)}'>{html_lib.escape(str(c))} <span style='font-size:0.7rem; color:#94A3B8;'>ℹ️</span></th>")
     html_parts.append("</tr></thead><tbody>")
 
     for _, row in df.iterrows():
@@ -186,6 +251,10 @@ def render_sticky_frozen_table(df: pd.DataFrame, frozen_cols: int = 1, table_id:
                 cell_content = f"<span style='background:rgba(239,68,68,0.15); color:#F87171; padding:3px 8px; border-radius:4px; font-weight:700; border:1px solid rgba(239,68,68,0.3);'>{html_lib.escape(raw_val)}</span>"
             elif "⭐" in raw_val:
                 cell_content = f"<span style='color:#FBBF24; font-weight:600;'>{html_lib.escape(raw_val)}</span>"
+            elif "✅" in raw_val and "STP" not in raw_val:
+                cell_content = f"<span style='background:rgba(16,185,129,0.12); color:#10B981; padding:2px 6px; border-radius:4px; font-weight:600;'>{html_lib.escape(raw_val)}</span>"
+            elif "⚠️" in raw_val and "STP" not in raw_val:
+                cell_content = f"<span style='background:rgba(245,158,11,0.12); color:#F59E0B; padding:2px 6px; border-radius:4px; font-weight:600;'>{html_lib.escape(raw_val)}</span>"
             elif raw_val.startswith("₹"):
                 cell_content = f"<span style='color:#38BDF8; font-weight:600;'>{html_lib.escape(raw_val)}</span>"
             elif raw_val.startswith("http://") or raw_val.startswith("https://"):

@@ -1,14 +1,22 @@
 """
 Geospatial Calculations & Routing Utilities
-Provides haversine distance, urban road distance estimation, and mapping links.
+Provides haversine distance, realistic urban road distance calculation, and mapping links.
+Uses the exact tiered urban detour logic from the South East Bengaluru Real Estate Radar.
 """
 
 import math
-from typing import Tuple, Dict, Any
+from typing import Tuple, Dict, Any, Optional
 
 
 def haversine_distance_km(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
     """Calculate the great circle distance between two points on the earth in km."""
+    if lat1 is None or lon1 is None or lat2 is None or lon2 is None:
+        return 0.0
+    try:
+        lat1, lon1, lat2, lon2 = float(lat1), float(lon1), float(lat2), float(lon2)
+    except (ValueError, TypeError):
+        return 0.0
+
     R = 6371.0  # Earth radius in kilometers
 
     dlat = math.radians(lat2 - lat1)
@@ -20,24 +28,34 @@ def haversine_distance_km(lat1: float, lon1: float, lat2: float, lon2: float) ->
     return round(R * c, 2)
 
 
+def calculate_road_distance_km(lat1: float, lon1: float, lat2: float, lon2: float, city_id: str = "bengaluru") -> float:
+    """
+    Calculates realistic road network distance in km between two coordinate points
+    in urban Indian metros, accounting for street curvature, flyovers, and arterial detours.
+    Identical logic and multi-tier formula as South East Bengaluru Real Estate Radar:
+    - Short / Local grid (h <= 1.0 km): 1.25x
+    - Medium / Arterial / Tech corridor (1.0 < h <= 8.0 km): 1.32x
+    - Long / Highway / Bypass (h > 8.0 km): 1.22x
+    """
+    if lat1 is None or lon1 is None or lat2 is None or lon2 is None:
+        return 0.0
+    try:
+        lat1, lon1, lat2, lon2 = float(lat1), float(lon1), float(lat2), float(lon2)
+    except (ValueError, TypeError):
+        return 0.0
+
+    h = haversine_distance_km(lat1, lon1, lat2, lon2)
+    if h <= 0.05:
+        return 0.1
+
+    # Tiered urban network detour factors
+    factor = 1.25 if h <= 1.0 else (1.32 if h <= 8.0 else 1.22)
+    return round(max(0.3, h * factor), 1)
+
+
 def estimate_urban_road_distance_km(lat1: float, lon1: float, lat2: float, lon2: float, city_id: str = "bengaluru") -> float:
-    """
-    Estimates realistic urban road distance by applying empirical detour factors
-    validated against Indian metropolitan road networks.
-    """
-    aerial_km = haversine_distance_km(lat1, lon1, lat2, lon2)
-    
-    # Detour factors based on urban grid irregularity and river/lake barriers
-    detour_factors = {
-        "bengaluru": 1.34,       # Irregular radial network, lake chains, railway crossings
-        "mumbai_mmr": 1.42,       # Linear peninsula, creek crossings, railway bottleneck bridges
-        "chennai": 1.30,          # Buckingham canal, Adyar/Cooum river bridges
-        "delhi_ncr": 1.25,        # Wide arterial roads, Yamuna bridges, expressways
-        "hyderabad": 1.28,        # Hilly terrain, rocky ridges, Outer Ring Road
-        "varanasi_100km": 1.38   # Ancient narrow street grids, river confluences
-    }
-    factor = detour_factors.get(city_id.lower(), 1.32)
-    return round(aerial_km * factor, 2)
+    """Alias for calculate_road_distance_km for backwards compatibility."""
+    return calculate_road_distance_km(lat1, lon1, lat2, lon2, city_id=city_id)
 
 
 def get_google_maps_search_url(query: str) -> str:
