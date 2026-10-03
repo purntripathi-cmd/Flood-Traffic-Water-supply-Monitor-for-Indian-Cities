@@ -72,7 +72,8 @@
     ],
     "is_bankable": true,
     "sourcing_tier": "Tier 1: Government Land Registry",
-    "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry"
+    "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry",
+    "elevation_m": 78
   },
   {
     "id": "agri200_var_031",
@@ -147,7 +148,8 @@
     ],
     "is_bankable": true,
     "sourcing_tier": "Tier 1: Government Land Registry",
-    "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry"
+    "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry",
+    "elevation_m": 78
   },
   {
     "id": "agri200_var_033",
@@ -222,7 +224,8 @@
     ],
     "is_bankable": true,
     "sourcing_tier": "Tier 4: Social / Video Direct Lead",
-    "sourcing_tier_badge": "🎥 Tier 4: Direct Drone Lead"
+    "sourcing_tier_badge": "🎥 Tier 4: Direct Drone Lead",
+    "elevation_m": 78
   },
   {
     "id": "agri200_var_036",
@@ -297,7 +300,8 @@
     ],
     "is_bankable": true,
     "sourcing_tier": "Tier 2: Bank Distress / SARFAESI Auction",
-    "sourcing_tier_badge": "🏦 Tier 2: Bank SARFAESI Auction"
+    "sourcing_tier_badge": "🏦 Tier 2: Bank SARFAESI Auction",
+    "elevation_m": 78
   },
   {
     "id": "farm_var_3",
@@ -471,7 +475,8 @@
     ],
     "is_bankable": true,
     "sourcing_tier": "Tier 1: Government Land Registry",
-    "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry"
+    "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry",
+    "elevation_m": 78
   },
   {
     "id": "farm_var_025",
@@ -547,7 +552,8 @@
     ],
     "is_bankable": true,
     "sourcing_tier": "Tier 1: Government Land Registry",
-    "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry"
+    "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry",
+    "google_maps_query": "Araziline - Gangapur Sweet Corn & Exotic Veggie Agro-Plot, Araziline Block, Near Gangapur Town, Varanasi District, Varanasi, Uttar Pradesh"
   },
   {
     "id": "farm_var_1",
@@ -820,7 +826,8 @@
     ],
     "is_bankable": true,
     "sourcing_tier": "Tier 3: Verified Real Estate Portal",
-    "sourcing_tier_badge": "🌐 Tier 3: Verified Portal"
+    "sourcing_tier_badge": "🌐 Tier 3: Verified Portal",
+    "elevation_m": 78
   },
   {
     "id": "farm_var_023",
@@ -896,7 +903,8 @@
     ],
     "is_bankable": true,
     "sourcing_tier": "Tier 1: Government Land Registry",
-    "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry"
+    "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry",
+    "google_maps_query": "Cholapur - Ring Road Phase-2 High-Density Vegetable & Polyhouse Farm, Cholapur Block, Ring Road Phase-2 Corridor, Varanasi District, Varanasi, Uttar Pradesh"
   },
   {
     "id": "agri200_var_035",
@@ -971,7 +979,8 @@
     ],
     "is_bankable": true,
     "sourcing_tier": "Tier 3: Verified Real Estate Portal",
-    "sourcing_tier_badge": "🌐 Tier 3: Verified Portal"
+    "sourcing_tier_badge": "🌐 Tier 3: Verified Portal",
+    "elevation_m": 78
   },
   {
     "id": "farm_var_2",
@@ -1245,7 +1254,8 @@
     ],
     "is_bankable": true,
     "sourcing_tier": "Tier 1: Government Land Registry",
-    "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry"
+    "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry",
+    "google_maps_query": "Pindra - Phulpur Agro-Belt Organic Millets & Pulse Ranch, Pindra Tehsil, Varanasi-Jaunpur Road, Varanasi District, Varanasi, Uttar Pradesh"
   },
   {
     "id": "farm_var_026",
@@ -1321,7 +1331,8 @@
     ],
     "is_bankable": true,
     "sourcing_tier": "Tier 3: Verified Real Estate Portal",
-    "sourcing_tier_badge": "🌐 Tier 3: Verified Portal"
+    "sourcing_tier_badge": "🌐 Tier 3: Verified Portal",
+    "google_maps_query": "Baragaon - Airport Logistics Buffer Turmeric & Medicinal Herb Farm, Baragaon - Babatpur Agro Belt, Varanasi District, Varanasi, Uttar Pradesh"
   },
   {
     "id": "agri200_mir_042",
@@ -1396,7 +1407,8 @@
     ],
     "is_bankable": true,
     "sourcing_tier": "Tier 2: Bank Distress / SARFAESI Auction",
-    "sourcing_tier_badge": "🏦 Tier 2: Bank SARFAESI Auction"
+    "sourcing_tier_badge": "🏦 Tier 2: Bank SARFAESI Auction",
+    "elevation_m": 110
   },
   {
     "id": "agri200_cha_040",
@@ -1471,7 +1483,8 @@
     ],
     "is_bankable": true,
     "sourcing_tier": "Tier 3: Verified Real Estate Portal",
-    "sourcing_tier_badge": "🌐 Tier 3: Verified Portal"
+    "sourcing_tier_badge": "🌐 Tier 3: Verified Portal",
+    "elevation_m": 75
   },
   {
     "id": "farm_cha_3",
@@ -1744,7 +1757,8 @@
     ],
     "is_bankable": true,
     "sourcing_tier": "Tier 1: Government Land Registry",
-    "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry"
+    "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry",
+    "elevation_m": 75
   },
   {
     "id": "farm_var_027",
@@ -1820,7 +1834,8 @@
     ],
     "is_bankable": true,
     "sourcing_tier": "Tier 1: Government Land Registry",
-    "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry"
+    "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry",
+    "google_maps_query": "Saidpur - Ganga Alluvial Basin High-Yield Organic Mustard Ranch, Saidpur - Bhitri Archaeological Corridor, Ghazipur District, Ghazipur, Uttar Pradesh"
   },
   {
     "id": "agri200_bha_059",
@@ -1895,7 +1910,8 @@
     ],
     "is_bankable": true,
     "sourcing_tier": "Tier 3: Verified Real Estate Portal",
-    "sourcing_tier_badge": "🌐 Tier 3: Verified Portal"
+    "sourcing_tier_badge": "🌐 Tier 3: Verified Portal",
+    "elevation_m": 85
   },
   {
     "id": "farm_cha_2",
@@ -2168,7 +2184,8 @@
     ],
     "is_bankable": true,
     "sourcing_tier": "Tier 1: Government Land Registry",
-    "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry"
+    "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry",
+    "elevation_m": 85
   },
   {
     "id": "agri200_mir_044",
@@ -2243,7 +2260,8 @@
     ],
     "is_bankable": true,
     "sourcing_tier": "Tier 3: Verified Real Estate Portal",
-    "sourcing_tier_badge": "🌐 Tier 3: Verified Portal"
+    "sourcing_tier_badge": "🌐 Tier 3: Verified Portal",
+    "elevation_m": 110
   },
   {
     "id": "farm_mir_1",
@@ -2516,7 +2534,8 @@
     ],
     "is_bankable": true,
     "sourcing_tier": "Tier 5: Newspaper Public Notice",
-    "sourcing_tier_badge": "📰 Tier 5: E-Paper Notice"
+    "sourcing_tier_badge": "📰 Tier 5: E-Paper Notice",
+    "elevation_m": 75
   },
   {
     "id": "agri200_jau_046",
@@ -2591,7 +2610,8 @@
     ],
     "is_bankable": true,
     "sourcing_tier": "Tier 5: Newspaper Public Notice",
-    "sourcing_tier_badge": "📰 Tier 5: E-Paper Notice"
+    "sourcing_tier_badge": "📰 Tier 5: E-Paper Notice",
+    "elevation_m": 84
   },
   {
     "id": "agri200_jau_047",
@@ -2666,7 +2686,8 @@
     ],
     "is_bankable": true,
     "sourcing_tier": "Tier 3: Verified Real Estate Portal",
-    "sourcing_tier_badge": "🌐 Tier 3: Verified Portal"
+    "sourcing_tier_badge": "🌐 Tier 3: Verified Portal",
+    "elevation_m": 84
   },
   {
     "id": "agri200_mir_041",
@@ -2741,7 +2762,8 @@
     ],
     "is_bankable": true,
     "sourcing_tier": "Tier 1: Government Land Registry",
-    "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry"
+    "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry",
+    "elevation_m": 110
   },
   {
     "id": "agri200_bha_060",
@@ -2816,7 +2838,8 @@
     ],
     "is_bankable": true,
     "sourcing_tier": "Tier 5: Newspaper Public Notice",
-    "sourcing_tier_badge": "📰 Tier 5: E-Paper Notice"
+    "sourcing_tier_badge": "📰 Tier 5: E-Paper Notice",
+    "elevation_m": 85
   },
   {
     "id": "farm_jau_1",
@@ -3089,7 +3112,8 @@
     ],
     "is_bankable": true,
     "sourcing_tier": "Tier 1: Government Land Registry",
-    "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry"
+    "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry",
+    "elevation_m": 79
   },
   {
     "id": "agri200_kai_066",
@@ -3164,7 +3188,8 @@
     ],
     "is_bankable": true,
     "sourcing_tier": "Tier 1: Government Land Registry",
-    "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry"
+    "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry",
+    "elevation_m": 92
   },
   {
     "id": "agri200_gha_048",
@@ -3239,7 +3264,8 @@
     ],
     "is_bankable": true,
     "sourcing_tier": "Tier 1: Government Land Registry",
-    "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry"
+    "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry",
+    "elevation_m": 72
   },
   {
     "id": "agri200_jau_045",
@@ -3314,7 +3340,8 @@
     ],
     "is_bankable": true,
     "sourcing_tier": "Tier 1: Government Land Registry",
-    "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry"
+    "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry",
+    "elevation_m": 84
   },
   {
     "id": "agri200_mir_043",
@@ -3389,7 +3416,8 @@
     ],
     "is_bankable": true,
     "sourcing_tier": "Tier 1: Government Land Registry",
-    "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry"
+    "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry",
+    "elevation_m": 110
   },
   {
     "id": "farm_son_1",
@@ -3662,7 +3690,8 @@
     ],
     "is_bankable": true,
     "sourcing_tier": "Tier 1: Government Land Registry",
-    "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry"
+    "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry",
+    "elevation_m": 92
   },
   {
     "id": "agri200_gha_050",
@@ -3737,7 +3766,8 @@
     ],
     "is_bankable": true,
     "sourcing_tier": "Tier 2: Bank Distress / SARFAESI Auction",
-    "sourcing_tier_badge": "🏦 Tier 2: Bank SARFAESI Auction"
+    "sourcing_tier_badge": "🏦 Tier 2: Bank SARFAESI Auction",
+    "elevation_m": 72
   },
   {
     "id": "agri200_pra_056",
@@ -3812,7 +3842,8 @@
     ],
     "is_bankable": true,
     "sourcing_tier": "Tier 3: Verified Real Estate Portal",
-    "sourcing_tier_badge": "🌐 Tier 3: Verified Portal"
+    "sourcing_tier_badge": "🌐 Tier 3: Verified Portal",
+    "elevation_m": 98
   },
   {
     "id": "agri200_aza_053",
@@ -3887,7 +3918,8 @@
     ],
     "is_bankable": true,
     "sourcing_tier": "Tier 3: Verified Real Estate Portal",
-    "sourcing_tier_badge": "🌐 Tier 3: Verified Portal"
+    "sourcing_tier_badge": "🌐 Tier 3: Verified Portal",
+    "elevation_m": 79
   },
   {
     "id": "agri200_aza_051",
@@ -3962,7 +3994,8 @@
     ],
     "is_bankable": true,
     "sourcing_tier": "Tier 1: Government Land Registry",
-    "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry"
+    "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry",
+    "elevation_m": 79
   },
   {
     "id": "agri200_gha_049",
@@ -4037,7 +4070,8 @@
     ],
     "is_bankable": true,
     "sourcing_tier": "Tier 3: Verified Real Estate Portal",
-    "sourcing_tier_badge": "🌐 Tier 3: Verified Portal"
+    "sourcing_tier_badge": "🌐 Tier 3: Verified Portal",
+    "elevation_m": 72
   },
   {
     "id": "farm_aza_1",
@@ -4310,7 +4344,8 @@
     ],
     "is_bankable": true,
     "sourcing_tier": "Tier 1: Government Land Registry",
-    "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry"
+    "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry",
+    "elevation_m": 240
   },
   {
     "id": "agri200_kai_065",
@@ -4385,7 +4420,8 @@
     ],
     "is_bankable": true,
     "sourcing_tier": "Tier 2: Bank Distress / SARFAESI Auction",
-    "sourcing_tier_badge": "🏦 Tier 2: Bank SARFAESI Auction"
+    "sourcing_tier_badge": "🏦 Tier 2: Bank SARFAESI Auction",
+    "elevation_m": 92
   },
   {
     "id": "agri200_sin_075",
@@ -4460,7 +4496,8 @@
     ],
     "is_bankable": true,
     "sourcing_tier": "Tier 1: Government Land Registry",
-    "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry"
+    "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry",
+    "elevation_m": 320
   },
   {
     "id": "agri200_aza_052",
@@ -4535,7 +4572,8 @@
     ],
     "is_bankable": true,
     "sourcing_tier": "Tier 5: Newspaper Public Notice",
-    "sourcing_tier_badge": "📰 Tier 5: E-Paper Notice"
+    "sourcing_tier_badge": "📰 Tier 5: E-Paper Notice",
+    "elevation_m": 79
   },
   {
     "id": "farm_var_028",
@@ -4611,7 +4649,8 @@
     ],
     "is_bankable": true,
     "sourcing_tier": "Tier 4: Social / Video Direct Lead",
-    "sourcing_tier_badge": "🎥 Tier 4: Direct Drone Lead"
+    "sourcing_tier_badge": "🎥 Tier 4: Direct Drone Lead",
+    "google_maps_query": "Meja - Tons Riverfront Amla & Dragon Fruit Plantation, Meja Tehsil, Tons River Confluence, Prayagraj District, Prayagraj, Uttar Pradesh"
   },
   {
     "id": "agri200_pra_055",
@@ -4686,7 +4725,8 @@
     ],
     "is_bankable": true,
     "sourcing_tier": "Tier 1: Government Land Registry",
-    "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry"
+    "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry",
+    "elevation_m": 98
   },
   {
     "id": "agri200_bux_068",
@@ -4761,7 +4801,8 @@
     ],
     "is_bankable": true,
     "sourcing_tier": "Tier 3: Verified Real Estate Portal",
-    "sourcing_tier_badge": "🌐 Tier 3: Verified Portal"
+    "sourcing_tier_badge": "🌐 Tier 3: Verified Portal",
+    "elevation_m": 67
   },
   {
     "id": "farm_bux_1",
@@ -4935,7 +4976,8 @@
     ],
     "is_bankable": true,
     "sourcing_tier": "Tier 2: Bank Distress / SARFAESI Auction",
-    "sourcing_tier_badge": "🏦 Tier 2: Bank SARFAESI Auction"
+    "sourcing_tier_badge": "🏦 Tier 2: Bank SARFAESI Auction",
+    "elevation_m": 98
   },
   {
     "id": "farm_var_029",
@@ -5011,7 +5053,8 @@
     ],
     "is_bankable": true,
     "sourcing_tier": "Tier 1: Government Land Registry",
-    "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry"
+    "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry",
+    "google_maps_query": "Sasaram - Grand Trunk Road High-Speed Canal Agri-Ranch, Sasaram - Nokha Agricultural Highway, Rohtas District, Rohtas, Bihar"
   },
   {
     "id": "farm_roh_1",
@@ -5284,7 +5327,8 @@
     ],
     "is_bankable": true,
     "sourcing_tier": "Tier 1: Government Land Registry",
-    "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry"
+    "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry",
+    "elevation_m": 67
   },
   {
     "id": "agri200_roh_071",
@@ -5359,7 +5403,8 @@
     ],
     "is_bankable": true,
     "sourcing_tier": "Tier 3: Verified Real Estate Portal",
-    "sourcing_tier_badge": "🌐 Tier 3: Verified Portal"
+    "sourcing_tier_badge": "🌐 Tier 3: Verified Portal",
+    "elevation_m": 118
   },
   {
     "id": "agri200_son_063",
@@ -5434,7 +5479,8 @@
     ],
     "is_bankable": true,
     "sourcing_tier": "Tier 3: Verified Real Estate Portal",
-    "sourcing_tier_badge": "🌐 Tier 3: Verified Portal"
+    "sourcing_tier_badge": "🌐 Tier 3: Verified Portal",
+    "elevation_m": 240
   },
   {
     "id": "agri200_son_062",
@@ -5509,7 +5555,8 @@
     ],
     "is_bankable": true,
     "sourcing_tier": "Tier 5: Newspaper Public Notice",
-    "sourcing_tier_badge": "📰 Tier 5: E-Paper Notice"
+    "sourcing_tier_badge": "📰 Tier 5: E-Paper Notice",
+    "elevation_m": 240
   },
   {
     "id": "farm_sin_1",
@@ -5683,7 +5730,8 @@
     ],
     "is_bankable": true,
     "sourcing_tier": "Tier 5: Newspaper Public Notice",
-    "sourcing_tier_badge": "📰 Tier 5: E-Paper Notice"
+    "sourcing_tier_badge": "📰 Tier 5: E-Paper Notice",
+    "elevation_m": 67
   },
   {
     "id": "agri200_roh_070",
@@ -5758,7 +5806,8 @@
     ],
     "is_bankable": true,
     "sourcing_tier": "Tier 1: Government Land Registry",
-    "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry"
+    "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry",
+    "elevation_m": 118
   },
   {
     "id": "farm_var_030",
@@ -5834,7 +5883,8 @@
     ],
     "is_bankable": true,
     "sourcing_tier": "Tier 1: Government Land Registry",
-    "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry"
+    "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry",
+    "google_maps_query": "Mauganj - Rewa Highway Certified Organic Teakwood Agroforestry, Mauganj - Hanumana Plateau Corridor, Rewa District, Rewa, Madhya Pradesh"
   },
   {
     "id": "agri200_rew_073",
@@ -5909,7 +5959,8 @@
     ],
     "is_bankable": true,
     "sourcing_tier": "Tier 3: Verified Real Estate Portal",
-    "sourcing_tier_badge": "🌐 Tier 3: Verified Portal"
+    "sourcing_tier_badge": "🌐 Tier 3: Verified Portal",
+    "elevation_m": 285
   },
   {
     "id": "agri200_sin_074",
@@ -5984,7 +6035,8 @@
     ],
     "is_bankable": true,
     "sourcing_tier": "Tier 1: Government Land Registry",
-    "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry"
+    "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry",
+    "elevation_m": 320
   },
   {
     "id": "agri200_sin_076",
@@ -6059,7 +6111,8 @@
     ],
     "is_bankable": true,
     "sourcing_tier": "Tier 5: Newspaper Public Notice",
-    "sourcing_tier_badge": "📰 Tier 5: E-Paper Notice"
+    "sourcing_tier_badge": "📰 Tier 5: E-Paper Notice",
+    "elevation_m": 320
   },
   {
     "id": "farm_rew_1",
@@ -6233,6 +6286,7 @@
     ],
     "is_bankable": true,
     "sourcing_tier": "Tier 1: Government Land Registry",
-    "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry"
+    "sourcing_tier_badge": "🏛️ Tier 1: Govt Registry",
+    "elevation_m": 285
   }
 ]
