@@ -98,12 +98,32 @@ This platform brings together civic research datasets, remote sensing imagery, a
 ### 8. Multi-Layer Google Maps & Property Focus Zoom
 - Seamless tile layer switching between **Google Maps (Roadmap)**, **Google Maps (Satellite Hybrid)**, **Google Maps (Terrain)**, **CartoDB Dark Matter**, and **OpenStreetMap**.
 - **Interactive Focus Selector**: Choose any property to immediately zoom in, render a prominent glowing focus halo, and draw a dynamic driving route polyline to the configured benchmark landmark.
+### 9. Unified Radar & Top 15+ Builders Directory (Clubbed Architecture)
+- Merges the Panoramic Geospatial Radar, Top 10 Multi-City Comparative Tables, and the Top 15+ Builders Directory into a single seamless flagship tab (`🗺️ Panoramic Radar, Top Properties & Builder Directory`).
+- Benchmarks Tier-1 National Leaders and Regional Champions per city (96 builders across India) with verified RERA on-time delivery percentages, construction quality ratings (1-10), litigation risk indices, delivered square footage, and direct state RERA registry links.
+- Interactive cross-filtering allows searching by developer brand, project name, or neighborhood simultaneously across properties and builder registries.
 
-### 9. Top Builders by City & State (At Least 15+ per City, 96 Total)
-- Benchmarks 16 Tier-1 National Leaders and Regional Champions per city (96 builders across India).
-- Tracks verified RERA on-time delivery percentages, construction quality ratings (1-10), litigation risk indices, delivered square footage, and direct state RERA registry links.
+### 10. City Center 4th-Column Distance Benchmark (Configurable)
+- Default 4th-column distance calculation across all screener tables computes exact tiered road distance to each metropolitan region's **City Center**:
+  - **Bengaluru**: Vidhana Soudha / MG Road (`12.9778° N, 77.5713° E`)
+  - **Mumbai & MMR**: CSMT / Fort (`18.9401° N, 72.8354° E`)
+  - **Chennai**: Chennai Central (`13.0823° N, 80.2754° E`)
+  - **Delhi-NCR**: Connaught Place (`28.6304° N, 77.2177° E`)
+  - **Hyderabad**: Secretariat / Abids (`17.4062° N, 78.4691° E`)
+  - **Varanasi Corridor**: Varanasi Cantt / Godowlia (`25.3268° N, 82.9866° E`)
+- Fully configurable in the sidebar to switch between City Center, premier schools, primary IT hubs, or custom GPS coordinates.
 
-### 10. Sticky 1st-Column Frozen Table Engine
+### 11. Property Age vs Upcoming Handover Timeline & Appreciation Matrix
+- Displays **Property Age vs Completion Timeline** as the 5th column across all purchase and plotted inventories:
+  - **Ready-to-Move Properties**: Categorized by society age (e.g., `🟢 Ready to Move (4 yrs old • Active Community)`).
+  - **Under-Construction / Upcoming Projects**: Categorized by target completion quarter and remaining delivery buffer (e.g., `🏗️ Under Construction (Dec 2026 • 14 mos)` or `🚀 Upcoming Pre-Launch (March 2027 • ~2 yrs)`).
+- Includes an interactive Plotly timeline scatter chart analyzing **Completion Target vs 5-Year Capital Appreciation (%)**.
+
+### 12. Dynamic Table Refresh on Corridor, Locality & Budget Filter
+- By default, displays top properties and plots across India (National Top 10).
+- When a user selects a specific corridor, adds preferred localities, adjusts the purchase budget (e.g., ₹3.50 Cr) or rental budget (e.g., ₹80,000/mo), or types a search keyword, all screener tables dynamically refresh in real time.
+
+### 13. Sticky 1st-Column Frozen Table Engine
 - Pure CSS sticky iframe renderer (`utils/table_view.py`) locking the first column on the left with `#0D9488` teal divider and shadow, guaranteeing responsive scrolling across desktop, tablet, and mobile browsers.
 
 ---

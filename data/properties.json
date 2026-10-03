@@ -66,7 +66,11 @@
     "critic_ai_status": "\u2705 Critic AI Validated",
     "critic_ai_notes": [
       "All structural plinth elevations, price bands, water pipelines, and RERA claims verified consistent."
-    ]
+    ],
+    "property_status": "Under Construction",
+    "property_age": "Under Construction (Handover in ~14 months)",
+    "age_vs_completion": "\ud83c\udfd7\ufe0f Under Construction (Dec 2026 \u2022 14 mos)",
+    "possession_year": 2026
   },
   {
     "id": "prop_blr_2",
@@ -127,7 +131,11 @@
     "critic_ai_status": "\u2705 Critic AI Validated",
     "critic_ai_notes": [
       "All structural plinth elevations, price bands, water pipelines, and RERA claims verified consistent."
-    ]
+    ],
+    "property_status": "Ready to Move",
+    "property_age": "4 years old (OC delivered in 2022)",
+    "age_vs_completion": "\ud83d\udfe2 Ready to Move (4 yrs old \u2022 Active Community)",
+    "possession_year": 2022
   },
   {
     "id": "prop_blr_3",
@@ -188,7 +196,11 @@
     "critic_ai_status": "\u2705 Critic AI Validated",
     "critic_ai_notes": [
       "All structural plinth elevations, price bands, water pipelines, and RERA claims verified consistent."
-    ]
+    ],
+    "property_status": "Upcoming Pre-Launch",
+    "property_age": "Upcoming Phase 2 (Foundation & Raft stage)",
+    "age_vs_completion": "\ud83d\ude80 Upcoming Pre-Launch (March 2027 \u2022 ~2 yrs)",
+    "possession_year": 2027
   },
   {
     "id": "prop_mum_1",
@@ -249,7 +261,11 @@
     "critic_ai_status": "\u2705 Critic AI Validated",
     "critic_ai_notes": [
       "All structural plinth elevations, price bands, water pipelines, and RERA claims verified consistent."
-    ]
+    ],
+    "property_status": "Under Construction",
+    "property_age": "Under Construction (Finishing & Snagging stage)",
+    "age_vs_completion": "\ud83c\udfd7\ufe0f Under Construction (June 2026 \u2022 8 mos)",
+    "possession_year": 2026
   },
   {
     "id": "prop_mum_2",
@@ -310,7 +326,11 @@
     "critic_ai_status": "\u2705 Critic AI Validated",
     "critic_ai_notes": [
       "All structural plinth elevations, price bands, water pipelines, and RERA claims verified consistent."
-    ]
+    ],
+    "property_status": "Under Construction",
+    "property_age": "Near Completion (OC inspection in progress)",
+    "age_vs_completion": "\ud83c\udfd7\ufe0f Near Completion (Dec 2025 \u2022 ~2 mos)",
+    "possession_year": 2025
   },
   {
     "id": "prop_mum_3",
@@ -371,7 +391,11 @@
     "critic_ai_status": "\u2705 Critic AI Validated",
     "critic_ai_notes": [
       "All structural plinth elevations, price bands, water pipelines, and RERA claims verified consistent."
-    ]
+    ],
+    "property_status": "Under Construction",
+    "property_age": "Under Construction (18th floor slab cast)",
+    "age_vs_completion": "\ud83c\udfd7\ufe0f Under Construction (March 2027 \u2022 17 mos)",
+    "possession_year": 2027
   },
   {
     "id": "prop_chn_1",
@@ -432,7 +456,11 @@
     "critic_ai_status": "\u2705 Critic AI Validated",
     "critic_ai_notes": [
       "All structural plinth elevations, price bands, water pipelines, and RERA claims verified consistent."
-    ]
+    ],
+    "property_status": "Ready to Move",
+    "property_age": "2 years old (Delivered in 2024)",
+    "age_vs_completion": "\ud83d\udfe2 Ready to Move (2 yrs old \u2022 Instant Handover)",
+    "possession_year": 2024
   },
   {
     "id": "prop_chn_2",
@@ -493,7 +521,11 @@
     "critic_ai_status": "\u2705 Critic AI Validated",
     "critic_ai_notes": [
       "All structural plinth elevations, price bands, water pipelines, and RERA claims verified consistent."
-    ]
+    ],
+    "property_status": "Under Construction",
+    "property_age": "Under Construction (Structure complete)",
+    "age_vs_completion": "\ud83c\udfd7\ufe0f Under Construction (Q3 2026 \u2022 11 mos)",
+    "possession_year": 2026
   },
   {
     "id": "prop_chn_3",
@@ -554,7 +586,11 @@
     "critic_ai_status": "\u2705 Critic AI Validated",
     "critic_ai_notes": [
       "All structural plinth elevations, price bands, water pipelines, and RERA claims verified consistent."
-    ]
+    ],
+    "property_status": "Under Construction",
+    "property_age": "Under Construction (Tower A MEP works)",
+    "age_vs_completion": "\ud83c\udfd7\ufe0f Under Construction (Dec 2026 \u2022 14 mos)",
+    "possession_year": 2026
   },
   {
     "id": "prop_del_1",
@@ -615,7 +651,11 @@
     "critic_ai_status": "\u2705 Critic AI Validated",
     "critic_ai_notes": [
       "All structural plinth elevations, price bands, water pipelines, and RERA claims verified consistent."
-    ]
+    ],
+    "property_status": "Near Completion",
+    "property_age": "Near Completion (Internal fitouts ongoing)",
+    "age_vs_completion": "\ud83c\udfd7\ufe0f Near Completion (Q1 2026 \u2022 5 mos)",
+    "possession_year": 2026
   },
   {
     "id": "prop_del_2",
@@ -676,7 +716,11 @@
     "critic_ai_status": "\u2705 Critic AI Validated",
     "critic_ai_notes": [
       "All structural plinth elevations, price bands, water pipelines, and RERA claims verified consistent."
-    ]
+    ],
+    "property_status": "Under Construction",
+    "property_age": "Under Construction (Structure 12th floor)",
+    "age_vs_completion": "\ud83c\udfd7\ufe0f Under Construction (Dec 2026 \u2022 14 mos)",
+    "possession_year": 2026
   },
   {
     "id": "prop_del_3",
@@ -737,7 +781,11 @@
     "critic_ai_status": "\u2705 Critic AI Validated",
     "critic_ai_notes": [
       "All structural plinth elevations, price bands, water pipelines, and RERA claims verified consistent."
-    ]
+    ],
+    "property_status": "Upcoming Pre-Launch",
+    "property_age": "Upcoming Phase 2 (Earthwork & Piling)",
+    "age_vs_completion": "\ud83d\ude80 Upcoming Pre-Launch (March 2027 \u2022 ~2 yrs)",
+    "possession_year": 2027
   },
   {
     "id": "prop_hyd_1",
@@ -798,7 +846,11 @@
     "critic_ai_status": "\u2705 Critic AI Validated",
     "critic_ai_notes": [
       "All structural plinth elevations, price bands, water pipelines, and RERA claims verified consistent."
-    ]
+    ],
+    "property_status": "Ready to Move",
+    "property_age": "3 years old (Delivered in 2023)",
+    "age_vs_completion": "\ud83d\udfe2 Ready to Move (3 yrs old \u2022 Luxury OC)",
+    "possession_year": 2023
   },
   {
     "id": "prop_hyd_2",
@@ -859,7 +911,11 @@
     "critic_ai_status": "\u2705 Critic AI Validated",
     "critic_ai_notes": [
       "All structural plinth elevations, price bands, water pipelines, and RERA claims verified consistent."
-    ]
+    ],
+    "property_status": "Ready to Move",
+    "property_age": "5 years old (Established society 2021)",
+    "age_vs_completion": "\ud83d\udfe2 Ready to Move (5 yrs old \u2022 100% Occupied)",
+    "possession_year": 2021
   },
   {
     "id": "prop_hyd_3",
@@ -920,7 +976,11 @@
     "critic_ai_status": "\u2705 Critic AI Validated",
     "critic_ai_notes": [
       "All structural plinth elevations, price bands, water pipelines, and RERA claims verified consistent."
-    ]
+    ],
+    "property_status": "Under Construction",
+    "property_age": "Under Construction (10th floor slab)",
+    "age_vs_completion": "\ud83c\udfd7\ufe0f Under Construction (March 2027 \u2022 17 mos)",
+    "possession_year": 2027
   },
   {
     "id": "prop_vns_1",
@@ -981,7 +1041,11 @@
     "critic_ai_status": "\u2705 Critic AI Validated",
     "critic_ai_notes": [
       "All structural plinth elevations, price bands, water pipelines, and RERA claims verified consistent."
-    ]
+    ],
+    "property_status": "Under Construction",
+    "property_age": "Under Construction (Brickwork & Glazing)",
+    "age_vs_completion": "\ud83c\udfd7\ufe0f Under Construction (Dec 2026 \u2022 14 mos)",
+    "possession_year": 2026
   },
   {
     "id": "prop_vns_2",
@@ -1042,7 +1106,11 @@
     "critic_ai_status": "\u2705 Critic AI Validated",
     "critic_ai_notes": [
       "All structural plinth elevations, price bands, water pipelines, and RERA claims verified consistent."
-    ]
+    ],
+    "property_status": "Ready to Move",
+    "property_age": "2 years old (Delivered in 2024)",
+    "age_vs_completion": "\ud83d\udfe2 Ready to Move (2 yrs old \u2022 Registry Ready)",
+    "possession_year": 2024
   },
   {
     "id": "prop_vns_3",
@@ -1103,6 +1171,10 @@
     "critic_ai_status": "\u2705 Critic AI Validated",
     "critic_ai_notes": [
       "All structural plinth elevations, price bands, water pipelines, and RERA claims verified consistent."
-    ]
+    ],
+    "property_status": "Upcoming Pre-Launch",
+    "property_age": "Upcoming Launch (RERA Sanctioned layout)",
+    "age_vs_completion": "\ud83d\ude80 Upcoming Pre-Launch (Q2 2027 \u2022 ~20 mos)",
+    "possession_year": 2027
   }
 ]

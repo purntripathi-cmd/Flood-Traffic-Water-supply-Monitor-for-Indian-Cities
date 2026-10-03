@@ -284,50 +284,57 @@ map_provider = st.sidebar.selectbox(
 )
 
 st.sidebar.markdown("---")
-st.sidebar.markdown("### 🏫 4th Column Distance Benchmark")
-st.sidebar.caption("Configures the reference destination shown as the **4th Column** in tables. Defaults to **New Horizon Gurukul** for Bengaluru.")
+st.sidebar.markdown("### 🏛️ 4th Column Distance Benchmark")
+st.sidebar.caption("Configures the reference destination shown as the **4th Column** in tables. Defaults to the **City Center** across all metropolitan corridors.")
 
 benchmark_preset_map = {
     "bengaluru": {
-        "🏫 New Horizon Gurukul (Default)": {"name": "New Horizon Gurukul", "lat": 12.9348, "lng": 77.7037},
+        "🏛️ City Center: Vidhana Soudha / MG Road (Default)": {"name": "Vidhana Soudha (City Center)", "lat": 12.9778, "lng": 77.5713},
+        "🏫 New Horizon Gurukul (Kadubeesanahalli)": {"name": "New Horizon Gurukul", "lat": 12.9348, "lng": 77.7037},
         "🏢 RMZ Ecospace (Bellandur)": {"name": "RMZ Ecospace", "lat": 12.9262, "lng": 77.6836},
         "🏢 Prestige Tech Park (Kadubeesanahalli)": {"name": "Prestige Tech Park", "lat": 12.9366, "lng": 77.6953}
     },
     "mumbai_mmr": {
-        "🏫 Dhirubhai Ambani Intl School (Default)": {"name": "Dhirubhai Ambani International", "lat": 19.0660, "lng": 72.8680},
+        "🏛️ City Center: CSMT / Fort / Nariman Point (Default)": {"name": "CSMT / Fort (City Center)", "lat": 18.9401, "lng": 72.8354},
+        "🏫 Dhirubhai Ambani Intl School (BKC)": {"name": "Dhirubhai Ambani International", "lat": 19.0660, "lng": 72.8680},
         "🏢 Bandra-Kurla Complex (BKC)": {"name": "BKC", "lat": 19.0650, "lng": 72.8680},
         "🏢 Nesco IT Park (Goregaon)": {"name": "Nesco IT Park", "lat": 19.1530, "lng": 72.8540}
     },
     "chennai": {
-        "🏫 Sishya School (Default)": {"name": "Sishya School", "lat": 13.0030, "lng": 80.2560},
+        "🏛️ City Center: Chennai Central / Anna Salai (Default)": {"name": "Chennai Central (City Center)", "lat": 13.0823, "lng": 80.2754},
+        "🏫 Sishya School (Adyar)": {"name": "Sishya School", "lat": 13.0030, "lng": 80.2560},
         "🏢 Tidel Park (OMR)": {"name": "Tidel Park", "lat": 12.9890, "lng": 80.2500},
         "🏢 DLF Cybercity (Porur)": {"name": "DLF Cybercity", "lat": 13.0240, "lng": 80.1760}
     },
     "delhi_ncr": {
-        "🏫 The Shri Ram School (Default)": {"name": "The Shri Ram School", "lat": 28.4890, "lng": 77.0980},
+        "🏛️ City Center: Connaught Place (CP) / India Gate (Default)": {"name": "Connaught Place (City Center)", "lat": 28.6304, "lng": 77.2177},
+        "🏫 The Shri Ram School (Gurugram)": {"name": "The Shri Ram School", "lat": 28.4890, "lng": 77.0980},
         "🏢 DLF Cyber City (Gurugram)": {"name": "DLF Cyber City", "lat": 28.4950, "lng": 77.0890},
         "🏢 Advant Navis (Noida Sec 142)": {"name": "Advant Navis", "lat": 28.5020, "lng": 77.4170}
     },
     "hyderabad": {
-        "🏫 CHIREC International (Default)": {"name": "CHIREC International", "lat": 17.4640, "lng": 78.3610},
+        "🏛️ City Center: Secretariat / Abids / Hussain Sagar (Default)": {"name": "Secretariat (City Center)", "lat": 17.4062, "lng": 78.4691},
+        "🏫 CHIREC International (Kondapur)": {"name": "CHIREC International", "lat": 17.4640, "lng": 78.3610},
         "🏢 HITECH City Mindspace": {"name": "Mindspace HITECH City", "lat": 17.4410, "lng": 78.3810},
         "🏢 Financial District (Wipro Circle)": {"name": "Wipro Circle", "lat": 17.4180, "lng": 78.3480}
     },
     "varanasi_100km": {
-        "🏫 Sunbeam School Varuna (Default)": {"name": "Sunbeam School Varuna", "lat": 25.3420, "lng": 82.9780},
+        "🏛️ City Center: Varanasi Cantt / Godowlia (Default)": {"name": "Varanasi Cantt / Godowlia (City Center)", "lat": 25.3268, "lng": 82.9866},
+        "🏫 Sunbeam School Varuna": {"name": "Sunbeam School Varuna", "lat": 25.3420, "lng": 82.9780},
         "🏛️ Kashi Vishwanath Dham": {"name": "Kashi Vishwanath Dham", "lat": 25.3109, "lng": 83.0107},
         "🏛️ Allahabad High Court (Civil Lines)": {"name": "Allahabad High Court", "lat": 25.4520, "lng": 81.8340}
     }
 }
 
 city_benchmark_choices = benchmark_preset_map.get(selected_city_id, {
-    "🏫 New Horizon Gurukul (Default)": {"name": "New Horizon Gurukul", "lat": 12.9348, "lng": 77.7037}
+    "🏛️ City Center (Default)": {"name": "City Center", "lat": active_city.get("center_lat", 12.9716), "lng": active_city.get("center_lng", 77.5946)}
 })
 
 selected_benchmark_label = st.sidebar.selectbox(
-    "Active Benchmark Destination:",
+    "Active Benchmark Destination (4th Column):",
     options=list(city_benchmark_choices.keys()),
-    index=0
+    index=0,
+    help="Default benchmark is City Center. Recalculates exact road network distances shown as the 4th column in all comparative tables."
 )
 active_benchmark_obj = city_benchmark_choices[selected_benchmark_label]
 
@@ -468,9 +475,8 @@ st.markdown("<br>", unsafe_allow_html=True)
 # 8 Core Interactive Tabs
 # -------------------------------------------------------------
 tabs = st.tabs([
-    "🗺️ Panoramic Investment & Geospatial Radar",
+    "🗺️ Panoramic Radar, Top Properties & Builder Directory",
     "📊 Micro-Market Avoidance Radar",
-    "🏗️ Top Builders by City & State (15+ per City)",
     "🏢 Resilient Property Screener",
     "🏡 Gated Community Plots & Sites",
     "💧 Water Supply & Ground Reality",
@@ -877,39 +883,105 @@ with tabs[0]:
     st.markdown("<br>", unsafe_allow_html=True)
 
     # ---------------------------------------------------------
-    # CROSS-CITY TOP 10 COMPARATIVE TABLES
+    # DYNAMIC SEARCH, CITY, LOCALITY, AGE & BUDGET REFRESH CONTROLS
     # ---------------------------------------------------------
-    st.markdown("## 🏆 Cross-City Top 10 Comparison Tables (National Radar)")
-    st.caption("Side-by-side comparative inventory analysis spanning Bengaluru, Mumbai-MMR, Chennai, Delhi-NCR, Hyderabad, and Varanasi Corridor. Sorted from High to Low score with permanently frozen 1st column and mouse hover tooltips.")
+    st.markdown("## 🏆 Panoramic Comparative Inventory Radar & Top 10 Tables")
+    st.caption("Dynamically refreshes based on Corridor selection, preferred area filters, property age / handover milestones, and active budget limits. Default displays top properties across India.")
+
+    radar_c1, radar_c2, radar_c3, radar_c4 = st.columns([1.4, 1.2, 1.1, 1.3])
+    with radar_c1:
+        inventory_scope = st.radio(
+            "Inventory Scope / Filter:",
+            options=[
+                "🌐 All Cities Across India (National Top 10)",
+                f"📍 Active Corridor: {active_city['name']}"
+            ],
+            index=1 if (selected_areas and len(selected_areas) > 0) else 0,
+            horizontal=True,
+            help="Toggle between all-India comparative benchmark and corridor-specific inventory."
+        )
+
+    with radar_c2:
+        filter_property_status = st.selectbox(
+            "Property Age & Timeline:",
+            options=[
+                "All (Ready + Upcoming)",
+                "🟢 Ready to Move (Instant Handover)",
+                "🏗️ Under Construction",
+                "🚀 Upcoming Pre-Launch"
+            ],
+            index=0,
+            help="Filter by physical execution phase: ready-to-move with verified society age vs under-construction with target completion quarters."
+        )
+
+    with radar_c3:
+        filter_budget_toggle = st.selectbox(
+            "Enforce Budget Filter:",
+            options=[
+                f"✅ Enforce Budget (≤ ₹{budget_purchase_max:.2f} Cr)",
+                "Show All Price Bands"
+            ],
+            index=0,
+            help=f"Apply maximum purchase budget of ₹{budget_purchase_max:.2f} Cr / rental budget of ₹{budget_rental_max:,}/mo set in sidebar."
+        )
+
+    with radar_c4:
+        keyword_filter = st.text_input(
+            "Search Name, Builder or Locality:",
+            placeholder="e.g. Sobha, Bellandur, DLF, Kanakapura",
+            help="Real-time filtering of all tables by developer brand, project name, or neighborhood."
+        )
 
     # ---------------------------------------------------------
-    # TABLE 1: TOP 10 PROPERTIES TO PURCHASE / INVEST ACROSS ALL CITIES
+    # TABLE 1: TOP PROPERTIES TO PURCHASE / INVEST (Dynamic Refresh)
     # ---------------------------------------------------------
-    st.markdown("### 1️⃣ Top 10 Properties to Purchase & Invest Across All Cities")
-    st.caption("Ranked by composite Investment & Viability Score (0-100), combining structural plinth elevation, flood resilience, builder RERA track record, and Government Master Plan growth catalysts.")
+    st.markdown("### 1️⃣ Top Properties to Purchase & Invest (Dynamically Refreshed)")
+    st.caption(f"Ranked by composite Investment Score (0-100). 4th column benchmark: **{active_benchmark_obj['name']}**. Filtered by selected Corridor, locality, budget (≤ ₹{budget_purchase_max:.2f} Cr), and handover status.")
 
-    # Sort properties high to low by investment_score
-    sorted_properties = sorted(properties, key=lambda x: x["investment_score"], reverse=True)[:10]
+    if "Active Corridor" in inventory_scope or selected_areas:
+        prop_pool = [p for p in properties if p.get("city_id") == selected_city_id]
+    else:
+        prop_pool = list(properties)
+
+    if selected_areas:
+        prop_pool = [p for p in prop_pool if area_matches(p.get("micro_market", "")) or area_matches(p.get("name", ""))]
+
+    if keyword_filter:
+        kw = keyword_filter.lower().strip()
+        prop_pool = [p for p in prop_pool if kw in p.get("name", "").lower() or kw in p.get("builder", "").lower() or kw in p.get("micro_market", "").lower()]
+
+    if "Enforce Budget" in filter_budget_toggle:
+        prop_pool = [p for p in prop_pool if p.get("total_price_cr", 0) <= budget_purchase_max]
+
+    if "Ready to Move" in filter_property_status:
+        prop_pool = [p for p in prop_pool if "Ready" in p.get("property_status", "") or "Ready" in p.get("expected_completion", "")]
+    elif "Under Construction" in filter_property_status:
+        prop_pool = [p for p in prop_pool if "Construction" in p.get("property_status", "") or "Near Completion" in p.get("property_status", "")]
+    elif "Upcoming Pre-Launch" in filter_property_status:
+        prop_pool = [p for p in prop_pool if "Upcoming" in p.get("property_status", "") or "Pre-Launch" in p.get("property_status", "")]
+
+    sorted_properties = sorted(prop_pool, key=lambda x: x.get("investment_score", 0), reverse=True)[:10]
+
+    if not sorted_properties:
+        st.warning(f"No purchase properties matched your current filters (Budget: ≤ ₹{budget_purchase_max:.2f} Cr). Increase your budget slider or clear keywords to view inventory.")
 
     top_prop_rows = []
     for p in sorted_properties:
         ws = p.get("water_infrastructure", {})
-        # Calculate road distance using identical South East Bengaluru tiered formula
         dist_to_bm = calculate_road_distance_km(p["lat"], p["lng"], active_benchmark_obj["lat"], active_benchmark_obj["lng"])
-
-        # Utility flags
         util_str = f"STP: {'✅' if ws.get('has_stp') else '❌'} | Softener: {'✅' if ws.get('has_water_softener') else '❌'} | Meter: {'✅' if ws.get('has_water_meter') else '❌'} | Gas: {'✅' if ws.get('has_gas_pipeline') else '❌'}"
 
         top_prop_rows.append({
             "Property Name": p["name"],
             "City & Micro-Market": f"{p['city_name']} ({p['micro_market']})",
             "Builder & Tier": f"{p['builder']} ({p['builder_tier']})",
+            f"Road Dist to {active_benchmark_obj['name']}": f"{dist_to_bm} km",
+            "Property Age vs Completion Timeline": p.get("age_vs_completion", p.get("property_age", p.get("expected_completion"))),
             "Growth Prob (% Plan)": f"🚀 {p['growth_probability_pct']}%",
             "Projected 5-Yr Appreciation": f"📈 +{p.get('projected_5yr_appreciation_pct', 45)}%",
             "Expected Completion": p.get("expected_completion", "Dec 2026"),
             "Upcoming Phase Details": p.get("upcoming_phase", "Phase 1"),
             "Govt Master Plan Catalyst": p["govt_master_plan_catalyst"],
-            f"Road Dist to {active_benchmark_obj['name']}": f"{dist_to_bm} km",
             "Config & Area": f"{p['bhk']} ({p['avg_sqft']} sqft)",
             "Price / Sqft": f"₹{p['price_per_sqft']:,}",
             "Total Price (Cr)": f"₹{p['total_price_cr']:.2f} Cr",
@@ -935,6 +1007,7 @@ with tabs[0]:
             st.markdown(f"""
             - **Developer:** {p['builder']} ({p['builder_tier']}) | **Price:** ₹{p['total_price_cr']} Cr (₹{p['price_per_sqft']:,}/sqft)
             - **5-Yr Capital Appreciation:** `+{p.get('projected_5yr_appreciation_pct', 48)}%` | **Handover Timeline:** `{p.get('expected_completion', 'Dec 2026')}` ({p.get('upcoming_phase')})
+            - **Property Age / Status:** `{p.get('age_vs_completion', p.get('property_age'))}`
             - **Master Plan Catalyst:** {p['govt_master_plan_catalyst']} (Growth Probability: `{p['growth_probability_pct']}%`)
             - **Critic AI Status:** {p.get('critic_ai_status', '✅ Critic AI Validated')}
             - **Primary Data Sources:** {p.get('source_name', 'State RERA Registry & Municipal Storm Drain Master Plan')}
@@ -945,12 +1018,40 @@ with tabs[0]:
     st.markdown("<br>", unsafe_allow_html=True)
 
     # ---------------------------------------------------------
-    # TABLE 2: TOP 10 BEST GATED COMMUNITY PLOTS & LAND ACROSS ALL CITIES
+    # TABLE 2: TOP BEST GATED COMMUNITY PLOTS & LAND (Dynamic Refresh)
     # ---------------------------------------------------------
-    st.markdown("### 2️⃣ Top 10 Best Gated Community Plots & Land Across All Cities")
-    st.caption("Ranked by Plotted Appreciation & Resilience Score (0-100), factoring statutory approvals (BMRDA, CIDCO, CMDA, DTCP, HMDA, VDA), soil drainage percolation, and proximity to infrastructure arteries.")
+    st.markdown("### 2️⃣ Top Gated Community Plots & Land (Dynamically Refreshed)")
+    st.caption(f"Ranked by Plotted Appreciation & Resilience Score (0-100). 4th column benchmark: **{active_benchmark_obj['name']}**. Filtered by Corridor, preferred locality, budget (≤ ₹{budget_purchase_max:.2f} Cr), and statutory sanctions.")
 
-    sorted_plots = sorted(gated_plots, key=lambda x: x["plotted_appreciation_score"], reverse=True)[:10]
+    if "Active Corridor" in inventory_scope or selected_areas:
+        plot_pool = [pl for pl in gated_plots if pl.get("city_id") == selected_city_id]
+    else:
+        plot_pool = list(gated_plots)
+
+    if selected_areas:
+        plot_pool = [pl for pl in plot_pool if area_matches(pl.get("location", "")) or area_matches(pl.get("name", ""))]
+
+    if keyword_filter:
+        kw = keyword_filter.lower().strip()
+        plot_pool = [pl for pl in plot_pool if kw in pl.get("name", "").lower() or kw in pl.get("developer", "").lower() or kw in pl.get("location", "").lower()]
+
+    if "Enforce Budget" in filter_budget_toggle:
+        import re
+        def check_plot_budget(p_obj):
+            txt = str(p_obj.get("total_price_lakhs", ""))
+            nums = re.findall(r"[\d\.]+", txt)
+            if nums:
+                min_lakhs = float(nums[0])
+                return (min_lakhs / 100.0) <= budget_purchase_max
+            return True
+        plot_pool = [pl for pl in plot_pool if check_plot_budget(pl)]
+
+    if "Ready to Move" in filter_property_status:
+        plot_pool = [pl for pl in plot_pool if "Ready" in pl.get("property_status", "") or "Ready" in pl.get("expected_completion", "")]
+    elif "Under Construction" in filter_property_status or "Upcoming Pre-Launch" in filter_property_status:
+        plot_pool = [pl for pl in plot_pool if "Under" in pl.get("property_status", "") or "Sanctioned" in pl.get("upcoming_phase", "")]
+
+    sorted_plots = sorted(plot_pool, key=lambda x: x.get("plotted_appreciation_score", 0), reverse=True)[:10]
 
     top_plot_rows = []
     for pl in sorted_plots:
@@ -959,12 +1060,13 @@ with tabs[0]:
             "Layout / Scheme Name": pl["name"],
             "City & Location": f"{pl['city_name']} ({pl['location']})",
             "Developer": pl["developer"],
+            f"Road Dist to {active_benchmark_obj['name']}": f"{dist_to_bm} km",
+            "Plot Status & Handover": pl.get("age_vs_completion", pl.get("property_age", pl.get("expected_completion"))),
             "Growth Prob (% Plan)": f"🚀 {pl['growth_probability_pct']}%",
             "Projected 5-Yr Appreciation": f"📈 +{pl.get('projected_5yr_appreciation_pct', 65)}%",
             "Expected Handover": pl.get("expected_completion", "Ready for Construction"),
             "Upcoming Phase": pl.get("upcoming_phase", "Town Planning Sanctioned"),
             "Govt Master Plan Catalyst": pl["govt_master_plan_catalyst"],
-            f"Road Dist to {active_benchmark_obj['name']}": f"{dist_to_bm} km",
             "Plot Sizes (sqft)": pl["plot_sizes_sqft"],
             "Price / Sqft": f"₹{pl['price_per_sqft']:,}",
             "Starting Ticket": pl["total_price_lakhs"],
@@ -984,12 +1086,27 @@ with tabs[0]:
     st.markdown("<br>", unsafe_allow_html=True)
 
     # ---------------------------------------------------------
-    # TABLE 3: TOP 10 BEST RENTAL PROPERTIES ACROSS ALL CITIES
+    # TABLE 3: TOP BEST RENTAL PROPERTIES (Dynamic Refresh)
     # ---------------------------------------------------------
-    st.markdown("### 3️⃣ Top 10 Best Rental Properties Across All Cities")
-    st.caption("Ranked by Rental Viability & Commute Score (0-100), balancing net rental yields (%), walking access to major employment hubs, and zero water tanker dependency.")
+    st.markdown("### 3️⃣ Top Best Rental Properties (Dynamically Refreshed)")
+    st.caption(f"Ranked by Rental Viability Score (0-100). 4th column benchmark: **{active_benchmark_obj['name']}**. Filtered by rental budget (≤ ₹{budget_rental_max:,}/mo) and corridor.")
 
-    sorted_rentals = sorted(rental_properties, key=lambda x: x["rental_score"], reverse=True)[:10]
+    if "Active Corridor" in inventory_scope or selected_areas:
+        rental_pool = [r for r in rental_properties if r.get("city_id") == selected_city_id]
+    else:
+        rental_pool = list(rental_properties)
+
+    if selected_areas:
+        rental_pool = [r for r in rental_pool if area_matches(r.get("micro_market", "")) or area_matches(r.get("name", ""))]
+
+    if keyword_filter:
+        kw = keyword_filter.lower().strip()
+        rental_pool = [r for r in rental_pool if kw in r.get("name", "").lower() or kw in r.get("micro_market", "").lower()]
+
+    if "Enforce Budget" in filter_budget_toggle:
+        rental_pool = [r for r in rental_pool if r.get("monthly_rent_inr", 0) <= budget_rental_max]
+
+    sorted_rentals = sorted(rental_pool, key=lambda x: x.get("rental_score", 0), reverse=True)[:10]
 
     top_rental_rows = []
     for r in sorted_rentals:
@@ -1001,13 +1118,14 @@ with tabs[0]:
             "Property Name": r["name"],
             "City & Micro-Market": f"{r['city_name']} ({r['micro_market']})",
             "Builder": r["builder"],
+            f"Road Dist to {active_benchmark_obj['name']}": f"{dist_to_bm} km",
+            "Property Age / Status": "🟢 Ready to Move (100% Occupied Society)",
             "Config & Sqft": f"{r['bhk']} ({r['avg_sqft']} sqft)",
             "Monthly Rent": f"₹{r['monthly_rent_inr']:,}",
             "Maintenance / Mo": f"₹{r['monthly_maintenance_inr']:,}",
             "Security Deposit": f"₹{r['security_deposit_inr']:,}",
             "Net Rental Yield": f"📈 {r['rental_yield_pct']}%",
             "Commute Hub Dist": f"{r['commute_hub_distance_km']} km to {r['commute_hub_name']}",
-            f"Road Dist to {active_benchmark_obj['name']}": f"{dist_to_bm} km",
             "School Dist": f"{r['school_distance_km']} km to {r['school_name']}",
             "Civic Utilities": util_str,
             "Growth Prob (% Plan)": f"🚀 {r['growth_probability_pct']}%",
@@ -1019,6 +1137,139 @@ with tabs[0]:
 
     df_top_rentals = pd.DataFrame(top_rental_rows)
     render_sticky_frozen_table(df_top_rentals, frozen_cols=1, table_id="top_rentals_table", max_height="500px")
+
+    st.markdown("<br>", unsafe_allow_html=True)
+
+    # ---------------------------------------------------------
+    # SECTION 4: TOP 15+ BUILDERS DIRECTORY & RERA TRACK RECORD (Clubbed Directory)
+    # ---------------------------------------------------------
+    st.markdown("### 🏗️ Top 15+ Builders Directory & RERA Track Record (Clubbed Directory)")
+    st.caption("Benchmarking Tier 1 National & Regional champions across India by RERA on-time delivery punctuality, construction quality rating (1-10), and litigation index.")
+
+    b_col1, b_col2 = st.columns([1.5, 2.5])
+    with b_col1:
+        builder_filter_mode = st.radio(
+            "Filter Builders By Corridor:",
+            options=[
+                f"📍 Active Focus City: {active_city['name']} (16 Builders)",
+                "🌐 All Cities Across India (96 Builders Total)"
+            ],
+            index=0 if "Active Corridor" in inventory_scope else 1,
+            horizontal=True
+        )
+
+    with b_col2:
+        builder_search_kw = st.text_input(
+            "Filter Builders by Name or Tier:",
+            value=keyword_filter if keyword_filter else "",
+            placeholder="e.g. Prestige, Sobha, Godrej, Brigade, Lodha, Oberoi, DLF"
+        )
+
+    if "Active Focus City" in builder_filter_mode:
+        selected_builders = [
+            b for b in builders
+            if b.get("city_id") == selected_city_id or any(selected_city_id in s.lower() for s in b.get("active_states_and_cities", []))
+        ]
+        if len(selected_builders) < 15:
+            selected_builders = [
+                b for b in builders
+                if any(active_city["state"].lower() in s.lower() for s in b.get("active_states_and_cities", []))
+            ]
+    else:
+        selected_builders = builders
+
+    if builder_search_kw:
+        b_kw = builder_search_kw.lower().strip()
+        selected_builders = [b for b in selected_builders if b_kw in b.get("name", "").lower() or b_kw in b.get("tier", "").lower() or b_kw in b.get("headquarters", "").lower()]
+
+    builder_table = []
+    for b in selected_builders:
+        flagship = b.get("flagship_projects", {}).get(selected_city_id, "Marquee Portfolio Project")
+        c_obj = next((c for c in cities if c["id"] == b.get("city_id")), None)
+        c_name = c_obj["name"] if c_obj else b.get("headquarters", "National")
+
+        builder_table.append({
+            "Builder Name": b["name"],
+            "City / Region": c_name,
+            "Tier Classification": b["tier"],
+            "Headquarters": b["headquarters"],
+            "RERA On-Time Delivery": f"{b['on_time_delivery_pct']}%",
+            "Quality Score (1-10)": f"⭐ {b['construction_quality_rating']} / 10",
+            "Litigation Index": b["litigation_index"],
+            "Delivered Sqft (Mn)": f"{b['total_delivered_sqft_mn']} Mn",
+            "Flagship In Region": flagship,
+            "Official State RERA Portal": b["rera_portal_url"]
+        })
+
+    df_builders = pd.DataFrame(builder_table)
+    render_sticky_frozen_table(df_builders, frozen_cols=1, table_id="clubbed_builders_table", max_height="480px")
+
+    st.markdown("<br>", unsafe_allow_html=True)
+    st.markdown(f"#### 🏢 Builder Pedigree Profiles ({active_city['name']} Champions)")
+    b_cols = st.columns(3)
+    for idx, b in enumerate(selected_builders[:6]):
+        with b_cols[idx % 3]:
+            st.markdown(f"""
+            <div style='background-color:#1E293B; border:1px solid #334155; border-radius:8px; padding:16px; margin-bottom:14px;'>
+                <div style='display:flex; justify-content:space-between; align-items:center;'>
+                    <h4 style='margin:0; color:#38BDF8;'>{b['name']}</h4>
+                    <span style='background:#0D9488; color:#FFFFFF; font-size:10px; padding:2px 6px; border-radius:4px; font-weight:bold;'>Est. {b['established_year']}</span>
+                </div>
+                <p style='color:#94A3B8; font-size:12px; margin:4px 0 10px 0;'>{b['tier']} • HQ: {b['headquarters']}</p>
+                <p style='font-size:12px; margin:0;'><b>RERA Compliance:</b> {b['rera_compliance_score']}/100 | <b>On-Time:</b> {b['on_time_delivery_pct']}%</p>
+                <p style='font-size:12px; margin:4px 0;'><b>Strengths:</b> {b['strengths']}</p>
+                <p style='font-size:12px; margin:0; color:#F59E0B;'><b>Tradeoffs:</b> {b['cautions']}</p>
+                <div style='margin-top:8px;'>
+                    <a href='{b['rera_portal_url']}' target='_blank' style='font-size:11px; color:#34D399; font-weight:bold;'>Verify on RERA Portal ↗</a>
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+
+    st.markdown("<br>", unsafe_allow_html=True)
+
+    # ---------------------------------------------------------
+    # SECTION 5: PROPERTY AGE VS UPCOMING PROJECT COMPLETION MATRIX
+    # ---------------------------------------------------------
+    st.markdown("### 🔮 Property Age vs Upcoming Handover Timeline & Appreciation Matrix")
+    st.caption("Strategic comparison contrasting existing ready-to-move societies (evaluated by actual age, occupied community, and immediate yield) against under-construction / upcoming pre-launches (evaluated by completion quarter, construction phase, and accelerated capital growth).")
+
+    comp_matrix = []
+    for p in properties:
+        c_flag = "🟢 Ready to Move" if "Ready" in p.get("property_status", "") else ("🚀 Upcoming Pre-Launch" if "Upcoming" in p.get("property_status", "") else "🏗️ Under Construction")
+        comp_matrix.append({
+            "Property Name": p["name"],
+            "City Corridor": p["city_name"],
+            "Status Classification": c_flag,
+            "Property Age / Timeline": p.get("property_age", p.get("expected_completion")),
+            "Target Completion": p.get("expected_completion", "Ready to Move"),
+            "Upcoming Phase / Stage": p.get("upcoming_phase", "Occupied"),
+            "Current Rate (₹/sqft)": f"₹{p['price_per_sqft']:,}",
+            "Ticket Price (Cr)": f"₹{p['total_price_cr']:.2f} Cr",
+            "Projected 5-Yr Appreciation": f"+{p.get('projected_5yr_appreciation_pct', 45)}%",
+            "Govt Growth Catalyst": p.get("govt_master_plan_catalyst")
+        })
+
+    df_comp_matrix = pd.DataFrame(comp_matrix)
+    render_sticky_frozen_table(df_comp_matrix, frozen_cols=1, table_id="age_completion_matrix", max_height="440px")
+
+    st.markdown("#### 📈 Timeline to Handover vs Forecasted 5-Year Capital Appreciation (%)")
+    fig_age_scatter = px.scatter(
+        df_comp_matrix,
+        x="Target Completion",
+        y="Projected 5-Yr Appreciation",
+        color="Status Classification",
+        size=[float(p.get("total_price_cr", 2.0)) for p in properties],
+        hover_name="Property Name",
+        hover_data=["City Corridor", "Property Age / Timeline", "Ticket Price (Cr)"],
+        template="plotly_dark",
+        color_discrete_map={
+            "🟢 Ready to Move": "#10B981",
+            "🏗️ Under Construction": "#38BDF8",
+            "🚀 Upcoming Pre-Launch": "#A855F7"
+        }
+    )
+    fig_age_scatter.update_layout(margin=dict(l=20, r=20, t=30, b=20), height=360)
+    st.plotly_chart(fig_age_scatter, use_container_width=True)
 
     st.markdown("<br>", unsafe_allow_html=True)
 
@@ -1210,78 +1461,9 @@ with tabs[1]:
         st.plotly_chart(fig_bar, use_container_width=True)
 
 # =============================================================
-# TAB 3: TOP BUILDERS BY CITY & STATE DIRECTORY (15+ per City)
+# TAB 3: RESILIENT PROPERTY SCREENER
 # =============================================================
 with tabs[2]:
-    st.markdown(f"### 🏗️ Top Builder Directory & RERA Track Record (At least 15+ per City)")
-    st.caption("Benchmarking Tier 1 National & Regional champions by RERA on-time delivery punctuality, construction durability, and legal risk across all 6 metropolitan corridors.")
-
-    builder_filter_mode = st.radio(
-        "Filter Builders Display:",
-        options=[f"📍 Active Focus City: {active_city['name']} (16 Builders)", "🌐 All Cities Across India (96 Builders Total)"],
-        horizontal=True
-    )
-
-    if "Active Focus City" in builder_filter_mode:
-        selected_builders = [
-            b for b in builders
-            if b.get("city_id") == selected_city_id or any(selected_city_id in s.lower() for s in b.get("active_states_and_cities", []))
-        ]
-        if len(selected_builders) < 15:
-            selected_builders = [
-                b for b in builders
-                if any(active_city["state"].lower() in s.lower() for s in b.get("active_states_and_cities", []))
-            ]
-    else:
-        selected_builders = builders
-
-    builder_table = []
-    for b in selected_builders:
-        flagship = b.get("flagship_projects", {}).get(selected_city_id, "Marquee Portfolio Project")
-        c_obj = next((c for c in cities if c["id"] == b.get("city_id")), None)
-        c_name = c_obj["name"] if c_obj else b.get("headquarters", "National")
-
-        builder_table.append({
-            "Builder Name": b["name"],
-            "City / Region": c_name,
-            "Tier Classification": b["tier"],
-            "Headquarters": b["headquarters"],
-            "RERA On-Time Delivery": f"{b['on_time_delivery_pct']}%",
-            "Quality Score (1-10)": f"⭐ {b['construction_quality_rating']} / 10",
-            "Litigation Index": b["litigation_index"],
-            "Delivered Sqft (Mn)": f"{b['total_delivered_sqft_mn']} Mn",
-            "Flagship In Region": flagship,
-            "Official State RERA Portal": b["rera_portal_url"]
-        })
-
-    df_builders = pd.DataFrame(builder_table)
-    render_sticky_frozen_table(df_builders, frozen_cols=1, table_id="builders_table", max_height="520px")
-
-    st.markdown("<br>", unsafe_allow_html=True)
-    st.markdown(f"#### 🏢 Builder Pedigree Profiles ({active_city['name']} Champions)")
-    b_cols = st.columns(3)
-    for idx, b in enumerate(selected_builders[:6]):
-        with b_cols[idx % 3]:
-            st.markdown(f"""
-            <div style='background-color:#1E293B; border:1px solid #334155; border-radius:8px; padding:16px; margin-bottom:14px;'>
-                <div style='display:flex; justify-content:space-between; align-items:center;'>
-                    <h4 style='margin:0; color:#38BDF8;'>{b['name']}</h4>
-                    <span style='background:#0D9488; color:#FFFFFF; font-size:10px; padding:2px 6px; border-radius:4px; font-weight:bold;'>Est. {b['established_year']}</span>
-                </div>
-                <p style='color:#94A3B8; font-size:12px; margin:4px 0 10px 0;'>{b['tier']} • HQ: {b['headquarters']}</p>
-                <p style='font-size:12px; margin:0;'><b>RERA Compliance:</b> {b['rera_compliance_score']}/100 | <b>On-Time:</b> {b['on_time_delivery_pct']}%</p>
-                <p style='font-size:12px; margin:4px 0;'><b>Strengths:</b> {b['strengths']}</p>
-                <p style='font-size:12px; margin:0; color:#F59E0B;'><b>Tradeoffs:</b> {b['cautions']}</p>
-                <div style='margin-top:8px;'>
-                    <a href='{b['rera_portal_url']}' target='_blank' style='font-size:11px; color:#34D399; font-weight:bold;'>Verify on RERA Portal ↗</a>
-                </div>
-            </div>
-            """, unsafe_allow_html=True)
-
-# =============================================================
-# TAB 4: RESILIENT PROPERTY SCREENER
-# =============================================================
-with tabs[3]:
     st.markdown(f"### 🏢 Benchmark Property Screener — {active_city['name']}")
     st.caption(f"Filtered by Purchase Budget: ≤ ₹{budget_purchase_max:.2f} Cr | Rental Budget: ≤ ₹{budget_rental_max:,}/mo")
 
@@ -1316,6 +1498,7 @@ with tabs[3]:
             "Expected Completion": p.get("expected_completion", "Dec 2026"),
             "Upcoming Phase Details": p.get("upcoming_phase", "Phase 1"),
             f"Road Dist to {active_benchmark_obj['name']}": f"{dist_to_bm} km",
+            "Property Age vs Completion Timeline": p.get("age_vs_completion", p.get("property_age", p.get("expected_completion"))),
             "Plinth Elevation": f"{p['elevation_m']}m",
             "Flood Risk Tag": p["flood_resilience_tag"],
             "Civic Utilities": util_str,
@@ -1339,6 +1522,7 @@ with tabs[3]:
             with c_left:
                 st.markdown(f"**Government Master Plan Growth Catalyst**: {p['govt_master_plan_catalyst']}")
                 st.markdown(f"**5-Yr Capital Appreciation**: `+{p.get('projected_5yr_appreciation_pct', 48)}%` | **Handover Timeline**: `{p.get('expected_completion', 'Dec 2026')}` ({p.get('upcoming_phase')})")
+                st.markdown(f"**Property Age / Status**: `{p.get('age_vs_completion', p.get('property_age'))}`")
                 st.markdown(f"**Growth Probability**: `{p['growth_probability_pct']}%` | **Investment Score**: `{p['investment_score']} / 100`")
                 st.markdown(f"**Critic AI Status**: `{p.get('critic_ai_status', '✅ Critic AI Validated')}`")
                 st.markdown(f"**Water Infrastructure**: {p.get('water_infrastructure', {}).get('piped_connection', 'N/A')}")
@@ -1351,9 +1535,9 @@ with tabs[3]:
                 st.markdown(f"[Official State RERA Verification ↗]({p['rera_url']})")
 
 # =============================================================
-# TAB 5: GATED COMMUNITY PLOTS & SITES
+# TAB 4: GATED COMMUNITY PLOTS & SITES
 # =============================================================
-with tabs[4]:
+with tabs[3]:
     st.markdown(f"### 🏡 Gated Community Villa Plots & Land Investments")
     st.caption("Vetted DTCP / BMRDA / CIDCO / CMDA / HMDA / VDA layouts with stormwater outfall analysis and high natural plinth elevation.")
 
@@ -1373,6 +1557,7 @@ with tabs[4]:
             "Price / Sqft": f"₹{pl['price_per_sqft']:,}",
             "Starting Ticket": pl["total_price_lakhs"],
             f"Road Dist to {active_benchmark_obj['name']}": f"{dist_to_bm} km",
+            "Plot Status & Handover": pl.get("age_vs_completion", pl.get("property_age", pl.get("expected_completion"))),
             "Land Elevation": f"{pl['elevation_m']}m",
             "Statutory Approval": pl["approval_authority"],
             "Drainage & Percolation": pl["soil_percolation"],
@@ -1396,9 +1581,9 @@ with tabs[4]:
     """)
 
 # =============================================================
-# TAB 6: WATER SUPPLY & GROUND REALITY MONITOR
+# TAB 5: WATER SUPPLY & GROUND REALITY MONITOR
 # =============================================================
-with tabs[5]:
+with tabs[4]:
     st.markdown(f"### 💧 Water Supply & Ground Reality Monitor — {active_city['name']}")
     st.caption("Comparing municipal bulk piped supply, groundwater table depletion, and private tanker dependency economics.")
 
@@ -1449,9 +1634,9 @@ with tabs[5]:
         )
 
 # =============================================================
-# TAB 7: CHRONIC AVOIDANCE ZONES DEEP DIVE
+# TAB 6: CHRONIC AVOIDANCE ZONES DEEP DIVE
 # =============================================================
-with tabs[6]:
+with tabs[5]:
     st.markdown(f"### 🚨 Chronic Real Estate Avoidance Zones")
     st.caption("Forensic analysis of chronic monsoon waterlogging, tidal backflows, and hydraulic bottlenecks.")
 
@@ -1465,9 +1650,9 @@ with tabs[6]:
             st.markdown(f"[View Hotspot in Google Maps ↗]({get_google_maps_search_url(av['name'] + ' ' + av['city'])})")
 
 # =============================================================
-# TAB 8: EXPLAINABLE AI COPILOT
+# TAB 7: EXPLAINABLE AI COPILOT
 # =============================================================
-with tabs[7]:
+with tabs[6]:
     st.markdown(f"### 🤖 Explainable AI Avoidance Copilot")
     st.caption("Natural language queries powered by multi-criteria civic telemetry, topographical models, and builder track records.")
 
