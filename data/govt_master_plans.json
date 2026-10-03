@@ -1,0 +1,90 @@
+[
+  {
+    "id": "plan_blr_1",
+    "city_id": "bengaluru",
+    "project_name": "Namma Metro Blue Line Phase 2A & 2B (Silk Board - KR Puram - Airport)",
+    "implementing_agency": "BMRCL (Bangalore Metro Rail Corporation Limited)",
+    "project_type": "Mass Rapid Transit System (MRTS)",
+    "capex_cr": 14844,
+    "target_completion_year": 2026,
+    "impact_score": 98,
+    "growth_catalyst_description": "Connects Outer Ring Road IT corridor (Bellandur, Kadubeesanahalli, Marathahalli) directly to Kempegowda International Airport. Eliminates up to 65% of road vehicle hours lost on ORR."
+  },
+  {
+    "id": "plan_mum_1",
+    "city_id": "mumbai_mmr",
+    "project_name": "Mumbai Coastal Road (Phase 1 & Phase 2 North Extension to Kandivali)",
+    "implementing_agency": "BMC & MSRDC",
+    "project_type": "Coastal High-Speed Highway",
+    "capex_cr": 12721,
+    "target_completion_year": 2025,
+    "impact_score": 97,
+    "growth_catalyst_description": "Cuts Marine Drive to Kandivali travel time from 120 minutes to 35 minutes. Frees Western Express Highway bottlenecks and uplifts Goregaon-Borivali real estate valuations."
+  },
+  {
+    "id": "plan_mum_2",
+    "city_id": "mumbai_mmr",
+    "project_name": "Navi Mumbai International Airport (NMIA) & Metro Line 12",
+    "implementing_agency": "CIDCO & Adani Airport Holdings",
+    "project_type": "Greenfield International Airport & Transit",
+    "capex_cr": 16700,
+    "target_completion_year": 2025,
+    "impact_score": 99,
+    "growth_catalyst_description": "Secondary commercial aviation hub handling 60 million passengers, driving exponential plotted and residential appreciation across Panvel, Kharghar, and Ulwe."
+  },
+  {
+    "id": "plan_chn_1",
+    "city_id": "chennai",
+    "project_name": "Chennai Metro Phase 2 (118.9 km across Corridors 3, 4 & 5)",
+    "implementing_agency": "CMRL (Chennai Metro Rail Limited)",
+    "project_type": "Mass Rapid Transit System (MRTS)",
+    "capex_cr": 63246,
+    "target_completion_year": 2026,
+    "impact_score": 96,
+    "growth_catalyst_description": "Direct metro line along the entire length of Old Mahabalipuram Road (OMR) IT corridor down to Siruseri SIPCOT, eliminating dependence on road buses."
+  },
+  {
+    "id": "plan_del_1",
+    "city_id": "delhi_ncr",
+    "project_name": "Noida International Airport (Jewar) & Yamuna Expressway Aerotropolis",
+    "implementing_agency": "YIAL & Zurich Airport International",
+    "project_type": "Greenfield Mega Airport",
+    "capex_cr": 29560,
+    "target_completion_year": 2025,
+    "impact_score": 99,
+    "growth_catalyst_description": "Asia's largest planned 6-runway airport creating massive industrial and residential demand along Noida-Greater Noida Expressway and Sector 150."
+  },
+  {
+    "id": "plan_hyd_1",
+    "city_id": "hyderabad",
+    "project_name": "Hyderabad Metro Phase 2 (Airport Express Line & Old City Line)",
+    "implementing_agency": "HMRL (Hyderabad Metro Rail Limited)",
+    "project_type": "Mass Rapid Transit System (MRTS)",
+    "capex_cr": 24200,
+    "target_completion_year": 2027,
+    "impact_score": 95,
+    "growth_catalyst_description": "Connects Mindspace Junction, Raidurg, and Financial District straight to Shamshabad RGIA in under 22 minutes."
+  },
+  {
+    "id": "plan_vns_1",
+    "city_id": "varanasi_100km",
+    "project_name": "Varanasi Urban Ropeway Phase 1 & 6-Lane Ring Road Phase 2",
+    "implementing_agency": "NHAI & Varanasi Smart City Limited",
+    "project_type": "Urban Aerial Transit & Expressway Bypass",
+    "capex_cr": 3200,
+    "target_completion_year": 2025,
+    "impact_score": 96,
+    "growth_catalyst_description": "India's first urban transit ropeway linking Cantt Railway Station to Godowlia Chowk in 16 minutes, bypassing core city vehicular choke points completely."
+  },
+  {
+    "id": "plan_vns_2",
+    "city_id": "varanasi_100km",
+    "project_name": "Prayagraj Mahakumbh 2025 Permanent Infrastructure & Ganga Expressway",
+    "implementing_agency": "UPEIDA & Prayagraj Mela Pradhikaran",
+    "project_type": "Expressway & Riverfront Embankment Protection",
+    "capex_cr": 36230,
+    "target_completion_year": 2025,
+    "impact_score": 98,
+    "growth_catalyst_description": "594 km Ganga Expressway linking Prayagraj to Meerut/Delhi in 6 hours, plus permanent riverfront bunds insulating North Prayagraj."
+  }
+]

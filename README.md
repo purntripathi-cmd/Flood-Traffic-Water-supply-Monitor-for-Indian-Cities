@@ -1,11 +1,14 @@
 # 🌊 Flood, Traffic & Water Supply Monitor for Indian Cities
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://github.com/purntripathi-cmd/Flood-Traffic-Water-supply-Monitor-for-Indian-Cities)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://flood-traffic-water-supply-monitor-for-indian-cities.streamlit.app/)
+[![Live App URL](https://img.shields.io/badge/Live%20App-flood--traffic--water--supply--monitor--for--indian--cities.streamlit.app-38BDF8.svg)](https://flood-traffic-water-supply-monitor-for-indian-cities.streamlit.app/)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-teal.svg)](https://opensource.org/licenses/MIT)
 [![Civic Intelligence](https://img.shields.io/badge/Civic-Intelligence%20Radar-emerald.svg)](#)
 
-> **High-Fidelity Civic Infrastructure & Real Estate Avoidance Screener** across 6 major Indian metropolitan corridors: **Bengaluru**, **Mumbai & MMR**, **Chennai**, **Delhi-NCR**, **Hyderabad**, and **Varanasi & Eastern UP 100km Corridor** (Varanasi, Prayagraj, Mirzapur, Jaunpur, Chandauli).
+> **Live Streamlit App**: [https://flood-traffic-water-supply-monitor-for-indian-cities.streamlit.app/](https://flood-traffic-water-supply-monitor-for-indian-cities.streamlit.app/)
+
+A **High-Fidelity Civic Infrastructure & Real Estate Avoidance Screener** across 6 major Indian metropolitan corridors: **Bengaluru**, **Mumbai & MMR**, **Chennai**, **Delhi-NCR**, **Hyderabad**, and **Varanasi & Eastern UP 100km Corridor** (Varanasi, Prayagraj, Mirzapur, Jaunpur, Chandauli).
 
 Synthesizes open-source civic flood-mapping models, traffic congestion predictors, water table telemetry, and municipal GIS datasets to identify **resilient havens** and steer home buyers, renters, and developers away from **chronic infrastructure avoidance zones**.
 
@@ -31,10 +34,10 @@ This platform brings together civic research datasets, remote sensing imagery, a
 
 ## 🏙️ Target Metropolitan Hubs & Corridors
 
-1. **Bengaluru (Karnataka)**: Mahadevapura, Outer Ring Road (ORR), Bellandur, Whitefield, Sarjapur Road, Hebbal, Electronic City, and HSR Layout.
-2. **Mumbai & MMR (Maharashtra)**: Andheri West (Subway & Lokhandwala), Kurla & Sion Chunabhatti (Mithi River Basin), Bandra Kurla Complex (BKC), Powai & Hiranandani Gardens, Western Express Highway (WEH), Thane West (Ghodbunder Road), and Navi Mumbai (Vashi & Seawoods).
-3. **Chennai (Tamil Nadu)**: Velachery & Madipakkam, Perungudi & OMR IT Corridor, Sholinganallur, Pallikaranai Marshland, Porur & Ramapuram, Guindy & Alandur, and East Coast Road (ECR).
-4. **Delhi-NCR (Delhi / Haryana / UP)**: Yamuna Floodplains & Mayur Vihar, Barapullah Phase-III / Sarai Kale Khan, South Delhi (Defence Colony & Greater Kailash), Gurugram (Cyber City & DLF Phase 2), Gurugram (Golf Course Extension Road), Noida Expressway (Sector 150 & 137), and Dwarka Expressway.
+1. **Bengaluru (Karnataka)**: Mahadevapura, Outer Ring Road (ORR), Bellandur, Kadubeesanahalli, Whitefield, Sarjapur Road, Hebbal, Electronic City, and HSR Layout.
+2. **Mumbai & MMR (Maharashtra)**: Andheri West (Subway & Lokhandwala), Kurla & Sion Chunabhatti (Mithi River Basin), Bandra Kurla Complex (BKC), Powai & Hiranandani Gardens, Western Express Highway (WEH), Thane West (Ghodbunder Road), and Navi Mumbai (Panvel, Kharghar, Ulwe).
+3. **Chennai (Tamil Nadu)**: Velachery & Madipakkam, Perungudi & OMR IT Corridor, Sholinganallur, Siruseri, Pallikaranai Marshland, Porur & Ramapuram, Guindy & Alandur, and East Coast Road (ECR).
+4. **Delhi-NCR (Delhi / Haryana / UP)**: Yamuna Floodplains & Mayur Vihar, Barapullah Phase-III / Sarai Kale Khan, South Delhi (Defence Colony & Greater Kailash), Gurugram (Cyber City, DLF Phase 2 & Golf Course Ext), Noida Expressway (Sector 150 & 137), and Dwarka Expressway.
 5. **Hyderabad (Telangana)**: Gachibowli & Financial District, HITECH City & Madhapur, Kondapur & Hafeezpet, Kukatpally & KPHB, Tellapur & Kollur, Musi River Basin (Moosarambagh), and Nallagandla.
 6. **Varanasi & Eastern UP 100km Corridor (Uttar Pradesh)**:
    - **Varanasi**: Ancient Core (Godowlia - Chowk), Ganga-Varuna Confluence (Sarai Mohana), Cantt & Shivpur (Elevated Alluvial Ridge), Ramnagar Sandstone Bluff.
@@ -47,50 +50,42 @@ This platform brings together civic research datasets, remote sensing imagery, a
 
 ## ⚡ Key Capabilities & Features
 
-### 1. 0 to 100 Composite Avoidance & Viability Index
-A quantitative multi-criteria decision algorithm combining:
-$$\text{Viability Score} = 100 - (0.30 \times \text{Flood Risk}) - (0.25 \times \text{Traffic Penalty}) - (0.20 \times \text{Water Insecurity}) + (0.15 \times \text{Drainage Infrastructure}) + (0.10 \times \text{Builder Pedigree})$$
-- 🟢 **Score $\ge 75$**: Prime Resilient Buy / Rent (High plinth, low flood recurrence, low tanker reliance).
-- 🟡 **Score $55 - 74$**: Watchlist / Caution (Monsoon stress, localized road puddling, or traffic bottlenecks).
-- 🔴 **Score $< 55$**: High-Risk Avoidance Zone (Low-lying lakebed, subway depression, river backflow inundation).
+### 1. Live System Resource Telemetry (CPU & RAM Load)
+- Real-time diagnostic telemetry bar visible at the top header and in the sidebar.
+- Monitors **Streamlit Process Memory (MB)**, **System RAM Used / Total (GB, %)**, and **CPU Utilization (%)** with active health badges (`Optimal 🟢`, `Moderate 🟡`, `High Load 🔴`).
 
-### 2. Sticky 1st-Column Frozen Table Engine
-- Built with a pure CSS sticky iframe renderer (`utils/table_view.py`) guaranteeing responsive scrolling across desktop, tablet, and mobile browsers.
-- Permanently locks Column 1 (Property Name, Micro-Market, Layout, or Builder) on the left with `#0D9488` teal divider and shadow, while all other columns scroll smoothly horizontally.
+### 2. Multi-Layer Google Maps & Property Focus Zoom
+- Seamless tile layer switching between **Google Maps (Roadmap)**, **Google Maps (Satellite Hybrid)**, **Google Maps (Terrain)**, **CartoDB Dark Matter**, and **OpenStreetMap**.
+- **Interactive Focus Selector**: Choose any property to immediately zoom in, render a prominent glowing focus halo, and draw a dynamic driving route polyline to the configured benchmark landmark.
 
-### 3. Top Builders Directory & RERA Audit
-- Vetted repository of Tier 1 National Leaders (*Godrej, Prestige, Sobha, Brigade, Lodha, Oberoi, DLF, Tata Housing, Hiranandani, Puravankara, Mahindra*) and Regional Champions (*Casagrand, Aparna, My Home, Eldeco, Omaxe*).
-- Displays verified RERA on-time delivery percentages, construction quality ratings (1-10), litigation risk indices, and direct portal links.
+### 3. Cross-City Top 10 Comparison Tables (National Radar)
+Permanent Tab 1 feature comparing inventories across all 6 metropolitan regions, sorted High to Low by score:
+- **Top 10 Properties to Purchase / Invest**: Sorted by composite Investment Score, featuring Government Master Plan growth probabilities (%), plinth elevations, flood resilience tags, and utility infrastructure breakdowns.
+- **Top 10 Best Gated Community Plots & Land**: Sorted by Plotted Appreciation Score, featuring statutory approvals (BMRDA, CIDCO, CMDA, DTCP, HMDA, VDA), soil percolation, and elevation.
+- **Top 10 Best Rental Properties**: Sorted by Rental Viability Score, featuring net rental yields (%), commute distances, and maintenance costs.
 
-### 4. Configurable Real Estate Screener
-- Interactive sidebar budget controls:
-  - **Purchase Budget**: Default ₹3.50 Crores (configurable up to ₹12 Cr).
-  - **Rental Budget**: Default ₹80,000 / month (configurable).
-  - **Authorized Municipal Piped Water Filter**: BWSSB / BMC / CMWSSB / DJB / HMWSSB / Jal Sansthan.
-  - **Direct Map Navigation**: Named Google Maps search queries and official RERA registry links.
+### 4. Configurable 4th Column Benchmark Distance
+- Interactive benchmark selector in the sidebar configurable to key landmarks or schools.
+- Defaults to **🏫 New Horizon Gurukul** for Bengaluru, and regional benchmark institutions (DAIS for Mumbai, Sishya for Chennai, TSRS for Delhi-NCR, CHIREC for Hyderabad, Sunbeam for Varanasi).
 
-### 5. Gated Community Villa Plots & Land Recommendations
-- Curated directory of plotted developments (*Prestige Great Acres, Brigade Oasis, Hiranandani Fortune City Plots, DLF Alameda, My Home Ankura, Eldeco Shaurya, etc.*).
-- Evaluates land elevation, soil percolation, layout storm drain outfalls, and town planning approvals (BDA, DTCP, HMDA, CIDCO, VDA, PDA).
+### 5. CBSE / ICSE School Proximity & Fee Structures (Classes 1st to 12th)
+- Collapsible interactive cards embedded in property profiles detailing nearby CBSE/ICSE schools, driving distances, verified ratings, review counts, and complete tuition fee brackets from Class 1 to Class 12.
 
-### 6. Water Supply & Tanker Burden Calculator
-- Models per-flat monthly savings of municipal piped connections and dual-piping STPs vs private tanker dependency (calculating up to ₹4,500/month in household savings).
-- Tracks groundwater table depth and total dissolved solids (TDS ppm).
+### 6. Full Civic Utility Tracking
+- Granular infrastructure breakdown for every property:
+  - **STP**: Advanced MBBR / SBR sewage treatment plants.
+  - **Water Softeners**: Centralized ion-exchange plants for high-TDS groundwater.
+  - **Individual IoT Water Meters**: Sub-metered consumption preventing billing disputes.
+  - **Dual Plumbing / Double Piping**: Recycled greywater for flush & landscaping.
+  - **Piped Gas**: IGL / GAIL / Adani piped gas connections.
+  - **Municipal Supply**: Authorized bulk piped municipal water (BWSSB / BMC / CMWSSB / DJB / HMWSSB / UP Jal Sansthan).
 
-### 7. Chronic Avoidance Zones Deep Dive
-- Forensic breakdowns of notorious avoidance hotspots:
-  - *Andheri Subway & Milan Subway (Mumbai)*
-  - *Kurla & Sion Chunabhatti Mithi River Basin (Mumbai)*
-  - *Velachery Lakebed & Pallikaranai Marsh Encroachments (Chennai)*
-  - *Rainbow Drive Layout & Bellandur EcoSpace Underpass (Bengaluru)*
-  - *Yamuna Floodplains & Barapullah Phase-III Choke (Delhi-NCR)*
-  - *Musi River Moosarambagh Lowlands (Hyderabad)*
-  - *Prayagraj Baghada & Salori Sangam Backwater Zone (Eastern UP)*
-  - *Varanasi Ganga-Varuna Confluence (Sarai Mohana)*
-  - *Jaunpur Gomti River Shahi Bridge Bottleneck*
+### 7. Top Builders by City & State (At Least 15+ per City, 96 Total)
+- Benchmarks 16 Tier-1 National Leaders and Regional Champions per city (96 builders across India).
+- Tracks verified RERA on-time delivery percentages, construction quality ratings (1-10), litigation risk indices, delivered square footage, and direct state RERA registry links.
 
-### 8. Explainable AI Avoidance Copilot
-- Natural language query assistant evaluating user constraints and outputting structured markdown briefs with direct academic citations.
+### 8. Sticky 1st-Column Frozen Table Engine
+- Pure CSS sticky iframe renderer (`utils/table_view.py`) locking the first column on the left with `#0D9488` teal divider and shadow, guaranteeing responsive scrolling across desktop, tablet, and mobile browsers.
 
 ---
 
@@ -126,7 +121,7 @@ pip install -r requirements.txt
 ```bash
 streamlit run app.py
 ```
-Open your browser at `http://localhost:8501`.
+Open your browser at `http://localhost:8501` or access the cloud deployment at [flood-traffic-water-supply-monitor-for-indian-cities.streamlit.app](https://flood-traffic-water-supply-monitor-for-indian-cities.streamlit.app/).
 
 ---
 
@@ -139,9 +134,12 @@ Flood-Traffic-Water-supply-Monitor-for-Indian-Cities/
 ├── data/
 │   ├── cities.json                  # 6 target metropolitan hubs and baseline stats
 │   ├── micro_markets.json           # 42 detailed micro-markets with elevation & delay indices
-│   ├── builders.json                # 22 top builders with RERA on-time delivery & quality ratings
-│   ├── properties.json              # 36 benchmark residential purchase/rental properties
-│   ├── gated_plots.json             # 18 vetted gated villa plotted communities
+│   ├── builders.json                # 96 top builders (16 per city) with RERA on-time delivery & quality
+│   ├── properties.json              # 18 benchmark residential purchase properties with master plans & utilities
+│   ├── rental_properties.json       # 18 rental benchmark properties with yields & commute hubs
+│   ├── gated_plots.json             # 18 vetted gated villa plotted communities with statutory approvals
+│   ├── govt_master_plans.json       # Government infrastructure master plans (Metro, Aerotropolis, Expressways)
+│   ├── cbse_schools.json            # 15 premier CBSE/ICSE schools with Class 1-12 fee structures
 │   ├── avoidance_zones.json         # 12 notorious chronic avoidance hotspots
 │   └── user_preferences.json        # Configurable budget and risk defaults
 ├── utils/
@@ -149,11 +147,12 @@ Flood-Traffic-Water-supply-Monitor-for-Indian-Cities/
 │   ├── table_view.py                # Pure CSS sticky 1st-column frozen table renderer
 │   ├── geo.py                       # Haversine distance, urban detour factors, maps URLs
 │   ├── scoring.py                   # 0-100 composite avoidance viability index algorithm
+│   ├── schools.py                   # Multi-city CBSE/ICSE school proximity & fee structure renderer
 │   └── ai_copilot.py                # Explainable AI recommendation engine with citations
 ├── scripts/
-│   ├── generate_datasets.py         # Primary dataset generator
-│   └── generate_properties_plots_avoidance.py # Property & plot data generator
-├── app.py                           # Master multi-city Streamlit application
+│   ├── generate_cities_and_builders.py # Generator for 6 cities and 96 builders
+│   └── generate_all_property_inventories.py # Generator for purchase, plots, rentals, and master plans
+├── app.py                           # Master multi-city Streamlit application with live telemetry & Google Maps
 ├── requirements.txt                 # Python dependencies
 ├── .gitignore                       # Git ignore rules (protects .github/ and .venv/)
 └── README.md                        # Documentation and architecture guide

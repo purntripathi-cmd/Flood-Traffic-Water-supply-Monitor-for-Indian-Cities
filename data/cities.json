@@ -3,313 +3,287 @@
     "id": "bengaluru",
     "name": "Bengaluru",
     "state": "Karnataka",
+    "region": "South India",
     "center_lat": 12.9716,
     "center_lng": 77.5946,
-    "default_zoom": 11,
-    "elevation_range_m": "860m - 960m (Plateau with Valley Basins)",
+    "default_zoom": 12,
+    "elevation_range_m": "860m - 960m (Average: 920m)",
+    "key_landmark": {
+      "name": "Kempegowda Bus Station / Vidhana Soudha",
+      "lat": 12.9778,
+      "lng": 77.5713
+    },
+    "default_school_benchmark": {
+      "name": "New Horizon Gurukul (Kadubeesanahalli)",
+      "lat": 12.9348,
+      "lng": 77.7037
+    },
     "municipal_water_authority": {
       "name": "BWSSB (Bangalore Water Supply and Sewerage Board)",
-      "piped_coverage_pct": 58,
-      "daily_demand_mld": 2100,
+      "piped_coverage_pct": 68,
       "daily_supply_mld": 1450,
-      "primary_source": "Cauvery River Stage I-V (100km lift) + Deep Borewells",
-      "tanker_dependency_grade": "High (Severe in Mahadevapura / Bellandur / Whitefield)",
-      "average_tds_ppm": 350
+      "daily_demand_mld": 2100,
+      "deficit_pct": 31,
+      "primary_source": "Cauvery River (Stages I-V) & Local Deep Borewells",
+      "summer_tanker_dependence_pct": 32
     },
     "drainage_and_flood_authority": {
-      "name": "BBMP Storm Water Drain (SWD) Department",
+      "name": "BBMP Storm Water Drain (SWD) Directorate",
       "primary_valleys": [
         "Vrishabhavathi Valley",
-        "Koramangala-Challaghatta (K&C) Valley",
+        "Koramangala & Challaghatta (K&C) Valley",
         "Hebbal Valley"
       ],
-      "swd_network_length_km": 842,
-      "drain_encroachment_risk": "Severe along interconnected lake chains (Bellandur, Varthur, Saul Kere)",
-      "flood_reference_model": "diagram-chasing/blr-water-log & IIT Delhi HydroSense"
+      "total_swd_network_km": 842,
+      "remodelled_swd_km": 490,
+      "primary_flood_vulnerability": "Valley lake chain overflow, encroached raja-kaluves, and underpass depressions"
     },
     "traffic_monitoring": {
-      "avg_peak_commute_speed_kmh": 12.4,
-      "peak_to_free_flow_delay_index": 2.35,
-      "primary_choke_corridors": [
-        "Outer Ring Road (Silk Board to Marathahalli)",
-        "Whitefield ITPL Main Rd",
-        "Sarjapur-Bellandur Junction"
-      ],
-      "reference_traffic_repo": "parthtiwari-dev/bangalore-traffic-wasted-time-prediction"
-    },
-    "top_tier1_builders": [
-      "Prestige Group",
-      "Sobha Limited",
-      "Brigade Group",
-      "Godrej Properties",
-      "Puravankara Limited"
-    ],
-    "citations": [
-      "blr-water-log (diagram-chasing): Stormwater accumulation & ward flood maps",
-      "Bangalore Traffic Wasted Time & Delay Predictor (parthtiwari-dev)",
-      "Urban Flood Risk Mapping (RushilGargash08): Multi-layer Perceptron topographical flood model"
-    ]
+      "authority": "BTP (Bangalore Traffic Police) Traffic Management Centre (TMC)",
+      "peak_to_free_flow_delay_index": 2.42,
+      "avg_peak_commute_speed_kmh": 14.5,
+      "avg_free_flow_speed_kmh": 35.0,
+      "monthly_hours_lost_avg": 44
+    }
   },
   {
     "id": "mumbai_mmr",
     "name": "Mumbai & MMR",
     "state": "Maharashtra",
+    "region": "West India",
     "center_lat": 19.076,
     "center_lng": 72.8777,
-    "default_zoom": 11,
-    "elevation_range_m": "0m - 80m (Coastal Lowlands & Reclaimed Basins)",
+    "default_zoom": 12,
+    "elevation_range_m": "2m - 55m (Average: 14m)",
+    "key_landmark": {
+      "name": "Chhatrapati Shivaji Maharaj Terminus (CSMT)",
+      "lat": 18.9401,
+      "lng": 72.8354
+    },
+    "default_school_benchmark": {
+      "name": "Dhirubhai Ambani International School (BKC)",
+      "lat": 19.066,
+      "lng": 72.868
+    },
     "municipal_water_authority": {
-      "name": "BMC (Brihanmumbai Municipal Corporation)",
-      "piped_coverage_pct": 86,
-      "daily_demand_mld": 4500,
+      "name": "BMC (Brihanmumbai Municipal Corporation) Hydraulic Dept",
+      "piped_coverage_pct": 92,
       "daily_supply_mld": 3950,
-      "primary_source": "Bhatsa, Upper Vaitarna, Middle Vaitarna, Tansa, Modak Sagar",
-      "tanker_dependency_grade": "Low in Island City, Moderate in Extended Suburbs (Thane/Kharghar)",
-      "average_tds_ppm": 120
+      "daily_demand_mld": 4400,
+      "deficit_pct": 10,
+      "primary_source": "Bhatsa, Upper Vaitarna, Middle Vaitarna, Tansa, Modak Sagar, Tulsi & Vihar Lakes",
+      "summer_tanker_dependence_pct": 8
     },
     "drainage_and_flood_authority": {
-      "name": "BMC SWD & BRIMSTOWAD Project",
+      "name": "BMC Storm Water Drains (BRIMSTOWAD) & Disaster Management Cell",
       "primary_valleys": [
         "Mithi River Basin",
-        "Poisar River",
-        "Dahisar River",
-        "Oshiwara River"
+        "Poisar River Basin",
+        "Oshiwara River Basin",
+        "Dahisar River Basin"
       ],
-      "swd_network_length_km": 2000,
-      "drain_encroachment_risk": "Critical in Mithi floodplains (Kurla/Sion) & railway subways",
-      "flood_reference_model": "Mumbai Flood Vulnerability Index & Sentinel-1 SAR Coastal Runoff"
+      "total_swd_network_km": 2000,
+      "remodelled_swd_km": 1450,
+      "primary_flood_vulnerability": "High tide backflow (>4.5m) coinciding with monsoon downpours >50mm/hr and railway subways"
     },
     "traffic_monitoring": {
-      "avg_peak_commute_speed_kmh": 14.8,
-      "peak_to_free_flow_delay_index": 2.2,
-      "primary_choke_corridors": [
-        "Western Express Highway (WEH)",
-        "Eastern Express Highway (EEH)",
-        "Sion-Panvel Expressway",
-        "JVLR Junction"
-      ],
-      "reference_traffic_repo": "Real-Time Traffic Analysis (Shashwat-19) WEH/EEH analytics"
-    },
-    "top_tier1_builders": [
-      "Lodha / Macrotech",
-      "Oberoi Realty",
-      "Godrej Properties",
-      "Hiranandani Group",
-      "Tata Housing"
-    ],
-    "citations": [
-      "Mumbai Floods Spatial Modeler: Remote sensing urban runoff pipeline",
-      "Mumbai Traffic Incident Analytics: WEH & EEH bottleneck tracking",
-      "India Geodata (yashveeeeeeer): Ward borders and Mithi river footprints"
-    ]
+      "authority": "Mumbai Traffic Police (MTP) Joint CP Traffic Control",
+      "peak_to_free_flow_delay_index": 2.35,
+      "avg_peak_commute_speed_kmh": 16.0,
+      "avg_free_flow_speed_kmh": 37.6,
+      "monthly_hours_lost_avg": 42
+    }
   },
   {
     "id": "chennai",
     "name": "Chennai",
     "state": "Tamil Nadu",
+    "region": "South India",
     "center_lat": 13.0827,
     "center_lng": 80.2707,
-    "default_zoom": 11,
-    "elevation_range_m": "1m - 30m (Flat Coastal Plain & Wetland Basins)",
+    "default_zoom": 12,
+    "elevation_range_m": "1m - 32m (Average: 6.7m)",
+    "key_landmark": {
+      "name": "Chennai Central Railway Station",
+      "lat": 13.0823,
+      "lng": 80.2754
+    },
+    "default_school_benchmark": {
+      "name": "Chettinad Vidyashram (R.A. Puram)",
+      "lat": 13.0245,
+      "lng": 80.2625
+    },
     "municipal_water_authority": {
-      "name": "CMWSSB (Chennai Metro Water)",
-      "piped_coverage_pct": 68,
-      "daily_demand_mld": 1200,
-      "daily_supply_mld": 850,
-      "primary_source": "Veeranam Lake, Poondi, Chembarambakkam, Nemmeli Desalination (110 MLD)",
-      "tanker_dependency_grade": "High in OMR IT Corridor & Perungudi",
-      "average_tds_ppm": 420
+      "name": "CMWSSB (Chennai Metropolitan Water Supply and Sewerage Board)",
+      "piped_coverage_pct": 74,
+      "daily_supply_mld": 1000,
+      "daily_demand_mld": 1250,
+      "deficit_pct": 20,
+      "primary_source": "Poondi, Cholavaram, Red Hills, Chembarambakkam, Nemmeli & Minjur Desalination Plants",
+      "summer_tanker_dependence_pct": 26
     },
     "drainage_and_flood_authority": {
-      "name": "GCC (Greater Chennai Corporation) & TNGIS",
+      "name": "Greater Chennai Corporation (GCC) Storm Water Drain Dept",
       "primary_valleys": [
         "Adyar River Basin",
-        "Cooum River",
-        "Kosasthalaiyar",
-        "Pallikaranai Marsh"
+        "Cooum River Basin",
+        "Kosasthalaiyar Basin",
+        "Kovalam / Buckingham Canal Basin"
       ],
-      "swd_network_length_km": 1894,
-      "drain_encroachment_risk": "Severe in Velachery lakebed, Perungudi, and Pallikaranai wetland",
-      "flood_reference_model": "Chennai Flood Risk Model (SRTM DEM + TNGIS) & RushilGargash08"
+      "total_swd_network_km": 1894,
+      "remodelled_swd_km": 1280,
+      "primary_flood_vulnerability": "Flat coastal gradient (<0.1%), Pallikaranai marshland shrinkage, and tidal surge"
     },
     "traffic_monitoring": {
-      "avg_peak_commute_speed_kmh": 16.2,
-      "peak_to_free_flow_delay_index": 1.95,
-      "primary_choke_corridors": [
-        "OMR IT Expressway (Tidel to Sholinganallur)",
-        "Velachery Main Road",
-        "GST Road Kathipara"
-      ],
-      "reference_traffic_repo": "Chennai Urban Traffic Density Map"
-    },
-    "top_tier1_builders": [
-      "Casagrand",
-      "Prestige Group",
-      "Sobha Limited",
-      "Brigade Group",
-      "Puravankara Limited"
-    ],
-    "citations": [
-      "Chennai Flood Risk Model (Samuel Jebakumar / TNGIS): SRTM DEM drainage vulnerability",
-      "Urban-Flood-Risk-Mapping-and-Detection (RushilGargash08): Velachery-calibrated MLP model",
-      "harshinde/sen1floods: Sentinel-1 SAR coastal inundation imagery"
-    ]
+      "authority": "Greater Chennai Traffic Police (GCTP)",
+      "peak_to_free_flow_delay_index": 2.1,
+      "avg_peak_commute_speed_kmh": 17.5,
+      "avg_free_flow_speed_kmh": 36.8,
+      "monthly_hours_lost_avg": 36
+    }
   },
   {
     "id": "delhi_ncr",
     "name": "Delhi-NCR",
     "state": "Delhi / Haryana / UP",
+    "region": "North India",
     "center_lat": 28.6139,
     "center_lng": 77.209,
     "default_zoom": 11,
-    "elevation_range_m": "205m - 235m (Yamuna Alluvial Floodplain & Ridge)",
+    "elevation_range_m": "195m - 245m (Average: 216m)",
+    "key_landmark": {
+      "name": "Connaught Place / India Gate",
+      "lat": 28.6304,
+      "lng": 77.2177
+    },
+    "default_school_benchmark": {
+      "name": "The Heritage School (Sector 62 Gurugram)",
+      "lat": 28.415,
+      "lng": 77.082
+    },
     "municipal_water_authority": {
-      "name": "DJB (Delhi Jal Board) / GMDA Gurugram / Noida Authority",
-      "piped_coverage_pct": 74,
+      "name": "DJB (Delhi Jal Board) & GMDA (Gurugram Metropolitan Development Authority)",
+      "piped_coverage_pct": 82,
+      "daily_supply_mld": 4500,
       "daily_demand_mld": 5400,
-      "daily_supply_mld": 4350,
-      "primary_source": "Yamuna River, Ganga Canal, Bhakra Storage, Ranney Wells",
-      "tanker_dependency_grade": "Very High in New Gurugram Sectors (80-115) & Noida Ext",
-      "average_tds_ppm": 480
+      "deficit_pct": 17,
+      "primary_source": "Yamuna River, Ganga Canal via Sonia Vihar, Bhakra Storage & Western Yamuna Canal",
+      "summer_tanker_dependence_pct": 18
     },
     "drainage_and_flood_authority": {
-      "name": "Irrigation & Flood Control Dept (IFCD) & MCD",
+      "name": "Delhi Irrigation & Flood Control Dept (IFCD) & PWD",
       "primary_valleys": [
-        "Yamuna River Corridor",
-        "Najafgarh Drain",
-        "Shahdara Drain",
-        "Barapullah Drain"
+        "Najafgarh Drain Basin",
+        "Shahdara Drain Basin",
+        "Barapullah Basin",
+        "Badshahpur Drain (Gurugram)"
       ],
-      "swd_network_length_km": 3740,
-      "drain_encroachment_risk": "Extreme in Yamuna floodplain colonies, Mayur Vihar, and Najafgarh",
-      "flood_reference_model": "Delhi Waterlogging Hotspot Map & IIT Delhi HydroSense"
+      "total_swd_network_km": 3740,
+      "remodelled_swd_km": 2100,
+      "primary_flood_vulnerability": "Yamuna river floodplain backflow when discharge exceeds 3 lakh cusecs at Hathnikund Barrage"
     },
     "traffic_monitoring": {
-      "avg_peak_commute_speed_kmh": 15.1,
-      "peak_to_free_flow_delay_index": 2.28,
-      "primary_choke_corridors": [
-        "Ring Road & Ashram / Barapullah Loop",
-        "Gurugram Expressway (Sirhaul Border)",
-        "DND Flyway & Noida Toll"
-      ],
-      "reference_traffic_repo": "Delhi Intelligent Traffic Matrix Engine & Barapullah Bottleneck Study"
-    },
-    "top_tier1_builders": [
-      "DLF Limited",
-      "Godrej Properties",
-      "Tata Housing",
-      "Eldeco Group",
-      "Sobha Limited"
-    ],
-    "citations": [
-      "Delhi Waterlogging Hotspot Map: Seasonal clogging matrix across Ring Road & Mayur Vihar",
-      "India Flood Inventory (IIT Delhi HydroSense): Yamuna overflow tracking 2023-2025",
-      "Devarsh Patel Smart Traffic Routing: Multi-agent bottleneck simulation"
-    ]
+      "authority": "Delhi Traffic Police & Gurugram Traffic Police",
+      "peak_to_free_flow_delay_index": 2.18,
+      "avg_peak_commute_speed_kmh": 18.0,
+      "avg_free_flow_speed_kmh": 39.2,
+      "monthly_hours_lost_avg": 38
+    }
   },
   {
     "id": "hyderabad",
     "name": "Hyderabad",
     "state": "Telangana",
+    "region": "South-Central India",
     "center_lat": 17.385,
     "center_lng": 78.4867,
-    "default_zoom": 11,
-    "elevation_range_m": "480m - 620m (Deccan Traps Rocky Ridges & Basins)",
+    "default_zoom": 12,
+    "elevation_range_m": "485m - 610m (Average: 542m)",
+    "key_landmark": {
+      "name": "Charminar / Secretariat",
+      "lat": 17.3616,
+      "lng": 78.4747
+    },
+    "default_school_benchmark": {
+      "name": "Oakridge International School (Gachibowli)",
+      "lat": 17.425,
+      "lng": 78.338
+    },
     "municipal_water_authority": {
-      "name": "HMWSSB (Hyderabad Metro Water Supply and Sewerage Board)",
-      "piped_coverage_pct": 72,
-      "daily_demand_mld": 2350,
-      "daily_supply_mld": 1980,
-      "primary_source": "Krishna River (Phases I-III), Godavari River (Phase I), Osmansagar, Himayatsagar",
-      "tanker_dependency_grade": "Moderate in Core, High in Tellapur / Kollur fringe",
-      "average_tds_ppm": 290
+      "name": "HMWSSB (Hyderabad Metropolitan Water Supply and Sewerage Board)",
+      "piped_coverage_pct": 85,
+      "daily_supply_mld": 2400,
+      "daily_demand_mld": 2800,
+      "deficit_pct": 14,
+      "primary_source": "Godavari & Krishna Water Supply Schemes, Osmansagar & Himayatsagar",
+      "summer_tanker_dependence_pct": 15
     },
     "drainage_and_flood_authority": {
       "name": "GHMC Strategic Nala Development Programme (SNDP)",
       "primary_valleys": [
-        "Musi River Catchment",
-        "Durgam Cheruvu Basin",
-        "Kukatpally Nala"
+        "Musi River Basin",
+        "Hussain Sagar Lake Basin",
+        "Mir Alam Basin",
+        "Durgam Cheruvu Basin"
       ],
-      "swd_network_length_km": 1250,
-      "drain_encroachment_risk": "Severe around lake chain overflows (Durgam Cheruvu, Gachibowli, Kukatpally)",
-      "flood_reference_model": "GHMC Flood Network Map & HydroSense Telangana Catchment"
+      "total_swd_network_km": 1500,
+      "remodelled_swd_km": 980,
+      "primary_flood_vulnerability": "Flash downpours on rocky granite terrain with rapid runoff into narrow encroached nalas"
     },
     "traffic_monitoring": {
-      "avg_peak_commute_speed_kmh": 17.5,
-      "peak_to_free_flow_delay_index": 2.05,
-      "primary_choke_corridors": [
-        "Gachibowli Junction to Bio-Diversity Park",
-        "HITECH City Cyber Towers Flyover",
-        "Kukatpally - Miyapur Corridor"
-      ],
-      "reference_traffic_repo": "Hyderabad IT Corridor Congestion Engine"
-    },
-    "top_tier1_builders": [
-      "Aparna Constructions",
-      "My Home Group",
-      "Prestige Group",
-      "Brigade Group",
-      "Sobha Limited"
-    ],
-    "citations": [
-      "GHMC Strategic Nala Network Map: Urban stormwater overflow models",
-      "HydroSense Telangana Catchment: Lake encroachment analysis across IT corridor",
-      "India Geodata (yashveeeeeeer): GHMC ward boundaries and Musi river flood zone"
-    ]
+      "authority": "Hyderabad Traffic Police & Cyberabad Traffic Police",
+      "peak_to_free_flow_delay_index": 1.95,
+      "avg_peak_commute_speed_kmh": 19.5,
+      "avg_free_flow_speed_kmh": 38.0,
+      "monthly_hours_lost_avg": 31
+    }
   },
   {
     "id": "varanasi_100km",
-    "name": "Varanasi & 100km Corridor",
+    "name": "Varanasi & Eastern UP 100km Corridor",
     "state": "Uttar Pradesh",
+    "region": "North-Central India",
     "center_lat": 25.3176,
     "center_lng": 82.9739,
     "default_zoom": 10,
-    "elevation_range_m": "70m - 95m (Ganga-Yamuna-Gomti Alluvial Basin)",
+    "elevation_range_m": "72m - 105m (Average: 82m)",
+    "key_landmark": {
+      "name": "Varanasi Junction (Cantt) / Kashi Vishwanath Temple",
+      "lat": 25.3268,
+      "lng": 82.9866
+    },
+    "default_school_benchmark": {
+      "name": "Sunbeam School (Varuna / Cantt)",
+      "lat": 25.345,
+      "lng": 82.982
+    },
     "municipal_water_authority": {
-      "name": "UP Jal Sansthan (Varanasi / Prayagraj) & Namami Gange",
-      "piped_coverage_pct": 62,
-      "daily_demand_mld": 550,
-      "daily_supply_mld": 410,
-      "primary_source": "Ganga River (Bhadaini Pumping Station), Deep Tube Wells (Jal Sansthan)",
-      "tanker_dependency_grade": "Moderate; heavy reliance on municipal deep tube-wells and private sumps",
-      "average_tds_ppm": 320
+      "name": "UP Jal Sansthan & Smart City Kashi Water Utility",
+      "piped_coverage_pct": 65,
+      "daily_supply_mld": 320,
+      "daily_demand_mld": 440,
+      "deficit_pct": 27,
+      "primary_source": "Ganga River Intake (Bhadaini Plant) + Deep Alluvial Tubewells",
+      "summer_tanker_dependence_pct": 35
     },
     "drainage_and_flood_authority": {
-      "name": "Varanasi Municipal Corp (VMC) & Central Water Commission (CWC)",
+      "name": "UP Irrigation & Water Resources Dept & Namami Gange Mission",
       "primary_valleys": [
-        "Ganga River Main Channel",
-        "Varuna River Basin (Varanasi)",
-        "Gomti River Basin (Jaunpur)",
-        "Yamuna Confluence (Prayagraj)"
+        "Ganga River Mainstem",
+        "Varuna River Basin",
+        "Assi River Basin",
+        "Gomti River Basin (Jaunpur)"
       ],
-      "swd_network_length_km": 680,
-      "drain_encroachment_risk": "Critical along Varuna floodplains, Prayagraj Baghada/Salori, and Jaunpur Gomti bank",
-      "flood_reference_model": "Predict River Disaster - Ganga River (Devesh-Singh-Gouni) & India Flood Atlas (IITGN)"
+      "total_swd_network_km": 540,
+      "remodelled_swd_km": 310,
+      "primary_flood_vulnerability": "Ganga high flood level (>73.90m) backflow pushing up the Varuna and Assi rivers"
     },
     "traffic_monitoring": {
-      "avg_peak_commute_speed_kmh": 11.2,
-      "peak_to_free_flow_delay_index": 2.45,
-      "primary_choke_corridors": [
-        "Godowlia - Chowk - Dashashwamedh Ancient Grid",
-        "Lahurabir - Andhrapul - Cantt",
-        "Prayagraj Civil Lines to Sangam Road",
-        "Jaunpur Shahi Bridge Choke"
-      ],
-      "reference_traffic_repo": "Varanasi Interactive Dashboard (PurpleVen) & Real-Time Traffic Analysis"
-    },
-    "top_tier1_builders": [
-      "Eldeco Group",
-      "Omaxe Limited",
-      "Shree Ram Group",
-      "Shalimar Corp",
-      "Kashi Infra"
-    ],
-    "citations": [
-      "Varanasi City Region Flood Risk Study (ResearchGate): 1-meter DEM Varuna floodplain mapping",
-      "Predict River Disaster - Ganga River (Devesh-Singh-Gouni): Gauge-height to inundation mapping",
-      "IIT Gandhinagar India Flood Atlas (wcl-iitgn): Historical Ganga-Yamuna Doab inundations 1901-2020",
-      "Varanasi Interactive Dashboard (PurpleVen / Smart Cities Mission): Urban land use & GIS layers"
-    ]
+      "authority": "Varanasi Commissionarate Traffic Police & Smart City Integrated Command Centre (ICCC)",
+      "peak_to_free_flow_delay_index": 2.25,
+      "avg_peak_commute_speed_kmh": 14.0,
+      "avg_free_flow_speed_kmh": 31.5,
+      "monthly_hours_lost_avg": 37
+    }
   }
 ]
