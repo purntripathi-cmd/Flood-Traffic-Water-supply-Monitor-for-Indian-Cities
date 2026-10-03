@@ -1,0 +1,403 @@
+[
+  {
+    "id": "bld_godrej",
+    "name": "Godrej Properties",
+    "tier": "Tier 1 National Leader",
+    "headquarters": "Mumbai, Maharashtra",
+    "established_year": 1990,
+    "active_states_and_cities": [
+      "Maharashtra (Mumbai/Pune)",
+      "Karnataka (Bengaluru)",
+      "Delhi-NCR (Gurugram/Noida)",
+      "Telangana (Hyderabad)"
+    ],
+    "total_delivered_sqft_mn": 38.5,
+    "on_time_delivery_pct": 92,
+    "construction_quality_rating": 8.8,
+    "litigation_index": "Low",
+    "rera_compliance_score": 95,
+    "flagship_projects": {
+      "bengaluru": "Godrej Splendour (Whitefield), Godrej Athena (Indiranagar)",
+      "mumbai_mmr": "Godrej The Trees (Vikhroli), Godrej Horizon (Wadala)",
+      "delhi_ncr": "Godrej Woods (Noida Sec 43), Godrej Aristocrat (Gurugram)",
+      "hyderabad": "Godrej Kokapet Neopolis (Announced)"
+    },
+    "rera_portal_url": "https://maharera.mahaonline.gov.in/",
+    "strengths": "Pristine brand trust, strong corporate balance sheet, advanced precast construction, and rigorous environmental compliance.",
+    "cautions": "Charges a 15-20% brand premium; internal customization is strictly limited."
+  },
+  {
+    "id": "bld_prestige",
+    "name": "Prestige Group",
+    "tier": "Tier 1 National Leader",
+    "headquarters": "Bengaluru, Karnataka",
+    "established_year": 1986,
+    "active_states_and_cities": [
+      "Karnataka (Bengaluru)",
+      "Telangana (Hyderabad)",
+      "Tamil Nadu (Chennai)",
+      "Maharashtra (Mumbai)",
+      "Delhi-NCR"
+    ],
+    "total_delivered_sqft_mn": 170.0,
+    "on_time_delivery_pct": 95,
+    "construction_quality_rating": 9.2,
+    "litigation_index": "Very Low",
+    "rera_compliance_score": 98,
+    "flagship_projects": {
+      "bengaluru": "Prestige Falcon City, Prestige Lakeside Habitat, Prestige Somerville",
+      "hyderabad": "Prestige High Fields (Financial District), Prestige Beverly Hills",
+      "chennai": "Prestige Courtyards (Sholinganallur), Prestige Bella Vista",
+      "mumbai_mmr": "Prestige Jasdan Classic (Mahalaxmi)"
+    },
+    "rera_portal_url": "https://rera.karnataka.gov.in/",
+    "strengths": "Market leader in South India with mammoth scale, proven on-time delivery across 170+ mn sqft, and high resale liquidity.",
+    "cautions": "High society maintenance charges (₹4.5 - ₹6 per sqft) on massive amenity complexes."
+  },
+  {
+    "id": "bld_sobha",
+    "name": "Sobha Limited",
+    "tier": "Tier 1 National Leader",
+    "headquarters": "Bengaluru, Karnataka",
+    "established_year": 1995,
+    "active_states_and_cities": [
+      "Karnataka (Bengaluru)",
+      "Tamil Nadu (Chennai)",
+      "Telangana (Hyderabad)",
+      "Delhi-NCR (Gurugram)",
+      "Kerala"
+    ],
+    "total_delivered_sqft_mn": 128.0,
+    "on_time_delivery_pct": 96,
+    "construction_quality_rating": 9.6,
+    "litigation_index": "Very Low",
+    "rera_compliance_score": 99,
+    "flagship_projects": {
+      "bengaluru": "Sobha Iris, Sobha Dream Acres, Sobha Neopolis (Panathur)",
+      "chennai": "Sobha Gardenia (Velachery), Sobha Palladian",
+      "delhi_ncr": "Sobha City (Dwarka Expressway Sec 108)",
+      "hyderabad": "Sobha Waterfront (Somajiguda)"
+    },
+    "rera_portal_url": "https://rera.karnataka.gov.in/",
+    "strengths": "Gold standard for German backward integration: in-house German glazing, precast, carpentry, and zero structural seepage.",
+    "cautions": "Highest base price per sqft in category; firm non-negotiable payment schedules."
+  },
+  {
+    "id": "bld_brigade",
+    "name": "Brigade Group",
+    "tier": "Tier 1 National Leader",
+    "headquarters": "Bengaluru, Karnataka",
+    "established_year": 1986,
+    "active_states_and_cities": [
+      "Karnataka (Bengaluru/Mysuru)",
+      "Tamil Nadu (Chennai)",
+      "Telangana (Hyderabad)"
+    ],
+    "total_delivered_sqft_mn": 85.0,
+    "on_time_delivery_pct": 93,
+    "construction_quality_rating": 9.0,
+    "litigation_index": "Low",
+    "rera_compliance_score": 96,
+    "flagship_projects": {
+      "bengaluru": "Brigade Cornerstone Utopia (Varthur), Brigade Gateway",
+      "chennai": "Brigade Residences at WTC (Perungudi), Brigade Xanadu",
+      "hyderabad": "Brigade Citadel (Moti Nagar), Brigade Gateway Neopolis"
+    },
+    "rera_portal_url": "https://rera.karnataka.gov.in/",
+    "strengths": "Pioneer of integrated multi-use townships combining World Trade Center offices, Orion retail, and green residences.",
+    "cautions": "Handover timelines on ultra-large 40+ acre township phases can span 4-5 years."
+  },
+  {
+    "id": "bld_lodha",
+    "name": "Lodha / Macrotech Developers",
+    "tier": "Tier 1 National Leader",
+    "headquarters": "Mumbai, Maharashtra",
+    "established_year": 1980,
+    "active_states_and_cities": [
+      "Maharashtra (Mumbai/Thane/Pune)",
+      "Karnataka (Bengaluru)"
+    ],
+    "total_delivered_sqft_mn": 95.0,
+    "on_time_delivery_pct": 91,
+    "construction_quality_rating": 8.9,
+    "litigation_index": "Moderate",
+    "rera_compliance_score": 94,
+    "flagship_projects": {
+      "mumbai_mmr": "The World Towers (Lower Parel), Lodha Park (Worli), Lodha Amara (Thane)",
+      "bengaluru": "Lodha Mirabelle (Manyata), Lodha Azur (Bannerghatta Rd)"
+    },
+    "rera_portal_url": "https://maharera.mahaonline.gov.in/",
+    "strengths": "India's largest residential sales volume leader, iconic architectural landmarks, and luxury club amenities.",
+    "cautions": "Higher density of units per acre in suburban developments; past debt overhang now resolved."
+  },
+  {
+    "id": "bld_oberoi",
+    "name": "Oberoi Realty",
+    "tier": "Tier 1 National Leader",
+    "headquarters": "Mumbai, Maharashtra",
+    "established_year": 1998,
+    "active_states_and_cities": [
+      "Maharashtra (Mumbai/Thane)",
+      "Delhi-NCR (Gurugram)"
+    ],
+    "total_delivered_sqft_mn": 22.0,
+    "on_time_delivery_pct": 97,
+    "construction_quality_rating": 9.5,
+    "litigation_index": "Very Low",
+    "rera_compliance_score": 99,
+    "flagship_projects": {
+      "mumbai_mmr": "Oberoi Sky City (Borivali), Oberoi Garden City (Goregaon), Three Sixty West (Worli)",
+      "delhi_ncr": "Oberoi Luxury Residences (Golf Course Ext, Gurugram)"
+    },
+    "rera_portal_url": "https://maharera.mahaonline.gov.in/",
+    "strengths": "Debt-free pristine balance sheet, unmatched construction craftsmanship, and prime high-elevation locations in Mumbai.",
+    "cautions": "Premium ticket size (units rarely start below ₹3.5 - ₹4 Cr in Mumbai)."
+  },
+  {
+    "id": "bld_dlf",
+    "name": "DLF Limited",
+    "tier": "Tier 1 National Leader",
+    "headquarters": "New Delhi",
+    "established_year": 1946,
+    "active_states_and_cities": [
+      "Delhi-NCR (Gurugram/Delhi)",
+      "Tamil Nadu (Chennai)",
+      "Chandigarh Tri-city"
+    ],
+    "total_delivered_sqft_mn": 160.0,
+    "on_time_delivery_pct": 94,
+    "construction_quality_rating": 9.3,
+    "litigation_index": "Low",
+    "rera_compliance_score": 97,
+    "flagship_projects": {
+      "delhi_ncr": "The Camellias (Gurugram), The Crest, DLF Cybercity, One Midtown (Moti Nagar)",
+      "chennai": "DLF Commanders Court (Egmore)"
+    },
+    "rera_portal_url": "https://haryanarera.gov.in/",
+    "strengths": "Shaped modern Gurugram; institutional private fire stations, private roads, and ultra-luxury status symbol pedigree.",
+    "cautions": "Very high minimum capital requirement; secondary market transfers attract steep premiums."
+  },
+  {
+    "id": "bld_tata_housing",
+    "name": "Tata Housing / Tata Realty",
+    "tier": "Tier 1 National Leader",
+    "headquarters": "Mumbai, Maharashtra",
+    "established_year": 1984,
+    "active_states_and_cities": [
+      "Maharashtra (Mumbai)",
+      "Karnataka (Bengaluru)",
+      "Delhi-NCR",
+      "Tamil Nadu (Chennai)",
+      "Kolkata"
+    ],
+    "total_delivered_sqft_mn": 52.0,
+    "on_time_delivery_pct": 93,
+    "construction_quality_rating": 9.1,
+    "litigation_index": "Very Low",
+    "rera_compliance_score": 98,
+    "flagship_projects": {
+      "delhi_ncr": "Tata Primanti (Sec 72 Gurugram), Tata Gurgaon Gateway",
+      "bengaluru": "Tata Promont (Banashankari), Tata Carnatica (Devanahalli)",
+      "mumbai_mmr": "Tata Serein (Thane), Tata Eleve"
+    },
+    "rera_portal_url": "https://maharera.mahaonline.gov.in/",
+    "strengths": "Backed by the prestigious Tata Group; 100% transparent legal documentation and clear land titles.",
+    "cautions": "Conservative project rollouts and steady rather than rapid execution speed."
+  },
+  {
+    "id": "bld_hiranandani",
+    "name": "Hiranandani Group",
+    "tier": "Tier 1 National Leader",
+    "headquarters": "Mumbai, Maharashtra",
+    "established_year": 1978,
+    "active_states_and_cities": [
+      "Maharashtra (Mumbai/Thane/Panvel)",
+      "Tamil Nadu (Chennai)",
+      "Telangana (Hyderabad)"
+    ],
+    "total_delivered_sqft_mn": 60.0,
+    "on_time_delivery_pct": 95,
+    "construction_quality_rating": 9.4,
+    "litigation_index": "Low",
+    "rera_compliance_score": 97,
+    "flagship_projects": {
+      "mumbai_mmr": "Hiranandani Gardens (Powai), Hiranandani Estate (Thane), Hiranandani Fortune City (Panvel)",
+      "chennai": "Hiranandani Parks (Oragadam)"
+    },
+    "rera_portal_url": "https://maharera.mahaonline.gov.in/",
+    "strengths": "Pioneered neoclassical European architecture with self-contained township ecosystems (schools, hospitals, retail).",
+    "cautions": "Neoclassical exterior maintenance requires disciplined society upkeep."
+  },
+  {
+    "id": "bld_casagrand",
+    "name": "Casagrand Builder Private Limited",
+    "tier": "Tier 1 Regional Champion (South)",
+    "headquarters": "Chennai, Tamil Nadu",
+    "established_year": 2004,
+    "active_states_and_cities": [
+      "Tamil Nadu (Chennai/Coimbatore)",
+      "Karnataka (Bengaluru)",
+      "Telangana (Hyderabad)"
+    ],
+    "total_delivered_sqft_mn": 42.0,
+    "on_time_delivery_pct": 94,
+    "construction_quality_rating": 8.7,
+    "litigation_index": "Low",
+    "rera_compliance_score": 96,
+    "flagship_projects": {
+      "chennai": "Casagrand Utopia (Manapakkam), Casagrand First City (Sholinganallur), Casagrand Zenith",
+      "bengaluru": "Casagrand Boulevard (Hennur), Casagrand Aquene (Kengeri)",
+      "hyderabad": "Casagrand Zaara"
+    },
+    "rera_portal_url": "https://www.rera.tn.gov.in/",
+    "strengths": "Fastest turnaround cycle in South India, kid-centric and wellness-themed amenities, highly competitive pricing.",
+    "cautions": "High unit density per tower; elevator wait times in large developments."
+  },
+  {
+    "id": "bld_aparna",
+    "name": "Aparna Constructions",
+    "tier": "Tier 1 Regional Champion (Telangana & AP)",
+    "headquarters": "Hyderabad, Telangana",
+    "established_year": 1996,
+    "active_states_and_cities": [
+      "Telangana (Hyderabad)",
+      "Andhra Pradesh (Amaravati/Vizag)",
+      "Karnataka (Bengaluru)"
+    ],
+    "total_delivered_sqft_mn": 48.0,
+    "on_time_delivery_pct": 98,
+    "construction_quality_rating": 9.4,
+    "litigation_index": "Very Low",
+    "rera_compliance_score": 99,
+    "flagship_projects": {
+      "hyderabad": "Aparna Serene Park (Gachibowli), Aparna Sarovar Zenith (Nallagandla), Aparna Cyber4",
+      "bengaluru": "Aparna Maple (Kaval Byrasandra), Aparna Elixir"
+    },
+    "rera_portal_url": "https://rera.telangana.gov.in/",
+    "strengths": "Unrivaled track record of zero-delay handovers in Hyderabad; in-house Aparna RMC batching, tiles, and aluminum frames.",
+    "cautions": "Standardized utilitarian architectural elevations across multiple projects."
+  },
+  {
+    "id": "bld_myhome",
+    "name": "My Home Group",
+    "tier": "Tier 1 Regional Champion (Telangana)",
+    "headquarters": "Hyderabad, Telangana",
+    "established_year": 1981,
+    "active_states_and_cities": [
+      "Telangana (Hyderabad)"
+    ],
+    "total_delivered_sqft_mn": 35.0,
+    "on_time_delivery_pct": 97,
+    "construction_quality_rating": 9.3,
+    "litigation_index": "Very Low",
+    "rera_compliance_score": 98,
+    "flagship_projects": {
+      "hyderabad": "My Home Bhooja (HITECH City), My Home Sayuk (Tellapur), My Home Avali, My Home Mangala"
+    },
+    "rera_portal_url": "https://rera.telangana.gov.in/",
+    "strengths": "Hyderabad's benchmark for prime IT location acquisitions, precast engineering speed, and huge resale capital retention.",
+    "cautions": "Focus remains strictly concentrated in the Hyderabad micro-market."
+  },
+  {
+    "id": "bld_eldeco",
+    "name": "Eldeco Group",
+    "tier": "Tier 1 Regional Champion (North & UP)",
+    "headquarters": "New Delhi / Lucknow",
+    "established_year": 1975,
+    "active_states_and_cities": [
+      "Uttar Pradesh (Varanasi/Prayagraj/Lucknow/Kanpur/Agra)",
+      "Delhi-NCR (Noida/Greater Noida)"
+    ],
+    "total_delivered_sqft_mn": 32.0,
+    "on_time_delivery_pct": 91,
+    "construction_quality_rating": 8.8,
+    "litigation_index": "Low",
+    "rera_compliance_score": 95,
+    "flagship_projects": {
+      "varanasi_100km": "Eldeco Surya Greens (Shivpur, Varanasi), Eldeco Shaurya, Eldeco City",
+      "delhi_ncr": "Eldeco Live Neoma (Sector 150 Noida), Eldeco Utopia",
+      "prayagraj": "Eldeco Anandam (Civil Lines Prayagraj)"
+    },
+    "rera_portal_url": "https://up-rera.in/",
+    "strengths": "Decades-long undisputed leadership across Uttar Pradesh cities; pristine delivery record in Tier 2/3 markets.",
+    "cautions": "Slower marketing digitization compared to southern Tier-1 giants."
+  },
+  {
+    "id": "bld_omaxe",
+    "name": "Omaxe Limited",
+    "tier": "Tier 2 Specialized (North & UP)",
+    "headquarters": "New Delhi",
+    "established_year": 1989,
+    "active_states_and_cities": [
+      "Uttar Pradesh (Prayagraj/Lucknow/Varanasi)",
+      "Delhi-NCR",
+      "Punjab",
+      "Haryana"
+    ],
+    "total_delivered_sqft_mn": 130.0,
+    "on_time_delivery_pct": 84,
+    "construction_quality_rating": 8.2,
+    "litigation_index": "Moderate",
+    "rera_compliance_score": 88,
+    "flagship_projects": {
+      "varanasi_100km": "Omaxe Heights (Civil Lines, Prayagraj), Omaxe Eternity",
+      "delhi_ncr": "Omaxe Chowk (Chandni Chowk), Omaxe Palm Greens"
+    },
+    "rera_portal_url": "https://up-rera.in/",
+    "strengths": "Pioneered integrated township model and multi-storey towers in cities like Prayagraj and Lucknow.",
+    "cautions": "Some past projects faced delayed handover; verify specific project RERA registration status."
+  },
+  {
+    "id": "bld_puravankara",
+    "name": "Puravankara Limited / Provident",
+    "tier": "Tier 1 National Leader",
+    "headquarters": "Bengaluru, Karnataka",
+    "established_year": 1975,
+    "active_states_and_cities": [
+      "Karnataka (Bengaluru)",
+      "Tamil Nadu (Chennai)",
+      "Telangana (Hyderabad)",
+      "Maharashtra (Mumbai/Pune)",
+      "Kerala"
+    ],
+    "total_delivered_sqft_mn": 46.0,
+    "on_time_delivery_pct": 91,
+    "construction_quality_rating": 8.8,
+    "litigation_index": "Low",
+    "rera_compliance_score": 95,
+    "flagship_projects": {
+      "bengaluru": "Purva Atmosphere (Thanisandra), Purva Clermont",
+      "chennai": "Purva Windermere (Pallikaranai peripheral), Purva Somerset House (Guindy)",
+      "mumbai_mmr": "Purva Clermont (Chembur)"
+    },
+    "rera_portal_url": "https://rera.karnataka.gov.in/",
+    "strengths": "BluNex smart home automation integration, strong brand presence, and diversified price tiers (Provident for affordable).",
+    "cautions": "Carefully inspect localized approach roads in peripheral projects."
+  },
+  {
+    "id": "bld_mahindra",
+    "name": "Mahindra Lifespaces",
+    "tier": "Tier 1 National Leader",
+    "headquarters": "Mumbai, Maharashtra",
+    "established_year": 1994,
+    "active_states_and_cities": [
+      "Maharashtra (Mumbai/Pune)",
+      "Karnataka (Bengaluru)",
+      "Tamil Nadu (Chennai)",
+      "Delhi-NCR"
+    ],
+    "total_delivered_sqft_mn": 20.0,
+    "on_time_delivery_pct": 94,
+    "construction_quality_rating": 9.2,
+    "litigation_index": "Very Low",
+    "rera_compliance_score": 99,
+    "flagship_projects": {
+      "mumbai_mmr": "Mahindra Roots (Kandivali), Mahindra Vicino (Andheri)",
+      "bengaluru": "Mahindra Eden (Kanakapura Rd), Mahindra Zen (Singasandra)",
+      "chennai": "Mahindra World City (Chengalpattu)"
+    },
+    "rera_portal_url": "https://maharera.mahaonline.gov.in/",
+    "strengths": "Net-zero green building champion; backed by Mahindra Group ethics, IGBC Platinum certifications.",
+    "cautions": "Selectively launches fewer projects per year, maintaining boutique exclusivity."
+  }
+]

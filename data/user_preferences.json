@@ -1,0 +1,19 @@
+{
+  "selected_city": "bengaluru",
+  "budget_purchase_max_cr": 3.5,
+  "budget_rental_max_pm": 80000,
+  "max_acceptable_delay_index": 2.2,
+  "min_elevation_m": 15,
+  "avoidance_threshold_score": 50,
+  "preferred_builders": [
+    "Prestige Group",
+    "Sobha Limited",
+    "Godrej Properties",
+    "Oberoi Realty"
+  ],
+  "require_piped_water": true,
+  "exclude_flood_risk_categories": [
+    "🔴 Severe Waterlogging (Lake Valley Depression)",
+    "🔴 Severe Waterlogging (Chronic Subway Inundation)"
+  ]
+}

@@ -1,0 +1,237 @@
+"""
+Custom Sticky / Frozen Column Table Renderer for Streamlit
+Freezes 1st column (configurable) and sticky header with horizontal and vertical scroll.
+Renders via Streamlit Components HTML iframe for 100% guaranteed visibility across all browsers.
+"""
+
+import html as html_lib
+import pandas as pd
+import streamlit as st
+import streamlit.components.v1 as components
+
+
+def render_sticky_frozen_table(df: pd.DataFrame, frozen_cols: int = 1, table_id: str = "custom_table", max_height: str = "560px"):
+    """
+    Renders an HTML/CSS table where the first `frozen_cols` columns are permanently frozen / sticky on the left,
+    and the table header is sticky on top, while the remaining columns scroll horizontally.
+    Uses components.html for rock-solid iframe rendering without markdown stripping.
+    """
+    if df.empty:
+        st.info("No records to display.")
+        return
+
+    cols = list(df.columns)
+    frozen_col_count = min(frozen_cols, len(cols))
+
+    # Calculate optimal pixel height
+    try:
+        max_h_int = int(str(max_height).replace("px", "").strip())
+    except Exception:
+        max_h_int = 560
+    calc_height = min(max_h_int, max(280, (len(df) + 1) * 44 + 50))
+
+    # Column widths for frozen columns
+    col_widths = [240, 170, 160, 150]
+    offsets = [0]
+    for i in range(1, frozen_col_count):
+        w = col_widths[i-1] if i-1 < len(col_widths) else 150
+        offsets.append(offsets[i-1] + w)
+
+    # Build pure CSS
+    css_rules = [f"""
+    * {{
+        box-sizing: border-box;
+    }}
+    body {{
+        margin: 0;
+        padding: 0;
+        background-color: #0B1120;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        color: #F8FAFC;
+    }}
+    .table-container {{
+        position: relative;
+        overflow-x: auto;
+        overflow-y: auto;
+        max-height: {calc_height - 10}px;
+        width: 100%;
+        border: 1px solid #334155;
+        border-radius: 8px;
+        background-color: #0B1120;
+        -webkit-overflow-scrolling: touch;
+    }}
+    table {{
+        border-collapse: separate;
+        border-spacing: 0;
+        width: 100%;
+        font-size: 0.83rem;
+    }}
+    th {{
+        position: sticky;
+        top: 0;
+        background-color: #1E293B;
+        color: #38BDF8;
+        font-weight: 700;
+        padding: 10px 14px;
+        border-bottom: 2px solid #334155;
+        border-right: 1px solid #334155;
+        white-space: nowrap;
+        z-index: 25;
+        text-align: left;
+    }}
+    td {{
+        padding: 9px 14px;
+        border-bottom: 1px solid #1E293B;
+        border-right: 1px solid #1E293B;
+        white-space: nowrap;
+        background-color: #0B1120;
+        color: #E2E8F0;
+    }}
+    tr:nth-child(even) td {{
+        background-color: #0F172A;
+    }}
+    tr:hover td {{
+        background-color: #1E293B !important;
+    }}
+    """]
+
+    # Frozen column rules
+    for idx in range(frozen_col_count):
+        nth = idx + 1
+        left_px = offsets[idx]
+        width_px = col_widths[idx] if idx < len(col_widths) else 160
+        is_last_frozen = (idx == frozen_col_count - 1)
+        
+        if is_last_frozen:
+            border_r = "border-right: 3px solid #0D9488 !important; box-shadow: 4px 0 10px rgba(0,0,0,0.6);"
+        else:
+            border_r = "border-right: 1px solid #334155;"
+
+        if nth == 1:
+            font_color = "#38BDF8"
+            font_weight = "700"
+        elif nth == 2:
+            font_color = "#F8FAFC"
+            font_weight = "600"
+        else:
+            font_color = "#E2E8F0"
+            font_weight = "500"
+
+        css_rules.append(f"""
+        th.fcol-{nth} {{
+            position: sticky;
+            left: {left_px}px;
+            top: 0;
+            z-index: 45 !important;
+            background-color: #1E293B;
+            min-width: {width_px}px;
+            max-width: {width_px + 40}px;
+            width: {width_px}px;
+            {border_r}
+        }}
+        td.fcol-{nth} {{
+            position: sticky;
+            left: {left_px}px;
+            z-index: 20;
+            background-color: #0B1120;
+            min-width: {width_px}px;
+            max-width: {width_px + 40}px;
+            width: {width_px}px;
+            font-weight: {font_weight};
+            color: {font_color};
+            {border_r}
+        }}
+        tr:nth-child(even) td.fcol-{nth} {{
+            background-color: #0F172A;
+        }}
+        tr:hover td.fcol-{nth} {{
+            background-color: #1E293B !important;
+        }}
+        """)
+
+    full_css = "\n".join(css_rules)
+
+    # Build Table HTML
+    html_parts = [
+        "<!DOCTYPE html>",
+        "<html>",
+        "<head>",
+        "<meta charset='utf-8'>",
+        f"<style>{full_css}</style>",
+        "</head>",
+        "<body>",
+        f"<div class='table-container' id='{table_id}_container'>",
+        "<table>",
+        "<thead>",
+        "<tr>"
+    ]
+
+    for idx, c in enumerate(cols):
+        col_class = f" class='fcol-{idx+1}'" if idx < frozen_col_count else ""
+        html_parts.append(f"<th{col_class}>{html_lib.escape(str(c))}</th>")
+    html_parts.append("</tr></thead><tbody>")
+
+    for _, row in df.iterrows():
+        html_parts.append("<tr>")
+        for idx, c in enumerate(cols):
+            col_class = f" class='fcol-{idx+1}'" if idx < frozen_col_count else ""
+            raw_val = str(row[c]) if row[c] is not None else ""
+            
+            # Format cell content with badges
+            if "🟢" in raw_val:
+                cell_content = f"<span style='background:rgba(16,185,129,0.15); color:#34D399; padding:3px 8px; border-radius:4px; font-weight:700; border:1px solid rgba(16,185,129,0.3);'>{html_lib.escape(raw_val)}</span>"
+            elif "🟡" in raw_val:
+                cell_content = f"<span style='background:rgba(245,158,11,0.15); color:#FBBF24; padding:3px 8px; border-radius:4px; font-weight:700; border:1px solid rgba(245,158,11,0.3);'>{html_lib.escape(raw_val)}</span>"
+            elif "🔴" in raw_val or "CRITICAL" in raw_val:
+                cell_content = f"<span style='background:rgba(239,68,68,0.15); color:#F87171; padding:3px 8px; border-radius:4px; font-weight:700; border:1px solid rgba(239,68,68,0.3);'>{html_lib.escape(raw_val)}</span>"
+            elif "⭐" in raw_val:
+                cell_content = f"<span style='color:#FBBF24; font-weight:600;'>{html_lib.escape(raw_val)}</span>"
+            elif raw_val.startswith("₹"):
+                cell_content = f"<span style='color:#38BDF8; font-weight:600;'>{html_lib.escape(raw_val)}</span>"
+            elif raw_val.startswith("http://") or raw_val.startswith("https://"):
+                url_lower = raw_val.lower()
+                if "google.com/maps" in url_lower:
+                    link_label = "Google Maps ↗"
+                    btn_bg = "#1D4ED8"
+                elif "rera.karnataka.gov.in" in url_lower:
+                    link_label = "K-RERA Portal ↗"
+                    btn_bg = "#0F766E"
+                elif "maharera.mahaonline.gov.in" in url_lower:
+                    link_label = "MahaRERA ↗"
+                    btn_bg = "#B45309"
+                elif "rera.tn.gov.in" in url_lower:
+                    link_label = "TN-RERA ↗"
+                    btn_bg = "#047857"
+                elif "up-rera.in" in url_lower:
+                    link_label = "UP-RERA ↗"
+                    btn_bg = "#7C3AED"
+                elif "rera.telangana.gov.in" in url_lower:
+                    link_label = "TS-RERA ↗"
+                    btn_bg = "#C2410C"
+                elif "haryanarera.gov.in" in url_lower:
+                    link_label = "HRERA Portal ↗"
+                    btn_bg = "#0284C7"
+                elif "github.com" in url_lower:
+                    link_label = "GitHub Reference ↗"
+                    btn_bg = "#24292F"
+                else:
+                    link_label = "Official Link ↗"
+                    btn_bg = "#334155"
+
+                cell_content = f"<a href='{html_lib.escape(raw_val)}' target='_blank' rel='noreferrer noopener' style='background:{btn_bg}; color:#FFFFFF; padding:3px 9px; border-radius:4px; text-decoration:none; font-weight:700; font-size:0.76rem; display:inline-block; border:1px solid rgba(255,255,255,0.2);'>{link_label}</a>"
+            else:
+                cell_content = html_lib.escape(raw_val)
+
+            html_parts.append(f"<td{col_class}>{cell_content}</td>")
+        html_parts.append("</tr>")
+
+    html_parts.extend([
+        "</tbody>",
+        "</table>",
+        "</div>",
+        "</body>",
+        "</html>"
+    ])
+
+    full_html = "\n".join(html_parts)
+    components.html(full_html, height=calc_height, scrolling=True)
