@@ -43,6 +43,11 @@ from utils.schools import render_schools_collapsible_html, get_nearby_cbse_schoo
 from utils.critic_ai import validate_and_correct_property_data
 from utils.ai_onboarder import search_and_onboard_project, load_onboarded_projects
 from utils.excel_exporter import sync_daily_scan_to_excel, generate_excel_download_bytes
+from utils.farmland_view import (
+    HIGH_VALUE_CROP_BENCHMARKS,
+    render_seller_contact_card_html,
+    render_agronomic_telemetry_html
+)
 
 # -------------------------------------------------------------
 # Streamlit Page Configuration
@@ -186,15 +191,17 @@ def load_all_datasets():
         rental_properties = json.load(f)
     with open(os.path.join(DATA_DIR, "gated_plots.json"), "r", encoding="utf-8") as f:
         gated_plots = json.load(f)
+    with open(os.path.join(DATA_DIR, "farmlands.json"), "r", encoding="utf-8") as f:
+        farmlands = json.load(f)
     with open(os.path.join(DATA_DIR, "govt_master_plans.json"), "r", encoding="utf-8") as f:
         govt_master_plans = json.load(f)
     with open(os.path.join(DATA_DIR, "avoidance_zones.json"), "r", encoding="utf-8") as f:
         avoidance_zones = json.load(f)
     with open(os.path.join(DATA_DIR, "user_preferences.json"), "r", encoding="utf-8") as f:
         user_preferences = json.load(f)
-    return cities, micro_markets, builders, properties, rental_properties, gated_plots, govt_master_plans, avoidance_zones, user_preferences
+    return cities, micro_markets, builders, properties, rental_properties, gated_plots, farmlands, govt_master_plans, avoidance_zones, user_preferences
 
-cities, micro_markets, builders, properties, rental_properties, gated_plots, govt_master_plans, avoidance_zones, user_preferences = load_all_datasets()
+cities, micro_markets, builders, properties, rental_properties, gated_plots, farmlands, govt_master_plans, avoidance_zones, user_preferences = load_all_datasets()
 cbse_schools = load_cbse_schools()
 onboarded_projects = load_onboarded_projects()
 
@@ -202,7 +209,7 @@ onboarded_projects = load_onboarded_projects()
 excel_path = os.path.join(DATA_DIR, "daily_property_screener_dump.xlsx")
 if not os.path.exists(excel_path):
     try:
-        sync_daily_scan_to_excel(properties[:10], gated_plots[:10], rental_properties[:10], govt_master_plans, onboarded_projects, excel_path)
+        sync_daily_scan_to_excel(properties[:10], gated_plots[:10], rental_properties[:10], govt_master_plans, onboarded_projects, farmlands[:10], excel_path)
     except Exception:
         pass
 
@@ -226,6 +233,7 @@ city_micros_raw = [m for m in micro_markets if m["city_id"] == selected_city_id]
 city_props_raw = [p for p in properties if p["city_id"] == selected_city_id]
 city_plots_raw = [pl for pl in gated_plots if pl["city_id"] == selected_city_id]
 city_rentals_raw = [r for r in rental_properties if r["city_id"] == selected_city_id]
+city_farms_raw = [fm for fm in farmlands if fm["city_id"] == selected_city_id]
 city_avoidance_raw = [a for a in avoidance_zones if a["city"].lower() in active_city["name"].lower() or a["city"].lower() in selected_city_id]
 
 # -------------------------------------------------------------
@@ -239,7 +247,8 @@ available_areas = sorted(list(set(
     [m["name"] for m in city_micros_raw] +
     [p.get("micro_market", "") for p in city_props_raw] +
     [pl.get("location", "") for pl in city_plots_raw] +
-    [r.get("micro_market", "") for r in city_rentals_raw]
+    [r.get("micro_market", "") for r in city_rentals_raw] +
+    [fm.get("location", "") for fm in city_farms_raw]
 )))
 available_areas = [a for a in available_areas if a]
 
@@ -260,12 +269,14 @@ if selected_areas:
     city_props = [p for p in city_props_raw if area_matches(p.get("micro_market", "")) or area_matches(p.get("name", ""))]
     city_plots = [pl for pl in city_plots_raw if area_matches(pl.get("location", "")) or area_matches(pl.get("name", ""))]
     city_rentals = [r for r in city_rentals_raw if area_matches(r.get("micro_market", "")) or area_matches(r.get("name", ""))]
+    city_farms = [fm for fm in city_farms_raw if area_matches(fm.get("location", "")) or area_matches(fm.get("name", ""))]
     city_avoidance = [a for a in city_avoidance_raw if area_matches(a.get("name", ""))]
 else:
     city_micros = city_micros_raw
     city_props = city_props_raw
     city_plots = city_plots_raw
     city_rentals = city_rentals_raw
+    city_farms = city_farms_raw
     city_avoidance = city_avoidance_raw
 
 st.sidebar.markdown("---")
@@ -479,6 +490,7 @@ tabs = st.tabs([
     "📊 Micro-Market Avoidance Radar",
     "🏢 Resilient Property Screener",
     "🏡 Gated Community Plots & Sites",
+    "🌾 Verified Farmlands & Agro-Investments",
     "💧 Water Supply & Ground Reality",
     "🚨 Chronic Avoidance Zones Deep Dive",
     "🤖 Explainable AI Copilot"
@@ -579,13 +591,13 @@ with tabs[0]:
 
     with col_ex2:
         try:
-            excel_bytes = generate_excel_download_bytes(properties[:10], gated_plots[:10], rental_properties[:10], govt_master_plans, onboarded_projects)
+            excel_bytes = generate_excel_download_bytes(properties[:10], gated_plots[:10], rental_properties[:10], govt_master_plans, onboarded_projects, farmlands[:10])
             st.download_button(
                 label="📥 Download Daily Excel (.xlsx)",
                 data=excel_bytes,
                 file_name="daily_property_screener_dump.xlsx",
                 mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-                help="Download the local Excel database with all Top 10 tables, master plans, source links, and Critic AI audit logs."
+                help="Download the local Excel database with all Top 10 tables, verified farmlands, master plans, source links, and Critic AI audit logs."
             )
         except Exception:
             st.caption("Excel file ready locally.")
@@ -598,12 +610,14 @@ with tabs[0]:
         map_focus_options.append(f"🏡 {pl['name']} ({pl['city_name']} • {pl['location']})")
     for r in rental_properties:
         map_focus_options.append(f"🔑 {r['name']} ({r['city_name']} • {r['micro_market']})")
+    for fm in farmlands:
+        map_focus_options.append(f"🌾 {fm['name']} ({fm['city_name']} • {fm['location']})")
 
     selected_focus_prop_label = st.selectbox(
         "🎯 Choose Property to Focus & Compare on Map (Pin Highlight, Zoom & Driving Route):",
         options=map_focus_options,
         index=0,
-        help="Select any property or plot to zoom in, highlight with a glowing halo pin, draw a road route line to the benchmark landmark, and inspect exact distances."
+        help="Select any property, plot, or farmland to zoom in, highlight with a glowing halo pin, draw a road route line to the benchmark landmark, and inspect exact distances."
     )
 
     focused_prop_obj = None
@@ -625,6 +639,12 @@ with tabs[0]:
                 if f"🔑 {r['name']} ({r['city_name']} • {r['micro_market']})" == selected_focus_prop_label:
                     focused_prop_obj = r
                     focused_category = "rental"
+                    break
+        if focused_prop_obj is None:
+            for fm in farmlands:
+                if f"🌾 {fm['name']} ({fm['city_name']} • {fm['location']})" == selected_focus_prop_label:
+                    focused_prop_obj = fm
+                    focused_category = "farmland"
                     break
 
     # Determine map center coordinates and zoom level
@@ -669,6 +689,7 @@ with tabs[0]:
     fg_properties = folium.FeatureGroup(name="🏢 Properties to Purchase (Blue)", show=True)
     fg_plots = folium.FeatureGroup(name="🏡 Gated Plots & Land (Purple)", show=True)
     fg_rentals = folium.FeatureGroup(name="🔑 Best Rental Properties (Green)", show=True)
+    fg_farms = folium.FeatureGroup(name="🌾 Verified Farmlands (Amber)", show=True)
     fg_schools = folium.FeatureGroup(name="🎓 Benchmark CBSE Schools (Orange)", show=True)
 
     # Plot Micro-Markets for active city (respecting area filter)
@@ -811,6 +832,36 @@ with tabs[0]:
             icon=folium.Icon(color=icon_color, icon="key", prefix="fa")
         ).add_to(fg_rentals)
 
+    # Plot Verified Farmlands
+    for fm in farmlands:
+        is_focused = (focused_prop_obj and focused_prop_obj.get("id") == fm["id"])
+        supp = fm.get("supported_crops", {})
+        farm_popup = f"""
+        <div style='font-family:sans-serif; width:270px;'>
+            <div style='display:flex; justify-content:space-between;'>
+                <span style='background:#059669; color:white; font-size:10px; font-weight:bold; padding:2px 6px; border-radius:3px;'>{fm.get('seller_category', 'Verified Farmland')}</span>
+                <span style='color:#059669; font-size:11px; font-weight:bold;'>{fm.get('verified_listing_badge', 'Verified')}</span>
+            </div>
+            <h4 style='margin:4px 0 2px 0; color:#0F172A;'>🌾 {fm['name']}</h4>
+            <p style='margin:0; color:#475569; font-size:11px;'>{fm['city_name']} • {fm['location']} ({fm['size_acres']} Acres)</p>
+            <p style='margin:4px 0 0 0; font-size:12px;'><b>Rate:</b> ₹{fm['price_per_acre_lakhs']} L/Acre (Total: ₹{fm['total_price_cr']} Cr)</p>
+            <p style='margin:0; font-size:12px;'><b>Soil & pH:</b> {fm.get('soil_type')} (pH {fm.get('soil_ph')})</p>
+            <p style='margin:0; font-size:12px;'><b>Water:</b> {fm.get('water_source')} (TDS: {fm.get('water_tds_ppm')} ppm)</p>
+            <p style='margin:0; font-size:12px;'><b>High-Value Crops:</b> {supp.get('high_value_crops', 'Avocado, Sandalwood')}</p>
+            <p style='margin:0; font-size:12px;'><b>Contact:</b> {fm.get('contact_person')} ({fm.get('contact_phone')})</p>
+            <hr style='margin:6px 0;'>
+            <a href='{get_google_maps_search_url(fm.get("google_maps_query", fm["name"]))}' target='_blank' style='font-size:11px; color:#0284C7; font-weight:bold;'>Google Maps Pin ↗</a> | 
+            <a href='{fm.get("contact_whatsapp", "https://wa.me/")}' target='_blank' style='font-size:11px; color:#16A34A; font-weight:bold;'>WhatsApp Contact ↗</a>
+        </div>
+        """
+        icon_color = "darkred" if is_focused else "orange"
+        folium.Marker(
+            location=[fm["lat"], fm["lng"]],
+            popup=folium.Popup(farm_popup, max_width=310),
+            tooltip=f"🌾 {fm['name']} ({fm['size_acres']} Acres | ₹{fm['price_per_acre_lakhs']} L/Acre | {fm.get('seller_category')})",
+            icon=folium.Icon(color=icon_color, icon="leaf", prefix="fa")
+        ).add_to(fg_farms)
+
     # If a property is actively focused, highlight with a golden ring & draw route polyline to benchmark
     if focused_prop_obj:
         folium.Circle(
@@ -841,6 +892,7 @@ with tabs[0]:
     fg_properties.add_to(m)
     fg_plots.add_to(m)
     fg_rentals.add_to(m)
+    fg_farms.add_to(m)
     fg_schools.add_to(m)
     folium.LayerControl(position="topright").add_to(m)
 
@@ -1137,6 +1189,54 @@ with tabs[0]:
 
     df_top_rentals = pd.DataFrame(top_rental_rows)
     render_sticky_frozen_table(df_top_rentals, frozen_cols=1, table_id="top_rentals_table", max_height="500px")
+
+    st.markdown("<br>", unsafe_allow_html=True)
+
+    # ---------------------------------------------------------
+    # TABLE 4: TOP VERIFIED FARMLANDS & HIGH-YIELD AGRO-INVESTMENTS (Across India)
+    # ---------------------------------------------------------
+    st.markdown("### 4️⃣ Top Verified Farmlands & High-Yield Agro-Investments (Across India)")
+    st.caption(f"Ranked by annual harvest yield and soil suitability. 4th column benchmark: **{active_benchmark_obj['name']}**. Screened for 30-year unencumbered land records, sweet water TDS (<400 ppm), high-value crop yields, and direct seller/broker contacts.")
+
+    if "Active Corridor" in inventory_scope or selected_areas:
+        farm_pool = [fm for fm in farmlands if fm.get("city_id") == selected_city_id]
+    else:
+        farm_pool = list(farmlands)
+
+    if selected_areas:
+        farm_pool = [fm for fm in farm_pool if area_matches(fm.get("location", "")) or area_matches(fm.get("name", ""))]
+
+    if keyword_filter:
+        kw = keyword_filter.lower().strip()
+        farm_pool = [fm for fm in farm_pool if kw in fm.get("name", "").lower() or kw in fm.get("location", "").lower() or kw in fm.get("seller_category", "").lower() or kw in str(fm.get("supported_crops", {})).lower()]
+
+    sorted_farms = sorted(farm_pool, key=lambda x: x.get("annual_agro_yield_estimate_lakhs", 0), reverse=True)[:10]
+
+    top_farm_rows = []
+    for fm in sorted_farms:
+        dist_to_bm = calculate_road_distance_km(fm["lat"], fm["lng"], active_benchmark_obj["lat"], active_benchmark_obj["lng"])
+        supp = fm.get("supported_crops", {})
+        top_farm_rows.append({
+            "Farmland Estate Name": fm["name"],
+            "Seller Category": "🧑‍🌾 Direct Owner" if "Owner" in fm.get("seller_category", "") else ("🏢 Verified Broker" if "Broker" in fm.get("seller_category", "") else "🏡 Managed Farm"),
+            "City & Location": f"{fm['city_name']} ({fm['location']})",
+            f"Road Dist to {active_benchmark_obj['name']}": f"{dist_to_bm} km",
+            "Parcel Extent": f"{fm['size_acres']} Acres ({fm.get('size_local_units', '')})",
+            "Price / Acre": f"₹{fm['price_per_acre_lakhs']} L/Acre",
+            "Total Outlay (Cr)": f"₹{fm['total_price_cr']:.2f} Cr",
+            "Soil Type & pH": f"{fm.get('soil_type', 'Loam')} (pH {fm.get('soil_ph')})",
+            "Water Source & Yield": f"{fm.get('water_source')} • TDS {fm.get('water_tds_ppm')} ppm",
+            "High-Value Crops Supported": supp.get("high_value_crops", "N/A"),
+            "Est Annual Harvest (Lakhs)": f"📈 ₹{fm.get('annual_agro_yield_estimate_lakhs', 5.0)} L/yr",
+            "Title & Revenue Ledger": f"{fm.get('title_status')} ({fm.get('revenue_record_type')})",
+            "Farmhouse Allowance": fm.get("farmhouse_permission", "Up to 10%"),
+            "Contact Person & Phone": f"{fm.get('contact_person')} ({fm.get('contact_phone')})",
+            "WhatsApp Link": fm.get("contact_whatsapp", "https://wa.me/"),
+            "Google Maps Place": get_google_maps_search_url(fm.get("google_maps_query", fm["name"]))
+        })
+
+    df_top_farms = pd.DataFrame(top_farm_rows)
+    render_sticky_frozen_table(df_top_farms, frozen_cols=1, table_id="top_farmlands_table", max_height="500px")
 
     st.markdown("<br>", unsafe_allow_html=True)
 
@@ -1581,9 +1681,230 @@ with tabs[3]:
     """)
 
 # =============================================================
-# TAB 5: WATER SUPPLY & GROUND REALITY MONITOR
+# TAB 5: VERIFIED FARMLANDS & AGRO-INVESTMENTS
 # =============================================================
 with tabs[4]:
+    st.markdown(f"### 🌾 Verified Farmland & Agro-Investment Screener")
+    st.caption("Curated agricultural land parcels, managed agroforestry estates, and private orchards with complete soil telemetry, sweet water security, crop suitability indices, and direct landowner / verified broker contacts.")
+
+    # ---------------------------------------------------------
+    # 1. FARMLAND FILTER SUITE
+    # ---------------------------------------------------------
+    farm_f1, farm_f2, farm_f3, farm_f4 = st.columns([1.3, 1.3, 1.2, 1.2])
+
+    with farm_f1:
+        selected_farm_corridor = st.selectbox(
+            "Select Farmland Growth Corridor:",
+            options=["🌐 All Corridors Across India"] + [f"{c['name']} ({c['state']})" for c in cities],
+            index=0,
+            help="Filter farmlands across India or focus on the active metropolitan periphery."
+        )
+
+    with farm_f2:
+        selected_seller_filter = st.selectbox(
+            "Seller / Lister Category:",
+            options=[
+                "All Seller Categories",
+                "🧑‍🌾 Direct Landowner / Farmer",
+                "🏢 Verified Agricultural Broker",
+                "🏡 Managed Farmland Operator"
+            ],
+            index=0,
+            help="Filter by listing entity: buy directly from farmers/patta holders or through vetted agri-brokers or managed community developers."
+        )
+
+    with farm_f3:
+        selected_crop_filter = st.selectbox(
+            "Primary Crop Suitability:",
+            options=[
+                "All Crops & Orchards",
+                "🥑 Hass Avocado",
+                "🪵 Certified Sandalwood (Chandan)",
+                "🐉 Dragon Fruit (Pitaya)",
+                "🍈 High-Density Guava",
+                "🥭 Alphonso / Banganapalli Mango",
+                "🌱 Protected Polyhouse / Greens"
+            ],
+            index=0,
+            help="Filter farmlands with ideal soil pH, drainage, and water table for specific commercial crops."
+        )
+
+    with farm_f4:
+        max_farm_budget = st.slider(
+            "Max Parcel Outlay (₹ Cr):",
+            min_value=0.25,
+            max_value=6.0,
+            value=4.5,
+            step=0.25,
+            help="Filter farmlands within your targeted total capital investment outlay."
+        )
+
+    # Filter farmlands pool
+    if "All Corridors" in selected_farm_corridor:
+        f_pool = list(farmlands)
+    else:
+        chosen_cname = selected_farm_corridor.split(" (")[0]
+        f_pool = [fm for fm in farmlands if fm.get("city_name") == chosen_cname]
+
+    if selected_areas:
+        f_pool = [fm for fm in f_pool if area_matches(fm.get("location", "")) or area_matches(fm.get("name", ""))]
+
+    if selected_seller_filter != "All Seller Categories":
+        if "Direct Landowner" in selected_seller_filter:
+            f_pool = [fm for fm in f_pool if "Owner" in fm.get("seller_category", "")]
+        elif "Broker" in selected_seller_filter:
+            f_pool = [fm for fm in f_pool if "Broker" in fm.get("seller_category", "")]
+        elif "Managed" in selected_seller_filter:
+            f_pool = [fm for fm in f_pool if "Managed" in fm.get("seller_category", "")]
+
+    if selected_crop_filter != "All Crops & Orchards":
+        clean_crop = selected_crop_filter.split(" ", 1)[-1]
+        f_pool = [fm for fm in f_pool if clean_crop.lower() in str(fm.get("supported_crops", {})).lower()]
+
+    f_pool = [fm for fm in f_pool if fm.get("total_price_cr", 0) <= max_farm_budget]
+
+    if not f_pool:
+        st.warning("No farmlands matched the specific filter criteria. Displaying corridor inventory below:")
+        f_pool = [fm for fm in farmlands if fm.get("city_id") == selected_city_id]
+
+    # ---------------------------------------------------------
+    # 2. STICKY FROZEN FARMLAND COMPARATIVE TABLE
+    # ---------------------------------------------------------
+    st.markdown("#### 📋 Farmland Inventory & Agronomic Telemetry Table")
+    st.caption(f"Showing **{len(f_pool)}** verified farmland parcels. 4th column benchmark: **{active_benchmark_obj['name']}**. Frozen 1st column with tooltips on mouse hover.")
+
+    farm_table_rows = []
+    for fm in f_pool:
+        dist_to_bm = calculate_road_distance_km(fm["lat"], fm["lng"], active_benchmark_obj["lat"], active_benchmark_obj["lng"])
+        supp = fm.get("supported_crops", {})
+        farm_table_rows.append({
+            "Farmland Estate Name": fm["name"],
+            "Seller Category": "🧑‍🌾 Direct Owner" if "Owner" in fm.get("seller_category", "") else ("🏢 Verified Broker" if "Broker" in fm.get("seller_category", "") else "🏡 Managed Farm"),
+            "City & Location": f"{fm['city_name']} ({fm['location']})",
+            f"Road Dist to {active_benchmark_obj['name']}": f"{dist_to_bm} km",
+            "Parcel Extent": f"{fm['size_acres']} Acres ({fm.get('size_local_units', '')})",
+            "Price / Acre": f"₹{fm['price_per_acre_lakhs']} L/Acre",
+            "Total Outlay (Cr)": f"₹{fm['total_price_cr']:.2f} Cr",
+            "Soil Type & pH": f"{fm.get('soil_type', 'Loam')} (pH {fm.get('soil_ph')})",
+            "Organic Carbon": f"{fm.get('organic_carbon_pct')}% OC",
+            "Water Source & Yield": f"{fm.get('water_source')} • TDS {fm.get('water_tds_ppm')} ppm",
+            "Drip Irrigation": "✅ Installed" if fm.get("drip_irrigation_installed") else "Furrow/Flood",
+            "High-Value Crops": supp.get("high_value_crops", "N/A"),
+            "Horticulture Fruits": supp.get("horticulture_fruits", "N/A"),
+            "Est Annual Harvest": f"📈 ₹{fm.get('annual_agro_yield_estimate_lakhs', 5.0)} L/yr",
+            "Title & Revenue Ledger": f"{fm.get('title_status')} ({fm.get('revenue_record_type')})",
+            "Farmhouse Allowance": fm.get("farmhouse_permission", "Up to 10%"),
+            "Seller Contact": f"{fm.get('contact_person')} ({fm.get('contact_phone')})",
+            "WhatsApp Link": fm.get("contact_whatsapp", "https://wa.me/"),
+            "Google Maps Place": get_google_maps_search_url(fm.get("google_maps_query", fm["name"]))
+        })
+
+    df_farms_tab = pd.DataFrame(farm_table_rows)
+    render_sticky_frozen_table(df_farms_tab, frozen_cols=1, table_id="farmlands_screener_table", max_height="520px")
+
+    st.markdown("<br>", unsafe_allow_html=True)
+
+    # ---------------------------------------------------------
+    # 3. INTERACTIVE FARMLAND DEEP-DIVE CARDS & CONTACT TRIGGERS
+    # ---------------------------------------------------------
+    st.markdown("#### 🧑‍🌾 Featured Farmlands: Contact Sellers & Inspect Soil Health")
+    st.caption("Direct click-to-call, instant WhatsApp inquiry, and verified agronomic telemetry cards:")
+
+    for fm in f_pool[:6]:
+        with st.expander(f"🌾 {fm['name']} — {fm['size_acres']} Acres in {fm['location']}, {fm['city_name']} (₹{fm['total_price_cr']:.2f} Cr)", expanded=False):
+            c_agri, c_contact = st.columns([1.6, 1.2])
+            with c_agri:
+                st.markdown(render_agronomic_telemetry_html(fm), unsafe_allow_html=True)
+            with c_contact:
+                st.markdown(render_seller_contact_card_html(fm), unsafe_allow_html=True)
+                st.markdown(f"""
+                <div style='background:#0F172A; border:1px solid #1E293B; border-radius:8px; padding:12px; margin-top:8px; font-size:12px;'>
+                    <b>📍 Geographic Verification:</b><br>
+                    • Coords: <code>{fm['lat']:.4f}, {fm['lng']:.4f}</code><br>
+                    • Plinth Elevation: <b>{fm['elevation_m']}m MSL</b><br>
+                    • <a href='{get_google_maps_search_url(fm.get("google_maps_query", fm["name"]))}' target='_blank' style='color:#38BDF8;'>View Satellite Pin in Google Maps ↗</a><br>
+                    • Official Record Source: <b>{fm.get('source_name')}</b>
+                </div>
+                """, unsafe_allow_html=True)
+
+    st.markdown("<br>", unsafe_allow_html=True)
+
+    # ---------------------------------------------------------
+    # 4. HIGH-VALUE CROP ROI & HARVEST CALCULATOR
+    # ---------------------------------------------------------
+    st.markdown("### 🧮 High-Value Unique Crop ROI & Harvest Yield Modeler")
+    st.caption("Model estimated commercial harvest revenues for high-demand exotics and timber plantations across your parcel extent.")
+
+    calc_c1, calc_c2 = st.columns([1.2, 1.4])
+    with calc_c1:
+        calc_crop = st.selectbox(
+            "Select Crop for ROI Modeling:",
+            options=list(HIGH_VALUE_CROP_BENCHMARKS.keys()),
+            index=0
+        )
+        calc_acres = st.number_input(
+            "Cultivable Acreage Allocated (Acres):",
+            min_value=0.5,
+            max_value=50.0,
+            value=2.0,
+            step=0.5
+        )
+        crop_data = HIGH_VALUE_CROP_BENCHMARKS[calc_crop]
+        st.info(f"💡 **Agronomic Profile**: {crop_data['description']}")
+
+    with calc_c2:
+        tot_trees = int(crop_data["trees_per_acre"] * calc_acres)
+        annual_gross_lakhs = round(crop_data["est_annual_gross_lakhs"] * calc_acres, 1)
+        gestation = crop_data["gestation_years"]
+        ten_year_harvest_cr = round((annual_gross_lakhs * max(0, 10 - gestation)) / 100, 2)
+
+        k1, k2, k3 = st.columns(3)
+        with k1:
+            st.metric("Total Planting Units", f"{tot_trees:,} Units", help="Trees, vines, or polyhouse modules")
+        with k2:
+            st.metric("Gestation Period", f"{gestation} Years", help="Time until first commercial-scale harvest")
+        with k3:
+            st.metric("Est. Annual Revenue", f"₹{annual_gross_lakhs} Lakhs/yr", help="Recurring gross annual harvest yield")
+
+        st.success(f"📈 **10-Year Cumulative Projected Harvest Value**: **₹{ten_year_harvest_cr} Crores** (After {gestation} years gestation)")
+
+    st.markdown("<br>", unsafe_allow_html=True)
+
+    # ---------------------------------------------------------
+    # 5. STATE-WISE AGRICULTURAL LAND PURCHASE LEGAL GUIDE
+    # ---------------------------------------------------------
+    with st.expander("⚖️ State-Wise Agricultural Land Purchase Laws & Due Diligence Guide", expanded=False):
+        st.markdown("""
+        #### Legal Framework for Buying Farmland in India:
+        
+        * **Karnataka (Bengaluru Corridor)**:
+          * **Section 79A & 79B Repealed**: Under the *Karnataka Land Reforms (Amendment) Act 2020*, non-agriculturalists and non-farmers can legally purchase agricultural land without prior farmer status.
+          * **Land Ceiling**: Maximum holding limit is up to 108 acres for an individual/family.
+          * **Farmhouse Construction**: Permitted up to 10% of total land area or 10,000 sqft for residential/storage use without non-agricultural (NA) conversion.
+          * **Title Verification**: Verify 30-year RTC (Pahani / Form 16), Akarband, Tippani, Nil Encumbrance Certificate (Form 15), and mutation register extract.
+
+        * **Maharashtra (Mumbai & MMR Corridor)**:
+          * **Section 63 of MTAL Act**: Generally requires the purchaser to hold a certified Farmer Certificate (Kisan status).
+          * **Exemptions**: Non-farmers can purchase agricultural land up to 10 R (approx. 11,000 sqft) under Section 44A for horticulture/residential purposes or through registered Agro-tourism trusts.
+          * **Title Verification**: 7/12 (Saat Bara) extract, 8A ledger, Ferfar (mutation entry), and search report for 30 years.
+
+        * **Tamil Nadu (Chennai Corridor)**:
+          * **Open to All Citizens**: No restriction on non-farmers purchasing agricultural land. Any Indian citizen can buy farmland.
+          * **Title Verification**: Patta Chitta passbook, 'A' Register extract, FMB (Field Measurement Book) sketch, and 30-year Encumbrance Certificate (EC) via Tamil Nilam portal.
+
+        * **Telangana (Hyderabad Corridor)**:
+          * **Dharani Portal Integration**: 100% digital land records. Passbook and title deeds are executed instantaneously upon slot booking.
+          * **Open Purchase**: Any citizen can purchase agricultural land under Pattadar status. Verify Non-tribal land (Agency area / 1 of 70 regulation clearance) and ROR 1B.
+
+        * **Uttar Pradesh (Varanasi & Eastern UP Corridor)**:
+          * **UP Revenue Code 2006**: Agricultural land can be bought by non-farmers. If construction is planned, apply for declaration under Section 80 (erstwhile Section 143) for non-agricultural use.
+          * **Title Verification**: Verify Khatauni (ROR), Khasra, Bhulekh online records, and 12-year non-encumbrance certificate.
+        """)
+
+# =============================================================
+# TAB 6: WATER SUPPLY & GROUND REALITY MONITOR
+# =============================================================
+with tabs[5]:
     st.markdown(f"### 💧 Water Supply & Ground Reality Monitor — {active_city['name']}")
     st.caption("Comparing municipal bulk piped supply, groundwater table depletion, and private tanker dependency economics.")
 
@@ -1634,9 +1955,9 @@ with tabs[4]:
         )
 
 # =============================================================
-# TAB 6: CHRONIC AVOIDANCE ZONES DEEP DIVE
+# TAB 7: CHRONIC AVOIDANCE ZONES DEEP DIVE
 # =============================================================
-with tabs[5]:
+with tabs[6]:
     st.markdown(f"### 🚨 Chronic Real Estate Avoidance Zones")
     st.caption("Forensic analysis of chronic monsoon waterlogging, tidal backflows, and hydraulic bottlenecks.")
 
@@ -1650,9 +1971,9 @@ with tabs[5]:
             st.markdown(f"[View Hotspot in Google Maps ↗]({get_google_maps_search_url(av['name'] + ' ' + av['city'])})")
 
 # =============================================================
-# TAB 7: EXPLAINABLE AI COPILOT
+# TAB 8: EXPLAINABLE AI COPILOT
 # =============================================================
-with tabs[6]:
+with tabs[7]:
     st.markdown(f"### 🤖 Explainable AI Avoidance Copilot")
     st.caption("Natural language queries powered by multi-criteria civic telemetry, topographical models, and builder track records.")
 

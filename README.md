@@ -126,6 +126,14 @@ This platform brings together civic research datasets, remote sensing imagery, a
 ### 13. Sticky 1st-Column Frozen Table Engine
 - Pure CSS sticky iframe renderer (`utils/table_view.py`) locking the first column on the left with `#0D9488` teal divider and shadow, guaranteeing responsive scrolling across desktop, tablet, and mobile browsers.
 
+### 14. Verified Farmlands & High-Yield Agro-Investments Engine
+- Curated catalog of 24 verified agricultural land parcels and managed agroforestry estates across India (`data/farmlands.json`).
+- **Comprehensive Agronomic Telemetry**: Soil classification, pH, organic carbon %, groundwater table depth, sweet water TDS (ppm), and drip irrigation status.
+- **High-Value Exotic & Commercial Crop Modeling**: Benchmark economics, tree density, gestation timelines, and annual harvest yields for Hass Avocado, Certified Sandalwood (Chandan), Dragon Fruit (Pitaya), Taiwan Pink Guava, Alphonso Mango, and Protected Greenhouses.
+- **Verified Seller Contacts & Categorization**: Distinguishes between `Direct Landowner / Farmer`, `Verified Agricultural Broker`, and `Managed Farmland Operator` with instant Click-to-Call (`tel:`) and Direct WhatsApp Inquiry (`wa.me`) buttons.
+- **State-Wise Land Purchase Legal Guide**: Comprehensive due diligence frameworks for Karnataka (Sections 79A/B repealed), Maharashtra (Section 63 MTAL), Tamil Nadu (unrestricted Patta/Chitta transfers), Telangana (Dharani instant registry), and Uttar Pradesh (Section 80 conversion).
+- **Multi-Sheet Daily Excel Export**: Farmland inventory with all 28 agronomic, financial, and legal attributes automatically exported to the `"Verified Farmlands"` worksheet in `daily_property_screener_dump.xlsx`.
+
 ---
 
 ## 🚀 Quickstart & Local Installation

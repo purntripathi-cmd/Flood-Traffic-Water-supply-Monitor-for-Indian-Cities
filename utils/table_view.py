@@ -56,7 +56,22 @@ PARAMETER_DEFINITIONS = {
     "Google Maps Place": "Direct place link to view terrain, photos, and access roads on Google Maps.",
     "State RERA Registry": "Direct URL to official State Real Estate Regulatory Authority registry verifying developer approvals.",
     "Sanction Verification": "Direct URL to official town planning approval and RERA sanction registry.",
-    "Data Sources & Links": "Verifiable primary references including State RERA Registries, Municipal Master Plans, and TomTom Congestion feeds."
+    "Data Sources & Links": "Verifiable primary references including State RERA Registries, Municipal Master Plans, and TomTom Congestion feeds.",
+    "Farmland Estate Name": "Name of the agricultural estate, managed agroforestry plantation, or private family orchard.",
+    "Parcel Extent (Acres)": "Total contiguous land acreage in standard acres and local units (Guntas, Bighas, Cents).",
+    "Price / Acre (Lakhs)": "Agricultural land cost per acre in Indian Rupees (₹ Lakhs per acre).",
+    "Total Outlay (Cr)": "Total purchase ticket price for the entire farmland parcel in ₹ Crores.",
+    "Soil Type & Texture": "Soil classification (e.g. Red Sandy Loam, Gangetic Alluvium, Black Regur) indicating nutrient holding and drainage.",
+    "Soil pH & Organic Carbon": "Soil chemical fertility: pH (optimal 6.5-7.5) and Organic Carbon (OC % > 0.75% indicates rich living soil).",
+    "Water Security & Borewells": "Operational irrigation infrastructure: operational borewells (inch flow), canal water shares, and sweet water TDS.",
+    "Water Salinity TDS": "Total Dissolved Solids in ppm; sweet potable water (< 400 ppm) ensures healthy crop root nutrient uptake.",
+    "Supported Crops & Horticulture": "Agricultural crops validated by agro-climatic conditions, soil chemistry, and temperature ranges.",
+    "High-Value Crops": "High-margin commercial agroforestry and exotic crops (e.g. Hass Avocado, Sandalwood, Dragon Fruit, Cordyceps Mushroom, Medjool Dates).",
+    "Annual Harvest Estimate": "Estimated annual gross revenue from commercial crop harvest per acre once plantation reaches maturity.",
+    "Title & Legal Verification": "Revenue ownership clarity: verified 30-year RTC / Pahani, Saat Bara (7/12), Patta Chitta, or Jamabandi without encumbrances.",
+    "Farmhouse Allowance": "Permissible built-up area (typically up to 10% or 10,000 sqft) for agricultural cottage, workers quarters, and storage.",
+    "Seller Category (Owner / Broker)": "Identifies direct farmer/landowner versus verified RERA-accredited agro broker or managed farmland community operator.",
+    "Contact Person & Phone": "Direct mobile phone contact and instant WhatsApp communication link for land viewing and title document inspection."
 }
 
 

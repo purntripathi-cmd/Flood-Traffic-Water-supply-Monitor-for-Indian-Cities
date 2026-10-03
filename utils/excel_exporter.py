@@ -33,6 +33,7 @@ def sync_daily_scan_to_excel(
     top_rentals: List[Dict[str, Any]],
     master_plans: List[Dict[str, Any]],
     onboarded_log: List[Dict[str, Any]],
+    top_farmlands: List[Dict[str, Any]] = None,
     output_filepath: str = None
 ) -> Tuple[str, int]:
     """
@@ -175,15 +176,58 @@ def sync_daily_scan_to_excel(
         })
     df_audit = pd.DataFrame(audit_rows) if audit_rows else pd.DataFrame([{"Scan Timestamp": today_str, "Status": "Baseline daily scan initialized"}])
 
+    # 6. Prepare Farmlands DataFrame
+    farm_rows = []
+    for fm in (top_farmlands or []):
+        supp = fm.get("supported_crops", {})
+        farm_rows.append({
+            "Farmland Estate Name": fm.get("name"),
+            "City / Corridor": fm.get("city_name"),
+            "Location / Taluk": fm.get("location"),
+            "Parcel Size (Acres)": fm.get("size_acres"),
+            "Local Measurement": fm.get("size_local_units"),
+            "Price / Acre (Lakhs INR)": fm.get("price_per_acre_lakhs"),
+            "Total Ticket Price (Cr INR)": fm.get("total_price_cr"),
+            "Elevation (m MSL)": fm.get("elevation_m"),
+            "Soil Type & Classification": fm.get("soil_type"),
+            "Soil pH": fm.get("soil_ph"),
+            "Organic Carbon (%)": fm.get("organic_carbon_pct"),
+            "Water Source & Infrastructure": fm.get("water_source"),
+            "Water Table Depth (ft)": fm.get("groundwater_depth_ft"),
+            "Water Salinity TDS (ppm)": fm.get("water_tds_ppm"),
+            "Drip Irrigation Pre-Installed": "Yes" if fm.get("drip_irrigation_installed") else "No",
+            "Electricity Supply": fm.get("power_supply"),
+            "High-Value & Exotic Crops": supp.get("high_value_crops"),
+            "Horticulture Fruits": supp.get("horticulture_fruits"),
+            "Cash Crops & Staples": supp.get("cash_crops_staples"),
+            "Est Annual Harvest Yield (Lakhs)": fm.get("annual_agro_yield_estimate_lakhs"),
+            "Title & Encumbrance Status": fm.get("title_status"),
+            "Revenue Ledger Type": fm.get("revenue_record_type"),
+            "Zoning & Land Law Compliance": fm.get("zoning"),
+            "Farmhouse Construction Allowance": fm.get("farmhouse_permission"),
+            "Approach Road Width": fm.get("road_approach"),
+            "Fencing & Boundary": fm.get("fencing"),
+            "Seller Category": fm.get("seller_category"),
+            "Contact Person Name": fm.get("contact_person"),
+            "Contact Phone": fm.get("contact_phone"),
+            "WhatsApp Link": fm.get("contact_whatsapp"),
+            "Agency / Farmer Organization": fm.get("agency_or_firm"),
+            "Verified Certification Badge": fm.get("verified_listing_badge"),
+            "Official Land Record Source": fm.get("source_name")
+        })
+    df_farms = pd.DataFrame(farm_rows)
+
     # Write multi-sheet Excel file
     with pd.ExcelWriter(output_filepath, engine="openpyxl") as writer:
         df_props.to_excel(writer, sheet_name="Top 10 Purchase Properties", index=False)
         df_plots.to_excel(writer, sheet_name="Top 10 Gated Plots", index=False)
         df_rentals.to_excel(writer, sheet_name="Top 10 Rental Properties", index=False)
+        if not df_farms.empty:
+            df_farms.to_excel(writer, sheet_name="Verified Farmlands", index=False)
         df_plans.to_excel(writer, sheet_name="Mega Master Plans", index=False)
         df_audit.to_excel(writer, sheet_name="Critic AI & Onboarded Log", index=False)
 
-    total_records = len(df_props) + len(df_plots) + len(df_rentals)
+    total_records = len(df_props) + len(df_plots) + len(df_rentals) + len(df_farms)
     return output_filepath, total_records
 
 
@@ -192,11 +236,11 @@ def generate_excel_download_bytes(
     top_plots: List[Dict[str, Any]],
     top_rentals: List[Dict[str, Any]],
     master_plans: List[Dict[str, Any]],
-    onboarded_log: List[Dict[str, Any]]
+    onboarded_log: List[Dict[str, Any]],
+    top_farmlands: List[Dict[str, Any]] = None
 ) -> bytes:
     """Returns in-memory bytes of the Excel workbook for Streamlit download button."""
     buffer = io.BytesIO()
-    today_str = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
     prop_rows = []
     for p in top_properties:
@@ -211,6 +255,7 @@ def generate_excel_download_bytes(
             "Projected 5-Yr Appreciation": f"+{p.get('projected_5yr_appreciation_pct', 45)}%",
             "Expected Completion": p.get("expected_completion", "Dec 2026"),
             "Upcoming Phase": p.get("upcoming_phase", "Phase 1"),
+            "Property Age vs Completion Timeline": p.get("age_vs_completion", p.get("property_age")),
             "BHK & Sqft": f"{p.get('bhk')} ({p.get('avg_sqft')} sqft)",
             "Price / Sqft": p.get("price_per_sqft"),
             "Total Price (Cr)": p.get("total_price_cr"),
@@ -223,10 +268,39 @@ def generate_excel_download_bytes(
         })
     df_p = pd.DataFrame(prop_rows)
 
+    farm_rows = []
+    for fm in (top_farmlands or []):
+        supp = fm.get("supported_crops", {})
+        farm_rows.append({
+            "Farmland Estate Name": fm.get("name"),
+            "City / Corridor": fm.get("city_name"),
+            "Location / Taluk": fm.get("location"),
+            "Parcel Size (Acres)": fm.get("size_acres"),
+            "Price / Acre (Lakhs)": fm.get("price_per_acre_lakhs"),
+            "Total Ticket Price (Cr)": fm.get("total_price_cr"),
+            "Elevation (m MSL)": fm.get("elevation_m"),
+            "Soil Type": fm.get("soil_type"),
+            "Soil pH": fm.get("soil_ph"),
+            "Organic Carbon (%)": fm.get("organic_carbon_pct"),
+            "Water Source": fm.get("water_source"),
+            "Water TDS (ppm)": fm.get("water_tds_ppm"),
+            "High-Value Crops Supported": supp.get("high_value_crops"),
+            "Horticulture Fruits": supp.get("horticulture_fruits"),
+            "Annual Harvest Est (Lakhs)": fm.get("annual_agro_yield_estimate_lakhs"),
+            "Seller Category": fm.get("seller_category"),
+            "Contact Person": fm.get("contact_person"),
+            "Contact Phone": fm.get("contact_phone"),
+            "WhatsApp Link": fm.get("contact_whatsapp"),
+            "Verified Badge": fm.get("verified_listing_badge")
+        })
+    df_f = pd.DataFrame(farm_rows)
+
     with pd.ExcelWriter(buffer, engine="openpyxl") as writer:
         df_p.to_excel(writer, sheet_name="Top Purchase Properties", index=False)
         pd.DataFrame(top_plots).to_excel(writer, sheet_name="Gated Plots", index=False)
         pd.DataFrame(top_rentals).to_excel(writer, sheet_name="Rental Benchmarks", index=False)
+        if not df_f.empty:
+            df_f.to_excel(writer, sheet_name="Verified Farmlands", index=False)
         pd.DataFrame(master_plans).to_excel(writer, sheet_name="Govt Master Plans", index=False)
 
     buffer.seek(0)
