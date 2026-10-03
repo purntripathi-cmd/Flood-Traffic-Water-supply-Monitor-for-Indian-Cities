@@ -603,9 +603,10 @@ def render_top_50_crawler_dashboard_and_table(st) -> None:
     st.caption("Screened across 20+ agricultural zones with Sentinel-2 NDVI spectral vigour, MESSIS crop modeling, title registry verification, and contractual leaseback guarantees. Frozen 1st column with sortable headers.")
 
     table_top_50_rows = []
-    for f in filtered_top_50:
+    for idx, f in enumerate(filtered_top_50, 1):
         table_top_50_rows.append({
-            "Rank & Estate Name": f"#{f['national_rank']} {f['name']}",
+            "Sl No.": f"#{idx}",
+            "National Rank & Estate": f"#{f['national_rank']} {f['name']}",
             "Guaranteed Return Guarantee": f['guaranteed_return_terms'] if f.get("has_guaranteed_return") else "Standard Agri Title",
             "Seller / Operator Type": f['seller_category'],
             "City & State": f"{f['city_name']}, {f['state']}",
@@ -636,7 +637,7 @@ def render_top_50_crawler_dashboard_and_table(st) -> None:
             mime="text/csv",
             key="dl_top_50_filtered_csv_btn"
         )
-    render_sticky_frozen_table(df_top_50_display, frozen_cols=1, table_id="top_50_farmlands_table", max_height="620px")
+    render_sticky_frozen_table(df_top_50_display, frozen_cols=2, table_id="top_50_farmlands_table", max_height="620px")
 
     st.markdown("<br>", unsafe_allow_html=True)
     st.markdown("#### 🌟 Featured Top Farmlands: Full Agronomic, Satellite & Contact Telemetry")

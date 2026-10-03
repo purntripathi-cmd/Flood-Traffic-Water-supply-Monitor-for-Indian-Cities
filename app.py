@@ -267,7 +267,6 @@ def get_system_telemetry():
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(BASE_DIR, "data")
 
-@st.cache_data
 def load_all_datasets():
     with open(os.path.join(DATA_DIR, "cities.json"), "r", encoding="utf-8") as f:
         cities = json.load(f)
@@ -319,6 +318,17 @@ try:
     sync_all_master_csvs(properties, gated_plots, rental_properties, farmlands, builders, avoidance_zones, micro_markets)
 except Exception:
     pass
+
+def get_high_value_crops_str(fm: dict) -> str:
+    """Safely extracts high-value crop string regardless of whether supported_crops is a dict, list, or string."""
+    supp = fm.get("supported_crops")
+    if isinstance(supp, dict):
+        return supp.get("high_value_crops") or "Avocado, Sandalwood"
+    elif isinstance(supp, list):
+        return ", ".join(str(c) for c in supp)
+    elif isinstance(supp, str):
+        return supp
+    return "Avocado, Sandalwood"
 
 # -------------------------------------------------------------
 # Sidebar Controls & Configurable Filters
@@ -1065,7 +1075,7 @@ with tabs[0]:
     # Plot Verified Farmlands
     for fm in farmlands:
         is_focused = (focused_prop_obj and focused_prop_obj.get("id") == fm["id"])
-        supp = fm.get("supported_crops", {})
+        crops_str = get_high_value_crops_str(fm)
         farm_popup = f"""
         <div style='font-family:sans-serif; width:270px;'>
             <div style='display:flex; justify-content:space-between;'>
@@ -1077,7 +1087,7 @@ with tabs[0]:
             <p style='margin:4px 0 0 0; font-size:12px;'><b>Rate:</b> ₹{fm['price_per_acre_lakhs']} L/Acre (Total: ₹{fm['total_price_cr']} Cr)</p>
             <p style='margin:0; font-size:12px;'><b>Soil & pH:</b> {fm.get('soil_type')} (pH {fm.get('soil_ph')})</p>
             <p style='margin:0; font-size:12px;'><b>Water:</b> {fm.get('water_source')} (TDS: {fm.get('water_tds_ppm')} ppm)</p>
-            <p style='margin:0; font-size:12px;'><b>High-Value Crops:</b> {supp.get('high_value_crops', 'Avocado, Sandalwood')}</p>
+            <p style='margin:0; font-size:12px;'><b>High-Value Crops:</b> {crops_str}</p>
             <p style='margin:0; font-size:12px;'><b>Contact:</b> {fm.get('contact_person')} ({fm.get('contact_phone')})</p>
             <hr style='margin:6px 0;'>
             <a href='{get_google_maps_search_url(fm.get("google_maps_query", fm["name"]))}' target='_blank' style='font-size:11px; color:#0284C7; font-weight:bold;'>Google Maps Pin ↗</a> | 
@@ -1712,12 +1722,13 @@ with tabs[0]:
         st.caption(f"Ranked by annual harvest yield and soil suitability. 4th column benchmark: **{active_benchmark_obj['name']}**. Screened for 30-year unencumbered land records, sweet water TDS (<400 ppm), high-value crop yields, and direct seller/broker contacts. Click any table column header to sort in-place.")
         if sorted_farms:
             top_farm_rows = []
-            for idx, fm in enumerate(sorted_farms):
+            for idx, fm in enumerate(sorted_farms, 1):
                 dist_to_bm = calculate_road_distance_km(fm["lat"], fm["lng"], active_benchmark_obj["lat"], active_benchmark_obj["lng"])
                 supp = fm.get("supported_crops", {})
                 top_farm_rows.append({
-                    "Rank": f"#{idx+1} ({rank_tag})",
+                    "Sl No.": f"#{idx}",
                     "Farmland Estate Name": fm["name"],
+                    "Rank": f"#{idx} ({rank_tag})",
                     "Guaranteed Return": fm.get('guaranteed_return_terms', 'Direct Cultivation') if fm.get('has_guaranteed_return') else 'Direct Cultivation',
                     "Sourcing Provenance": fm.get("sourcing_tier_badge", fm.get("sourcing_tier", "🏛️ Tier 1: Govt Registry")),
                     "Due Diligence Score": f"⚖️ {fm.get('due_diligence_score', 85)}/100 ({fm.get('due_diligence_grade', 'A')})",
@@ -1729,7 +1740,7 @@ with tabs[0]:
                     "Total Outlay (Cr)": f"₹{fm['total_price_cr']:.2f} Cr",
                     "Soil Type & pH": f"{fm.get('soil_type', 'Loam')} (pH {fm.get('soil_ph')})",
                     "Water Source & Yield": f"{fm.get('water_source')} • TDS {fm.get('water_tds_ppm')} ppm",
-                    "High-Value Crops Supported": supp.get("high_value_crops", "N/A"),
+                    "High-Value Crops Supported": get_high_value_crops_str(fm),
                     "Est Annual Harvest (Lakhs)": f"📈 ₹{fm.get('annual_agro_yield_estimate_lakhs', 5.0)} L/yr",
                     "Title & Revenue Ledger": f"{fm.get('title_status')} ({fm.get('revenue_record_type')})",
                     "Khasra / Khatauni Record": fm.get("khasra_khatauni_number", fm.get("revenue_record_type", "Certified RTC")),
@@ -2422,7 +2433,14 @@ with tabs[4]:
                 )
 
             # Build AgriLand-200 pool
-            f_pool = [fm for fm in farmlands if fm.get("city_id") == "varanasi_100km" or fm.get("radial_distance_from_varanasi_km") is not None]
+            f_pool = [fm for fm in farmlands if fm.get("city_id") == "varanasi_100km" or fm.get("radial_distance_from_varanasi_km") is not None or "varanasi" in fm.get("city_id", "").lower() or "kashi" in str(fm.get("city_name", "")).lower() or "banaras" in str(fm.get("city_name", "")).lower()]
+            if len(f_pool) < 15:
+                try:
+                    with open(os.path.join(DATA_DIR, "farmlands.json"), "r", encoding="utf-8") as _f_json:
+                        _direct_farms = json.load(_f_json)
+                        f_pool = [fm for fm in _direct_farms if fm.get("city_id") == "varanasi_100km" or fm.get("radial_distance_from_varanasi_km") is not None or "varanasi" in fm.get("city_id", "").lower() or "kashi" in str(fm.get("city_name", "")).lower() or "banaras" in str(fm.get("city_name", "")).lower()]
+                except Exception:
+                    pass
 
             # Apply Zone Filter
             if "UP Purvanchal" in selected_agri_zone:
@@ -2433,7 +2451,19 @@ with tabs[4]:
                 f_pool = [fm for fm in f_pool if fm.get("regional_state") == "Madhya Pradesh"]
             elif selected_agri_zone != "All 14 Regional Districts (UP, Bihar & MP Border)":
                 dist_clean = selected_agri_zone.split(" (")[0].strip()
-                f_pool = [fm for fm in f_pool if dist_clean.lower() in fm.get("regional_district", "").lower() or dist_clean.lower() in fm.get("location", "").lower()]
+                if "Varanasi" in dist_clean:
+                    f_pool = [
+                        fm for fm in f_pool
+                        if "varanasi" in fm.get("regional_district", "").lower()
+                        or any(alias in fm.get("location", "").lower() or alias in fm.get("name", "").lower() for alias in ["varanasi", "kashi", "banaras", "rohania", "babatpur", "sarnath", "ramnagar", "sevapuri", "cholapur", "pindra", "araziline", "baragaon"])
+                    ]
+                else:
+                    f_pool = [
+                        fm for fm in f_pool
+                        if dist_clean.lower() in fm.get("regional_district", "").lower()
+                        or dist_clean.lower() in fm.get("location", "").lower()
+                        or dist_clean.lower() in fm.get("name", "").lower()
+                    ]
 
             # Apply Sourcing Tier Filter
             if "Tier 1" in selected_tier_filter:
@@ -2608,7 +2638,7 @@ with tabs[4]:
 
         if not f_pool:
             st.info("No farmlands directly matched this filter combination. Expanding to nearest available listings:")
-            f_pool = [fm for fm in farmlands if fm.get("city_id") == "varanasi_100km"] if is_agriland_200 else list(farmlands)
+            f_pool = [fm for fm in farmlands if fm.get("city_id") == "varanasi_100km" or fm.get("radial_distance_from_varanasi_km") is not None] if is_agriland_200 else list(farmlands)
 
         # ---------------------------------------------------------
         # 2. STICKY FROZEN FARMLAND COMPARATIVE TABLE
@@ -2620,7 +2650,7 @@ with tabs[4]:
             st.caption(f"Showing **{len(f_pool)}** verified farmland parcels across India. 4th column benchmark: **{active_benchmark_obj['name']}**. Frozen 1st column with sortable headers.")
 
         farm_table_rows = []
-        for fm in f_pool:
+        for idx, fm in enumerate(f_pool, 1):
             dist_to_bm = calculate_road_distance_km(fm["lat"], fm["lng"], active_benchmark_obj["lat"], active_benchmark_obj["lng"])
             supp = fm.get("supported_crops", {})
             rad_km = fm.get("radial_distance_from_varanasi_km")
@@ -2629,6 +2659,7 @@ with tabs[4]:
             dd_str = f"⚖️ {dd_score}/100 ({fm.get('due_diligence_grade', 'A')})" if dd_score is not None else f"⭐ {fm.get('farmland_score', 88)}/100"
 
             farm_table_rows.append({
+                "Sl No.": f"#{idx}",
                 "Farmland Estate Name": fm["name"],
                 "Sourcing Provenance": fm.get("sourcing_tier_badge", fm.get("sourcing_tier", "🏛️ Tier 1: Govt Registry")),
                 "Due Diligence Score": dd_str,
@@ -2642,7 +2673,7 @@ with tabs[4]:
                 "Organic Carbon": f"{fm.get('organic_carbon_pct')}% OC",
                 "Water Source & Yield": f"{fm.get('water_source')} • TDS {fm.get('water_tds_ppm')} ppm",
                 "Drip Irrigation": "✅ Installed" if fm.get("drip_irrigation_installed") else "Furrow/Flood",
-                "High-Value Crops Supported": supp.get("high_value_crops", "N/A"),
+                "High-Value Crops Supported": get_high_value_crops_str(fm),
                 "Est Annual Harvest": f"📈 ₹{fm.get('annual_agro_yield_estimate_lakhs', 5.0)} L/yr",
                 "Title & Revenue Ledger": f"{fm.get('title_status')} ({fm.get('revenue_record_type')})",
                 "Khasra / Khatauni Record": fm.get("khasra_khatauni_number", fm.get("revenue_record_type", "Certified RTC")),
@@ -2665,7 +2696,7 @@ with tabs[4]:
                 mime="text/csv",
                 key="dl_tab5_farms_csv"
             )
-        render_sticky_frozen_table(df_farms_tab, frozen_cols=1, table_id="farmlands_screener_table", max_height="620px")
+        render_sticky_frozen_table(df_farms_tab, frozen_cols=2, table_id="farmlands_screener_table", max_height="620px")
 
         st.markdown("<br>", unsafe_allow_html=True)
 

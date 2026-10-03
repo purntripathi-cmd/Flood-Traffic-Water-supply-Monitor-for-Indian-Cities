@@ -131,8 +131,8 @@ def render_sticky_frozen_table(df: pd.DataFrame, frozen_cols: int = 1, table_id:
     col_widths = []
     for idx in range(frozen_col_count):
         c_lower = str(cols[idx]).lower().strip()
-        if c_lower in ["rank", "#", "sl.no", "sl no", "s.no", "id"]:
-            col_widths.append(115)
+        if c_lower in ["rank", "#", "sl.no", "sl no", "sl no.", "s.no", "serial no", "serial no.", "sl", "id"]:
+            col_widths.append(85)
         elif any(k in c_lower for k in ["name", "property", "project", "hotspot", "layout", "scheme", "estate", "builder"]):
             col_widths.append(330)
         elif any(k in c_lower for k in ["city", "corridor", "location", "micro-market", "tehsil"]):
